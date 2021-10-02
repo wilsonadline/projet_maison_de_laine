@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Password Reset Email Sent{% endblock %}
+
+{% block body %}
+    <p class="mt-5">
+        Si un compte correspond à votre email, alors un email a été envoyé contenant un lien que vous pouvez utilisé pour réinitialiser votre mot de passe.
+        Ce lien exprire dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p>
+    <p class="mt-5">Si vous n'avez pas reçu d'email, veuillez vérifier vos spam ou <a href="{{ path('app_forgot_password_request') }}">réessayer</a>.</p>
+{% endblock %}
+{% block footer %}
+    {# Footer  #}
+    <footer class="fixed-bottom">
+    <article id="icon">
+      <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+      <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+      <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+    </article>
+    <article>
+      <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
+    </article>
+    </footer>
+    {# END Footer  #}
+{% endblock %}

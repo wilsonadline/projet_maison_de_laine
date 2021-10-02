@@ -1,0 +1,42 @@
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* height: 400px; */
+  flex: 1;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* border: solid 1px rgb(223, 14, 14); */
+}
+
+h1{
+  font-weight: bolder;
+}
+
+#lien_boutique{
+  transition: all 0.35s;
+}
+
+#lien_boutique:hover{
+ color: #7A0B0B;
+ transform: scale(1.05);
+
+}
+
+#option_panier{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+}
+.option_panier_bottom{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: lightslategray 1px solid; */
+}
+.space__left{
+  margin-left: 6px;
+  font-size: 80%;
+}
