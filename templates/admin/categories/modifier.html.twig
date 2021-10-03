@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% form_theme categoriesModifier 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Ajouter type de catégorie{% endblock %}
+
+{% block body %}
+
+        <div  class="mt-1 "> 
+            <h1 class="text-center mt-4">Ajouter un type de catégorie</h1>
+            {{ form_start(categoriesModifier) }}
+                {{ form_row(categoriesModifier.nom) }}
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn border-dark">Modifier</button>
+                </div>
+            {{ form_end(categoriesModifier)}}
+        </div>
+{% endblock %}
+
