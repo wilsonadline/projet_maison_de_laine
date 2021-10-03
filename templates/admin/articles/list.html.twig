@@ -1,27 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des catégories{% endblock %}
+{% block title %}Liste des articles{% endblock %}
 
 {% block body %}
-<h1 class="text-center my-5">Liste des catégories</h1>
+<h1 class="text-center my-5">Liste des articles</h1>
 
 <div class="d-flex justify-content-end my-5">
-    <a href="{{path ('categories_ajout')}}"  class="btn btn-light border border-dark" >Ajouter une catégorie</a>
+    <a href="{{path ('articles_ajout')}}"  class="btn btn-light border border-dark" >Ajouter un article</a>
 </div>
 
-{% for add in app.flashes('categoriesAjout') %}
+{% for add in app.flashes('articlesAjout') %}
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
         <strong>Félicitations </strong>{{ add }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
 {% endfor %}
-{% for edit in app.flashes('categoriesEdit') %}
+{% for edit in app.flashes('articlesEdit') %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Félicitations </strong>{{ edit }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
 {% endfor %}
-{% for delete in app.flashes('categoriesDelete') %}
+{% for delete in app.flashes('articlesDelete') %}
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Félicitations </strong>{{ delete }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
@@ -39,21 +39,23 @@
                 </tr>
             </thead>
             <tbody>
-                {% for list in categoriesList %}
+                {% for list in articlesList %}
                     <tr>
                         <th scope="row">{{ list.id}}</th>
-                        <td>{{ list.nom}}</td>
-                        {# {# <td>{{ list.typeCategorie.nom|default('')}}</td>   #}
+                        <td>{{ list.article}}</td>
+                        <td>{{ list.couleur}}</td>
+                        <td>{{ list.description}}</td>
+                        <td>{{ list.prix}}</td>
                         <td>{{ list.createdAt|date('d/m/Y à H:i:s')}}</td>
                         <td>{{ list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
-                        <td><a href="{{ path ('categories_modifier', { id : list.id })}}" class="btn btn-light border border-dark" >Modifier</a></td>
-                        <td><a href="{{ path ('categories_delete', { id : list.id })}}"  onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')"class="btn btn-light border border-dark" >Supprimer</a></td>
+                        <td><a href="{{ path ('articles_modifier', { id : list.id })}}" class="btn btn-light border border-dark" >Modifier</a></td>
+                        <td><a href="{{ path ('articles_delete', { id : list.id })}}"  onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')"class="btn btn-light border border-dark" >Supprimer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
         <div class="d-flex justify-content-end my-5">
-            <a href="{{path ('categories_ajout')}}" class="btn btn-light border border-dark" >Ajouter une catégorie</a>
+            <a href="{{path ('articles_ajout')}}" class="btn btn-light border border-dark" >Ajouter un article</a>
         </div>
 {% endblock %}
 {% block footer %}

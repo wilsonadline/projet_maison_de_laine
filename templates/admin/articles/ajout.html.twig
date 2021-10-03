@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% form_theme articlesAjout 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Ajouter un article{% endblock %}
+
+{% block body %}
+        <div  class="mt-1 "> 
+            <h1 class="text-center mt-4">Ajouter un article</h1>
+            {{ form_start(articlesAjout) }}
+                {{ form_row(articlesAjout.article) }}
+                {{ form_row(articlesAjout.couleur) }}
+                {{ form_row(articlesAjout.description) }}
+                {{ form_row(articlesAjout.prix) }}
+            <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn border-dark">Ajouter</button>
+            </div>
+        </div>
+    {{ form_end(articlesAjout) }}
+{% endblock %}
+{% block footer %}
+    {# Footer  #}
+    <footer class="fixed-bottom">
+    <article id="icon">
+      <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+      <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+      <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+    </article>
+    <article>
+      <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
+    </article>
+    </footer>
+    {# END Footer  #}
+{% endblock %}
