@@ -31,7 +31,11 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">Nom</th>
+                    <th scope="col">Couleur</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Prix</th>
                     <th scope="col">Création</th>
                     <th scope="col">Modification</th>
                     <th scope="col">Modifier</th>
@@ -42,6 +46,7 @@
                 {% for list in articlesList %}
                     <tr>
                         <th scope="row">{{ list.id}}</th>
+                        <td><img src="{{ vich_uploader_asset( list , 'imageFile' ) }}" style="width : 60px"class="card-img-top" alt="..."></td>
                         <td>{{ list.article}}</td>
                         <td>{{ list.couleur}}</td>
                         <td>{{ list.description}}</td>

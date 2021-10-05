@@ -36,12 +36,12 @@
                 </li>
                 <li class="nav-item ms-5">
                     <i class="fas fa-user mb-1"></i>
-                    <a href="#">Contact</a>
+                    <a href="{{ path ('contact')}}">Contact</a>
                 </li>
                 {% if app.user %}
                 <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navInscription">
                     <i class="fas fa-address-book mb-1"></i>
-                    <a href="#">Deconnexion</a>
+                    <a href="{{path ('app_logout')}}">Deconnexion</a>
                 </li>
                 {% else %}
                 <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navInscription">

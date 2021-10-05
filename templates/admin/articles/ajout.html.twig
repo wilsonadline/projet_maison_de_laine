@@ -11,23 +11,12 @@
                 {{ form_row(articlesAjout.couleur) }}
                 {{ form_row(articlesAjout.description) }}
                 {{ form_row(articlesAjout.prix) }}
+                {{ form_row(articlesAjout.imageFile) }}
+
             <div class="d-flex justify-content-end">
                     <button type="submit" class="btn border-dark">Ajouter</button>
             </div>
         </div>
     {{ form_end(articlesAjout) }}
 {% endblock %}
-{% block footer %}
-    {# Footer  #}
-    <footer class="fixed-bottom">
-    <article id="icon">
-      <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
-      <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
-      <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-    </article>
-    <article>
-      <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
-    </article>
-    </footer>
-    {# END Footer  #}
-{% endblock %}
+

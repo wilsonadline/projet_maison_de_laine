@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% form_theme formContact 'bootstrap_5_layout.html.twig' %}
+
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<section >
+
+<h1 class="text-center my-5"> Formulaire de Contact ! </h1> 
+
+{% for contact in app.flashes('contact_sent') %}
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>Félicitations </strong>{{ contact }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+{% endfor %}
+
+{{form_start(formContact)}}
+{{form_row(formContact.email)}}
+{{form_row(formContact.sujet)}}
+{{form_row(formContact.message)}}
+
+<div class="d-flex justify-content-end">
+    <button class="btn border border-dark " type="submit">Envoyer </button>
+</div>
+
+{{form_end(formContact)}}
+
+</section>
+{% endblock %}
+{% block footer %}
+    {# Footer  #}
+    <footer class="fixed-bottom">
+    <article id="icon">
+      <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+      <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+      <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+    </article>
+    <article>
+      <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
+    </article>
+    </footer>
+    {# END Footer  #}
+{% endblock %}
