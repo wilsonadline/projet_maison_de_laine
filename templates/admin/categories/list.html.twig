@@ -4,7 +4,7 @@
 
 {% block body %}
 <h1 class="text-center my-5">Liste des catégories</h1>
-
+{{dump(categoriesList)}}
 <div class="d-flex justify-content-end my-5">
     <a href="{{path ('categories_ajout')}}"  class="btn btn-light border border-dark" >Ajouter une catégorie</a>
 </div>
@@ -32,6 +32,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nom</th>
+                    <th scope="col">Type Catégories</th>
                     <th scope="col">Création</th>
                     <th scope="col">Modification</th>
                     <th scope="col">Modifier</th>
@@ -43,7 +44,7 @@
                     <tr>
                         <th scope="row">{{ list.id}}</th>
                         <td>{{ list.nom}}</td>
-                        {# {# <td>{{ list.typeCategorie.nom|default('')}}</td>   #}
+                        <td>{{ list.typecategories.nom}}</td>  
                         <td>{{ list.createdAt|date('d/m/Y à H:i:s')}}</td>
                         <td>{{ list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
                         <td><a href="{{ path ('categories_modifier', { id : list.id })}}" class="btn btn-light border border-dark" >Modifier</a></td>
@@ -56,17 +57,4 @@
             <a href="{{path ('categories_ajout')}}" class="btn btn-light border border-dark" >Ajouter une catégorie</a>
         </div>
 {% endblock %}
-{% block footer %}
-    {# Footer  #}
-    <footer class="fixed-bottom">
-    <article id="icon">
-      <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
-      <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
-      <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-    </article>
-    <article>
-      <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
-    </article>
-    </footer>
-    {# END Footer  #}
-{% endblock %}
+

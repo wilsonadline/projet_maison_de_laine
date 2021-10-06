@@ -9,10 +9,26 @@
             <h1 class="text-center mt-4">Ajouter un type de catégorie</h1>
             {{ form_start(categoriesModifier) }}
                 {{ form_row(categoriesModifier.nom) }}
+                {{ form_row(categoriesModifier.typecategories) }}
+
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn border-dark">Modifier</button>
                 </div>
             {{ form_end(categoriesModifier)}}
         </div>
+{% endblock %}
+{% block footer %}
+    {# Footer  #}
+    <footer class="fixed-bottom">
+    <article id="icon">
+      <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+      <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+      <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+    </article>
+    <article>
+      <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
+    </article>
+    </footer>
+    {# END Footer  #}
 {% endblock %}
 

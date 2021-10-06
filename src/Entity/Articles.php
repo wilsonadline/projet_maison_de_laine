@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ArticlesRepository;
+use App\Entity\Categories;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -51,10 +52,6 @@ class Articles
      */
     private $updatedAt;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     /**
      * @Vich\UploadableField(mapping="article_img", fileNameProperty="imageName")
@@ -67,6 +64,17 @@ class Articles
      * @var string|null
      */
     private $imageName;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="articles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categories;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getArticle(): ?string
     {
@@ -162,6 +170,18 @@ class Articles
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getCategories(): ?Categories
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?Categories $categories): self
+    {
+        $this->categories = $categories;
 
         return $this;
     }

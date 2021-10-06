@@ -85,5 +85,6 @@ class ArticlesController extends AbstractController
         return $this->render('admin/articles/list.html.twig', [
             'articlesList' => $articlesList->findAll(),
         ]);
+        
     }
 }

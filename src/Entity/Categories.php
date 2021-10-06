@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\CategoriesRepository;
+use App\Entity\TypeCategories;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +34,21 @@ class Categories
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Articles::class, mappedBy="categories")
+     */
+    private $articles;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TypeCategories::class, inversedBy="categories")
+     */
+    private $typeCategories;
+
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +87,48 @@ class Categories
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Articles[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Articles $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setCategories($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Articles $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getCategories() === $this) {
+                $article->setCategories(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getTypeCategories(): ?TypeCategories
+    {
+        return $this->typeCategories;
+    }
+
+    public function setTypeCategories(?TypeCategories $typeCategories): self
+    {
+        $this->typeCategories = $typeCategories;
 
         return $this;
     }

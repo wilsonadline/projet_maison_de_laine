@@ -17,7 +17,7 @@
 
   <!-- <title>La Maison De Laine | Mercerie | Laines | Boutons | Rubanerie</title> -->
 </head>
-<body style="background-color: grey">
+<body >
 {% block nav %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a href="{{ path ('app_home') }}"><img src="{{ asset('images/LOGO.png') }}" id="logo" /></a> 
@@ -53,13 +53,7 @@
                     <a href="{{path ('app_login')}}">Se Connecter</a>
                 </li>
                 {% endif %}
-                {# {% if app.admin %} #}
-
-                 <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navConnecter">
-                    <i class="fas fa-power-off mb-1"></i>
-                    <a href="#">Admin</a>
-                </li>
-                {# {% endif %} #}
+                
             </ul>
          </div>
     </nav>

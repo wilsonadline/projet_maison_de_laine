@@ -4,15 +4,26 @@
 {% block title %}Ajouter type de catégorie{% endblock %}
 
 {% block body %}
-
-        <div  class="mt-1 "> 
-            <h1 class="text-center mt-4">Ajouter un type de catégorie</h1>
-            {{ form_start(typeCategoriesModifier) }}
-                {{ form_row(typeCategoriesModifier.nom) }}
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn border-dark">Modifier</button>
-                </div>
-            {{ form_end(typeCategoriesModifier)}}
-        </div>
+    <div  class="mt-1 "> 
+        <h1 class="text-center mt-4">Ajouter un type de catégorie</h1>
+        {{ form_start(typeCategoriesModifier) }}
+            {{ form_row(typeCategoriesModifier.nom) }}
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn border-dark">Modifier</button>
+            </div>
+        {{ form_end(typeCategoriesModifier)}}
+    </div>
+{% endblock %}
+{% block footer %}
+    <footer class="fixed-bottom">
+    <article id="icon">
+      <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+      <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+      <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+    </article>
+    <article>
+      <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
+    </article>
+    </footer>
 {% endblock %}
 
