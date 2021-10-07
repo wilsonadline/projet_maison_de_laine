@@ -52,7 +52,7 @@
                         <td>{{ list.couleur}}</td>
                         <td>{{ list.description}}</td>
                         <td>{{ list.prix}}</td>
-                        <td>{{ list.categories.nom}}</td>
+                        <td>{{ list.categories.nom|default('')}}</td>
                         <td>{{ list.createdAt|date('d/m/Y à H:i:s')}}</td>
                         <td>{{ list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
                         <td><a href="{{ path ('articles_modifier', { id : list.id })}}" class="btn btn-light border border-dark" >Modifier</a></td>

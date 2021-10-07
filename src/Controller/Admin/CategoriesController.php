@@ -20,18 +20,18 @@ class CategoriesController extends AbstractController
     public function categoriesAjout(Request $request): Response
     {
         $categoriesAjout = new Categories();
-
+        // dd($categoriesAjout);
         $categoriesAjout_form = $this->createForm(CategoriesType::class, $categoriesAjout);
         $categoriesAjout_form->handleRequest($request);
 
         if($categoriesAjout_form->isSubmitted() && $categoriesAjout_form->isValid())
         {
             $categoriesAjout->setCreatedAt(new \DateTime());
-
+            
             $em= $this->getDoctrine()->getManager();
             $em->persist($categoriesAjout);
             $em->flush();
-
+            
             $this->addFlash('categoriesAdd', 'La catégorie a bien été ajouté ! ');
             return $this->redirectToRoute('categories_list');
         }

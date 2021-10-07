@@ -26,7 +26,7 @@ class ArticlesType extends AbstractType
             ->add('categories', EntityType::class, [
                 'class' => Categories::class, 
                 'choice_label'=> 'nom',
-                'mapped' => false
+                // 'mapped' => false
             ])
             ->add('imageFile', FileType::class)
         ;

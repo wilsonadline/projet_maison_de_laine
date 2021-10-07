@@ -31,6 +31,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Type Catégories</th>
                     <th scope="col">Création</th>
@@ -43,8 +44,9 @@
                 {% for list in categoriesList %}
                     <tr>
                         <th scope="row">{{ list.id}}</th>
+                        <td><img src="{{ vich_uploader_asset( list  'imageFile' ) }}" style="width : 60px"class="card-img-top" alt="..."></td>
                         <td>{{ list.nom}}</td>
-                        <td>{{ list.typecategories.nom}}</td>  
+                        <td>{{ list.typeCategories}}</td>  
                         <td>{{ list.createdAt|date('d/m/Y à H:i:s')}}</td>
                         <td>{{ list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
                         <td><a href="{{ path ('categories_modifier', { id : list.id })}}" class="btn btn-light border border-dark" >Modifier</a></td>
