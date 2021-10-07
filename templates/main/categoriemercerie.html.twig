@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %} Laines - La Maison de Laine{% endblock %}
+
+{% block body %}
+{# {{dump(categorie_mercerie)}} #}
+               
+{# <h5>{{article.categories.id}}</h5> #}
+
+<section class = "m-5 d-flex flex-wrap justify-content-center justify-content-evenly">
+    {% for produit in article %}
+        <div class="card m-5" style="width: 18rem;">
+            <img src="{{ vich_uploader_asset(produit, 'imageFile')}}" class="card-img-top" alt="...">
+            <div class="card-body d-flex justify-content-center flex-column">
+                <h5 class="card-title">{{produit.article}}</h5>
+                <p class="card-text text-center">{{produit.couleur}}</p>
+                <p class="card-text text-center">{{produit.description}}.</p>
+                <p class="card-text text-center">{{produit.prix }}€</p>
+                {# <a href="{{ path('item')}}" class="btn btn-light">Pelote n°1</a> #}
+             </div>
+        </div>
+    {% endfor %} 
+</section>
+
+
+
+{% endblock %}
+
+
+
+
+{# style="border: 1px solid pink" #}
