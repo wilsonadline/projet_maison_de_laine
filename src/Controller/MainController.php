@@ -55,11 +55,7 @@ class MainController extends AbstractController
 
         return $this->render('main/categoriemercerie.html.twig', [
             'article'=>$article,
-            // dd($article)
-
-           
+            // dd($article) 
         ]);
     }
-
-
 }
