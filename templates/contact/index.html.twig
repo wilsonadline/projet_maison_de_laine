@@ -5,29 +5,31 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-<section >
+  <h1 class="text-center my-5"> Formulaire de Contact ! </h1> 
+  <section class="d-flex  justify-content-between">
 
-<h1 class="text-center my-5"> Formulaire de Contact ! </h1> 
+  <img src="{{asset('images/ordi_Pavel_Danilyuk.jpg')}}" alt="contact" style="width : 45%" class="rounded-3"/>
 
-{% for contact in app.flashes('contact_sent') %}
+  {% for contact in app.flashes('contact_sent') %}
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <strong>Félicitations </strong>{{ contact }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+      <strong>Félicitations </strong>{{ contact }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
-{% endfor %}
+  {% endfor %}
+  <div class="d-flex flex-column" style="width : 50%">
+    {{form_start(formContact)}}
+    {{form_row(formContact.email)}}
+    {{form_row(formContact.sujet)}}
+    {{form_row(formContact.message)}}
 
-{{form_start(formContact)}}
-{{form_row(formContact.email)}}
-{{form_row(formContact.sujet)}}
-{{form_row(formContact.message)}}
+    <div class="d-flex justify-content-end">
+      <button class="btn border border-dark " type="submit">Envoyer </button>
+    </div>
+  </div>
 
-<div class="d-flex justify-content-end">
-    <button class="btn border border-dark " type="submit">Envoyer </button>
-</div>
+  {{form_end(formContact)}}
 
-{{form_end(formContact)}}
-
-</section>
+  </section>
 {% endblock %}
 {% block footer %}
     {# Footer  #}
