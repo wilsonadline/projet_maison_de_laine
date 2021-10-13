@@ -3,6 +3,10 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
+    <article class="d-flex justify-content-end">
+      {{form (form_recherche)}}
+      {# <button class="btn btn-outline-light ms-3 btn-sm " type="submit">Recherhce</button> #}
+    </article>
      {# Categorie Mercerie #}
     <section class="d-flex flex-column align-items-center my-5" >
       <h3 class="title_container">Mercerie</h3>
@@ -47,4 +51,19 @@
    
 
 
+{% endblock %}
+{% block footer %}
+    {# Footer  #}
+  <footer >
+      <article id="icon">
+        <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+        <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+        <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+      </article>
+      <article>
+        <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
+      </article>
+      
+  </footer>
+    {# END Footer  #}
 {% endblock %}

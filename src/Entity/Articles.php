@@ -11,6 +11,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ArticlesRepository::class)
+ * @ORM\Table(name="articles", indexes={@ORM\Index(columns={"article", "couleur", "description"}, flags={"fulltext"})})
  * @Vich\Uploadable
  */
 class Articles
@@ -184,5 +185,8 @@ class Articles
         $this->categories = $categories;
 
         return $this;
+    }
+    public function __toString() {
+        return $this->article;
     }
 }
