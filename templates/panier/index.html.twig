@@ -1,20 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PanierController!{% endblock %}
+{% block title %}Panier{% endblock %}
 
 {% block body %}
     <div class="d-flex justify-content-between flex-column  my-5  ">
-
-   
     <table class="table">
         <h1 class="my-5 text-center">Mon Panier</h1>
         <thead>
             <tr>
-            <th scope="col">Article</th>
-            <th scope="col">Prix</th>
-            <th scope="col">Quantité</th>
-            <th scope="col">Total</th>
-            <th scope="col">Actions</th>
+                <th scope="col">Article</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Total</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -34,31 +32,31 @@
                 <tr>
                     <td colspan="5" class="text-center"><h3>Votre panier est vide</h3></td>
                 <tr>
-        
             {% endfor %}
-
         </tbody>
         <tfoot>
-            <tr>
-                <td colspan="3">Total</td>
-                <td colspan="text-end">{{total}}€</td>
-                <td> 
-                    <a class="btn btn btn-outline-danger btn-sm" href="{{path ('panier_vider')}}">vider</a>
-                </td>
-
-            </tr>
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td colspan="text-end" name="prix" id="prix">{{total}}€</td>
+                    <td> 
+                        <a class="btn btn btn-outline-danger btn-sm" href="{{path ('panier_vider')}}">vider</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <td colspan="text-end"></td>
+                    <td> 
+                        <button class="btn btn btn-outline-primary btn-sm" >Valider votre panier</button>
+                    </td>
+                </tr>
         </tfoot>
-
     </table>
-    {# {{dump()}} #}
-
 
     <div class="d-flex justify-content-evenly my-5">
         <article class="d-flex align-items-center my-5">
             <p class="pt-3"><i class="fas fa-truck fa-2x ml-5"></i></p>
             <span >LIVRAISON GRATUITE<br>DES 72H EN BOUTIQUE</span>
         </article>
-
         <article class="d-flex align-items-center" >
             <p class="pt-3"><i class="fas fa-user-lock fa-2x"></i></p>
             <span>PAIEMENT SÉCURISÉ<br>PAR CB OU PAYPAL</span>

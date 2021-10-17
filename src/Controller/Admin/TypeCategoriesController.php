@@ -48,7 +48,6 @@ class TypeCategoriesController extends AbstractController
         $typeCategoriesModifier_form = $this->createForm(TypeCategoriesType::class, $typeCategoriesModifier);
         $typeCategoriesModifier_form->handleRequest($request);
 
-       
         if($typeCategoriesModifier_form->isSubmitted() && $typeCategoriesModifier_form->isValid())
         {
             $typeCategoriesModifier->setUpdatedAt(new \DateTime());

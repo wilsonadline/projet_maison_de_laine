@@ -112,7 +112,7 @@ class PanierController extends AbstractController
     #[Route('/vider', name: 'vider')]
     public function panier_vider( SessionInterface $session)
     {
-       $session->set("panier", []);
+       $session->remove("panier");
 
         return $this->redirectToRoute("panier_index");
        

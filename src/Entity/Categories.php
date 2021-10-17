@@ -14,7 +14,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=CategoriesRepository::class)
- * @ORM\Table(name="categories", indexes={@ORM\Index(columns={"nom"}, flags={"fulltext"})})
  * @Vich\Uploadable
  */
 class Categories

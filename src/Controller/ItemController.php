@@ -17,7 +17,6 @@ class ItemController extends AbstractController
 
         return $this->render('main/items.html.twig', [
             'article'=>$article,
-            // dd($article) 
         ]);
     }
 }

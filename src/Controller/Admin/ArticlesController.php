@@ -68,7 +68,6 @@ class ArticlesController extends AbstractController
     #[Route("/articles/delete/{id}", name: "delete")]
     public function articlesDelete($id): Response
     {
-
         $articlesDelete = $this->getDoctrine()->getRepository(Articles::class)->find($id);
 
         $em = $this->getDoctrine()->getManager();

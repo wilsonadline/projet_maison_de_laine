@@ -19,24 +19,6 @@ class CategoriesRepository extends ServiceEntityRepository
         parent::__construct($registry, Categories::class);
     }
 
-     /**
-     * recherche les articles en fonction du formulaire
-     * @return void
-     */
-    public function recherche($mots= null, $article = null)
-    {
-        $query = $this->createQueryBuilder('c');
-        if($mots!= null){
-            $query->where('MATCH_AGAINST(c.nom) AGAINST(:mots boolean)>0')
-                ->setParameter('mots', $mots);
-        }
-        if($article != null){
-            $query->leftJoin('c.articles', 'a');
-            $query->andWhere('a.id = :id')
-                ->setParameter('id',$article);
-        }
-        return $query->getQuery()->getResult();
-    }
 
     // /**
     //  * @return Categories[] Returns an array of Categories objects
