@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block css %} <link rel="stylesheet" href="{{asset ('../css/contact.css ')}}" />{% endblock %} 
 {% form_theme formContact 'bootstrap_5_layout.html.twig' %}
 
 
@@ -6,16 +7,16 @@
 
 {% block body %}
   <h1 class="text-center my-5"> Formulaire de Contact ! </h1> 
-  <section class="d-flex  justify-content-between">
-
-  <img src="{{asset('images/ordi_Pavel_Danilyuk.jpg')}}" alt="contact" style="width : 45%" class="rounded-3"/>
-
   {% for contact in app.flashes('contact_sent') %}
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
       <strong>Félicitations </strong>{{ contact }}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
   {% endfor %}
+  <section class="d-flex  justify-content-between">
+
+  <img src="{{asset('images/ordi_Pavel_Danilyuk.jpg')}}" alt="contact" style="width : 45%" />
+
   <div class="d-flex flex-column" style="width : 50%">
     {{form_start(formContact)}}
     {{form_row(formContact.email)}}

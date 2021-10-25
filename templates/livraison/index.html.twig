@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livraison{% endblock %}
+
+{% block body %}
+<div class="my-5 d-flex " >
+    <section class="col-6 rounded-3 mx-1 d-flex flex-column  " style="with:100%; background-color : #7a0b0b3b; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; ">
+        <h4 class="mt-5 mx-3 text-start">Adresse de facturation</h4>
+        {# <span class="mx-3"> Si vous avez déjà un compte, veuillez vous identifier :</span> #}
+        <div  >
+            <label class="mx-2">Civilité</label>
+            <input  type="radio"  id="Monsieur" name="drone" value="M" ><span class="me-2">M</span>
+            <input type="radio"  id="Madame" name="drone" value="Mme" ><span>Mme</span>
+        </div>
+        <div class="mt-3 d-flex justify-content-between">
+            <label class="ms-2">Nom</label>
+            <input id ="facturation_name" class=" me-4 col-6 rounded-3" style="border: none" type="text" required>
+        </div>
+        <div class="mt-3 d-flex justify-content-between">
+            <label class="ms-2">Prénom</label>
+            <input id ="facturation_fstname"  class=" me-4  col-6 rounded-3" style="border: none" type="text" required>
+        </div>
+         <div class="mt-3 d-flex justify-content-between ">
+            <label class="ms-2">Adresse</label>
+            <div class="d-flex flex-column col-6 me-4">
+            <input id ="facturation_ad1"  class="rounded-3" style="border: none" type="text" required>
+            <input id ="facturation_ad2"  class="mt-3  rounded-3" style="border: none" type="text" required>
+            <input id ="facturation_ad3"  class="mt-3  rounded-3" style="border: none" type="text" required>
+        </div>
+
+        </div> 
+        <div class="mt-3 d-flex justify-content-between">
+            <label class="ms-2">Code Postal</label>
+            <input id ="facturation_cp"  class="me-4 col-6 rounded-3" style="border: none" type"number" required>
+        </div> 
+        <div class="my-3  d-flex justify-content-between">
+            <label class="ms-2">Ville</label>
+            <input id ="facturation_ville"  class="me-4 col-6 rounded-3" style="border: none" type="text" required>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button id="copyToDelivry" class="btn btn-sm btn-outline-dark me-4">Adresse de facturation</button>
+        </div>
+    </section>
+     <section class="col-6 rounded-3 mx-1 d-flex flex-column  " style=" with:100%; background-color : #7a0b0b3b; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; ">
+        <h4 class="mt-5 mx-3 text-start">Adresse de livraison</h4>
+        {# <span class="mx-3"> Si vous avez déjà un compte, veuillez vous identifier :</span> #}
+        <div  >
+            <label class="mx-2">Civilité</label>
+            <input  type="radio"  id="Monsieur" name="drone" value="M" ><span class="me-2">M</span>
+            <input type="radio"  id="Madame" name="drone" value="Mme" ><span>Mme</span>
+        </div>
+        <div class="mt-3 d-flex justify-content-between">
+            <label class="ms-2">Nom</label>
+            <input id="livraison_name" class=" me-4 col-6 rounded-3" style="border: none" type="text" required>
+        </div>
+        <div class="mt-3 d-flex justify-content-between">
+            <label class="ms-2">Prénom</label>
+            <input id="livraison_fstname" class=" me-4  col-6 rounded-3" style="border: none" type="text" required>
+        </div>
+         <div class="mt-3 d-flex justify-content-between ">
+            <label class="ms-2">Adresse</label>
+            <div class="d-flex flex-column col-6 me-4">
+            <input id="livraison_ad1" class="   rounded-3" style="border: none" type="text" required>
+            <input id="livraison_ad2"  class="   mt-3  rounded-3" style="border: none" type="text" required>
+            <input id="livraison_ad3" class="  mt-3  rounded-3" style="border: none" type="text" required>
+        </div>
+
+        </div> 
+        <div class="mt-3 d-flex justify-content-between">
+            <label class="ms-2">Code Postal</label>
+            <input id="livraison_cp" class="me-4 col-6 rounded-3" style="border: none" type"number" required>
+        </div> 
+        <div class="my-3  d-flex justify-content-between">
+            <label class="ms-2">Ville</label>
+            <input id="livraison_ville" class="me-4 col-6 rounded-3" style="border: none" type="text" required>
+        </div>
+        <div class="my-3 me-4 d-flex justify-content-end">
+            <a href="{{path ('livraison_option')}}" class="btn btn-sm btn-outline-dark">Etape suivante </a>
+        </div>
+    </section>
+   
+</div>
+{% endblock %}
+{% block footer %}
+  <footer class="fixed-bottom">
+      <article id="icon">
+        <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+        <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+        <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+      </article>
+      <article>
+        <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
+      </article >
+  </footer>
+{% endblock %}

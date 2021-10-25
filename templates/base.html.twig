@@ -14,15 +14,14 @@
   <!-- afin que la lecture de la page soit lisible pour tous les navigateur  -->
   <meta charset="utf-8" />
   <title>{% block title %} BASE {% endblock %}</title>
-
   <!-- <title>La Maison De Laine | Mercerie | Laines | Boutons | Rubanerie</title> -->
 </head>
-<body style="background : grey" >
+<body >
 {% block nav %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a href="{{ path ('app_home') }}"><img src="{{ asset('images/LOGO.png') }}" id="logo" /></a> 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
@@ -39,6 +38,10 @@
                     <a href="{{ path ('contact')}}">Contact</a>
                 </li>
                 {% if app.user %}
+                 <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navInscription">
+                    <i class="fas fa-address-book mb-1"></i>
+                    <a href="">Mon profil</a>
+                </li>
                 <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navInscription">
                     <i class="fas fa-address-book mb-1"></i>
                     <a href="{{path ('app_logout')}}">Deconnexion</a>
@@ -53,36 +56,36 @@
                     <a href="{{path ('app_login')}}">Se Connecter</a>
                 </li>
                 {% endif %}
-                
             </ul>
-         </div>
+        </div>
     </nav>
 {% endblock %}
 
-<div class="container " >
+<div class="container" >
 {% block body %}
 {% endblock %}
 </div>
 
 {% block footer %}
-    {# Footer  #}
     <footer>
-    <article id="icon">
-      <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
-      <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
-      <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-    </article>
-    <article>
-      <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
-    </article>
+        <article id="icon">
+            <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+            <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+            <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+        </article>
+        <article>
+            <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
+        </article>
     </footer>
-    {# END Footer  #}
 {% endblock %}
 </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-  <script src="{{ asset ('../js/prepa.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="{{ asset ('js/prepa.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="{{ asset ('js/livraison.js') }}"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{{ asset ('js/paiement.js')}}"></script>
     {% block script %} {% endblock %}
-
   </body>
 </html>

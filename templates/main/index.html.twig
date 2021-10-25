@@ -5,7 +5,7 @@
 {% block body %}
     
      {# Categorie Mercerie #}
-    <section class="d-flex flex-column align-items-center my-5" >
+    <section class="d-flex flex-column align-items-center my-5">
       <h3 class="title_container">Mercerie</h3>
       <p class="text_container">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
@@ -14,12 +14,12 @@
         nihil maxime natus?
       </p>  
 
-      <section class="d-flex  ">
+      <section class="d-flex" id="section_mercerie">
         {% for mercerie in categorieByMercerie %}
-            <div  class =" d-flex align-items-center flex-column mt-5 mx-5" style="width: 18rem; ">
-                <img src="{{vich_uploader_asset(mercerie , 'imageFile')}}" class="card-img-top rounded-3" alt="...">
-                <a href="{{path ('app_articles_mercerie', {id: mercerie.id} )}}" class="btn btn-light my-4 rounded-pill" style="width: 10rem;">{{ mercerie.nom}}</a>
-            </div>
+          <div  class ="d-flex align-items-center flex-column mt-5 mx-5 box_vignette_cat"  style="width: 18rem; ">
+              <img src="{{vich_uploader_asset(mercerie , 'imageFile')}}" class="card-img-top rounded-3" alt="...">
+              <a href="{{path ('app_articles_mercerie', {id: mercerie.id} )}}"  class="btn_categorie btn btn-light my-4 rounded-pill" style="width: 10rem;">{{ mercerie.nom}}</a>
+          </div>
         {% endfor %}
       </section> 
     </section> 
@@ -49,15 +49,4 @@
 
 
 {% endblock %}
-{% block footer %}
-  <footer >
-      <article id="icon">
-        <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
-        <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
-        <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-      </article>
-      <article>
-        <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
-      </article>
-  </footer>
-{% endblock %}
+

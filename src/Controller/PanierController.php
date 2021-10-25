@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Articles;
 use App\Repository\ArticlesRepository;
+use App\Services\PanierService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -15,26 +16,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class PanierController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(SessionInterface $session, ArticlesRepository $articleRepository): Response
+    public function panier(SessionInterface $session, ArticlesRepository $articleRepository): Response
     {
-        $panier = $session->get("panier", []);
-
-        //  on "fabrique" les données
-        $dataPanier = [] ; 
-        $total = 0; 
-
-        foreach($panier as $id =>$quantite)
-        {
-            //  on recupere l'article
-            $article = $articleRepository->find($id);
-            $dataPanier[] = [
-                "article" => $article,
-                "quantite"=>$quantite
-            ];
-            $total += $article->getPrix() * $quantite;
-
-        }
-
+        $paniers = new PanierService();
+       list ($dataPanier, $total) = $paniers->panier($session, $articleRepository);
+         
         return $this->render('panier/index.html.twig', compact("dataPanier", "total")
         );
     }
@@ -117,4 +103,13 @@ class PanierController extends AbstractController
         return $this->redirectToRoute("panier_index");
        
     }
+
+    #[Route('/paiement', name: 'paiement')]
+    public function panier_paiement( SessionInterface $session)
+    {
+       
+       
+    }
+
+    
 }

@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panier{% endblock %}
+{% block title %}Paiement{% endblock %}
 
 {% block body %}
-    <div class="d-flex justify-content-between flex-column  my-5  ">
+
+  <div class="d-flex justify-content-between flex-column  my-5  ">
     <table class="table">
         <h1 class="my-5 text-center">Mon Panier</h1>
         <thead>
@@ -12,7 +13,7 @@
                 <th scope="col">Prix</th>
                 <th scope="col">Quantité</th>
                 <th scope="col">Total</th>
-                <th scope="col">Actions</th>
+                {# <th scope="col">Actions</th> #}
             </tr>
         </thead>
         <tbody>
@@ -22,29 +23,22 @@
                     <td>{{element.article.prix}}€</td>
                     <td>{{element.quantite}}</td>
                     <td>{{element.quantite *  element.article.prix}}€</td>
-                    <td>
-                        <a class="btn btn btn-outline-success btn-sm" href="{{path ('panier_ajout', {id : element.article.id})}}">Ajouter</a>
-                        <a class="btn btn btn-outline-warning btn-sm" href="{{path ('panier_retirer', {id : element.article.id})}}">Retirer</a>
-                        <a class="btn btn btn-outline-danger btn-sm" href="{{path ('panier_supprimer', {id : element.article.id})}}">Supprimer</a>
-                    </td>
+                        {# <td>
+                            <a class="btn btn btn-outline-success btn-sm" href="{{path ('panier_ajout', {id : element.article.id})}}">Ajouter</a>
+                            <a class="btn btn btn-outline-warning btn-sm" href="{{path ('panier_retirer', {id : element.article.id})}}">Retirer</a>
+                            <a class="btn btn btn-outline-danger btn-sm" href="{{path ('panier_supprimer', {id : element.article.id})}}">Supprimer</a>
+                        </td> #}
                 </tr>
-            {% else %}
-                <tr>
-                    <td colspan="5" class="text-center"><h3>Votre panier est vide</h3></td>
-                <tr>
             {% endfor %}
         </tbody>
         <tfoot>
                 <tr>
                     <td colspan="3">Total</td>
                     <td colspan="text-end" name="prix" id="prix">{{total}}€</td>
-                    <td> 
-                        <a class="btn btn btn-outline-danger btn-sm" href="{{path ('panier_vider')}}">vider</a>
-                    </td>
                 </tr>
                 <tr>
                     <td colspan="3"></td>
-                    <td colspan="text-end"></td>
+                    {# <td colspan="text-end"></td> #}
                     <td> 
                         <a href="{{ path ('livraison')}}" class="btn btn btn-outline-primary btn-sm" >Valider votre panier</a>
                     </td>
@@ -70,7 +64,4 @@
 </div>
 
 
-
 {% endblock %}
-
-

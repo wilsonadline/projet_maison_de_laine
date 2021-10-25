@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ArticlesRepository;
 use App\Entity\Categories;
+use App\Services\StripeService;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -70,6 +71,16 @@ class Articles
      * @ORM\JoinColumn(nullable=true)
      */
     private $categories;
+
+    // /**
+    //  * @var StripeService
+    //  */
+    // protected $stripeService;
+
+    // public function __construct( StripeService $stripeService)
+    // {
+    //         $this->stripeService = $stripeService;
+    // }
 
     public function getId(): ?int
     {
@@ -188,4 +199,5 @@ class Articles
     public function __toString() {
         return $this->article;
     }
+
 }

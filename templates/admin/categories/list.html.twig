@@ -44,7 +44,7 @@
                 {% for list in categoriesList %}
                     <tr>
                         <th scope="row">{{ list.id}}</th>
-                        <td><img src="{{ vich_uploader_asset( list  'imageFile' ) }}" style="width : 60px"class="card-img-top" alt="..."></td>
+                        <td><img src="{{ vich_uploader_asset( list , 'imageFile' ) }}" style="width : 60px"class="card-img-top" alt="..."></td>
                         <td>{{ list.nom}}</td>
                         <td>{{ list.typeCategories}}</td>  
                         <td>{{ list.createdAt|date('d/m/Y à H:i:s')}}</td>
