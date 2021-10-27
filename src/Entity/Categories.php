@@ -178,4 +178,9 @@ class Categories
         return $this->imageName;
     }
 
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
 }

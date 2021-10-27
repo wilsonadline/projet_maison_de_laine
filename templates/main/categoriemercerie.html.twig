@@ -6,8 +6,11 @@
                
 {# <h5>{{article.categories.id}}</h5> #}
 
+        <h3> {{categorie.nom}}</h3> 
 <section class = "m-5 d-flex flex-wrap justify-content-center justify-content-evenly">
-    {% for produit in article %}
+
+    {% for produit in articles %}
+
         <div class="card m-5" style="width: 18rem;">
             <img src="{{ vich_uploader_asset(produit, 'imageFile')}}" class="card-img-top" alt="...">
             <div class="card-body d-flex justify-content-center flex-column">

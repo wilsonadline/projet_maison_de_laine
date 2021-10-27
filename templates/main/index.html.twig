@@ -39,7 +39,7 @@
         {% for  tissu in categorieByTissu %}
             <div  class =" d-flex align-items-center flex-column mt-5 mx-5" style="width: 18rem; ">
                 <img src="{{vich_uploader_asset(tissu , 'imageFile')}}" class="card-img-top rounded-3" alt="...">
-                <a href="#"  class="btn btn-light my-4 rounded-pill" style="width: 10rem;">{{ tissu.nom}}</a>
+                <a href="{{path ('app_articles_mercerie', {id: tissu.id} )}}"  class="btn btn-light my-4 rounded-pill" style="width: 10rem;">{{ tissu.nom}}</a>
             </div>
         {% endfor %}
       </section> 

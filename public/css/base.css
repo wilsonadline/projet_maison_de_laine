@@ -445,5 +445,10 @@ footer {
     padding-top: 15px;
     color: white;
   }
+
+  .pipe{
+    color: #7A0B0B;
+    font-weight: bolder;
+  }
   /* End Footer */
   

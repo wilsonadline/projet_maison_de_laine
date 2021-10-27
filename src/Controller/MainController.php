@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(CategoriesRepository $categories, ArticlesRepository $articles, Request $request): Response
+    public function index(CategoriesRepository $categories): Response
     {
         $categorieByMercerie = $categories->findBy(['typeCategories'=>1 ]);
         $categorieByTissu = $categories->findBy(['typeCategories' =>2]);
@@ -30,13 +30,24 @@ class MainController extends AbstractController
     }
 
     #[Route('/categorie/articles_mercerie/{id}', name: 'app_articles_mercerie')]
-    public function articles_mercerie($id): Response
+    public function articles_mercerie($id, ArticlesRepository $articles, CategoriesRepository $cat ): Response
     {
-        $repository = $this->getDoctrine()->getRepository(Articles::class);
-        $article = $repository->findBy(['categories'=>$id]);
+        // $repository = $this->getDoctrine()->getRepository(Articles::class);
+        $articles = $articles->findBy(['categories'=>$id]);
+        $categorie = $cat->findOneBy(['id'=>$id]);
 
         return $this->render('main/categoriemercerie.html.twig', [
-            'article'=>$article,
+            'articles'=>$articles,
+            // 'cats' => $cats
+            'categorie' => $categorie
         ]);
+    }
+
+
+
+    #[Route('/mention-legales', name: 'mentions_legales')]
+    public function mentions_legales(): Response
+    {
+        return $this->render('mentions_legales/mentions-legales-site-internet.html.twig');
     }
 }

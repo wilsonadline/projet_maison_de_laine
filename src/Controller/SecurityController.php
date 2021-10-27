@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,16 +19,36 @@ class SecurityController extends AbstractController
         //     return $this->redirectToRoute('target_path');
         // }
 
-        // $user = $users->getUserIdentifier();
-        // dd($user);
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-        // dd($lastUsername);
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+    }
+
+    /**
+     * @Route("/profil/{id}", name="app_profil")
+     */
+    public function profil(Users $users, $id)
+    {
+        $id = $users;
+        // dd($id);
+
+        return $this->render('security/profil.html.twig', ['all' => $id ]);
+
+    }
+      /**
+     * @Route("/profil/modifier", name="app_profil_change")
+     */
+    public function profil_modifier(Users $users, $id)
+    {
+       dump("test");
+
+       return $this->render('security/profilChange.html.twig');
+
+
     }
 
     /**

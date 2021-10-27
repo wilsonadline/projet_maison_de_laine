@@ -5,7 +5,7 @@
 
 {% block body %}
 <div class="d-flex justify-content-evenly mt-5">
-    <img src="{{ asset ('images/lets_go_pexels-sevenstorm-juhaszimrus-704767.jpg')}}" class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
+    <img src="{{ asset ('images/lets_go_pexels-sevenstorm-juhaszimrus-704767.jpg')}}" alt="" class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
         <div style="width : 50%" class="mt-5 "> 
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
