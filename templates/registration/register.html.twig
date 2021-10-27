@@ -8,21 +8,17 @@
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
+    <h1 class="text-center mt-4">Inscription</h1>
 
-    <div class="d-flex justify-content-evenly mt-5">
-        <img src="{{ asset ('images/register-pexels-amina-filkins-5414061.jpg')}}" class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
-        <div style="width : 50%" class="mt-1 "> 
-            <h1 class="text-center mt-4">Inscription</h1>
+    <div class="d-flex justify-content-evenly my-5 ">
+        <img src="{{ asset ('images/register-pexels-amina-filkins-5414061.jpg')}}" class="rounded-3  col-3"  style="height : 500px ; width : 40%">
+        <div style="width : 50%" > 
             {{ form_start(registrationForm) }}
                 {{ form_row(registrationForm.name) }}
                 {{ form_row(registrationForm.firstname) }}
                 {{ form_row(registrationForm.email) }}
-                {{ form_row(registrationForm.password.first, {
-                    label: 'Mot de passe'
-                }) }}
-                 {{ form_row(registrationForm.password.second, {
-                    label: 'Confirmer le mot de passe'
-                }) }}
+                {{ form_row(registrationForm.password.first) }}
+                 {{ form_row(registrationForm.password.second) }}
             <div class="d-flex justify-content-end">
                     <button type="submit" class="btn border-dark">Enregistrer</button>
             </div>
@@ -38,9 +34,10 @@
       <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
       <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
     </article>
-    <article>
-      <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
-    </article>
+    <article class="mb-3">
+            <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
+            <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
+            <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
     </footer>
     {# END Footer  #}
 {% endblock %}

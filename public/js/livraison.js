@@ -1,5 +1,7 @@
 function copyToDelivry(){
     $('#copyToDelivry').on("click", function(){
+        $("#m").val($("#monsieur").val())
+        $("#mme").val($("#madame").val())
         $("#livraison_name").val($("#facturation_name").val())
         $("#livraison_fstname").val($("#facturation_fstname").val())
         $("#livraison_ad1").val($("#facturation_ad1").val())

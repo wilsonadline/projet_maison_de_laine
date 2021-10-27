@@ -4,12 +4,12 @@
 {% block title %}Réinitialiser votre mot de passe{% endblock %}
 
 {% block body %}
+        {% for flashError in app.flashes('reset_password_error') %}
+            <div class="alert alert-danger mt-5" role="alert">{{ flashError }}</div>
+        {% endfor %}
 <div class="d-flex justify-content-evenly my-5">
     <img class="mt-5" src="{{asset("images/opps_418Jmnejj8L._AC_.jpg")}}" alt="">
     <div class="mt-5">
-        {% for flashError in app.flashes('reset_password_error') %}
-            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-        {% endfor %}
         <h1>Réinitialiser votre mot de passe</h1>
 
         {{ form_start(requestForm) }}
@@ -31,12 +31,14 @@
     {# Footer  #}
     <footer class="fixed-bottom">
     <article id="icon">
-      <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
-      <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
-      <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+        <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+        <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+        <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
     </article>
-    <article>
-      <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
+    <article class="mb-3">
+        <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
+        <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
+        <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
     </article>
     </footer>
     {# END Footer  #}
