@@ -1,25 +1,89 @@
 {% extends 'base.html.twig' %}
+{% form_theme form_paiement 'bootstrap_5_layout.html.twig' %}
+
 
 {% block title %}Livraison{% endblock %}
 
 {% block body %}
     {# {{dump(intent)}} #}
-    {# <form action="StripeService.php" method="post"> #}
-        <label for="prix" > Prix </label>
-        <p name="prix" id="prix">{{total}}</p>
-    {# </form> #}
 
-    <form method="post">
+<div class="mt-5 d-flex  justify-content-evenly">
+<div class="col-5">
+
+ <table class="table">
+        <h1 class="my-5 text-center">Votre commande</h1>
+        <thead>
+            <tr>
+                <th scope="col">Article</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Total</th>
+                {# <th scope="col">Actions</th> #}
+            </tr>
+        </thead>
+        <tbody>
+            {% for element in dataPanier %}
+                <tr>
+                    <th scope="row">{{element.article.article}}</th>
+                    <td>{{element.article.prix}}€</td>
+                    <td>{{element.quantite}}</td>
+                    <td>{{element.quantite *  element.article.prix}}€</td>
+                        {# <td>
+                            <a class="btn btn btn-outline-success btn-sm" href="{{path ('panier_ajout', {id : element.article.id})}}">Ajouter</a>
+                            <a class="btn btn btn-outline-warning btn-sm" href="{{path ('panier_retirer', {id : element.article.id})}}">Retirer</a>
+                            <a class="btn btn btn-outline-danger btn-sm" href="{{path ('panier_supprimer', {id : element.article.id})}}">Supprimer</a>
+                        </td> #}
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td colspan="text-end" name="prix" id="prix">{{total}}€</td>
+                </tr>
+                
+        </tfoot>
+    </table>
+
+</div>
+<div class="  d-flex align-items-center flex-column">
+    <h1 class="mt-5 text-center">Paiement</h1>
+
+    <form class=" mt-4  " style="width:400px">
         <div id="errors"></div> <!-- Contiendra les messages d'erreur de paiement -->
-        <input type="text" id="cardholder-name" placeholder="Titulaire de la carte">
-        <div id="card-elements"></div> <!-- contiendra le formulaire de saisir des informations de carte -->
-        <div id="card-errors" role="alert"></div> <!-- contiendra les erreurs relatives à la carte-->
-        <button id="card-button" type="button" data-secret="{{intent.client_secret}}">Proceder au paiemenr</button>
-    </form>
-
-<div class="my-3 me-4 d-flex justify-content-end">
-    <a href="#" class="btn btn-sm btn-outline-dark">Etape suivante </a>
+        <div class="d-flex flex-column " >
+            <label class="my-1" style="font-size : 25px"> Titulaire de la carte</label>
+            <input class=" border rounded-3 " type="text" id="cardholder-name" placeholder=" ">
+        </div>
+        <div id="card-elements" style="height : 30px" class=" border rounded-3 my-3 p-0"></div> <!-- contiendra le formulaire de saisir des informations de carte -->
+        <div id="card-errors" role="alert" class="my-3"></div> <!-- contiendra les erreurs relatives à la carte-->
+        <div class="d-flex justify-content-end " >
+            <button id="card-button" class="btn border border-dark" type="button" data-secret="{{intent.client_secret}}">Proceder au paiement</button>
+        </div>
+    </form> 
 </div>
 
+</div>
 
+ 
+
+{# <div class="my-3 me-4 d-flex justify-content-end">
+    <a href="#" class="btn btn-sm btn-outline-dark">Etape suivante </a>
+</div> #}
+
+
+{% endblock %}
+{% block footer %}
+  <footer class="fixed-bottom" >
+      <article id="icon">
+        <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+        <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+        <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+      </article>
+      <article class="mb-3">
+            <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
+            <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
+            <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a> 
+      </article >
+  </footer>
 {% endblock %}

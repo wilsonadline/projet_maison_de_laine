@@ -1,47 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connectez-vous!{% endblock %}
+{% block title %}Profil de {{app.user.firstName}} {{app.user.name|upper}}{% endblock %}
 
 {% block body %}
-<div class="d-flex justify-content-evenly border">
-    <img src="{{asset ('images/time-for-change-pexels-alexas-fotos-2277784.jpg')}}" alt=""  class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
-    <div class="mt-4">
-        <div class=" mt-5 d-flex border border-dark">
-            <label class="m-3">Votre nom : </label>
-            <p class="m-3">{{ all.name|upper}}</p>
+    <h1 class="text-center mt-4"> Votre profil de {{app.user.firstName}} {{app.user.name|upper}}</h1>
+    {% for updateProfil in app.flashes('update') %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{ updateProfil }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    {% endfor %}
+    <div class="d-flex justify-content-evenly pb-5">
+        <img src="{{asset ('images/time-for-change-pexels-alexas-fotos-2277784.jpg')}}" alt=""  class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
+    
+        <div class="mt-4">
+
+            <div class=" mt-5 d-flex  justify-content-between ">
+                <label class="m-3 ">Votre nom : </label>
+                <p class="m-3 ">{{app.user.name}}</p>
             {# <button class=" m-3 btn btn btn-outline-success btn-sm"> Modifier</button> #}
-        </div>
-        <div class="mt-5 d-flex border border-dark">
-            <label class="m-3">Votre prénom : </label>
-            <p class="m-3">{{ all.firstname}}</p>
-            {# <button class=" m-3 btn btn btn-outline-success btn-sm"> Modifier</button> #}
-        </div>
-        <div class="mt-5 d-flex border border-dark">
-            <label class="m-3">Votre email : </label>
-            <p class="m-3">{{ all.email}}</p>
-        </div>
-       
-        <div class="mt-4  d-flex justify-content-end">
-            <a  href=""class=" btn btn btn-outline-dark btn-sm"> Modifier</a>
+            </div>
+                <div class=" d-flex justify-content-between ">
+                <label class="m-3">Votre prénom : </label>
+                <p class="m-3">{{app.user.firstName}}</p>
+                {# <button class=" m-3 btn btn btn-outline-success btn-sm"> Modifier</button> #}
+            </div>
+            <div class=" d-flex justify-content-between ">
+                <label class="m-3">Votre email : </label>
+                <p class="m-3">{{app.user.email}}</p>
+            </div>
+            <div class="mt-2  d-flex flex-column justify-content-end">
+                <a  href="{{path ('app_profil_change')}}"class=" my-3 btn  btn-outline-dark btn-sm"> Modifier le profil</a>
+                <a  href="{{ path ("app_pass_change")}}"class=" btn  btn-outline-dark btn-sm"> Modifier le mot de passe</a>
+            </div>
         </div>
     </div>
-</div>
-
-
-
-
-
 {% endblock %}
 {% block footer %}
     {# Footer  #}
-    <footer class="fixed-bottom">
+    <footer class="mt-5">
     <article id="icon">
       <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
       <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
       <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
     </article>
-    <article>
-      <p id="copyright"> Copyright © 2021 | La Maison de Laine | Mentions Légales </p>
+    <article class="mb-3">
+            <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
+            <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
+            <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
     </article>
     </footer>
     {# END Footer  #}

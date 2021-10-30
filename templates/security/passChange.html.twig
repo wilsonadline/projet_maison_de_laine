@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% form_theme editProfilForm 'bootstrap_5_layout.html.twig' %}
+{% form_theme editPassForm 'bootstrap_5_layout.html.twig' %}
 
 
 {% block title %} Modification de votre Profil de {{app.user.firstName}} {{app.user.name|upper}}{% endblock %}
@@ -8,17 +8,21 @@
     <h1 class="text-center mt-4"> Modification de votre profil </h1>
     <div class="d-flex justify-content-evenly pb-5">
         <img src="{{asset ('images/time-for-change-pexels-alexas-fotos-2277784.jpg')}}" alt=""  class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
-        <div class="mt-5 col-4" >
-            {{form_start(editProfilForm)}}
-                {{form_row(editProfilForm.name, {'label' : 'Nom'})}}   
-                {{form_row(editProfilForm.firstname, {'label' : 'Prénom'})}}  
-                <div class="d-flex justify-content-end"> 
-                    {{form_row(editProfilForm.Valider , {'attr' : {'class' : 'btn  btn-outline-dark '}})}}   
-                </div> 
-
-            {{form_end(editProfilForm)}}   
-        </div>
+    
+        <div class="mt-5 col-4">
+            {{form_start(editPassForm)}}
+                {{form_row(editPassForm.plainPassword)}}
+                <div class="d-flex justify-content-end">
+                    <button class="btn  btn-outline-dark">valider</button>
+                </div>
+             {{form_end(editPassForm)}}
+    </div>
 </div>
+
+
+
+
+
 {% endblock %}
 {% block footer %}
     {# Footer  #}
@@ -29,9 +33,9 @@
       <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
     </article>
     <article class="mb-3">
-            <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
-            <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
-            <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
+        <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
+        <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
+        <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
     </article>
     </footer>
     {# END Footer  #}

@@ -12,24 +12,19 @@ class PanierService
         
         $panier = $session->get("panier", []);
 
-        //  on "fabrique" les données
+        //  on initialise du panier 
         $dataPanier = [] ; 
         $total = 0; 
         
-        //  on "fabrique" les données
-        $dataPanier = [] ; 
-        $total = 0; 
-
         foreach($panier as $id =>$quantite)
         {
             //  on recupere l'article
             $article = $articleRepository->find($id);
             $dataPanier[] = [
                 "article" => $article,
-                "quantite"=>$quantite
+                "quantite"=> $quantite
             ];
             $total += $article->getPrix() * $quantite;
-
         }
 
         return [$dataPanier, $total];

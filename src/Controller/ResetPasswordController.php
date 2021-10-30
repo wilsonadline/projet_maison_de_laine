@@ -84,17 +84,18 @@ class ResetPasswordController extends AbstractController
 
         $token = $this->getTokenFromSession();
         if (null === $token) {
-            throw $this->createNotFoundException('Aucun jeton de réinitialisation de mot de passe trouvé dans l\'URL ou dans la session.');
+            throw $this->createNotFoundException('No reset password token found in the URL or in the session.');
         }
 
         try {
             $user = $this->resetPasswordHelper->validateTokenAndFetchUser($token);
         } catch (ResetPasswordExceptionInterface $e) {
             $this->addFlash('reset_password_error', sprintf(
-                'Un problème est survenu lors de la validation de votre demande de réinitialisation - %s',
+                '
+                Un problème est survenu lors de la validation de votre demande de réinitialisation - %s',
                 $e->getReason()
             ));
-
+            dd($e);
             return $this->redirectToRoute('app_forgot_password_request');
         }
 

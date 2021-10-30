@@ -3,11 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Articles;
+use App\Entity\Livraison;
+use App\Form\LivraisonType;
+use App\Form\PaiementType;
 use App\Manager\ArticlesManager;
 use App\Repository\ArticlesRepository;
 use App\Services\PanierService;
 use App\Services\StripeService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,20 +20,35 @@ use Symfony\Component\Routing\Annotation\Route;
 class LivraisonController extends AbstractController
 {
     #[Route('/livraison', name: 'livraison')]
-    public function livraison_facturation(): Response
+    public function livraison_facturation(Request $request, EntityManagerInterface $em): Response
     {
+        $livraison = new Livraison();
+
+        $livraison_form = $this->createForm(LivraisonType::class);
+        $livraison_form-> handleRequest($request);
+
+        if($livraison_form->isSubmitted() && $livraison_form->isValid() && !$livraison_form->isEmpty()){
+            $em->persist($livraison);
+            $em->flush();
+
+            return $this->redirectToRoute("livraison_option");
+        }
+
         return $this->render('livraison/index.html.twig', [
-            'controller_name' => 'LivraisonController',
+            'formLivraison' => $livraison_form->createView()
         ]);
     }
 
    
     #[Route('/livraison/optionlivraison', name: 'livraison_option')]
-    public function option_livraison(SessionInterface $session, ArticlesRepository $articleRepository): Response
+    public function option_livraison(SessionInterface $session, ArticlesRepository $articleRepository, Request $request): Response
     {
         $paniers = new PanierService();
         list ($dataPanier, $total) = $paniers->panier($session, $articleRepository);
 
+        $form_paiement = $this->createForm(PaiementType::class);
+        $form_paiement->handleRequest($request);
+        
         if(isset($total) && !empty($total)){
             // permets de charger toute la bibliothèque de stripe
             require_once('../vendor/autoload.php');
@@ -45,8 +65,13 @@ class LivraisonController extends AbstractController
             return $this->render('livraison/refuspaiement.html.twig');
         }
         
-         
-        return $this->render('livraison/optionlivraison.html.twig', compact("dataPanier", "total", "intent")
+        
+        return $this->render('livraison/optionlivraison.html.twig',[ 
+            'dataPanier' => $dataPanier, 
+            'total'=> $total , 
+            'intent'=>$intent, 
+            'form_paiement' => $form_paiement->createView()
+            ]
         );
     }
 
