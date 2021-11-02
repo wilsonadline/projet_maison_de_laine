@@ -16,10 +16,9 @@
   <title>{% block title %} BASE {% endblock %}</title>
   <!-- <title>La Maison De Laine | Mercerie | Laines | Boutons | Rubanerie</title> -->
 </head>
-{#  #}
-<body style="background : grey" >
+    <body>
 {% block nav %}
-    <nav style="background : grey ! important"  class="navbar navbar-expand-lg navbar-light bg-light" >
+    <nav   class="navbar navbar-expand-lg navbar-light bg-light" >
         <a href="{{ path ('app_home') }}"><img src="{{ asset('images/LOGO.png') }}" id="logo" /></a> 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,32 +29,63 @@
                     <i class="fas fa-home mb-1"></i>
                     <a class="active" aria-current="page" href="{{ path ('app_home') }}">Boutique</a>
                 </li>
-                <li class="nav-item ms-5">
-                    <i class="fas fa-shopping-basket mb-1"></i>
-                    <a href="{{path ("panier_index")}}">Panier</a>
-                </li>
-                <li class="nav-item ms-5">
-                    <i class="fas fa-user mb-1"></i>
-                    <a href="{{ path ('contact')}}">Contact</a>
-                </li>
                 {% if app.user %}
-                 <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navInscription">
-                    <i class="fas fa-address-book mb-1"></i>
-                    <a href="{{ path ('app_profil')}}">Mon profil</a>
-                </li>
-                <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navInscription">
-                    <i class="fas fa-address-book mb-1"></i>
-                    <a href="{{path ('app_logout')}}">Deconnexion</a>
-                </li>
-                {% else %}
-                <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navInscription">
-                    <i class="fas fa-address-book mb-1"></i>
-                    <a href="{{path ('app_register')}}">S'inscrire</a>
-                </li>
-                <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navConnecter">
-                    <i class="fas fa-power-off mb-1"></i>
-                    <a href="{{path ('app_login')}}">Se Connecter</a>
-                </li>
+        
+                    {% if app.user.roles('ROLE_ADMIN') %}
+                        <div class=" nav-item ms-5 dropdown">
+                            <i class="fas fa-user mb-1"></i>
+                            <a class=" dropdown-toggle" type="button" id="gestionDesStocks" data-bs-toggle="dropdown" aria-expanded="false">
+                                Gestion des stocks
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="gestionDesStocks">
+                                <li><a class="dropdown-item" href="{{path ("articles_list")}}">Articles</a></li>
+                                <li><a class="dropdown-item" href="{{ path ('categories_list')}}">Catégories</a></li>
+                                <li><a class="dropdown-item" href="{{path ('type_categories_list')}}">Types de Catégories</a></li>
+                            </ul>
+                        </div>
+                        <div class=" nav-item ms-5 dropdown">
+                            <i class="fas fa-user mb-1"></i>
+                            <a class=" dropdown-toggle" type="button" id="gestionDesCommandes" data-bs-toggle="dropdown" aria-expanded="false">
+                                Gestion des commandes
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="gestionDesCommandes">
+                                <li><a class="dropdown-item" href="#">Nouvelle commande</a></li>
+                                <li><a class="dropdown-item" href="#">Commande en attente</a></li>
+                                <li><a class="dropdown-item" href="#">Commande livré</a></li>
+                                <li><a class="dropdown-item" href="#">Retour client</a></li>
+                            </ul>
+                        </div>
+                    {# {{dump(app.user.role)}} #} 
+                        {# {% endif %} #}
+
+                     {% elseif app.user.roles('ROLE_USER') %}
+                        <li class="nav-item ms-5">
+                            <i class="fas fa-shopping-basket mb-1"></i>
+                            <a href="{{path ("panier_index")}}">Panier</a>
+                        </li>
+                        <li class="nav-item ms-5">
+                            <i class="fas fa-user mb-1"></i>
+                            <a href="{{ path ('contact')}}">Contact</a>
+                        </li>
+                    {% endif %}
+                     <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navInscription">
+                            <i class="fas fa-address-book mb-1"></i>
+                            <a href="{{ path ('app_profil')}}">Mon profil</a>
+                        </li>
+                        <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navInscription">
+                            <i class="fas fa-address-book mb-1"></i>
+                            <a href="{{path ('app_logout')}}">Deconnexion</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navInscription">
+                            <i class="fas fa-address-book mb-1"></i>
+                            <a href="{{path ('app_register')}}">S'inscrire</a>
+                        </li>
+                        <li class="nav-item ms-5" data-bs-toggle="modal" data-bs-target="#navConnecter">
+                            <i class="fas fa-power-off mb-1"></i>
+                            <a href="{{path ('app_login')}}">Se Connecter</a>
+                        </li>
+   
                 {% endif %}
             </ul>
         </div>
