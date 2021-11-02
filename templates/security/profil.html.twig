@@ -30,8 +30,10 @@
                 <p class="m-3">{{app.user.email}}</p>
             </div>
             <div class="mt-2  d-flex flex-column justify-content-end">
-                <a  href="{{path ('app_profil_change')}}"class=" my-3 btn  btn-outline-dark btn-sm"> Modifier le profil</a>
-                <a  href="{{ path ("app_pass_change")}}"class=" btn  btn-outline-dark btn-sm"> Modifier le mot de passe</a>
+                <a  href="{{path ('app_profil_change')}}"class=" my-3 btn  btn-light border-dark btn-sm"> Modifier le profil</a>
+                <a  href="{{ path ("app_pass_change")}}"class=" my-3 btn btn-light border-dark btn-sm"> Modifier le mot de passe</a>
+                <a  href="{{ path ("app_pass_delete", {id : app.user.id})}}"class=" btn border-dark btn-light bordedark btn-sm"> Supprimer votre compte</a>
+
             </div>
         </div>
     </div>

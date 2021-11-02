@@ -30,7 +30,6 @@
                     <a class="active" aria-current="page" href="{{ path ('app_home') }}">Boutique</a>
                 </li>
                 {% if app.user %}
-        
                     {% if app.user.roles('ROLE_ADMIN') %}
                         <div class=" nav-item ms-5 dropdown">
                             <i class="fas fa-user mb-1"></i>
@@ -58,7 +57,7 @@
                     {# {{dump(app.user.role)}} #} 
                         {# {% endif %} #}
 
-                     {% elseif app.user.roles('ROLE_USER') %}
+                     {% elseif   app.user.roles('ROLE_USER') %}
                         <li class="nav-item ms-5">
                             <i class="fas fa-shopping-basket mb-1"></i>
                             <a href="{{path ("panier_index")}}">Panier</a>

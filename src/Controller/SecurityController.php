@@ -2,14 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
 use App\Form\ChangePasswordFormType;
 use App\Form\EditProfileType;
-use App\Form\PassEditType;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -92,6 +92,24 @@ class SecurityController extends AbstractController
         return $this->render('security/passChange.html.twig',[
             'editPassForm' => $passEdit_form->createView()
         ]);
+    }
+
+     /**
+     * @Route("/users/pass/delete/{id}", name="app_pass_delete")
+     */
+    public function deletePass( EntityManagerInterface $em, UsersRepository $users, $id)
+    {
+
+            $user = $users->find($id);
+            // dd($id);
+                
+                $session = $this->get('session');
+                $session = new Session();
+                $session->invalidate();
+                $em->remove( $user);
+                $em->flush();
+                $this->addFlash('profilDelete', 'Votre profil a bien été supprimé ! ');
+                return $this->redirectToRoute('app_home');
     }
 
     /**
