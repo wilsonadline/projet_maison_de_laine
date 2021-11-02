@@ -72,6 +72,11 @@ class Articles
      */
     private $categories;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $quantite;
+
     // /**
     //  * @var StripeService
     //  */
@@ -198,6 +203,18 @@ class Articles
     }
     public function __toString() {
         return $this->article;
+    }
+
+    public function getQuantite(): ?int
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(?int $quantite): self
+    {
+        $this->quantite = $quantite;
+
+        return $this;
     }
 
 }

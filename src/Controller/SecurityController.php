@@ -24,8 +24,6 @@ class SecurityController extends AbstractController
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
         // }
-        // $user = $user->getEmail();
-        // dd($user);
         
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();

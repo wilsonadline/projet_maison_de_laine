@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Articles;
 use App\Entity\Categories;
 use Doctrine\DBAL\Types\FloatType;
+use Doctrine\DBAL\Types\IntegerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -23,6 +24,7 @@ class ArticlesType extends AbstractType
             ->add('couleur',TextType::class)
             ->add('description', TextareaType::class)
             ->add('prix', NumberType::class)
+            ->add('quantite', NumberType::class)
             ->add('categories', EntityType::class, [
                 'class' => Categories::class, 
                 'choice_label'=> 'nom',
