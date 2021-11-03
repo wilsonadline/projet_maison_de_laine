@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -72,19 +73,23 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/users/pass/modifier", name="app_pass_change")
+     * @Route("/users/pass/modifier/{id}", name="app_pass_change")
      */
-    public function editPass(Request $request , EntityManagerInterface $em)
+    public function editPass(Request $request , UserPasswordHasherInterface $userPasswordHasherInterface, EntityManagerInterface $em, $id)
     {
 
-            $user = $this->getUser();
+            $user = $this->getUser('id');
 
             $passEdit_form = $this->createForm(ChangePasswordFormType::class);
             $passEdit_form->handleRequest($request);
             // dd($passEdit_form);
             if($passEdit_form->isSubmitted() && $passEdit_form->isValid()){
-                $em->persist($user);
-                $em->flush();
+                $encodedPassword = $userPasswordHasherInterface->hashPassword(
+                    $user,
+                    $passEdit_form->get('plainPassword')->getData());
+                    
+            $user->setPassword($encodedPassword);
+            $this->getDoctrine()->getManager()->flush();
 
                 return $this->redirectToRoute('app_profil');
             }

@@ -12,7 +12,7 @@
             {{form_start(editProfilForm)}}
                 {{form_row(editProfilForm.name, {'label' : 'Nom'})}}   
                 {{form_row(editProfilForm.firstname, {'label' : 'Prénom'})}}  
-                {{form_row(editProfilForm.email, {'label' : 'Prénom'})}}  
+                {{form_row(editProfilForm.email, {'label' : 'Email'})}}  
 
                 <div class="d-flex justify-content-end"> 
                     {{form_row(editProfilForm.Valider , {'attr' : {'class' : 'btn  btn-outline-dark '}})}}   
@@ -23,18 +23,16 @@
 </div>
 {% endblock %}
 {% block footer %}
-    {# Footer  #}
     <footer class="mt-5">
-    <article id="icon">
-      <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
-      <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
-      <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-    </article>
-    <article class="mb-3">
+        <article id="icon">
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
+            <a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram-square fa-2x"></i></a>
+            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-2x"></i></a>
+        </article>
+        <article class="mb-3">
             <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
             <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
             <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
-    </article>
+        </article>
     </footer>
-    {# END Footer  #}
 {% endblock %}
