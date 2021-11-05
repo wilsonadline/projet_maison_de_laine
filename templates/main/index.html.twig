@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home | La Maison de Laine{% endblock %}
+{% block title %}Home | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
     
@@ -17,7 +17,7 @@
       <section class="d-flex" id="section_mercerie">
         {% for mercerie in categorieByMercerie %}
           <div  class ="d-flex align-items-center flex-column mt-5 mx-5 box_vignette_cat"  style="width: 18rem; ">
-              <img src="{{vich_uploader_asset(mercerie , 'imageFile')}}" class="card-img-top rounded-3" alt="...">
+              <img src="{{vich_uploader_asset(mercerie , 'imageFile')}}" class="card-img-top rounded-3" alt=" Image Mercerie | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
               <a href="{{path ('app_articles_mercerie', {id: mercerie.id} )}}"  class="btn_categorie btn btn-light my-4 rounded-pill" style="width: 10rem;">{{ mercerie.nom}}</a>
           </div>
         {% endfor %}
@@ -35,7 +35,7 @@
       <section class="d-flex  ">
         {% for  tissu in categorieByTissu %}
             <div  class =" d-flex align-items-center flex-column mt-5 mx-5" style="width: 18rem; ">
-                <img src="{{vich_uploader_asset(tissu , 'imageFile')}}" class="card-img-top rounded-3" alt="...">
+                <img src="{{vich_uploader_asset(tissu , 'imageFile')}}" class="card-img-top rounded-3" alt="Image Tissu | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
                 <a href="{{path ('app_articles_mercerie', {id: tissu.id} )}}"  class="btn btn-light my-4 rounded-pill" style="width: 10rem;">{{ tissu.nom}}</a>
             </div>
         {% endfor %}

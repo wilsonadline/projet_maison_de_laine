@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %} Laines - La Maison de Laine{% endblock %}
+{% block title %} Laines | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
 {# {{dump(categorie_mercerie)}} #}
@@ -12,7 +12,7 @@
     {% for produit in articles %}
 
         <div class="card m-5" style="width: 18rem;">
-            <img src="{{ vich_uploader_asset(produit, 'imageFile')}}" class="card-img-top" alt="...">
+            <img src="{{ vich_uploader_asset(produit, 'imageFile')}}" class="card-img-top" alt=" Images de l'article | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
             <div class="card-body d-flex justify-content-center flex-column">
                 <h5 class="card-title">{{produit.article}}</h5>
                 <p class="card-text text-center">{{produit.couleur}}</p>

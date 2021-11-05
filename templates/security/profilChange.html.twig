@@ -2,18 +2,17 @@
 {% form_theme editProfilForm 'bootstrap_5_layout.html.twig' %}
 
 
-{% block title %} Modification de votre Profil de {{app.user.firstName}} {{app.user.name|upper}}{% endblock %}
+{% block title %} Modification de votre Profil de {{app.user.firstName}} {{app.user.name|upper}} | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
     <h1 class="text-center mt-4"> Modification de votre profil </h1>
     <div class="d-flex justify-content-evenly pb-5">
-        <img src="{{asset ('images/time-for-change-pexels-alexas-fotos-2277784.jpg')}}" alt=""  class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
+        <img src="{{asset ('images/time-for-change-pexels-alexas-fotos-2277784.jpg')}}" alt=" Image Modification du profil | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"  class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
         <div class="mt-5 col-4" >
             {{form_start(editProfilForm)}}
                 {{form_row(editProfilForm.name, {'label' : 'Nom'})}}   
                 {{form_row(editProfilForm.firstname, {'label' : 'Prénom'})}}  
                 {{form_row(editProfilForm.email, {'label' : 'Email'})}}  
-
                 <div class="d-flex justify-content-end"> 
                     {{form_row(editProfilForm.Valider , {'attr' : {'class' : 'btn  btn-outline-dark '}})}}   
                 </div> 

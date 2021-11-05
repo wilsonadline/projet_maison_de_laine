@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
  {% block css %} <link rel="stylesheet" href="{{asset ('../css/login.css ')}}" />
    {% endblock %} 
-{% block title %}Connectez-vous!{% endblock %}
+{% block title %}Connectez-vous! | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
 <div class="d-flex justify-content-evenly mt-5">
-    <img src="{{ asset ('images/lets_go_pexels-sevenstorm-juhaszimrus-704767.jpg')}}" alt="" class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
+    <img src="{{ asset ('images/lets_go_pexels-sevenstorm-juhaszimrus-704767.jpg')}}" alt="Images Connexion | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono " class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
         <div style="width : 50%" class="mt-5 "> 
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -13,7 +13,7 @@
 
         {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                Vous êtes connecté en tant que  {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
             </div>
         {% endif %}
             <h1 class="h3 my-3 font-weight-normal">Connectez-vous ! </h1>

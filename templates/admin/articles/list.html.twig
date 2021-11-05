@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des articles{% endblock %}
+{% block title %}Liste des articles | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
 <h1 class="text-center my-5">Liste des articles</h1>
@@ -50,7 +50,7 @@
                 {% for list in articlesList %}
                     <tr>
                         <th scope="row">{{ list.id}}</th>
-                        <td><img src="{{ vich_uploader_asset( list , 'imageFile' ) }}" style="width : 60px"class="card-img-top" alt="..."></td>
+                        <td><img src="{{ vich_uploader_asset( list , 'imageFile' ) }}" style="width : 60px"class="card-img-top" alt=" Image des articles | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"></td>
                         <td>{{ list.article}}</td>
                         <td>{{ list.couleur}}</td>
                         <td>{{ list.description}}</td>

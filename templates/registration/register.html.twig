@@ -2,7 +2,7 @@
 {% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
  {% block css %} <link rel="stylesheet" href="{{asset ('../css/register.css ')}}" />{% endblock %}
 
-{% block title %}S'inscrire{% endblock %}
+{% block title %}S'inscrire | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
@@ -11,7 +11,7 @@
     <h1 class="text-center mt-4">Inscription</h1>
 
     <div class="d-flex justify-content-evenly my-5 ">
-        <img src="{{ asset ('images/register-pexels-amina-filkins-5414061.jpg')}}" class="rounded-3  col-3"  style="height : 500px ; width : 40%">
+        <img src="{{ asset ('images/register-pexels-amina-filkins-5414061.jpg')}}" class="rounded-3  col-3"  style="height : 500px ; width : 40%" alt="Image Inscription | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
         <div style="width : 50%" > 
             {{ form_start(registrationForm) }}
                 {{ form_row(registrationForm.name) }}

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/admin", name="articles_")
- */
+*/
 class ArticlesController extends AbstractController
 {
     #[Route("/articles/ajout", name: "ajout")]
