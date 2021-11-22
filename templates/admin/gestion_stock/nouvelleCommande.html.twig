@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelles Commandes  | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
+
+{% block body %}
+    <table class="table my-5">
+        <h1 class="text-center mt-5"> Nouvelles Commandes</h1>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Status </th>
+                <th scope="col">Fiche Adresse</th>
+                <th scope="col">Fiche Commande</th>
+                <th scope="col">Total Commande</th>
+                <th scope="col"> Created Time </th>
+                <th scope="col"> Updated Time </th>
+                <th scope="col"> Change Status </th>
+            </tr>
+        </thead>
+        <tbody class=" ">
+            {% for new in nouvelles_commande %}
+                <tr class="">
+                    <th scope="">{{ new.id}}</th>
+                    <td scope="2">{{ new.orderStatus.status}}</td>
+                    <td>
+                        <p>
+                            <span>{{ new.adresse.nom }}</span> <span  class="mx-3">{{ new.adresse.prenom }}</span>
+                        </p>
+                        <p >
+                            <span>{{ new.adresse.adresse  }}</span> <span  class=" mx-3">{{ new.adresse.ville }}</span><span  class="mx-3">{{ new.adresse.cp }}</span>
+                        </p>
+                        <p class="mb-0">
+                            <span>{{ new.adresse.tel  }}</span> <span  class="mx-3">{{ new.adresse.email }}</span>
+                        </p>
+                    </td>
+                    <td>
+                        {% for newOrderline in new.orderLines %}
+                            <ul>
+                                <li>
+                                    Article : {{ newOrderline.article  }}<br> 
+                                    Prix : {{ newOrderline.prix  }}€<br>
+                                    Quantite : {{ newOrderline.quantite}}
+                                </li>
+                            </ul>
+                        {% endfor %}
+                    </td>
+                    
+                    {# Total #}
+                    <td >
+                        <p >
+                            <span  class="mx-3">{{ new.total }}€</span>
+                        </p>
+                    </td>
+                    <td scope="2">{{ new.createdAt|date('d/m/Y à H:i:s')}}</td>
+                    <td scope="2">{{ new.updatedAt|date('d/m/Y à H:i:s')}}</td>
+                    <td>
+                        <a class="btn" href="{{path ("gestion_stock_change_status" , {id : new.id})}}">Changer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+   
+   
+{% endblock %}

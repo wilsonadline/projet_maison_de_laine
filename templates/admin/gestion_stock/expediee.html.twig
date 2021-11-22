@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GestionStockController!{% endblock %}
+
+{% block body %}
+  <table class="table my-5">
+        <h1 class="text-center mt-5"> Expediées</h1>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Status </th>
+                <th scope="col">Fiche Adresse</th>
+                <th scope="col">Fiche Commande</th>
+                <th scope="col">Total Commande</th>
+                <th scope="col"> Created Time </th>
+                <th scope="col"> Updated Time </th>
+                <th scope="col"> Change Status </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expediee in commande_expediee %}
+                <tr>
+                    <th scope="row">{{ expediee.id}}</th>
+                    <td>{{ expediee.orderStatus.status}}</td>
+                    <td>
+                        <p>
+                            <span>{{ expediee.adresse.nom }}</span> <span  class="mx-3">{{ expediee.adresse.prenom }}</span>
+                        </p>
+                        <p >
+                            <span>{{ expediee.adresse.adresse  }}</span> <span  class=" mx-3    border ">{{ expediee.adresse.ville }}</span><span  class="mx-3">{{ expediee.adresse.cp }}</span>
+                        </p>
+                        <p class="mb-0">
+                            <span>{{ expediee.adresse.tel  }}</span> <span  class="mx-3">{{ expediee.adresse.email }}</span></span>
+                        </p>
+                    </td>
+                    <td class="">
+                        {% for orderexpedieeOrderline in expediee.orderLines %}
+                            <ul>
+                                <li>
+                                    Article : {{ orderexpedieeOrderline.article  }}<br> 
+                                    Prix : {{orderexpedieeOrderline.prix  }}€<br>
+                                    Quantite : {{orderexpedieeOrderline.quantite}}
+                                </li>
+                            </ul>
+                        {% endfor %}
+                    </td>
+                    <td >
+                        <p >
+                            <span  class="mx-3">{{ expediee.total }}€</span>
+                        </p>
+                    </td>
+                    <td scope="2">{{ expediee.createdAt|date('d/m/Y à H:i:s')}}</td>
+                    <td scope="2">{{ expediee.updatedAt|date('d/m/Y à H:i:s')}}</td>
+                    <td>
+                        <a class="btn" href="{{path ("gestion_stock_change_status" , {id : expediee.id})}}">Changer</a>
+                    </td>
+                    
+                </tr>
+            {% endfor  %}
+           
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -24,11 +24,10 @@ class ArticlesType extends AbstractType
             ->add('couleur',TextType::class)
             ->add('description', TextareaType::class)
             ->add('prix', NumberType::class)
-            ->add('quantite', NumberType::class)
+            ->add('stock', NumberType::class)
             ->add('categories', EntityType::class, [
                 'class' => Categories::class, 
                 'choice_label'=> 'nom',
-                // 'mapped' => false
             ])
             ->add('imageFile', FileType::class)
         ;

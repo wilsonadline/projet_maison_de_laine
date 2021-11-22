@@ -31,9 +31,6 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-
-        
-
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
@@ -100,21 +97,20 @@ class SecurityController extends AbstractController
     }
 
      /**
-     * @Route("/users/pass/delete/{id}", name="app_pass_delete")
+     * @Route("/users/delete/{id}", name="app_pass_delete")
      */
     public function deletePass( EntityManagerInterface $em, UsersRepository $users, $id)
     {
 
             $user = $users->find($id);
-            // dd($id);
-                
-                $session = $this->get('session');
-                $session = new Session();
-                $session->invalidate();
-                $em->remove( $user);
-                $em->flush();
-                $this->addFlash('profilDelete', 'Votre profil a bien été supprimé ! ');
-                return $this->redirectToRoute('app_home');
+                    
+            $session = $this->get('session');
+            $session = new Session();
+            $session->invalidate();
+            $em->remove( $user);
+            $em->flush();
+            $this->addFlash('profilDelete', 'Votre profil a bien été supprimé ! ');
+            return $this->redirectToRoute('app_home');
     }
 
     /**

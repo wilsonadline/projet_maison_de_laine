@@ -13,7 +13,6 @@
                 <th scope="col">Prix</th>
                 <th scope="col">Quantité</th>
                 <th scope="col">Total</th>
-                {# <th scope="col">Actions</th> #}
             </tr>
         </thead>
         <tbody>
@@ -23,17 +22,12 @@
                     <td>{{element.article.prix}}€</td>
                     <td>{{element.quantite}}</td>
                     <td>{{element.quantite *  element.article.prix}}€</td>
-                        {# <td>
-                            <a class="btn btn btn-outline-success btn-sm" href="{{path ('panier_ajout', {id : element.article.id})}}">Ajouter</a>
-                            <a class="btn btn btn-outline-warning btn-sm" href="{{path ('panier_retirer', {id : element.article.id})}}">Retirer</a>
-                            <a class="btn btn btn-outline-danger btn-sm" href="{{path ('panier_supprimer', {id : element.article.id})}}">Supprimer</a>
-                        </td> #}
                 </tr>
             {% endfor %}
         </tbody>
         <tfoot>
                 <tr>
-                    <td colspan="3">Total</td>
+                    <td colspan="3 border ">Total (TTC)</td>
                     <td colspan="text-end" name="prix" id="prix">{{total}}€</td>
                 </tr>
                 <tr>

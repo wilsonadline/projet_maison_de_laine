@@ -32,13 +32,11 @@ class MainController extends AbstractController
     #[Route('/categorie/articles_mercerie/{id}', name: 'app_articles_mercerie')]
     public function articles_mercerie($id, ArticlesRepository $articles, CategoriesRepository $cat ): Response
     {
-        // $repository = $this->getDoctrine()->getRepository(Articles::class);
         $articles = $articles->findBy(['categories'=>$id]);
         $categorie = $cat->findOneBy(['id'=>$id]);
 
         return $this->render('main/categoriemercerie.html.twig', [
             'articles'=>$articles,
-            // 'cats' => $cats
             'categorie' => $categorie
         ]);
     }

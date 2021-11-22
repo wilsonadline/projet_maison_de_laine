@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin", name="articles_")
+* @Route("/admin", name="articles_")
 */
 class ArticlesController extends AbstractController
 {
@@ -36,7 +36,7 @@ class ArticlesController extends AbstractController
         }
 
         return $this->render('admin/articles/ajout.html.twig', [
-            'articlesAjout' => $articlesAjout_form->createView(),
+            'articlesAjout' => $articlesAjout_form->createView()
         ]);
     }
 
@@ -65,6 +65,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
+
     #[Route("/articles/delete/{id}", name: "delete")]
     public function articlesDelete($id): Response
     {
@@ -77,7 +78,8 @@ class ArticlesController extends AbstractController
         $this->addFlash('articlesDelete', 'L \'article a bien été supprimé ! ');
         return $this->redirectToRoute('articles_list');
     }
-
+   
+    
     #[Route("/articles/list", name: "list")]
     public function articlesList(ArticlesRepository $articlesList): Response
     {

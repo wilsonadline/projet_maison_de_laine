@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Articles;
 use App\Repository\ArticlesRepository;
 use App\Services\PanierService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -16,11 +17,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class PanierController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function panier(SessionInterface $session, ArticlesRepository $articleRepository): Response
+    public function panier(SessionInterface $session, ArticlesRepository $articleRepository, EntityManagerInterface $em): Response
     {
-        $paniers = new PanierService();
-       list ($dataPanier, $total) = $paniers->panier($session, $articleRepository);
-         
+        $paniers = new PanierService($em);
+        list ($dataPanier, $total) = $paniers->panier($session, $articleRepository);
+                
         return $this->render('panier/index.html.twig', compact("dataPanier", "total")
         );
     }
@@ -28,8 +29,9 @@ class PanierController extends AbstractController
     #[Route('/ajout/{id}', name: 'ajout')]
     public function panier_ajout( SessionInterface $session, Articles $article)
     {
+
         // on recupere le panier actuel
-        $panier = $session->get("panier", []);
+        $panier = $session->get("panier",  []);
         $id = $article->getId();
         // $panier= array();
         
@@ -104,12 +106,6 @@ class PanierController extends AbstractController
        
     }
 
-    #[Route('/paiement', name: 'paiement')]
-    public function panier_paiement( SessionInterface $session)
-    {
-       
-       
-    }
-
+   
     
 }

@@ -38,10 +38,10 @@
                     <th scope="col">Description</th>
                     <th scope="col">Prix</th>
                     <th scope="col">En Stock</th>
+                    <th scope="col"></th>
                     <th scope="col">Catégories</th>
                     <th scope="col">Création</th>
                     <th scope="col">Modification</th>
-                    <th scope="col">Ajouter</th>
                     <th scope="col">Modifier</th>
                     <th scope="col">Supprimer</th>
                 </tr>
@@ -55,13 +55,16 @@
                         <td>{{ list.couleur}}</td>
                         <td>{{ list.description}}</td>
                         <td>{{ list.prix}}</td>
-                        <td>{{ list.quantite}}</td>
+                        <td class="stock-{{ list.id}}"> <input type="number" class="form-control stockValue-{{ list.id}}" placeholder="Stock " value={{ list.stock }}></td>
+                        <td ><button type="submit" class="btn btn-sm stock" onclick="sendStock({{ list.id}})">Entrer</button></td>
+                        {# <td class="stock-{{ list.id}}">{{ list.stock }}</td> #}
+
                         <td>{{ list.categories.nom}}</td>
                         <td>{{ list.createdAt|date('d/m/Y à H:i:s')}}</td>
                         <td>{{ list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
-                        <td><a href="" class="btn btn-light border border-dark">Ajouter</a></td>
-                        <td><a href="{{ path ('articles_modifier', { id : list.id })}}" class="btn btn-light border border-dark" >Modifier</a></td>
-                        <td><a href="{{ path ('articles_delete', { id : list.id })}}"  onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')"class="btn btn-light border border-dark" >Supprimer</a></td>
+                        {# <td><a href="" class=" add mx-1 btn btn-light border border-dark">+</a><a href="" class="btn btn-light border border-dark">-</a></td> #}
+                        <td><a href="{{ path ('articles_modifier', { id : list.id })}}" class="btn btn-light border border-dark btn-sm" >Modifier</a></td>
+                        <td><a href="{{ path ('articles_delete', { id : list.id })}}"  onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')"class=" btn-sm btn btn-light border border-dark" >Supprimer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

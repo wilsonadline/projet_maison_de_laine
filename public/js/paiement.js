@@ -4,6 +4,8 @@ window.onload = () => {
     let stripe = Stripe('pk_test_51JlA15DnhjURuLLqIC7kBQg2Cu3RYuEUUYmEUxtTiX4whUfNbHfazvmqbyoiBRHdb6xXDFvrWfXJD6nNHwL1FmdP009MV0I6wR')
     let elements = stripe.elements()
     // let redirect = "www.google.com"
+  
+
 
     //  objet de la page
     let cardHolderName = document.getElementById("cardholder-name")
@@ -17,7 +19,7 @@ window.onload = () => {
     // on gere la saisie
     card.addEventListener("change", (event) => {
         let displayError = document.getElementById("card-errors")
-        console.log("test"); 
+        // console.log("test"); 
         if(event.error){
             displayError.textContent = event.error.message;
         }else{
@@ -37,7 +39,23 @@ window.onload = () => {
             if(result.error){
                 document.getElementById("errors").innerText = result.error.message
             }else{
-                document.location.href = "http://localhost:8000/"
+            let adresse_id = document.getElementById("adresse_id").value;
+            let facture = "/dom/pdf/"+ adresse_id
+            // console.log("adresse_id: " + adresse_id);
+            $.ajax({
+                type: "GET",
+                url: "/validateOrder/"+ adresse_id,
+                success: function(data){
+                    // document.location.href = "http://localhost:8000/"; 
+                    // document.location.href = "http://localhost:8000/"; 
+                    document.location.href = facture
+                }
+
+                // error: 
+            });
+
+
+
             }
         })
     })

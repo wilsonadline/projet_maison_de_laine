@@ -6,6 +6,7 @@
 {% block title %}Contact | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
+  <div class="row m-0" >
   <h1 class="text-center my-5"> Formulaire de Contact ! </h1> 
   {% for contact in app.flashes('contact_sent') %}
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -13,39 +14,44 @@
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
   {% endfor %}
-  <section class="d-flex  justify-content-between">
+    <section class="row d-flex p-0 justify-content-between ">
 
-  <img src="{{asset('images/ordi_Pavel_Danilyuk.jpg')}}" alt="Image de Contact | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono" style="width : 45%" class="rounded-3" />
+      <img src="{{asset ('images/ordi_Pavel_Danilyuk.jpg')}}" alt="Image de Contact | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"  class="p-0 rounded-3 col-xl-5 col-md-6 col-sm-6  col-12 " />
 
-  <div class="d-flex flex-column" style="width : 50%">
-    {{form_start(formContact)}}
-    {{form_row(formContact.email)}}
-    {{form_row(formContact.sujet)}}
-    {{form_row(formContact.message)}}
-
-    <div class="d-flex justify-content-end">
-      <button class="btn border border-dark " type="submit">Envoyer </button>
-    </div>
-  </div>
-
-  {{form_end(formContact)}}
-
+      <div class="d-flex flex-column col-xl-6 col-md-5 col-sm-5 col-12 " >
+        {{form_start(formContact)}}
+          {# <div class="d-flex  justify-content-between "> #}
+            {{form_row(formContact.nom)}}
+            {{form_row(formContact.prenom )}}
+          {# </div> #}
+          {{form_row(formContact.email)}}
+          {{form_row(formContact.sujet)}}
+          {{form_row(formContact.message)}}
+          <div class="d-flex justify-content-end">
+            <button class="btn border border-dark " type="submit">Envoyer </button>
+          </div>
+        {{form_end(formContact)}}
+      </div>
   </section>
+</div>
 {% endblock %}
-{% block footer %}
-    {# Footer  #}
-  <footer class="fixed-bottom">
-    <article id="icon">
-   <article id="icon">
-            <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
-            <a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram-square fa-2x"></i></a>
-            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-2x"></i></a>
-        </article>
-        <article class="mb-3">
-            <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
-            <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
-            <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
-        </article>
-  </footer>
-    {# END Footer  #}
-{% endblock %}
+
+{# {% block footer %}
+<div class="container-fluid p-0 fixed-bottom" style="border : 1px solid yellow" >
+    <div class="row" style="border : 1px solid green">
+        <footer class="col-xs col-sm col-md col-xxl col-xl">
+            <article id="icon">
+                <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
+                <a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram-square fa-2x"></i></a>
+                <a href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-2x"></i></a>
+            </article>
+            <article class="mb-3">
+                <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
+                <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
+                <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
+            </article>
+        </footer>
+    </div>
+</div>
+
+{% endblock %} #}

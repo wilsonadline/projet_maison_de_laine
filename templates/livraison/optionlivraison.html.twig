@@ -7,73 +7,98 @@
 {% block body %}
     {# {{dump(intent)}} #}
 
-<div class="mt-5 d-flex  justify-content-evenly">
-<div class="col-5">
+<div class="my-5   row ">
 
- <table class="table">
-        <h1 class="my-5 text-center">Votre commande</h1>
-        <thead>
-            <tr>
-                <th scope="col">Article</th>
-                <th scope="col">Prix</th>
-                <th scope="col">Quantité</th>
-                <th scope="col">Total</th>
-                {# <th scope="col">Actions</th> #}
-            </tr>
-        </thead>
-        <tbody>
-            {% for element in dataPanier %}
-                <tr>
-                    <th scope="row">{{element.article.article}}</th>
-                    <td>{{element.article.prix}}€</td>
-                    <td>{{element.quantite}}</td>
-                    <td>{{element.quantite *  element.article.prix}}€</td>
-                        {# <td>
-                            <a class="btn btn btn-outline-success btn-sm" href="{{path ('panier_ajout', {id : element.article.id})}}">Ajouter</a>
-                            <a class="btn btn btn-outline-warning btn-sm" href="{{path ('panier_retirer', {id : element.article.id})}}">Retirer</a>
-                            <a class="btn btn btn-outline-danger btn-sm" href="{{path ('panier_supprimer', {id : element.article.id})}}">Supprimer</a>
-                        </td> #}
-                </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
-                <tr>
-                    <td colspan="3">Total</td>
-                    <td colspan="text-end" name="prix" id="prix">{{total}}€</td>
-                </tr>
-                
-        </tfoot>
-    </table>
-
-</div>
-<div class="  d-flex align-items-center flex-column">
-    <h1 class="mt-5 text-center">Paiement</h1>
-
-    <form class=" mt-4  " style="width:400px">
-        <div id="errors"></div> <!-- Contiendra les messages d'erreur de paiement -->
-        <div class="d-flex flex-column " >
-            <label class="my-1" style="font-size : 25px"> Titulaire de la carte</label>
-            <input class=" border rounded-3 " type="text" id="cardholder-name" placeholder=" ">
+    <div class=" col-6 ">
+        <div class="row  ">
+            <h1 class="text-start my-5 ">Adresse de Livraison</h1>
+            <input type="hidden" id="adresse_id" value="{{adresse.id}}">
+            <div class="me-5 col-5 ">
+                <label > Nom</label>
+                <p>{{adresse.nom}}</p>
+            </div>
+            <div class="col-5">
+                <label> Prénom</label>
+                <p>{{adresse.prenom}}</p>
+            </div>
+            <div class="me-5 ">
+                <label >Adresse</label>
+                <p>{{adresse.adresse}}</p>
+            </div>
+            <div class="me-5 col-5">
+                <label >Code Postal</label>
+                <p>{{adresse.cp}}</p>
+            </div>
+            <div class="col-5 ">
+                <label >Ville</label>
+                <p>{{adresse.ville}}</p>
+            </div>
+            <div class="me-5 col-5 ">
+                <label >Tel.</label>
+                <p>{{adresse.tel}}</p>
+            </div>
+            <div class="col-5">
+                <label >Email</label>
+                <p>{{adresse.email}}</p>
+            </div>
         </div>
-        <div id="card-elements" style="height : 30px" class=" border rounded-3 my-3 p-0"></div> <!-- contiendra le formulaire de saisir des informations de carte -->
-        <div id="card-errors" role="alert" class="my-3"></div> <!-- contiendra les erreurs relatives à la carte-->
-        <div class="d-flex justify-content-end " >
-            <button id="card-button" class="btn border border-dark" type="button" data-secret="{{intent.client_secret}}">Proceder au paiement</button>
+        <div class=" col-11 d-flex align-items-center flex-column  ">
+            <h1 class="mt-5 text-start  col-12">Paiement</h1>
+
+            <form class=" mt-4 col-12 " >
+                <div id="errors"></div> <!-- Contiendra les messages d'erreur de paiement -->
+                <div class="d-flex flex-column " >
+                    <label class="my-1" style="font-size : 25px"> Titulaire de la carte</label>
+                    <input class=" border border-dark rounded-3 " type="text" id="cardholder-name"  >
+                </div>
+                <div id="card-elements" style="height : 30px " class=" border  border-dark rounded-3 my-3 p-0"></div> <!-- contiendra le formulaire de saisir des informations de carte -->
+                <div id="card-errors" role="alert" class="my-3"></div> <!-- contiendra les erreurs relatives à la carte-->
+                <div class="d-flex justify-content-end " >
+                    <button id="card-button" class="btn border border-dark" type="button" style ="width : auto !important; font-size : 20px !important" data-secret="{{intent.client_secret}}">Payer</button>
+                </div>
+            </form> 
         </div>
-    </form> 
+        
+       
+    </div>
+    
+
+    <div class="col-6">
+        <table class="table">
+            <h1 class="my-5 text-start">Votre commande</h1>
+            <thead>
+                <tr>
+                    <th scope="col">Article</th>
+                    <th scope="col"></th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Total</th>
+                    {# <th scope="col">Actions</th> #}
+                </tr>
+            </thead>
+            <tbody>
+                {% for element in dataPanier %}
+                    <tr>
+                        <th scope="row">{{element.article.article}}</th>
+                        <td><img src="{{ vich_uploader_asset( element.article , 'imageFile' ) }}" style="width : 60px"class="card-img-top" alt=" Image des articles | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"></td>
+                        <td>{{element.article.prix}}€</td>
+                        <td>{{element.quantite}}</td>
+                        <td>{{element.quantite *  element.article.prix}}€</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                    <tr>
+                        <td colspan="4">Total (TTC)</td>
+                        <td colspan="text-end" name="prix" id="prix">{{total}}€</td>
+                    </tr>
+            </tfoot>
+        </table>
+    </div>
 </div>
-
-</div>
-
- 
-
-{# <div class="my-3 me-4 d-flex justify-content-end">
-    <a href="#" class="btn btn-sm btn-outline-dark">Etape suivante </a>
-</div> #}
-
 
 {% endblock %}
-{% block footer %}
+{# {% block footer %}
   <footer class="fixed-bottom" >
       <article id="icon">
             <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
@@ -86,4 +111,4 @@
             <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
         </article>
   </footer>
-{% endblock %}
+{% endblock %} #}

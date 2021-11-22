@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ArticlesRepository;
 use App\Entity\Categories;
 use App\Services\StripeService;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -75,7 +77,17 @@ class Articles
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $quantite;
+    private $stock;
+
+    /**
+     * @ORM\OneToMany(targetEntity=OrderLine::class, mappedBy="articles")
+     */
+    private $orderLines;
+
+    public function __construct()
+    {
+        $this->orderLines = new ArrayCollection();
+    }
 
     // /**
     //  * @var StripeService
@@ -205,14 +217,44 @@ class Articles
         return $this->article;
     }
 
-    public function getQuantite(): ?int
+    public function getStock(): ?int
     {
-        return $this->quantite;
+        return $this->stock;
     }
 
-    public function setQuantite(?int $quantite): self
+    public function setStock(?int $stock): self
     {
-        $this->quantite = $quantite;
+        $this->stock = $stock;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|OrderLine[]
+     */
+    public function getOrderLines(): Collection
+    {
+        return $this->orderLines;
+    }
+
+    public function addOrderLine(OrderLine $orderLine): self
+    {
+        if (!$this->orderLines->contains($orderLine)) {
+            $this->orderLines[] = $orderLine;
+            $orderLine->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderLine(OrderLine $orderLine): self
+    {
+        if ($this->orderLines->removeElement($orderLine)) {
+            // set the owning side to null (unless already changed)
+            if ($orderLine->getArticle() === $this) {
+                $orderLine->setArticle(null);
+            }
+        }
 
         return $this;
     }

@@ -32,8 +32,7 @@
             <div class="mt-2  d-flex flex-column justify-content-end">
                 <a  href="{{path ('app_profil_change')}}"class=" my-3 btn  btn-light border-dark btn-sm"> Modifier le profil</a>
                 <a  href="{{ path ("app_pass_change", {id : app.user.id})}}"class=" my-3 btn btn-light border-dark btn-sm"> Modifier le mot de passe</a>
-                <a  href="{{ path ("app_pass_delete", {id : app.user.id})}}"class=" btn border-dark btn-light bordedark btn-sm"> Supprimer votre compte</a>
-
+                <a  href="{{ path ("app_pass_delete", {id : app.user.id})}}"class="my-3 btn border-dark btn-light bordedark btn-sm" onclick ="return confirm('Etes-vous sûr de vouloir supprimer votre compte ?')"> Supprimer votre compte</a>
             </div>
         </div>
     </div>

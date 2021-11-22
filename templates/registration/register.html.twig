@@ -11,7 +11,7 @@
     <h1 class="text-center mt-4">Inscription</h1>
 
     <div class="d-flex justify-content-evenly my-5 ">
-        <img src="{{ asset ('images/register-pexels-amina-filkins-5414061.jpg')}}" class="rounded-3  col-3"  style="height : 500px ; width : 40%" alt="Image Inscription | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
+        <img src="{{ asset ('images/la_maison_de_laine_signup.png')}}" class="rounded-3  me-3 col-3"  style="height : 50% ; width : 50%" alt="Image Inscription | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
         <div style="width : 50%" > 
             {{ form_start(registrationForm) }}
                 {{ form_row(registrationForm.name) }}
@@ -26,20 +26,5 @@
     </div>
     {{ form_end(registrationForm) }}
 {% endblock %}
-{% block footer %}
-    {# Footer  #}
-    <footer class="f">
-     <article id="icon">
-            <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
-            <a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram-square fa-2x"></i></a>
-            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-2x"></i></a>
-        </article>
-        <article class="mb-3">
-            <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
-            <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
-            <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
-        </article> 
-    </footer>
-    {# END Footer  #}
-{% endblock %}
+
 
