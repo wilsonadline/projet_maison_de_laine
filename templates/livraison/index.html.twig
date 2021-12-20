@@ -5,40 +5,41 @@
 {% block title %} Livraison | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-<div class="my-5 d-flex justify-content-center " >
-     <section class="col-6 rounded-3 mx-1 d-flex flex-column  livraison_box " >
-        <h1 class="my-5 ms-5 text-center">Adresse de livraison</h1>
-        <div class=" d-flex align-items-center  justify-content-center flex-column">
-            {{form_start(formLivraison,  {'attr' : {'style' : 'width : 70%'}})}}
-            {# {{dump(formLivraison)}} #}
-                {{form_row(formLivraison.nom,{'attr' : {'style' : 'width : 100%'}})}}
-                {{form_row(formLivraison.prenom)}}
-                {{form_row(formLivraison.adresse)}}
-                {{form_row(formLivraison.cp)}}
-                {{form_row(formLivraison.ville)}}
-                {{form_row(formLivraison.tel)}}
-                {{form_row(formLivraison.email)}}
-                <div class="d-flex justify-content-end">
-                    <button class="btn btn-sm btn-outline-dark mb-4">Valider</button>
-                </div> 
-            {{form_end(formLivraison)}}
-        <div>
-    </section>
-</div>
+    <div class="my-5 d-flex justify-content-center " >
+        <section class="col-11 col-md-10 col-xxl-6 col-xl-6 rounded-3 mx-1 d-flex flex-column  livraison_box " >
+            <h1 class="my-5  text-center">Adresse de livraison</h1>
+            <div class=" d-flex align-items-center  justify-content-center flex-column">
+                {{form_start(formLivraison,  {'attr' : {'style' : 'width : 70%'}})}}
+                    {{form_row(formLivraison.nom,{'attr' : {'style' : 'width : 100%'}})}}
+                    {{form_row(formLivraison.prenom)}}
+                    {{form_row(formLivraison.adresse)}}
+                    {{form_row(formLivraison.cp)}}
+                    {{form_row(formLivraison.ville)}}
+                    {{form_row(formLivraison.tel)}}
+                    {{form_row(formLivraison.email)}}
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-light btn-sm mb-4">Valider</button>
+                    </div> 
+                {{form_end(formLivraison)}}
+            <div>
+        </section>
+    </div>
 {% endblock %}
 {% block footer %}
-  <footer >
-      <article id="icon">
-            <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
-            <a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram-square fa-2x"></i></a>
-            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-2x"></i></a>
-        </article>
-        <article class="mb-3">
-            <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
-            <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
-            <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
-        </article>
-  </footer>
+    <div class="container-fluid p-0  m-0  col-12">
+        <footer class="col-12  p-0">
+            <article id="icon">
+                <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
+                <a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram-square fa-2x"></i></a>
+                <a href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-2x"></i></a>
+            </article>
+            <article class="mb-3 d-flex ">
+                <a class="text-center m-2"  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe mt-4"> |</span> 
+                <a  class="text-center m-2 " id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe mt-4"> |</span> 
+                <a class="text-center m-2" href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
+            </article>
+        </footer>
+    </div>
 {% endblock %}
 
 

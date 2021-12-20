@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Articles;
 use App\Form\ArticlesType;
 use App\Repository\ArticlesRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticlesController extends AbstractController
 {
     #[Route("/articles/ajout", name: "ajout")]
-    public function articlesAjout(Request $request): Response
+    public function articlesAjout(Request $request, EntityManagerInterface $em): Response
     {
         $articlesAjout = new Articles();
 
@@ -27,11 +28,10 @@ class ArticlesController extends AbstractController
         {
             $articlesAjout->setCreatedAt(new \DateTime());
 
-            $em= $this->getDoctrine()->getManager();
             $em->persist($articlesAjout);
             $em->flush();
 
-            $this->addFlash('articlesAdd', 'L \'article a bien été ajouté ! ');
+            $this->addFlash('articlesAdd', 'L\'article a bien été ajouté !');
             return $this->redirectToRoute('articles_list');
         }
 
@@ -41,7 +41,7 @@ class ArticlesController extends AbstractController
     }
 
     #[Route("/articles/modifier/{id}", name: "modifier")]
-    public function articlesModifier($id , Request $request): Response
+    public function articlesModifier($id , Request $request, EntityManagerInterface $em): Response
     {
         $articlesModifier = $this->getDoctrine()->getRepository(Articles::class)->find($id);
 
@@ -52,11 +52,10 @@ class ArticlesController extends AbstractController
         {
             $articlesModifier->setUpdatedAt(new \DateTime());
 
-            $em= $this->getDoctrine()->getManager();
             $em->persist($articlesModifier);
             $em->flush();
 
-            $this->addFlash('articlesEdit', 'L \'article a bien été modifié ! ');
+            $this->addFlash('articlesEdit', 'L\'article a bien été modifié !');
             return $this->redirectToRoute('articles_list');
         }
 
@@ -65,27 +64,23 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-
     #[Route("/articles/delete/{id}", name: "delete")]
-    public function articlesDelete($id): Response
+    public function articlesDelete($id, EntityManagerInterface $em): Response
     {
         $articlesDelete = $this->getDoctrine()->getRepository(Articles::class)->find($id);
 
-        $em = $this->getDoctrine()->getManager();
         $em->remove($articlesDelete);
         $em->flush();
         
-        $this->addFlash('articlesDelete', 'L \'article a bien été supprimé ! ');
+        $this->addFlash('articlesDelete', 'L \'article a bien été supprimé !');
         return $this->redirectToRoute('articles_list');
     }
    
-    
     #[Route("/articles/list", name: "list")]
     public function articlesList(ArticlesRepository $articlesList): Response
     {
         return $this->render('admin/articles/list.html.twig', [
-            'articlesList' => $articlesList->findAll(),
+            'articlesList' => $articlesList->findAll()
         ]);
-        
     }
 }

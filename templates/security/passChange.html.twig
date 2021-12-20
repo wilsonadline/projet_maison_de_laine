@@ -5,24 +5,20 @@
 {% block title %} Modification de votre Profil de {{app.user.firstName}} {{app.user.name|upper}} | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-    <h1 class="text-center mt-4"> Modification de votre profil </h1>
-    <div class="d-flex justify-content-evenly pb-5">
-        <img src="{{asset ('images/time-for-change-pexels-alexas-fotos-2277784.jpg')}}" alt="Image Modification du profil | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"  class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
-    
-        <div class="mt-5 col-4">
-            {{form_start(editPassForm)}}
-                {{form_row(editPassForm.plainPassword)}}
-                <div class="d-flex justify-content-end">
-                    <button class="btn  btn btn-light border-dark">valider</button>
-                </div>
-             {{form_end(editPassForm)}}
+    <div class="row m-0" >
+        <h1 class="text-center mt-4"> Modification de votre profil </h1>
+        <div class=" d-flex mb-5 justify-content-center justify-content-xxl-between justify-content-xl-between " >
+            <img src="{{asset ('images/la_maison_de_laine_time-for-change-pexels-alexas-fotos-2277784.jpg')}}" alt="Image Modification du profil | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"  class="p-0 rounded-3 col-xl-5  col-sm-6  col-12 d-none d-md-none d-xl-block d-xxl-block"  style="height : 500px ; width : 40%">
+            <div class="d-flex flex-column col-xl-6 col-md-9 col-12 ">
+                {{form_start(editPassForm)}}
+                    {{form_row(editPassForm.plainPassword)}}
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-light ">valider</button>
+                    </div>
+                {{form_end(editPassForm)}}
+            </div>
+        </div>
     </div>
-</div>
-
-
-
-
-
 {% endblock %}
 {% block footer %}
     {# Footer  #}

@@ -4,16 +4,15 @@
 {% block title %}Ajouter type de catégorie | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-
-        <div  class="mt-1 "> 
-            <h1 class="text-center mt-4">Ajouter un type de catégorie</h1>
-            {{ form_start(typeCategoriesAjout) }}
-                {{ form_row(typeCategoriesAjout.nom) }}
-            <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn border-dark">Ajouter</button>
-            </div>
+    <div  class="mt-1 "> 
+        <h1 class="text-center mt-4">Ajouter un type de catégorie</h1>
+        {{ form_start(typeCategoriesAjout) }}
+            {{ form_row(typeCategoriesAjout.nom) }}
+        <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-light">Ajouter</button>
         </div>
-    {{ form_end(typeCategoriesAjout) }}
+        {{ form_end(typeCategoriesAjout) }}
+    </div>
 {% endblock %}
 {% block footer %}
     {# Footer  #}

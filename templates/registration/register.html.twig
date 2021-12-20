@@ -5,26 +5,28 @@
 {% block title %}S'inscrire | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
-    <h1 class="text-center mt-4">Inscription</h1>
+    <div class="row m-0" >
+        {% for flashError in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+        {% endfor %}
+        <h1 class="text-center mt-4">Inscription</h1>
 
-    <div class="d-flex justify-content-evenly my-5 ">
-        <img src="{{ asset ('images/la_maison_de_laine_signup.png')}}" class="rounded-3  me-3 col-3"  style="height : 50% ; width : 50%" alt="Image Inscription | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
-        <div style="width : 50%" > 
-            {{ form_start(registrationForm) }}
-                {{ form_row(registrationForm.name) }}
-                {{ form_row(registrationForm.firstname) }}
-                {{ form_row(registrationForm.email) }}
-                {{ form_row(registrationForm.password.first) }}
-                 {{ form_row(registrationForm.password.second) }}
-            <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn border-dark">Enregistrer</button>
+        <div class="d-flex mb-5 justify-content-center justify-content-xxl-between justify-content-xl-between ">
+            <img src="{{ asset ('images/la_maison_de_laine_signup.png')}}" class="rounded-3  col-xl-5  col-sm-6  col-12 d-none d-md-none d-xl-block d-xxl-block "  id="image" alt="Image Inscription | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
+            <div class="d-flex flex-column col-xl-6 col-md-9 col-12 my-5 " >
+                {{ form_start(registrationForm) }}
+                    {{ form_row(registrationForm.name) }}
+                    {{ form_row(registrationForm.firstname) }}
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.password.first) }}
+                    {{ form_row(registrationForm.password.second) }}
+                <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-light " style="width : auto !important">Enregistrer</button>
+                </div>
+                {{ form_end(registrationForm) }}
             </div>
         </div>
     </div>
-    {{ form_end(registrationForm) }}
 {% endblock %}
 
 

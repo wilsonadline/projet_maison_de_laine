@@ -3,58 +3,58 @@
 {% block title %}Liste des types de catégories | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-<h1 class="text-center my-5">Liste des types de catégories</h1>
+    <h1 class="text-center my-5">Liste des types de catégories</h1>
 
-<div class="d-flex justify-content-end my-5">
-    <a href="{{path ('type_categories_ajout')}}"  class="btn btn-light border border-dark" >Ajouter un type de catégorie</a>
-</div>
+    <div class="d-flex justify-content-end my-5">
+        <a href="{{path ('type_categories_ajout')}}"  class="btn btn-light" >Ajouter un type de catégorie</a>
+    </div>
 
-{% for add in app.flashes('typeCategoriesAjout') %}
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <strong>Félicitations </strong>{{ add }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-    </div>
-{% endfor %}
-{% for edit in app.flashes('typeCategoriesEdit') %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Félicitations </strong>{{ edit }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-    </div>
-{% endfor %}
-{% for delete in app.flashes('typeCategoriesDelete') %}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Félicitations </strong>{{ delete }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-    </div>
-{% endfor %}
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Création</th>
-                    <th scope="col">Modification</th>
-                    <th scope="col">Modifier</th>
-                    <th scope="col">Supprimer</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for list in typeCategoriesList %}
-                    <tr>
-                        <th scope="row">{{ list.id}}</th>
-                        <td>{{ list.nom}}</td>
-                        {# {# <td>{{ list.typeCategorie.nom|default('')}}</td>   #}
-                        <td>{{ list.createdAt|date('d/m/Y à H:i:s')}}</td>
-                        <td>{{ list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
-                        <td><a href="{{ path ('type_categories_modifier', { id : list.id })}}" class="btn btn-light border border-dark" >Modifier</a></td>
-                        <td><a href="{{ path ('type_categories_delete', { id : list.id })}}"  onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')"class="btn btn-light border border-dark" >Supprimer</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <div class="d-flex justify-content-end my-5">
-            <a href="{{path ('type_categories_ajout')}}" class="btn btn-light border border-dark" >Ajouter un type de catégorie</a>
+    {% for add in app.flashes('typeCategoriesAjout') %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{ add }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
         </div>
+    {% endfor %}
+    {% for edit in app.flashes('typeCategoriesEdit') %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{ edit }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    {% endfor %}
+    {% for delete in app.flashes('typeCategoriesDelete') %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{ delete }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    {% endfor %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Création</th>
+                <th scope="col">Modification</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for list in typeCategoriesList %}
+                <tr>
+                    <th scope="row">{{ list.id}}</th>
+                    <td>{{ list.nom}}</td>
+                    {# {# <td>{{ list.typeCategorie.nom|default('')}}</td>   #}
+                    <td>{{ list.createdAt|date('d/m/Y à H:i:s')}}</td>
+                    <td>{{ list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
+                    <td><a href="{{ path ('type_categories_modifier', { id : list.id })}}" class="btn btn-light " >Modifier</a></td>
+                    <td><a href="{{ path ('type_categories_delete', { id : list.id })}}"  onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')"class="btn btn-light" >Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end my-5">
+        <a href="{{path ('type_categories_ajout')}}" class="btn btn-light " >Ajouter un type de catégorie</a>
+    </div>
 {% endblock %}
 {% block footer %}
     {# Footer  #}

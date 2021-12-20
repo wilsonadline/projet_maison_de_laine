@@ -1,12 +1,10 @@
 {% extends 'base.html.twig' %}
- {% block css %} <link rel="stylesheet" href="{{asset ('../css/login.css ')}}" />
-   {% endblock %} 
+{% block css %} <link rel="stylesheet" href="{{asset ('../css/login.css ')}}" />{% endblock %} 
 {% block title %}Connectez-vous! | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-<div class="d-flex justify-content-evenly mt-5">
-    <img src="{{ asset ('images/lets_go_pexels-sevenstorm-juhaszimrus-704767.jpg')}}" alt="Images Connexion | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono " class="rounded-3 mt-5 col-3"  style="height : 500px ; width : 40%">
-        <div style="width : 50%" class="mt-5 "> 
+    <div class="row m-0" >
+        <h1 class="text-center my-5">Connectez-vous ! </h1>
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
@@ -16,54 +14,23 @@
                 Vous êtes connecté en tant que  {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
             </div>
         {% endif %}
-            <h1 class="h3 my-3 font-weight-normal">Connectez-vous ! </h1>
-            <form method="post">
-            <label for="inputEmail">Email</label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-            <label for="inputPassword">Mot de passe</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-            <input type="hidden" name="_csrf_token"
-                value="{{ csrf_token('authenticate') }}"
-            >
-            <div class="d-flex justify-content-end my-4">
-                <button class="btn btn-lg border border-dark" type="submit">Connexion</button>
+        <div class="d-flex mb-5 justify-content-center justify-content-xxl-between justify-content-xl-between " >
+            <img src="{{ asset ('images/la_maison_de_laine_lets_go_pexels-sevenstorm-juhaszimrus-704767.jpg')}}" alt="Images Connexion | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono " class="p-0 rounded-3 col-xl-5  col-sm-6  col-12 d-none d-md-none d-xl-block d-xxl-block"  style="height : 500px ; width : 40%">
+            <div class="d-flex flex-column col-xl-6 col-md-9 col-12 ">
+                <form method="post">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                    <label for="inputPassword">Mot de passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <div class="d-flex justify-content-end my-4">
+                        <button class="btn btn-lg btn-light" type="submit">Connexion</button>
+                    </div>
+                    <p class="d-flex justify-content-end ">
+                        <a href="{{ path ('app_forgot_password_request')}}" >Mot de passe oublié</a>
+                    </p>
+                </form>
             </div>
-        <p class="d-flex justify-content-end ">
-            <a href="{{ path ('app_forgot_password_request')}}" >Mot de passe oublié</a>
-        </p>
-
-        </form>
-
+        </div> 
     </div>
-
-</div>
 {% endblock %}
-{% block footer %}
-    {# Footer  #}
-    <footer class="fixed-bottom">
-        <article id="icon">
-            <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
-            <a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram-square fa-2x"></i></a>
-            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-2x"></i></a>
-        </article>
-        <article class="mb-3">
-            <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
-            <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
-            <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
-        </article>
-    </footer>
-    {# END Footer  #}
-{% endblock %}
-
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}

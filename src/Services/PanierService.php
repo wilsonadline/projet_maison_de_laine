@@ -2,14 +2,17 @@
 namespace App\Services;
 
 use App\Entity\Adresses;
+use App\Entity\Delivry;
 use App\Entity\Order;
 use App\Entity\OrderLine;
 use App\Entity\OrderStatus;
 use App\Repository\AdressesRepository;
 use App\Repository\ArticlesRepository;
+use App\Repository\DelivryRepository;
 use App\Repository\OrderRepository;
 use App\Repository\OrderStatusRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use PhpParser\Node\Expr\Cast\Double;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class PanierService
@@ -38,8 +41,7 @@ class PanierService
                 "quantite"=> $quantite,
             
             ];
-            $total += $article->getPrix() * $quantite;
-          
+            $total += $article->getPrix() * $quantite ;
         }
 
         return [$dataPanier, $total];
@@ -61,7 +63,7 @@ class PanierService
 
     private function save_order_line( $order ,  $dataPanier) {
   
-
+        $total = 0 ;
         foreach($dataPanier as $data)
         {
             $order_line = new OrderLine();
@@ -71,28 +73,41 @@ class PanierService
             $order_line->setOrders($order);   
             
             $this->em->persist($order_line);
+            $total +=  $order_line->getPrix() * $order_line->getQuantite();
         }
         $this->em->flush();
+        return $total;
     }
 
-    public function save_order(  AdressesRepository $repoAdresse , $adresse_id, OrderStatusRepository $statusRepo, $dataPanier) {
+    public function save_order(AdressesRepository $repoAdresse , $adresse_id,
+        OrderStatusRepository $statusRepo, 
+        $dataPanier, DelivryRepository $delivryRepository, $deliveryMode ) {
+       
         // recup l'id de l'adresse
         $adresse = $repoAdresse->find($adresse_id);
 
-        $status = $statusRepo->findOneBy(['status' => 'en cours']);
+        $status = $statusRepo->findOneBy(['status' => 'nouvelle commande']);
+        
+        $mode = $delivryRepository->findOneBy(["options" => $deliveryMode]);
 
         // creation de la cmd
         $order = new Order();
         $order->setCreatedAt(new \DateTime());
+        $order->setUpdatedAt(new \DateTime());
         $order->setAdresse($adresse);
+        $order->setDelivery($mode);
         $order->setOrderStatus($status);
+        // $order->setDelivry($deliveryMode);
+        
+        // $order->getTotal();
+        $this->em->persist($order);
+        // $this->em->flush();
+        
+        $totalOrder =  $this->save_order_line($order, $dataPanier);
+        
+        $order->setTotal($totalOrder + $mode->getPrice() );
         $this->em->persist($order);
         $this->em->flush();
-
-        
-
-        $this->save_order_line( $order, $dataPanier);
+        return $order;
     }
-
-
 }

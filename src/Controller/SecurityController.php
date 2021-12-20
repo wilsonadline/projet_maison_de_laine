@@ -22,10 +22,6 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
-        
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
@@ -74,22 +70,21 @@ class SecurityController extends AbstractController
      */
     public function editPass(Request $request , UserPasswordHasherInterface $userPasswordHasherInterface, EntityManagerInterface $em, $id)
     {
+        $user = $this->getUser('id');
 
-            $user = $this->getUser('id');
-
-            $passEdit_form = $this->createForm(ChangePasswordFormType::class);
-            $passEdit_form->handleRequest($request);
-            // dd($passEdit_form);
-            if($passEdit_form->isSubmitted() && $passEdit_form->isValid()){
-                $encodedPassword = $userPasswordHasherInterface->hashPassword(
-                    $user,
-                    $passEdit_form->get('plainPassword')->getData());
-                    
+        $passEdit_form = $this->createForm(ChangePasswordFormType::class);
+        $passEdit_form->handleRequest($request);
+        
+        if($passEdit_form->isSubmitted() && $passEdit_form->isValid()){
+            $encodedPassword = $userPasswordHasherInterface->hashPassword(
+                $user,
+                $passEdit_form->get('plainPassword')->getData());
+                
             $user->setPassword($encodedPassword);
             $this->getDoctrine()->getManager()->flush();
 
-                return $this->redirectToRoute('app_profil');
-            }
+            return $this->redirectToRoute('app_profil');
+        }
            
         return $this->render('security/passChange.html.twig',[
             'editPassForm' => $passEdit_form->createView()
@@ -101,16 +96,15 @@ class SecurityController extends AbstractController
      */
     public function deletePass( EntityManagerInterface $em, UsersRepository $users, $id)
     {
-
-            $user = $users->find($id);
-                    
-            $session = $this->get('session');
-            $session = new Session();
-            $session->invalidate();
-            $em->remove( $user);
-            $em->flush();
-            $this->addFlash('profilDelete', 'Votre profil a bien été supprimé ! ');
-            return $this->redirectToRoute('app_home');
+        $user = $users->find($id);
+                
+        $session = $this->get('session');
+        $session = new Session();
+        $session->invalidate();
+        $em->remove( $user);
+        $em->flush();
+        $this->addFlash('profilDelete', 'Votre profil a bien été supprimé ! ');
+        return $this->redirectToRoute('app_home');
     }
 
     /**

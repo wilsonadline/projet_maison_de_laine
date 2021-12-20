@@ -7,6 +7,7 @@ use App\Repository\ArticlesRepository;
 use App\Services\PanierService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,19 +22,17 @@ class PanierController extends AbstractController
     {
         $paniers = new PanierService($em);
         list ($dataPanier, $total) = $paniers->panier($session, $articleRepository);
-                
-        return $this->render('panier/index.html.twig', compact("dataPanier", "total")
+
+        return $this->render('panier/panier.html.twig', compact("dataPanier", "total")
         );
     }
 
     #[Route('/ajout/{id}', name: 'ajout')]
     public function panier_ajout( SessionInterface $session, Articles $article)
     {
-
         // on recupere le panier actuel
         $panier = $session->get("panier",  []);
         $id = $article->getId();
-        // $panier= array();
         
         if(!empty($panier[$id]))
         {
@@ -45,10 +44,8 @@ class PanierController extends AbstractController
         }
         // on sauvegarde dans la session
         $session->set("panier", $panier);
-        // dd( $session);
 
         return $this->redirectToRoute("panier_index");
-       
     }
 
     #[Route('/retirer/{id}', name: 'retirer')]
@@ -71,10 +68,8 @@ class PanierController extends AbstractController
        
         // on sauvegarde dans la session
         $session->set("panier", $panier);
-        // dd( $session);
 
         return $this->redirectToRoute("panier_index");
-       
     }
 
     #[Route('/supprimer/{id}', name: 'supprimer')]
@@ -91,21 +86,15 @@ class PanierController extends AbstractController
        
         // on sauvegarde dans la session
         $session->set("panier", $panier);
-        // dd( $session);
 
         return $this->redirectToRoute("panier_index");
-       
     }
 
     #[Route('/vider', name: 'vider')]
     public function panier_vider( SessionInterface $session)
     {
-       $session->remove("panier");
+        $session->remove("panier");
 
         return $this->redirectToRoute("panier_index");
-       
     }
-
-   
-    
 }

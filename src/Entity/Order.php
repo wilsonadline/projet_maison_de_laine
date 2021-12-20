@@ -48,6 +48,29 @@ class Order
      */
     private $updatedAt;
 
+    // /**
+    //  * @ORM\OneToOne(targetEntity=Delivry::class, cascade={"persist", "remove"})
+    //  */
+    // private $delivry;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $total;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Delivry::class, inversedBy="orders")
+     */
+    private $delivery;
+
+    // /**
+    //  * @ORM\ManyToOne(targetEntity=Delivry::class, inversedBy="orders")
+    //  * @ORM\JoinColumn(nullable=true)
+    //  */
+    // private $Delivery;
+
+
+
     public function __construct()
     {
         $this->orderLines = new ArrayCollection();
@@ -129,7 +152,7 @@ class Order
         return $this->id;
     } 
 
-    public function getTotal()
+    public function computeTotal()
     {
         $total = 0 ;
         foreach ( $this->orderLines as $line)
@@ -137,6 +160,11 @@ class Order
             $total += $line->getQuantite() * $line->getPrix();
         }
         return $total;
+    }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface
@@ -150,6 +178,47 @@ class Order
 
         return $this;
     }
-  
-   
+
+    // public function getDelivry(): ?Delivry
+    // {
+    //     return $this->delivry;
+    // }
+
+    // public function setDelivry(?Delivry $delivry): self
+    // {
+    //     $this->delivry = $delivry;
+
+    //     return $this;
+    // }
+
+    public function setTotal(?float $total): self
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    // public function getDelivery(): ?Delivry
+    // {
+    //     return $this->Delivery;
+    // }
+
+    // public function setDelivery(?Delivry $Delivery): self
+    // {
+    //     $this->Delivery = $Delivery;
+
+    //     return $this;
+    // }
+
+    public function getDelivery(): ?Delivry
+    {
+        return $this->delivery;
+    }
+
+    public function setDelivery(?Delivry $delivery): self
+    {
+        $this->delivery = $delivery;
+
+        return $this;
+    }
 }

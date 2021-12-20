@@ -69,7 +69,6 @@ class CategoriesController extends AbstractController
     #[Route("/categories/delete/{id}", name: "delete")]
     public function categoriesDelete($id): Response
     {
-
         $categoriesDelete = $this->getDoctrine()->getRepository(Categories::class)->find($id);
 
         $em = $this->getDoctrine()->getManager();

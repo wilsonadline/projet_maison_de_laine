@@ -3,74 +3,69 @@
 {% block title %}Liste des articles | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-<h1 class="text-center my-5">Liste des articles</h1>
+    <h1 class="text-center my-5">Liste des articles</h1>
 
-<div class="d-flex justify-content-end my-5">
-    <a href="{{path ('articles_ajout')}}"  class="btn btn-light border border-dark" >Ajouter un article</a>
-</div>
-
-{% for add in app.flashes('articlesAjout') %}
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <strong>Félicitations </strong>{{ add }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    <div class="d-flex justify-content-end my-5">
+        <a href="{{path ('articles_ajout')}}"  class="btn btn-light" >Ajouter un article</a>
     </div>
-{% endfor %}
-{% for edit in app.flashes('articlesEdit') %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Félicitations </strong>{{ edit }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-    </div>
-{% endfor %}
-{% for delete in app.flashes('articlesDelete') %}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Félicitations </strong>{{ delete }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-    </div>
-{% endfor %}
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Couleur</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">En Stock</th>
-                    <th scope="col"></th>
-                    <th scope="col">Catégories</th>
-                    <th scope="col">Création</th>
-                    <th scope="col">Modification</th>
-                    <th scope="col">Modifier</th>
-                    <th scope="col">Supprimer</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for list in articlesList %}
-                    <tr>
-                        <th scope="row">{{ list.id}}</th>
-                        <td><img src="{{ vich_uploader_asset( list , 'imageFile' ) }}" style="width : 60px"class="card-img-top" alt=" Image des articles | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"></td>
-                        <td>{{ list.article}}</td>
-                        <td>{{ list.couleur}}</td>
-                        <td>{{ list.description}}</td>
-                        <td>{{ list.prix}}</td>
-                        <td class="stock-{{ list.id}}"> <input type="number" class="form-control stockValue-{{ list.id}}" placeholder="Stock " value={{ list.stock }}></td>
-                        <td ><button type="submit" class="btn btn-sm stock" onclick="sendStock({{ list.id}})">Entrer</button></td>
-                        {# <td class="stock-{{ list.id}}">{{ list.stock }}</td> #}
-
-                        <td>{{ list.categories.nom}}</td>
-                        <td>{{ list.createdAt|date('d/m/Y à H:i:s')}}</td>
-                        <td>{{ list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
-                        {# <td><a href="" class=" add mx-1 btn btn-light border border-dark">+</a><a href="" class="btn btn-light border border-dark">-</a></td> #}
-                        <td><a href="{{ path ('articles_modifier', { id : list.id })}}" class="btn btn-light border border-dark btn-sm" >Modifier</a></td>
-                        <td><a href="{{ path ('articles_delete', { id : list.id })}}"  onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')"class=" btn-sm btn btn-light border border-dark" >Supprimer</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <div class="d-flex justify-content-end my-5">
-            <a href="{{path ('articles_ajout')}}" class="btn btn-light border border-dark" >Ajouter un article</a>
+    {% for add in app.flashes('articlesAjout') %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{ add }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
         </div>
+    {% endfor %}
+    {% for edit in app.flashes('articlesEdit') %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{ edit }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    {% endfor %}
+    {% for delete in app.flashes('articlesDelete') %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{ delete }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Image</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Couleur</th>
+                <th scope="col">Description</th>
+                <th scope="col">Prix</th>
+                <th scope="col">En Stock</th>
+                <th scope="col">Catégories</th>
+                <th scope="col">Création</th>
+                <th scope="col">Modification</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for list in articlesList %}
+                <tr>
+                    <th scope="row">{{ list.id}}</th>
+                    <td><img src="{{ vich_uploader_asset( list , 'imageFile' ) }}" style="width : 60px"class="card-img-top" alt=" Image des articles | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"></td>
+                    <td>{{ list.article}}</td>
+                    <td>{{ list.couleur}}</td>
+                    <td>{{ list.description}}</td>
+                    <td>{{ list.prix}}</td>
+                    <td>{{ list.stock }}</td>
+                    <td>{{ list.categories.nom}}</td>
+                    <td>{{ list.createdAt|date('d/m/Y à H:i:s')}}</td>
+                    <td>{{ list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
+                    <td><a href="{{ path ('articles_modifier', { id : list.id })}}" class="btn btn-light btn-sm" >Modifier</a></td>
+                    <td><a href="{{ path ('articles_delete', { id : list.id })}}"  onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')"class=" btn-sm btn btn-light" >Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end my-5">
+        <a href="{{path ('articles_ajout')}}" class="btn btn-light" >Ajouter un article</a>
+    </div>
 {% endblock %}
 

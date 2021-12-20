@@ -4,21 +4,22 @@
 {% block title %}Ajouter un article | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-        <div  class="mt-1 "> 
-            <h1 class="text-center mt-4">Ajouter un article</h1>
-            {{ form_start(articlesAjout) }}
-                {{ form_row(articlesAjout.article) }}
-                {{ form_row(articlesAjout.couleur) }}
-                {{ form_row(articlesAjout.description) }}
-                {{ form_row(articlesAjout.prix) }}
-                {{ form_row(articlesAjout.stock) }}
-                {{ form_row(articlesAjout.categories) }}
-                {{ form_row(articlesAjout.imageFile) }}
+    <div  class="mt-1 "> 
+        <h1 class="text-center mt-4">Ajouter un article</h1>
+        {{ form_start(articlesAjout) }}
+            {{ form_row(articlesAjout.article) }}
+            {{ form_row(articlesAjout.couleur) }}
+            {{ form_row(articlesAjout.description) }}
+            {{ form_row(articlesAjout.prix) }}
+            {{ form_row(articlesAjout.stock) }}
+            {{ form_row(articlesAjout.categories) }}
+            {{ form_row(articlesAjout.imageFile) }}
 
             <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn border-dark">Ajouter</button>
+                <button type="submit" class="btn btn-light ">Ajouter</button>
             </div>
-        </div>
-    {{ form_end(articlesAjout) }}
+        {{ form_end(articlesAjout) }}
+    </div>
 {% endblock %}
+
 

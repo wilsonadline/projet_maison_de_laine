@@ -18,10 +18,10 @@ class GestionStockController extends AbstractController
     #[Route('/list/commandes', name: 'list_des_commandes')]
     public function list_commandes(OrderRepository $orderRepository): Response
     {      
-            return $this->render('admin/gestion_stock/listDesCommandes.html.twig', [
-                'nouvelles_commande' => $orderRepository->findBy(['orderStatus'=> 1]),
-                'en_attente' => $orderRepository->findBy(['orderStatus'=> 2]),
-                'commande_expediee' => $orderRepository->findBy(['orderStatus'=> 3])
+        return $this->render('admin/gestionStock/listDesCommandes.html.twig', [
+            'nouvelles_commande' => $orderRepository->findBy(['orderStatus'=> 1]),
+            'en_attente' => $orderRepository->findBy(['orderStatus'=> 2]),
+            'commande_expediee' => $orderRepository->findBy(['orderStatus'=> 3])
         ]);
     }
 
@@ -40,22 +40,32 @@ class GestionStockController extends AbstractController
             $status->setUpdatedAt(new \DateTime());
             $em->persist($status);
             $em->flush();
-
-           return $this->redirectToRoute("gestion_stock_list_des_commandes");
+            
+            if($status->getOrderStatus()->getStatus() == "nouvelle commande")
+            {
+                return $this->redirectToRoute("gestion_stock_nouvelles_commandes");
+            }
+            elseif($status->getOrderStatus()->getStatus() == "en attente")
+            {
+                return $this->redirectToRoute("gestion_stock_commande_en_attente");
+            }
+            else
+            {
+                return $this->redirectToRoute("gestion_stock_commande_expediee");
+            }
         }
         
-        return $this->render('admin/gestion_stock/changeStatus.html.twig', [
+        return $this->render('admin/gestionStock/changeStatus.html.twig', [
             'status' => $status_option->createView()
         ]);
-
     }
 
     /**
-     * @Route("/commandes/nouvelle" , name="nouvelle_commandes")
+     * @Route("/commandes/nouvelle" , name="nouvelles_commandes")
      */
-    public function nouvelle_commandes(OrderRepository $orderRepository): Response
+    public function nouvelles_commandes(OrderRepository $orderRepository): Response
     {      
-            return $this->render('admin/gestion_stock/nouvelleCommande.html.twig', [
+            return $this->render('admin/gestionStock/nouvelleCommande.html.twig', [
                 'nouvelles_commande' => $orderRepository->findBy(['orderStatus'=> 1]),
         ]);
     }
@@ -65,7 +75,7 @@ class GestionStockController extends AbstractController
      */
     public function enAttente( OrderRepository $orderRepository)
     {
-        return $this->render('admin/gestion_stock/enAttente.html.twig', [
+        return $this->render('admin/gestionStock/enAttente.html.twig', [
             'cmdEnAttente' => $orderRepository->findBy(['orderStatus'=> 2])
         ]);
     }
@@ -75,7 +85,7 @@ class GestionStockController extends AbstractController
      */
     public function livree( OrderRepository $orderRepository)
     {
-        return $this->render('admin/gestion_stock/expediee.html.twig', [
+        return $this->render('admin/gestionStock/expediee.html.twig', [
             'commande_expediee' => $orderRepository->findBy(['orderStatus'=> 3])
         ]);
     }

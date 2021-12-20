@@ -35,7 +35,6 @@ class ContactController extends AbstractController
                 ),
                 'text/html'
             );
-            // dd($contact);
             $mailer->send($message);
             $this->addFlash('contact_sent', 'Votre message a bien été envoyé');
         }

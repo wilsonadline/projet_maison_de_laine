@@ -37,11 +37,6 @@ class AdressesType extends AbstractType
             ->add('ville', TextType::class,[
                 'label' => 'Ville'
             ])
-           
-            // ->add('Suivant', SubmitType::class,[
-            //     'attr' => ['class' => 'btn btn-sm border border-dark']
-            // ])
-
         ;
     }
 

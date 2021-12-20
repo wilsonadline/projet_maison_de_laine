@@ -2,48 +2,34 @@
 {% block title %} Laines | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-{# {{dump(categorie_mercerie)}} #}
-               
-{# <h5>{{article.categories.id}}</h5> #}
-
-        <h1 class="text-center mt-5"> {{categorie.nom}}</h1> 
-<section class = "m-5 d-flex flex-wrap justify-content-center justify-content-evenly">
-
-    {% for produit in articles %}
-
-        <div class="card m-5" style="width: 18rem;">
-            <img src="{{ vich_uploader_asset(produit, 'imageFile')}}" class="card-img-top" alt=" Images de l'article | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
-            <div class="card-body d-flex justify-content-center flex-column">
-                <h5 class="card-title">{{produit.article}}</h5>
-                <p class="card-text text-center">{{produit.couleur}}</p>
-                <p class="card-text text-center">{{produit.description}}.</p>
-                <p class="card-text text-center">{{produit.prix }}€</p>
-
-             </div>
-            <div class = " d-flex justify-content-center flex-column align-items-center">
-                <a href="{{path ('app_items_mercerie', {id : produit.id})}}" class="btn btn-sm btn-light border">Voir l'article</a>
-                {% if produit.stock > 0 %}
-                <a href="{{path ('panier_ajout', {id : produit.id})}}" class="mt-3 btn btn-sm btn-light border"><i class="fas fa-cart-arrow-down mx-3"></i>Ajouter au panier</a>
-                {% else %}
-                <p class="card-text text-center">Article non disponible</p>
-                {% endif %}
-
-
-
-
+    <h1 class="text-center mt-5"> {{categorie.nom}}</h1> 
+    <section class = "m-5 d-flex flex-wrap justify-content-center justify-content-evenly">
+        {% for produit in articles %}
+            <div class="card m-5" style="width: 18rem;">
+                <img src="{{ vich_uploader_asset(produit, 'imageFile')}}" class="card-img-top" style="height: 429px" alt=" Images de l'article | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
+                <div class="card-body d-flex justify-content-center flex-column">
+                        <h5 class="card-title text-start  px-0 py-2 mb-0 ">{{produit.article}}</h5>
+                 <div class="d-flex justify-content-between">
+                    <p class="card-text px-0 py-2 mb-0">{{produit.couleur}}</p>
+                        <p class="card-text px-0 py-2 mb-0">{{produit.prix }}€</p>
+                    </div>
+                    {# <h5 class="card-title">{{produit.article}}</h5> #}
+                    {# <p class="card-text text-center">{{produit.description}}.</p> #}
+                    {# <p class="card-text text-center">{{produit.prix }}€</p> #}
+                </div>
+                <div class = " d-flex justify-content-center flex-column align-items-center">
+                    <a href="{{path ('app_items_mercerie', {id : produit.id})}}" class="btn btn-sm btn-light " style="width : auto !important">Voir l'article</a>
+                    {% if produit.stock > 0 %}
+                    <a href="{{path ('panier_ajout', {id : produit.id})}}" class=" btn btn-sm btn-light  my-3" style="width : auto !important"><i class="fas fa-cart-arrow-down mx-3  "></i>Ajouter au panier</a>
+                    {% else %}
+                    <p class="card-text text-center my-3" >Produit victime de son succès</p>
+                    {% endif %}
+                </div>
             </div>
-        </div>
-    {% endfor %} 
-</section>
-
+        {% endfor %} 
+    </section>
     <div class = " d-flex justify-content-start ">
-        <a href="{{path ('app_home')}}" class="btn btn-sm btn-light border">Home</a>
+        <a href="{{path ('app_home')}}" class="btn btn-sm btn-light ">Home</a>
     </div>
-
-
 {% endblock %}
 
-
-
-
-{# style="border: 1px solid pink" #}

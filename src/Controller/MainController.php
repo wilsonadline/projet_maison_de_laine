@@ -20,12 +20,9 @@ class MainController extends AbstractController
         $categorieByMercerie = $categories->findBy(['typeCategories'=>1 ]);
         $categorieByTissu = $categories->findBy(['typeCategories' =>2]);
 
-
-
         return $this->render('main/index.html.twig', [
             'categorieByMercerie' => $categorieByMercerie,
             'categorieByTissu' => $categorieByTissu
-            // 'form_recherche' => $form_recherche->createView()
         ]);
     }
 
@@ -40,8 +37,6 @@ class MainController extends AbstractController
             'categorie' => $categorie
         ]);
     }
-
-
 
     #[Route('/mention-legales', name: 'mentions_legales')]
     public function mentions_legales(): Response

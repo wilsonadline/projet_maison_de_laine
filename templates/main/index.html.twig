@@ -3,48 +3,48 @@
 {% block title %}Home | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-  <div class="row p-0">
+  <div class="p-0">
      {# Categorie Mercerie #}
     <section class="d-flex flex-column align-items-center my-5  px-0 " style="width : 100%">
       <h1 class="title_container ">Mercerie</h1>
-      <p class="text-start" style="width : 60rem">
+      <p class=" text-center col-xxl-10 col-lg-10  d-none d-md-none d-xl-block d-xxl-block " >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
         voluptatum temporibus nihil maxime natus? Laborum aspernatur Lorem ipsum
         dolor sit amet consectetur adipisicing elit. Error voluptatum temporibus
         nihil maxime natus?
       </p>  
-      <section class="row p-0 col-12 justify-content-around  " id="section_mercerie" >
+      <section class=" row p-0 justify-content-around d-flex" id="section_mercerie" >
         {% for mercerie in categorieByMercerie %}
-          <div  class ="card-hover d-flex my-4  align-items-center flex-column justify-content-center col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-10  p-0"  style="width: 18rem; ">
+        <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-10 d-flex flex-column align-items-center justify-content-around card-hover ">
+          <a href="{{path ('app_articles_mercerie', {id: mercerie.id} )}}"  class =" d-flex my-4  align-items-center flex-column justify-content-center col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-10  p-0"  style="width: 18rem; ">
             <img src="{{vich_uploader_asset(mercerie , 'imageFile')}}" class="card-img-top rounded-3"  alt=" Image Mercerie | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
-            <a href="{{path ('app_articles_mercerie', {id: mercerie.id} )}}"  class="btn btn-light my-4" style="width: 15rem"> {{ mercerie.nom}} </a>
-          </div>
+            <a  href="{{path ('app_articles_mercerie', {id: mercerie.id} )}}" class="btn btn-light my-4" style="width: 15rem"> {{ mercerie.nom}} </a>
+          </a>
+        </div>
         {% endfor %}
       </section> 
-      {# </div> #}
-
     </section> 
     {# End Categorie Mercerie #}
 
     {# Categorie Tissu #}
     <section class="d-flex flex-column align-items-center my-5  px-0 " style="width : 100%">
       <h1 class="title_container">Les Tissus Traditionnelles</h1>
-       <p class="text-start" style="width : 60rem">
+       <p class="text-center col-xxl-10 col-lg-10 d-none d-md-none d-xl-block d-xxl-block " >
         Nous vous proposons une variété de tenues traditionnelles, venant d'Inde, d'Afrique et du Japon. Elles sont prêt à porter. 
         <br> Selon vos envie, il est aussi possible de faire du sur mesure.</p>
 
-      <section class="row p-0 col-12 justify-content-around  " id="section_mercerie" >
+      <section class=" row  p-0  justify-content-around  d-flex" id="section_mercerie" >
         {% for  tissu in categorieByTissu %}
-          <div  class ="card-hover d-flex my-4  align-items-center flex-column justify-content-center col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-10 p-0 "  style="width: 18rem; ">
-            <img src="{{vich_uploader_asset(tissu , 'imageFile')}}" class="card-img-top rounded-3" alt="Image Tissu | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
-            <a href="{{path ('app_articles_mercerie', {id: tissu.id} )}}"  class="btn btn-light my-4" style="width: 10rem;">{{ tissu.nom}}</a>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-10  d-flex flex-column align-items-center justify-content-around card-hover ">
+            <a href="{{path ('app_articles_mercerie', {id: tissu.id} )}}" class =" d-flex my-4  align-items-center flex-column justify-content-center  p-0 "  style="width: 18rem; ">
+              <img src="{{vich_uploader_asset(tissu , 'imageFile')}}" class="card-img-top rounded-3" alt="Image Tissu | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
+              <a href="{{path ('app_articles_mercerie', {id: tissu.id} )}}" class="btn btn-light my-4" style="width: 15rem;">{{ tissu.nom}}</a>
+            </a>
           </div>
         {% endfor %}
-      </section> 
+      </section>
     </section> 
     {# End Categorie Tissu #}
   </div>
-
-
 {% endblock %}
 

@@ -3,21 +3,25 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'lato';
+  
 }
 
 body{
   display: flex;
   flex-direction: column;
   height: 100vh;
+  /* width: 100%; */
+  display: flex;
+}
+.container{
+  flex-grow: 1;
 }
 
 .form-group{
   margin-bottom: 1rem;
 }
 
-
-
- /* Les Fonctionnalités */
+/* Les Fonctionnalités */
 .nav-item {
   cursor: pointer;
   font-size: 20px;
@@ -25,12 +29,20 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
-.nav-item a,
-.nav-item i {
-  transition: all 0.4s ease; /*effet lent */
-}
+/* .test{
+  border : 1px indigo solid;
+  color: red !important; */
+  
+  /* } */
+/*   
+  .nav-item a,
+  .nav-item i {
+    transition: all 0.1s ease; /*effet lent */
+    /* border : 1px indigo solid; */
+/* } */ 
 
 .fas {
   font-size: 25px;
@@ -50,7 +62,8 @@ h5{
   /* border: 1px solid pink; */
   display: block;
   text-align: center;
-  color: #7A0B0B;
+  color: rgba(174,64,233,1);
+  
 }
 
 ::placeholder{
@@ -70,7 +83,6 @@ a {
   margin-right: 30px;
 }
 
-
 .navbar {
   border: 1px solid transparent;
   border-top: transparent;
@@ -80,7 +92,6 @@ a {
   -webkit-border-image: -webkit-linear-gradient( 25deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%, );
   border-image-slice: 1;
 }
-
 
 /* Footer */
 footer {
@@ -137,11 +148,13 @@ footer {
   background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+
 }
 
 .btn{
   font-family: Pacifico, lato ;
-  font-size: 15px;
+  font-size: 20px;
   width: 7rem !important;
   background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
@@ -153,9 +166,12 @@ footer {
 }
 
 .btn:hover{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%)  !important;
+  -webkit-background-clip : text ;
+  -webkit-text-fill-color: white;
+  transform: scale(1.05);
+  transition: all 0.4s;
+
   /* color: white; */
 
 }
@@ -191,12 +207,32 @@ h1{
   box-shadow:5px 5px 15px 5px #737373;
 }
 
-
 .picto{
   background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
 }
+
+#projet {
+  list-style: none;
+  color: red;
+  animation : flash 1.4s linear infinite;
+}
+@keyframes flash{
+  0% {
+    color: #ffffff;
+    text-shadow: none;
+  }
+  90%{
+    color: #ff0000;
+    text-shadow: none;
+  }
+  100%{
+    color: #ff0000 ;
+    text-shadow: 0 0 7px #ff0000, 0 0 50px #ff0000
+  }
+}
+
 /* background: rgb(105,133,243);
 background: linear-gradient(90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%); */

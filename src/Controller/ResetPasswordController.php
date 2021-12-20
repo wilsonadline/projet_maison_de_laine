@@ -95,7 +95,6 @@ class ResetPasswordController extends AbstractController
                 Un problème est survenu lors de la validation de votre demande de réinitialisation - %s',
                 $e->getReason()
             ));
-            dd($e);
             return $this->redirectToRoute('app_forgot_password_request');
         }
 

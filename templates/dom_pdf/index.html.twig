@@ -4,39 +4,44 @@
     <h3>Votre Facture  pour votre commande n°{{ facture.id}} </h3>
     <table class="table">
         <tbody >
-                <tr class="">
-                    <td>
-                        <h4 style="color: rgba(105,133,243,1)"> Adresse de Livraison :</h4>
-                         <p>
-                            <span>Nom : {{ facture.adresse.nom }}</span><br> <span  class="mx-3">Prénom {{ facture.adresse.prenom }}</span><br>
-                            <span> Adresse : {{ facture.adresse.adresse  }}</span><br>
-                            <span  class=" mx-3">{{ facture.adresse.cp }}</span> &nbsp;<span  class="mx-3">{{ facture.adresse.ville }}</span><br>
-                            <span>Tel : {{ facture.adresse.tel  }}</span><br><span  class="mx-3">Email : {{ facture.adresse.email }}</span>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+            <tr class="">
+                <td>
+                    <h4 style="color: rgba(105,133,243,1)"> Adresse de Livraison :</h4>
+                    <p>
+                        <span>Nom : {{ facture.adresse.nom }}</span><br> <span  class="mx-3"> Prénom : {{ facture.adresse.prenom }}</span><br>
+                        <span> Adresse : {{ facture.adresse.adresse  }}</span><br>
+                        <span  class=" mx-3">{{ facture.adresse.cp }}</span> &nbsp;<span  class="mx-3">{{ facture.adresse.ville }}</span><br>
+                        <span>Tel : {{ facture.adresse.tel  }}</span><br><span  class="mx-3">Email : {{ facture.adresse.email }}</span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 style="color: rgba(105,133,243,1)"> Livraison :</h4>
+                    <p>
+                        <span>Vous serez livré par {{ facture.delivery.options }}</span><br> <span  class="mx-3"> Le : {{ "now"|date_modify("+#{facture.delivery.delai} day")|date("d/m/Y")}}</span><br>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <h4 style="color: rgba(105,133,243,1)" >Vos articles : </h4>
-                   
-                        {% for factureOrderline in facture.orderLines %}
-                            <ul>
-                                <li>
-                                    Article : {{ factureOrderline.article  }}<br> 
-                                    Prix : {{ factureOrderline.prix  }}€<br>
-                                    Quantite : {{ factureOrderline.quantite}}
-                                </li>
-                            </ul>
-                        {% endfor %}
-                    </td>
-                </tr>   
-                    {# Total #}
-                    <td >
-                        <h4 style="color: rgba(105,133,243,1)" > Total :
-                            <span  class="mx-3">{{ facture.total }}€</span>
-                        </h4>
-                    </td>
-                
+                    {% for factureOrderline in facture.orderLines %}
+                        <ul>
+                            <li>
+                                Article : {{ factureOrderline.article  }}<br> 
+                                Prix : {{ factureOrderline.prix  }}€<br>
+                                Quantite : {{ factureOrderline.quantite}}
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </td>
+            </tr>   
+            <td >
+                <h3 style="color: rgba(105,133,243,1)" > Total :
+                    <span  class="mx-3">{{ facture.total }}€</span>
+                </h3>
+            </td>
         </tbody>
     </table>
 {% endblock %}

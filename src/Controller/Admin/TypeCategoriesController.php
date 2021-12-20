@@ -43,7 +43,6 @@ class TypeCategoriesController extends AbstractController
     #[Route("/typeCategories/modifier/{id}", name: "modifier")]
     public function typeCategoriesModifier($id , Request $request): Response
     {
-
         $typeCategoriesModifier = $this->getDoctrine()->getRepository(TypeCategories::class)->find($id);
         $typeCategoriesModifier_form = $this->createForm(TypeCategoriesType::class, $typeCategoriesModifier);
         $typeCategoriesModifier_form->handleRequest($request);
@@ -68,7 +67,6 @@ class TypeCategoriesController extends AbstractController
     #[Route("/typeCategories/delete/{id}", name: "delete")]
     public function typeCategoriesDelete($id): Response
     {
-
         $typeCategoriesDelete = $this->getDoctrine()->getRepository(TypeCategories::class)->find($id);
 
         $em = $this->getDoctrine()->getManager();
@@ -76,7 +74,7 @@ class TypeCategoriesController extends AbstractController
         $em->flush();
         
         $this->addFlash('typeCategoriesDelete', 'Le type de catégorie a bien été supprimé ! ');
-            return $this->redirectToRoute('type_categories_list');
+        return $this->redirectToRoute('type_categories_list');
     }
 
     #[Route("/typeCategories/list", name: "list")]

@@ -84,20 +84,12 @@ class Articles
      */
     private $orderLines;
 
+   
     public function __construct()
     {
         $this->orderLines = new ArrayCollection();
     }
 
-    // /**
-    //  * @var StripeService
-    //  */
-    // protected $stripeService;
-
-    // public function __construct( StripeService $stripeService)
-    // {
-    //         $this->stripeService = $stripeService;
-    // }
 
     public function getId(): ?int
     {
@@ -258,5 +250,7 @@ class Articles
 
         return $this;
     }
+
+   
 
 }
