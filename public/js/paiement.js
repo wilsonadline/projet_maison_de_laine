@@ -3,9 +3,6 @@ window.onload = () => {
     // Variables
     let stripe = Stripe('pk_test_51JlA15DnhjURuLLqIC7kBQg2Cu3RYuEUUYmEUxtTiX4whUfNbHfazvmqbyoiBRHdb6xXDFvrWfXJD6nNHwL1FmdP009MV0I6wR')
     let elements = stripe.elements()
-    // let redirect = "www.google.com"
-  
-
 
     //  objet de la page
     let cardHolderName = document.getElementById("cardholder-name")
@@ -19,7 +16,6 @@ window.onload = () => {
     // on gere la saisie
     card.addEventListener("change", (event) => {
         let displayError = document.getElementById("card-errors")
-        // console.log("test"); 
         if(event.error){
             displayError.textContent = event.error.message;
         }else{
@@ -54,41 +50,19 @@ window.onload = () => {
                         type: "GET",
                         url: "/validateOrder/"+ adresse_id + "/" + deliveryMode,
                         success: function(data){
-                            console.log(data);
                             document.location.href = "/dom/pdf/"+ data;
                             $.ajax({
                                 type: "GET",
                                 url: "/endSessoin/",
                                 success: function(data){
-                                    window.location.href = "/"
-                                    console.log('green');
+                                    window.location.href = "/succes/"
                                     }
                                 });
-            
                         }
                     });
-
                 }
             }
         })
     })
 
 }
-
-// let total = document.getElementById("totalTtc");
-// // let colissimo = document.getElementById("colissimo");
-
-// console.log(total);
-
-
-// $('#colissimo').click(function(){
-//     if($(this).is(":checked")){
-        
-
-//     // }
-//      }
-// //     ($(this).val() + $('#totalTtc').val());
-    
-// // //  $('#total').val() + 
-// })
-

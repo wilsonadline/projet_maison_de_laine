@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
-
+{% block css %} <link rel="stylesheet" href="{{asset ('../css/contact.css')}}" />{% endblock %} 
 {% block title %}Profil de {{app.user.firstName}} {{app.user.name|upper}} | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-    <div class="row m-0" >
+    <div class="row m-0">
         <h1 class="text-center my-5"> Votre profil de {{app.user.firstName}} {{app.user.name|upper}}</h1>
         {% for updateProfil in app.flashes('update') %}
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -11,25 +11,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
             </div>
         {% endfor %}
-        <div class="d-flex mb-5 justify-content-center justify-content-xxl-between justify-content-xl-between " >
-            <img src="{{asset ('images/la_maison_de_laine_time-for-change-pexels-alexas-fotos-2277784.jpg')}}" alt="Image Profil | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"  class="p-0 rounded-3 col-xl-5  col-sm-6  col-12 d-none d-md-none d-xl-block d-xxl-block"  style="height : 500px ; width : 40%">
-            <div class="d-flex flex-column col-xl-6 col-md-9 col-12 ">
-                <div class=" mt-5 d-flex  justify-content-between ">
-                    <label class="m-3 ">Votre nom : </label>
-                    <p class="m-3 ">{{app.user.name}}</p>
+        <div class="d-flex mb-5 justify-content-center justify-content-xxl-between justify-content-xl-between">
+            <img src="{{asset ('images/la_maison_de_laine_time-for-change-pexels-alexas-fotos-2277784.jpg')}}" alt="Image Profil | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono" class="shadow p-0 rounded-3 col-xl-5 col-sm-6 col-12 d-none d-md-none d-xl-block d-xxl-block" style="height : 500px ; width : 40%">
+            <div class="d-flex flex-column col-xl-6 col-md-9 col-12">
+                <div class="mt-5 d-flex justify-content-between">
+                    <label class="m-3">Votre nom : </label>
+                    <p class="m-3">{{app.user.name}}</p>
                 </div>
-                <div class=" d-flex justify-content-between ">
+                <div class="d-flex justify-content-between">
                     <label class="m-3">Votre prénom : </label>
                     <p class="m-3">{{app.user.firstName}}</p>
                 </div>
-                <div class=" d-flex justify-content-between ">
+                <div class="d-flex justify-content-between">
                     <label class="m-3">Votre email : </label>
                     <p class="m-3">{{app.user.email}}</p>
                 </div>
-                <div class="mt-2  d-flex flex-column justify-content-end">
-                    <a  href="{{path ('app_profil_change')}}"class=" my-3 btn  btn-light  btn-sm"> Modifier le profil</a>
-                    <a  href="{{ path ("app_pass_change", {id : app.user.id})}}"class=" my-3 btn btn-light  btn-sm"> Modifier le mot de passe</a>
-                    <a  href="{{ path ("app_pass_delete", {id : app.user.id})}}"class="my-3 btn  btn-light btn-sm" onclick ="return confirm('Etes-vous sûr de vouloir supprimer votre compte ?')"> Supprimer votre compte</a>
+                <div class="mt-2 d-flex flex-column justify-content-end">
+                    <a href="{{path ('app_profil_change')}}" class="my-3 btn btn-light btn-sm"  style="width: auto !important">Modifier le profil</a>
+                    <a href="{{path ("app_pass_change", {id : app.user.id})}}"class="my-3 btn btn-light  btn-sm" style="width: auto !important">Modifier le mot de passe</a>
+                    <a href="{{path ("app_pass_delete", {id : app.user.id})}}"class="my-3 btn btn-light btn-sm" style="width: auto !important" onclick="return confirm('Etes-vous sûr de vouloir supprimer votre compte ?')">Supprimer votre compte</a>
                 </div>
             </div>
          </div>
@@ -44,8 +44,8 @@
             <a href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-2x"></i></a>
         </article>
         <article class="mb-3">
-            <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
-            <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
+            <a  href="#"  id="copyright">Copyright © 2021</a> <span class="pipe"> |</span> 
+            <a  id="copyright" href="#">La Maison de Laine</a>  <span class="pipe"> |</span> 
             <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
         </article>
     </footer>

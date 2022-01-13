@@ -8,25 +8,25 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=OrderStatusRepository::class)
- */
+* @ORM\Entity(repositoryClass=OrderStatusRepository::class)
+*/
 class OrderStatus
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    * @ORM\Id
+    * @ORM\GeneratedValue
+    * @ORM\Column(type="integer")
+    */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255)
+    */
     private $status;
 
     /**
-     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="orderStatus")
-     */
+    * @ORM\OneToMany(targetEntity=Order::class, mappedBy="orderStatus")
+    */
     private $orders;
 
     public function __construct()
@@ -52,8 +52,8 @@ class OrderStatus
     }
 
     /**
-     * @return Collection|Order[]
-     */
+    * @return Collection|Order[]
+    */
     public function getOrders(): Collection
     {
         return $this->orders;

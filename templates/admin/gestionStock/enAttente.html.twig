@@ -1,58 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GestionStockController!{% endblock %}
+{% block title %}Commandes en attentes | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono!{% endblock %}
+
 
 {% block body %}
    <table class="table my-5">
-        <h1 class="text-center mt-5"> En Attentes</h1>
+        <h1 class="text-center mt-5">En Attentes</h1>
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Status </th>
+                <th scope="col">Status</th>
                 <th scope="col">Fiche Adresse</th>
                 <th scope="col">Fiche Commande</th>
                 <th scope="col">Total Commande</th>
-                <th scope="col"> Created Time </th>
-                <th scope="col"> Updated Time </th>
-                <th scope="col"> Change Status </th>
+                <th scope="col">Created Time</th>
+                <th scope="col">Updated Time</th>
+                <th scope="col">Change Status</th>
             </tr>
         </thead>
         <tbody>
-            {% for en_attente in cmdEnAttente|sort|reverse  %}
+            {% for en_attente in cmdEnAttente|sort|reverse %}
                 <tr>
-                    <th scope="row">{{ en_attente.id}}</th>
-                    <td>{{ en_attente.orderStatus.status}}</td>
+                    <th scope="row">{{en_attente.id}}</th>
+                    <td>{{en_attente.orderStatus.status}}</td>
                     <td>
                         <p>
-                            <span>{{ en_attente.adresse.nom }}</span> <span  class="mx-3">{{ en_attente.adresse.prenom }}</span>
+                            <span>{{en_attente.adresse.nom}}</span><span class="mx-3">{{en_attente.adresse.prenom}}</span>
                         </p>
-                        <p >
-                            <span>{{ en_attente.adresse.adresse  }}</span> <span  class=" mx-3    border ">{{ en_attente.adresse.ville }}</span><span  class="mx-3">{{ en_attente.adresse.cp }}</span>
+                        <p>
+                            <span>{{en_attente.adresse.adresse}}</span><span class="mx-3">{{en_attente.adresse.ville}}</span><span class="mx-3">{{en_attente.adresse.cp}}</span>
                         </p>
                         <p class="mb-0">
-                            <span>{{ en_attente.adresse.tel  }}</span> <span  class="mx-3">{{ en_attente.adresse.email }}</span></span>
+                            <span>{{en_attente.adresse.tel}}</span> <span class="mx-3">{{en_attente.adresse.email}}</span>
                         </p>
                     </td>
-                    <td class="">
+                    <td>
                         {% for orderen_attenteOrderline in en_attente.orderLines %}
                             <ul>
                                 <li>
-                                    Article : {{ orderen_attenteOrderline.article  }}<br> 
-                                    Prix : {{orderen_attenteOrderline.prix  }}€<br>
+                                    Article : {{orderen_attenteOrderline.article}}<br> 
+                                    Prix : {{orderen_attenteOrderline.prix}}€<br>
                                     Quantite : {{orderen_attenteOrderline.quantite}}
                                 </li>
                             </ul>
                         {% endfor %}
                     </td>
-                    <td >
-                        <p >
-                            <span  class="mx-3">{{ en_attente.total }}€</span>
+                    <td>
+                        <p>
+                            <span class="mx-3">{{en_attente.total}}€</span>
                         </p>
                     </td>
-                    <td scope="2">{{ en_attente.createdAt|date('d/m/Y à H:i:s')}}</td>
-                    <td scope="2">{{ en_attente.updatedAt|date('d/m/Y à H:i:s')}}</td>
+                    <td scope="2">{{en_attente.createdAt|date('d/m/Y à H:i:s')}}</td>
+                    <td scope="2">{{en_attente.updatedAt|date('d/m/Y à H:i:s')}}</td>
                     <td>
-                        <a class="btn btn-light" href="{{path ("gestion_stock_change_status" , {id : en_attente.id})}}">Changer</a>
+                        <a class="btn btn-light" href="{{path ("gestion_stock_change_status", {id : en_attente.id})}}">Changer</a>
                     </td>   
                 </tr>
             {% endfor  %}

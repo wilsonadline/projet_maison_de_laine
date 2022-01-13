@@ -68,9 +68,10 @@ class ArticlesController extends AbstractController
     public function articlesDelete($id, EntityManagerInterface $em): Response
     {
         $articlesDelete = $this->getDoctrine()->getRepository(Articles::class)->find($id);
-
+        
         $em->remove($articlesDelete);
         $em->flush();
+        dd("ok");
         
         $this->addFlash('articlesDelete', 'L \'article a bien été supprimé !');
         return $this->redirectToRoute('articles_list');
@@ -82,5 +83,16 @@ class ArticlesController extends AbstractController
         return $this->render('admin/articles/list.html.twig', [
             'articlesList' => $articlesList->findAll()
         ]);
+    }
+
+    #[Route("/articles/activer/{id}", name: "activer")]
+    public function activer(Articles $articles, EntityManagerInterface $em): Response
+    {
+        $articles->setActive(($articles->getActive())?false:true);
+
+        $em->persist($articles);
+        $em->flush();
+
+        return new Response("true"); 
     }
 }

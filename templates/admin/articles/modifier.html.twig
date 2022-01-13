@@ -4,21 +4,22 @@
 {% block title %}Ajouter type de catégorie | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-    <div  class="mt-1 "> 
-        <h1 class="text-center mt-4">Ajouter un article</h1>
-        {{ form_start(articlesModifier) }}
-                {{ form_row(articlesModifier.article) }}
-            {{ form_row(articlesModifier.couleur) }}
-            {{ form_row(articlesModifier.description) }}
-            {{ form_row(articlesModifier.prix) }}
-            {{ form_row(articlesModifier.stock) }}
-            {{ form_row(articlesModifier.categories) }}
-            {{ form_row(articlesModifier.imageFile) }}
+    <div class="mt-1 d-flex justify-content-center align-items-center flex-column"> 
+        <h1 class="text-center mt-4">Modifier l'article</h1>
+        <div class="col-7">
+            {{form_start(articlesModifier)}}
+                {{form_row(articlesModifier.article)}}
+                {{form_row(articlesModifier.couleur)}}
+                {{form_row(articlesModifier.description)}}
+                {{form_row(articlesModifier.prix)}}
+                {{form_row(articlesModifier.stock)}}
+                {{form_row(articlesModifier.categories)}}
+                {{form_row(articlesModifier.imageFile)}}
 
-            <div class="d-flex justify-content-end mb-5">
-                <button type="submit" class="btn btn-light">Modifier</button>
-            </div>
-        {{ form_end(articlesModifier)}}
+                <div class="d-flex justify-content-end mb-5">
+                    <button type="submit" class="btn btn-light">Modifier</button>
+                </div>
+            {{form_end(articlesModifier)}}
+        </div>
     </div>
 {% endblock %}
-

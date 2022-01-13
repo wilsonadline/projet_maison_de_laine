@@ -15,14 +15,12 @@ class StatusType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('id', hiddenType::class 
-            )
-
-            ->add('status', EntityType::class , [
+            ->add('id', hiddenType::class)
+            ->add('status', EntityType::class, [
                 'class'=> OrderStatus::class,
-                'choice_label'=> 'status',
+                'choice_label'=> 'status'
             ])
-            ->add('orders', HiddenType::class )
+            ->add('orders', HiddenType::class)
             ->add('changer', SubmitType::class)
         ;
     }

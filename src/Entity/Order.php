@@ -8,68 +8,55 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=OrderRepository::class)
- * @ORM\Table(name="`order`")
- */
+* @ORM\Entity(repositoryClass=OrderRepository::class)
+* @ORM\Table(name="`order`")
+*/
 class Order
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    * @ORM\Id
+    * @ORM\GeneratedValue
+    * @ORM\Column(type="integer")
+    */
     private $id;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
+    * @ORM\Column(type="datetime", nullable=true)
+    */
     private $createdAt;
 
     
     /**
-     * @ORM\OneToMany(targetEntity=OrderLine::class, mappedBy="orders")
-     */
+    * @ORM\OneToMany(targetEntity=OrderLine::class, mappedBy="orders")
+    */
     private $orderLines;
 
     /**
-     * @ORM\ManyToOne(targetEntity=OrderStatus::class, inversedBy="orders")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    * @ORM\ManyToOne(targetEntity=OrderStatus::class, inversedBy="orders")
+    * @ORM\JoinColumn(nullable=false)
+    */
     private $orderStatus;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Adresses::class, inversedBy="orders")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    * @ORM\ManyToOne(targetEntity=Adresses::class, inversedBy="orders")
+    * @ORM\JoinColumn(nullable=false)
+    */
     private $adresse;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
+    * @ORM\Column(type="datetime", nullable=true)
+    */
     private $updatedAt;
 
-    // /**
-    //  * @ORM\OneToOne(targetEntity=Delivry::class, cascade={"persist", "remove"})
-    //  */
-    // private $delivry;
-
     /**
-     * @ORM\Column(type="float", nullable=true)
-     */
+    * @ORM\Column(type="float", nullable=true)
+    */
     private $total;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Delivry::class, inversedBy="orders")
-     */
+    * @ORM\ManyToOne(targetEntity=Delivry::class, inversedBy="orders")
+    */
     private $delivery;
-
-    // /**
-    //  * @ORM\ManyToOne(targetEntity=Delivry::class, inversedBy="orders")
-    //  * @ORM\JoinColumn(nullable=true)
-    //  */
-    // private $Delivery;
-
-
 
     public function __construct()
     {
@@ -94,8 +81,8 @@ class Order
     }
     
     /**
-     * @return Collection|OrderLine[]
-     */
+    * @return Collection|OrderLine[]
+    */
     public function getOrderLines(): Collection
     {
         return $this->orderLines;
@@ -179,36 +166,12 @@ class Order
         return $this;
     }
 
-    // public function getDelivry(): ?Delivry
-    // {
-    //     return $this->delivry;
-    // }
-
-    // public function setDelivry(?Delivry $delivry): self
-    // {
-    //     $this->delivry = $delivry;
-
-    //     return $this;
-    // }
-
-    public function setTotal(?float $total): self
+     public function setTotal(?float $total): self
     {
         $this->total = $total;
 
         return $this;
     }
-
-    // public function getDelivery(): ?Delivry
-    // {
-    //     return $this->Delivery;
-    // }
-
-    // public function setDelivery(?Delivry $Delivery): self
-    // {
-    //     $this->Delivery = $Delivery;
-
-    //     return $this;
-    // }
 
     public function getDelivery(): ?Delivry
     {

@@ -2,76 +2,71 @@
 
 namespace App\Entity;
 
-use App\Repository\AdressesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=AdressesRepository::class)
- */
+* @ORM\Entity(repositoryClass=AdressesRepository::class)
+*/
 class Adresses
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    * @ORM\Id
+    * @ORM\GeneratedValue
+    * @ORM\Column(type="integer")
+    */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255)
+    */
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255)
+    */
     private $prenom;
 
     /**
-     * @ORM\Column(type="integer")
-     */
+    * @ORM\Column(type="integer")
+    */
     private $tel;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255)
+    */
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255)
+    */
     private $cp;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255)
+    */
     private $ville;
-
-   
     
     /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
+    * @ORM\Column(type="datetime", nullable=true)
+    */
     private $createdAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255)
+    */
     private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="adresse")
-     */
+    * @ORM\OneToMany(targetEntity=Order::class, mappedBy="adresse")
+    */
     private $orders;
 
     public function __construct()
     {
         $this->orders = new ArrayCollection();
     }
-
-
 
     public function getId(): ?int
     {
@@ -162,8 +157,6 @@ class Adresses
         return $this;
     }
 
-
-
     public function getTypeAd(): ?string
     {
         return $this->typeAd;
@@ -189,8 +182,8 @@ class Adresses
     }
 
     /**
-     * @return Collection|Order[]
-     */
+    * @return Collection|Order[]
+    */
     public function getOrders(): Collection
     {
         return $this->orders;

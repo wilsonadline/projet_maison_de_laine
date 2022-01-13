@@ -8,35 +8,35 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TypeCategoriesRepository::class)
- */
+* @ORM\Entity(repositoryClass=TypeCategoriesRepository::class)
+*/
 class TypeCategories
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    * @ORM\Id
+    * @ORM\GeneratedValue
+    * @ORM\Column(type="integer")
+    */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255)
+    */
     private $nom;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
+    * @ORM\Column(type="datetime")
+    */
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
+    * @ORM\Column(type="datetime", nullable=true)
+    */
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Categories::class, mappedBy="typeCategories")
-     */
+    * @ORM\OneToMany(targetEntity=Categories::class, mappedBy="typeCategories")
+    */
     private $categories;
 
     public function __construct()
@@ -86,8 +86,8 @@ class TypeCategories
     }
 
     /**
-     * @return Collection|Categories[]
-     */
+    * @return Collection|Categories[]
+    */
     public function getCategories(): Collection
     {
         return $this->categories;

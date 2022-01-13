@@ -8,41 +8,36 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=DelivryRepository::class)
- */
+* @ORM\Entity(repositoryClass=DelivryRepository::class)
+*/
 class Delivry
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    * @ORM\Id
+    * @ORM\GeneratedValue
+    * @ORM\Column(type="integer")
+    */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255)
+    */
     private $options;
 
     /**
-     * @ORM\Column(type="float")
-     */
+    * @ORM\Column(type="float")
+    */
     private $price;
 
     /**
-     * @ORM\Column(type="integer")
-     */
+    * @ORM\Column(type="integer")
+    */
     private $delai;
 
     /**
-     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="delivery")
-     */
+    * @ORM\OneToMany(targetEntity=Order::class, mappedBy="delivery")
+    */
     private $orders;
-
-    // /**
-    //  * @ORM\OneToMany(targetEntity=Order::class, mappedBy="Delivery")
-    //  */
-    // private $orders;
 
     public function __construct()
     {
@@ -90,39 +85,9 @@ class Delivry
         return $this;
     }
 
-    // /**
-    //  * @return Collection|Order[]
-    //  */
-    // public function getOrders(): Collection
-    // {
-    //     return $this->orders;
-    // }
-
-    // public function addOrder(Order $order): self
-    // {
-    //     if (!$this->orders->contains($order)) {
-    //         $this->orders[] = $order;
-    //         $order->setDelivery($this);
-    //     }
-
-    //     return $this;
-    // }
-
-    // public function removeOrder(Order $order): self
-    // {
-    //     if ($this->orders->removeElement($order)) {
-    //         // set the owning side to null (unless already changed)
-    //         if ($order->getDelivery() === $this) {
-    //             $order->setDelivery(null);
-    //         }
-    //     }
-
-    //     return $this;
-    // }
-
     /**
-     * @return Collection|Order[]
-     */
+    * @return Collection|Order[]
+    */
     public function getOrders(): Collection
     {
         return $this->orders;
@@ -149,5 +114,4 @@ class Delivry
 
         return $this;
     }
-
 }

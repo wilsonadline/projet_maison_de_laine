@@ -21,16 +21,10 @@ class CategoriesType extends AbstractType
                 'class'=> TypeCategories::class,
                 'label'=> 'Type de catégories',
                 'choice_label'=> 'nom',
-                // 'mapped'=>false
             ])
             ->add('imageFile', FileType::class, [
                 'label' => 'Choisissez une image'
-            ])
-
-
-            // ->add('createdAt')
-            // ->add('updatedAt')
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

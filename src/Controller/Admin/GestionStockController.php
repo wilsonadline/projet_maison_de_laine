@@ -11,8 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/gestionstock", name="gestion_stock_")
- */
+* @Route("/admin/gestionstock", name="gestion_stock_")
+*/
 class GestionStockController extends AbstractController
 {
     #[Route('/list/commandes', name: 'list_des_commandes')]
@@ -26,18 +26,19 @@ class GestionStockController extends AbstractController
     }
 
     /**
-     * @Route("/change/status/{id}" , name="change_status")
-     */
+    * @Route("/change/status/{id}" , name="change_status")
+    */
     public function changeStatus($id, Request $request, EntityManagerInterface $em, OrderRepository $orderRepository)
     {
         $status = $orderRepository->find($id);  
         
-        $status_option = $this->createForm(OrderType::class , $status) ;
+        $status_option = $this->createForm(OrderType::class,$status) ;
         $status_option->handleRequest($request);
 
         if($status_option->isSubmitted() && $status_option->isValid())
         {
             $status->setUpdatedAt(new \DateTime());
+
             $em->persist($status);
             $em->flush();
             
@@ -61,8 +62,8 @@ class GestionStockController extends AbstractController
     }
 
     /**
-     * @Route("/commandes/nouvelle" , name="nouvelles_commandes")
-     */
+    * @Route("/commandes/nouvelle" , name="nouvelles_commandes")
+    */
     public function nouvelles_commandes(OrderRepository $orderRepository): Response
     {      
             return $this->render('admin/gestionStock/nouvelleCommande.html.twig', [
@@ -71,8 +72,8 @@ class GestionStockController extends AbstractController
     }
 
     /**
-     * @Route("/commandes/enAttentes" , name="commande_en_attente")
-     */
+    * @Route("/commandes/enAttentes" , name="commande_en_attente")
+    */
     public function enAttente( OrderRepository $orderRepository)
     {
         return $this->render('admin/gestionStock/enAttente.html.twig', [
@@ -81,8 +82,8 @@ class GestionStockController extends AbstractController
     }
 
     /**
-     * @Route("/commandes/expediees" , name="commande_expediee")
-     */
+    * @Route("/commandes/expediees" , name="commande_expediee")
+    */
     public function livree( OrderRepository $orderRepository)
     {
         return $this->render('admin/gestionStock/expediee.html.twig', [

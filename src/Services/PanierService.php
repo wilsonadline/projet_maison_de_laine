@@ -1,24 +1,19 @@
 <?php
 namespace App\Services;
 
-use App\Entity\Adresses;
-use App\Entity\Delivry;
 use App\Entity\Order;
 use App\Entity\OrderLine;
-use App\Entity\OrderStatus;
 use App\Repository\AdressesRepository;
 use App\Repository\ArticlesRepository;
 use App\Repository\DelivryRepository;
-use App\Repository\OrderRepository;
 use App\Repository\OrderStatusRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use PhpParser\Node\Expr\Cast\Double;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class PanierService
 {
     public $em;
-    public function __construct( EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }
@@ -39,30 +34,31 @@ class PanierService
             $dataPanier[] = [
                 "article" => $article,
                 "quantite"=> $quantite,
-            
             ];
+
             $total += $article->getPrix() * $quantite ;
         }
 
         return [$dataPanier, $total];
     }
 
-    public function gestionStock($panier) {
-            foreach($panier as $produitpanier){
-                
+    public function gestionStock($panier) 
+    {
+            foreach($panier as $produitpanier)
+            {
                 $article = $produitpanier["article"];
                 $quantite = $produitpanier["quantite"];
                 
                 $stock =  $article->getStock();
                 $article->setStock($stock - $quantite);
                 $this->em->persist($article);
-            
             }
+
             $this->em->flush();
     }
 
-    private function save_order_line( $order ,  $dataPanier) {
-  
+    private function save_order_line($order, $dataPanier) 
+    {
         $total = 0 ;
         foreach($dataPanier as $data)
         {
@@ -75,14 +71,14 @@ class PanierService
             $this->em->persist($order_line);
             $total +=  $order_line->getPrix() * $order_line->getQuantite();
         }
+
         $this->em->flush();
         return $total;
     }
 
     public function save_order(AdressesRepository $repoAdresse , $adresse_id,
-        OrderStatusRepository $statusRepo, 
-        $dataPanier, DelivryRepository $delivryRepository, $deliveryMode ) {
-       
+    OrderStatusRepository $statusRepo, $dataPanier, DelivryRepository $delivryRepository, $deliveryMode)
+    {
         // recup l'id de l'adresse
         $adresse = $repoAdresse->find($adresse_id);
 
@@ -97,14 +93,10 @@ class PanierService
         $order->setAdresse($adresse);
         $order->setDelivery($mode);
         $order->setOrderStatus($status);
-        // $order->setDelivry($deliveryMode);
         
-        // $order->getTotal();
         $this->em->persist($order);
-        // $this->em->flush();
         
         $totalOrder =  $this->save_order_line($order, $dataPanier);
-        
         $order->setTotal($totalOrder + $mode->getPrice() );
         $this->em->persist($order);
         $this->em->flush();

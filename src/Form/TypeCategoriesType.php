@@ -14,7 +14,6 @@ class TypeCategoriesType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class)
-            // ->add('createdAt')
         ;
     }
 

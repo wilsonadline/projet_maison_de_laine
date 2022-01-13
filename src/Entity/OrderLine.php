@@ -6,35 +6,35 @@ use App\Repository\OrderLineRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=OrderLineRepository::class)
- */
+* @ORM\Entity(repositoryClass=OrderLineRepository::class)
+*/
 class OrderLine
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    * @ORM\Id
+    * @ORM\GeneratedValue
+    * @ORM\Column(type="integer")
+    */
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Articles::class, inversedBy="orderLines")
-     */
+    * @ORM\ManyToOne(targetEntity=Articles::class, inversedBy="orderLines")
+    */
     private $article;
 
     /**
-     * @ORM\Column(type="float")
-     */
+    * @ORM\Column(type="float")
+    */
     private $prix;
 
     /**
-     * @ORM\Column(type="integer")
-     */
+    * @ORM\Column(type="integer")
+    */
     private $quantite;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderLines")
-     */
+    * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderLines")
+    */
     private $orders;
 
     public function getId(): ?int
@@ -94,6 +94,4 @@ class OrderLine
     {
         return $this->id;
     }
-
-    
 }

@@ -2,9 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticlesRepository;
 use App\Entity\Categories;
-use App\Services\StripeService;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,77 +11,81 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
- * @ORM\Entity(repositoryClass=ArticlesRepository::class)
- * @Vich\Uploadable
- */
+* @ORM\Entity(repositoryClass="App\Repository\ArticlesRepository")
+* @Vich\Uploadable
+*/
 class Articles
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    * @ORM\Id
+    * @ORM\GeneratedValue
+    * @ORM\Column(type="integer")
+    */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255)
+    */
     private $article;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    * @ORM\Column(type="string", length=255, nullable=true)
+    */
     private $couleur;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
+    * @ORM\Column(type="text", nullable=true)
+    */
     private $description;
 
     /**
-     * @ORM\Column(type="float")
-     */
+    * @ORM\Column(type="float")
+    */
     private $prix;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
+    * @ORM\Column(type="datetime", nullable=true)
+    */
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
+    * @ORM\Column(type="datetime", nullable=true)
+    */
     private $updatedAt;
 
 
     /**
-     * @Vich\UploadableField(mapping="article_img", fileNameProperty="imageName")
-     * @var File|null
-     */
+    * @Vich\UploadableField(mapping="article_img", fileNameProperty="imageName")
+    * @var File|null
+    */
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     * @var string|null
-     */
+    * @ORM\Column(type="string", nullable=true)
+    * @var string|null
+    */
     private $imageName;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="articles")
-     * @ORM\JoinColumn(nullable=true)
-     */
+    * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="articles")
+    * @ORM\JoinColumn(nullable=true)
+    */
     private $categories;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
+    * @ORM\Column(type="integer", nullable=true)
+    */
     private $stock;
 
     /**
-     * @ORM\OneToMany(targetEntity=OrderLine::class, mappedBy="articles")
-     */
+    * @ORM\OneToMany(targetEntity=OrderLine::class, mappedBy="articles")
+    */
     private $orderLines;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
    
     public function __construct()
     {
@@ -251,6 +253,15 @@ class Articles
         return $this;
     }
 
-   
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
 
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
+
+        return $this;
+    }
 }

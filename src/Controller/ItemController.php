@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Articles;
+use App\Repository\ArticlesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,13 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class ItemController extends AbstractController
 {
     #[Route('/categorie/articles_mercerie/item/{id}', name: 'app_items_mercerie')]
-    public function articles_mercerie($id): Response
+    public function articles_mercerie($id, ArticlesRepository $articlesRepository): Response
     {
-        $repository = $this->getDoctrine()->getRepository(Articles::class);
-        $article = $repository->findBy(['id'=>$id]);
-
         return $this->render('main/items.html.twig', [
-            'article'=>$article,
+            'article'=>$articlesRepository->findBy(['id'=>$id])
         ]);
     }
 }

@@ -4,15 +4,15 @@
 {% block title %}Réinitialiser votre mot de passe | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-    <div style ="width: 70%" class="d-flex justify-content-center  flex-column">
+    <div style ="width: 70%" class="d-flex justify-content-center flex-column">
         <h1 class="my-5">Réinitialiser votre mot de passe</h1>
         <div >
-            {{ form_start(resetForm) }}
-                {{ form_row(resetForm.plainPassword) }}
+            {{form_start(resetForm)}}
+                {{form_row(resetForm.plainPassword)}}
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-light">Réinitialiser</button>
+                    <button class="btn btn-light" style="width: auto !important">Réinitialiser</button>
                 </div>
-            {{ form_end(resetForm) }}
+            {{form_end(resetForm)}}
         </div>
     </div>
 {% endblock %}

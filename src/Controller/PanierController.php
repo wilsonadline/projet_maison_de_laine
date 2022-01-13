@@ -7,14 +7,13 @@ use App\Repository\ArticlesRepository;
 use App\Services\PanierService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/panier", name="panier_")
- */
+* @Route("/panier", name="panier_")
+*/
 class PanierController extends AbstractController
 {
     #[Route('/', name: 'index')]
@@ -42,6 +41,7 @@ class PanierController extends AbstractController
         {
             $panier[$id] = 1;
         }
+        
         // on sauvegarde dans la session
         $session->set("panier", $panier);
 

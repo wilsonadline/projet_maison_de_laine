@@ -1,62 +1,58 @@
 {% extends 'base.html.twig' %}
-{# {% form_theme status 'bootstrap_5_layout.html.twig' %} #}
 
-
-{% block title %}Hello GestionStockController!{% endblock %}
+{% block title %}Liste des commandes | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono!{% endblock %}
 
 {% block body %}
     <table class="table my-5">
-        <h1 class="text-center mt-5"> Nouvelles Commandes</h1>
+        <h1 class="text-center mt-5">Nouvelles Commandes</h1>
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Status </th>
+                <th scope="col">Status</th>
                 <th scope="col">Fiche Adresse</th>
                 <th scope="col">Fiche Commande</th>
                 <th scope="col">Total Commande</th>
-                <th scope="col"> Created Time </th>
-                <th scope="col"> Updated Time </th>
-                <th scope="col"> Change Status </th>
+                <th scope="col">Created Time</th>
+                <th scope="col">Updated Time</th>
+                <th scope="col">Change Status</th>
             </tr>
         </thead>
-        <tbody class=" ">
-            {% for new in nouvelles_commande|sort|reverse  %}
-                <tr class="">
-                    <th scope="">{{ new.id}}</th>
-                    <td scope="2">{{ new.orderStatus.status}}</td>
+        <tbody>
+            {% for new in nouvelles_commande|sort|reverse %}
+                <tr>
+                    <th>{{new.id}}</th>
+                    <td scope="2">{{new.orderStatus.status}}</td>
                     <td>
                         <p>
-                            <span>{{ new.adresse.nom }}</span> <span  class="mx-3">{{ new.adresse.prenom }}</span>
+                            <span>{{new.adresse.nom }}</span><span class="mx-3">{{new.adresse.prenom}}</span>
                         </p>
                         <p >
-                            <span>{{ new.adresse.adresse  }}</span> <span  class=" mx-3">{{ new.adresse.ville }}</span><span  class="mx-3">{{ new.adresse.cp }}</span>
+                            <span>{{new.adresse.adresse}}</span><span class="mx-3">{{new.adresse.ville}}</span><span class="mx-3">{{new.adresse.cp}}</span>
                         </p>
                         <p class="mb-0">
-                            <span>{{ new.adresse.tel  }}</span> <span  class="mx-3">{{ new.adresse.email }}</span>
+                            <span>{{new.adresse.tel}}</span> <span class="mx-3">{{new.adresse.email}}</span>
                         </p>
                     </td>
                     <td>
                         {% for newOrderline in new.orderLines %}
                             <ul>
                                 <li>
-                                    Article : {{ newOrderline.article  }}<br> 
-                                    Prix : {{ newOrderline.prix  }}€<br>
-                                    Quantite : {{ newOrderline.quantite}}
+                                    Article : {{newOrderline.article}}<br> 
+                                    Prix : {{newOrderline.prix}}€<br>
+                                    Quantite : {{newOrderline.quantite}}
                                 </li>
                             </ul>
                         {% endfor %}
                     </td>
-                    
-                    {# Total #}
                     <td >
-                        <p >
-                            <span  class="mx-3">{{ new.total }}€</span>
+                        <p>
+                            <span class="mx-3">{{new.total}}€</span>
                         </p>
                     </td>
-                    <td scope="2">{{ new.createdAt|date('d/m/Y à H:i:s')}}</td>
-                    <td scope="2">{{ new.updatedAt|date('d/m/Y à H:i:s')}}</td>
+                    <td scope="2">{{new.createdAt|date('d/m/Y à H:i:s')}}</td>
+                    <td scope="2">{{new.updatedAt|date('d/m/Y à H:i:s')}}</td>
                     <td>
-                        <a class="btn btn-light" href="{{path ("gestion_stock_change_status" , {id : new.id})}}">Changer</a>
+                        <a class="btn btn-light" href="{{path ("gestion_stock_change_status", {id : new.id})}}">Changer</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -72,33 +68,33 @@
                 <th scope="col">Fiche Adresse</th>
                 <th scope="col">Fiche Commande</th>
                 <th scope="col">Total Commande</th>
-                <th scope="col"> Created Time </th>
-                <th scope="col"> Updated Time </th>
-                <th scope="col"> Change Status </th>
+                <th scope="col">Created Time</th>
+                <th scope="col">Updated Time</th>
+                <th scope="col">Change Status</th>
             </tr>
         </thead>
         <tbody>
-            {% for en_attente in en_attente|sort|reverse  %}
+            {% for en_attente in en_attente|sort|reverse %}
                 <tr>
                     <th scope="row">{{ en_attente.id}}</th>
                     <td>{{ en_attente.orderStatus.status}}</td>
                     <td>
                         <p>
-                            <span>{{ en_attente.adresse.nom }}</span> <span  class="mx-3">{{ en_attente.adresse.prenom }}</span>
+                            <span>{{en_attente.adresse.nom}}</span><span class="mx-3">{{en_attente.adresse.prenom}}</span>
                         </p>
                         <p >
-                            <span>{{ en_attente.adresse.adresse  }}</span> <span  class=" mx-3    border ">{{ en_attente.adresse.ville }}</span><span  class="mx-3">{{ en_attente.adresse.cp }}</span>
+                            <span>{{en_attente.adresse.adresse}}</span><span class="mx-3">{{en_attente.adresse.ville}}</span><span  class="mx-3">{{en_attente.adresse.cp}}</span>
                         </p>
                         <p class="mb-0">
-                            <span>{{ en_attente.adresse.tel  }}</span> <span  class="mx-3">{{ en_attente.adresse.email }}</span></span>
+                            <span>{{en_attente.adresse.tel}}</span><span  class="mx-3">{{en_attente.adresse.email}}</span>
                         </p>
                     </td>
-                    <td class="">
+                    <td>
                         {% for orderen_attenteOrderline in en_attente.orderLines %}
                             <ul>
                                 <li>
-                                    Article : {{ orderen_attenteOrderline.article  }}<br> 
-                                    Prix : {{orderen_attenteOrderline.prix  }}€<br>
+                                    Article : {{orderen_attenteOrderline.article}}<br> 
+                                    Prix : {{orderen_attenteOrderline.prix}}€<br>
                                     Quantite : {{orderen_attenteOrderline.quantite}}
                                 </li>
                             </ul>
@@ -106,13 +102,13 @@
                     </td>
                     <td >
                         <p >
-                            <span  class="mx-3">{{ en_attente.total }}€</span>
+                            <span class="mx-3">{{en_attente.total}}€</span>
                         </p>
                     </td>
-                    <td scope="2">{{ en_attente.createdAt|date('d/m/Y à H:i:s')}}</td>
-                    <td scope="2">{{ en_attente.updatedAt|date('d/m/Y à H:i:s')}}</td>
+                    <td scope="2">{{en_attente.createdAt|date('d/m/Y à H:i:s')}}</td>
+                    <td scope="2">{{en_attente.updatedAt|date('d/m/Y à H:i:s')}}</td>
                     <td>
-                        <a class="btn btn-light" href="{{path ("gestion_stock_change_status" , {id : en_attente.id})}}">Changer</a>
+                        <a class="btn btn-light" href="{{path ("gestion_stock_change_status", {id : en_attente.id})}}">Changer</a>
                     </td>                    
                 </tr>
             {% endfor  %}           
@@ -128,47 +124,47 @@
                 <th scope="col">Fiche Adresse</th>
                 <th scope="col">Fiche Commande</th>
                 <th scope="col">Total Commande</th>
-                <th scope="col"> Created Time </th>
-                <th scope="col"> Updated Time </th>
-                <th scope="col"> Change Status </th>
+                <th scope="col">Created Time</th>
+                <th scope="col">Updated Time</th>
+                <th scope="col">Change Status</th>
             </tr>
         </thead>
         <tbody>
-            {% for expediee in commande_expediee|sort|reverse  %}
+            {% for expediee in commande_expediee|sort|reverse %}
                 <tr>
-                    <th scope="row">{{ expediee.id}}</th>
-                    <td>{{ expediee.orderStatus.status}}</td>
+                    <th scope="row">{{expediee.id}}</th>
+                    <td>{{expediee.orderStatus.status}}</td>
                     <td>
                         <p>
-                            <span>{{ expediee.adresse.nom }}</span> <span  class="mx-3">{{ expediee.adresse.prenom }}</span>
+                            <span>{{expediee.adresse.nom}}</span><span class="mx-3">{{expediee.adresse.prenom}}</span>
                         </p>
                         <p >
-                            <span>{{ expediee.adresse.adresse  }}</span> <span  class=" mx-3    border ">{{ expediee.adresse.ville }}</span><span  class="mx-3">{{ expediee.adresse.cp }}</span>
+                            <span>{{expediee.adresse.adresse}}</span><span class="mx-3">{{expediee.adresse.ville}}</span><span class="mx-3">{{expediee.adresse.cp}}</span>
                         </p>
                         <p class="mb-0">
-                            <span>{{ expediee.adresse.tel  }}</span> <span  class="mx-3">{{ expediee.adresse.email }}</span></span>
+                            <span>{{expediee.adresse.tel}}</span><span class="mx-3">{{expediee.adresse.email}}</span>
                         </p>
                     </td>
-                    <td class="">
+                    <td>
                         {% for orderexpedieeOrderline in expediee.orderLines %}
                             <ul>
                                 <li>
-                                    Article : {{ orderexpedieeOrderline.article  }}<br> 
-                                    Prix : {{orderexpedieeOrderline.prix  }}€<br>
+                                    Article : {{orderexpedieeOrderline.article}}<br> 
+                                    Prix : {{orderexpedieeOrderline.prix}}€<br>
                                     Quantite : {{orderexpedieeOrderline.quantite}}
                                 </li>
                             </ul>
                         {% endfor %}
                     </td>
-                    <td >
-                        <p >
-                            <span  class="mx-3">{{ expediee.total }}€</span>
+                    <td>
+                        <p>
+                            <span class="mx-3">{{expediee.total}}€</span>
                         </p>
                     </td>
                     <td scope="2">{{ expediee.createdAt|date('d/m/Y à H:i:s')}}</td>
                     <td scope="2">{{ expediee.updatedAt|date('d/m/Y à H:i:s')}}</td>
                     <td>
-                        <a class="btn btn-light" href="{{path ("gestion_stock_change_status" , {id : expediee.id})}}">Changer</a>
+                        <a class="btn btn-light" href="{{path ("gestion_stock_change_status", {id : expediee.id})}}">Changer</a>
                     </td>                    
                 </tr>
             {% endfor  %}          

@@ -5,22 +5,22 @@ namespace App\Controller\Admin;
 use App\Entity\Categories;
 use App\Form\CategoriesType;
 use App\Repository\CategoriesRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 /**
- * @Route("/admin", name="categories_")
- */
+* @Route("/admin", name="categories_")
+*/
 class CategoriesController extends AbstractController
 {
     #[Route("/categories/ajout", name: "ajout")]
-    public function categoriesAjout(Request $request): Response
+    public function categoriesAjout(Request $request, EntityManagerInterface $em): Response
     {
         $categoriesAjout = new Categories();
-        // dd($categoriesAjout);
+      
         $categoriesAjout_form = $this->createForm(CategoriesType::class, $categoriesAjout);
         $categoriesAjout_form->handleRequest($request);
 
@@ -28,21 +28,20 @@ class CategoriesController extends AbstractController
         {
             $categoriesAjout->setCreatedAt(new \DateTime());
             
-            $em= $this->getDoctrine()->getManager();
             $em->persist($categoriesAjout);
             $em->flush();
             
-            $this->addFlash('categoriesAdd', 'La catégorie a bien été ajouté ! ');
+            $this->addFlash('categoriesAdd', 'La catégorie a bien été ajouté !');
             return $this->redirectToRoute('categories_list');
         }
 
         return $this->render('admin/categories/ajout.html.twig', [
-            'categoriesAjout' => $categoriesAjout_form->createView(),
+            'categoriesAjout' => $categoriesAjout_form->createView()
         ]);
     }
 
     #[Route("/categories/modifier/{id}", name: "modifier")]
-    public function categoriesModifier($id , Request $request): Response
+    public function categoriesModifier($id , Request $request, EntityManagerInterface $em): Response
     {
         $categoriesModifier = $this->getDoctrine()->getRepository(Categories::class)->find($id);
 
@@ -53,29 +52,27 @@ class CategoriesController extends AbstractController
         {
             $categoriesModifier->setUpdatedAt(new \DateTime());
 
-            $em= $this->getDoctrine()->getManager();
             $em->persist($categoriesModifier);
             $em->flush();
 
-            $this->addFlash('categoriesEdit', 'La catégorie a bien été modifié ! ');
+            $this->addFlash('categoriesEdit', 'La catégorie a bien été modifié !');
             return $this->redirectToRoute('categories_list');
         }
 
         return $this->render('admin/categories/modifier.html.twig', [
-            'categoriesModifier' => $categoriesModifier_form->createView(),
+            'categoriesModifier' => $categoriesModifier_form->createView()
         ]);
     }
 
     #[Route("/categories/delete/{id}", name: "delete")]
-    public function categoriesDelete($id): Response
+    public function categoriesDelete($id, EntityManagerInterface $em): Response
     {
         $categoriesDelete = $this->getDoctrine()->getRepository(Categories::class)->find($id);
 
-        $em = $this->getDoctrine()->getManager();
         $em->remove($categoriesDelete);
         $em->flush();
         
-        $this->addFlash('categoriesDelete', 'La catégorie a bien été supprimé ! ');
+        $this->addFlash('categoriesDelete', 'La catégorie a bien été supprimé !');
         return $this->redirectToRoute('categories_list');
     }
 
@@ -83,7 +80,7 @@ class CategoriesController extends AbstractController
     public function categoriesList(CategoriesRepository $categoriesList): Response
     {
         return $this->render('admin/categories/list.html.twig', [
-            'categoriesList' => $categoriesList->findAll(),
+            'categoriesList' => $categoriesList->findAll()
         ]);
     }
 }

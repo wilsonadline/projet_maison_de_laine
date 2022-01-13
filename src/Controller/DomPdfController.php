@@ -2,20 +2,15 @@
 
 namespace App\Controller;
 
-use App\Repository\AdressesRepository;
 use App\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 use Dompdf\Dompdf;
 use Dompdf\Options;
-// use Test\Test;
 
 
 class DomPdfController extends AbstractController
 {
-    
     #[Route('/dom/pdf/{order_id}', name: 'dom_pdf',  methods: ["GET"])]
     public function domPdf( $order_id,  OrderRepository $orderRepository)
     {
@@ -25,14 +20,13 @@ class DomPdfController extends AbstractController
         $dompdf = new Dompdf($options);
         
         $html =  $this->renderView('dom_pdf/index.html.twig', [
-            'facture' => $orderRepository->findOneBy(['id' => $order_id])
+            'facture'=> $orderRepository->findOneBy(['id' => $order_id])
         ]);
         
         $dompdf->loadHtml($html);
         
         // (Optional) Setup the paper size and orientation
         $dompdf->setPaper('A4', 'portrait');
-        
         
         // Render the HTML as PDF
         $dompdf->render();
