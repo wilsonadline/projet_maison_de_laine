@@ -50,14 +50,13 @@ window.onload = () => {
                         type: "GET",
                         url: "/validateOrder/"+ adresse_id + "/" + deliveryMode,
                         success: function(data){
-                            document.location.href = "/dom/pdf/"+ data;
                             $.ajax({
                                 type: "GET",
                                 url: "/endSessoin/",
                                 success: function(data){
-                                    window.location.href = "/succes/"
-                                    }
-                                });
+                                    window.location.href = "/dom/pdf/"+ data;
+                                }
+                            });
                         }
                     });
                 }
