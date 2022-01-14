@@ -68,7 +68,7 @@ class Articles
 
     /**
     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="articles")
-    * @ORM\JoinColumn(nullable=true)
+    * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
     */
     private $categories;
 
@@ -82,10 +82,10 @@ class Articles
     */
     private $orderLines;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $active;
+    // /**
+    //  * @ORM\Column(type="boolean")
+    //  */
+    // private $active;
    
     public function __construct()
     {
@@ -253,15 +253,15 @@ class Articles
         return $this;
     }
 
-    public function getActive(): ?bool
-    {
-        return $this->active;
-    }
+    // public function getActive(): ?bool
+    // {
+    //     return $this->active;
+    // }
 
-    public function setActive(bool $active): self
-    {
-        $this->active = $active;
+    // public function setActive(bool $active): self
+    // {
+    //     $this->active = $active;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

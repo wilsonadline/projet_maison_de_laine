@@ -19,6 +19,7 @@ class OrderLine
 
     /**
     * @ORM\ManyToOne(targetEntity=Articles::class, inversedBy="orderLines")
+    * @ORM\JoinColumn(onDelete="SET NULL")
     */
     private $article;
 

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% form_theme resetForm 'bootstrap_5_layout.html.twig' %}
 
-{% block title %}Réinitialiser votre mot de passe | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
+{% block title %}Réinitialiser votre mot de passe | La Maison de Laine{% endblock %}
 
 {% block body %}
     <div style ="width: 70%" class="d-flex justify-content-center flex-column">
@@ -17,18 +17,19 @@
     </div>
 {% endblock %}
 {% block footer %}
-    {# Footer  #}
-    <footer class="fixed-bottom">
-        <article id="icon">
-            <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
-            <a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram-square fa-2x"></i></a>
-            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-2x"></i></a>
-        </article>
-        <article class="mb-3">
-            <a  href="#"  id="copyright"> Copyright © 2021 </a> <span class="pipe"> |</span> 
-            <a  id="copyright" href="#"> La Maison de Laine</a>  <span class="pipe"> |</span> 
-            <a href="{{path ('mentions_legales')}}"  id="copyright"> Mentions Légales</a>  
-        </article>
-    </footer>
-    {# END Footer  #}
+    <div class="container-fluid p-0 m-0 col-12">
+        <footer class="col-12 p-0">
+            <article id="icon">
+                <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
+                <a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram-square fa-2x"></i></a>
+                <a href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-2x"></i></a>
+            </article>
+            <article class="mb-3 d-flex">
+                <a class="text-center m-2" href="#" id="copyright">Copyright © 2021</a><span class="pipe mt-4">|</span> 
+                <a  class="text-center m-2" id="copyright" href="#">La Maison de Laine</a><span class="pipe mt-4">|</span> 
+                <a class="text-center m-2" href="{{path ('mentions_legales')}}" id="copyright">Mentions Légales</a> <span class="pipe mt-4">|</span>
+                <a class="text-center m-2" href="{{path ('ccv')}}" id="copyright">CCV</a>  
+            </article>
+        </footer>
+    </div>
 {% endblock %}

@@ -20,7 +20,9 @@ class ArticlesType extends AbstractType
         $builder
             ->add('article', TextType::class)
             ->add('couleur',TextType::class)
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, [
+                'required' => false
+            ])
             ->add('prix', NumberType::class)
             ->add('stock', NumberType::class)
             ->add('categories', EntityType::class, [

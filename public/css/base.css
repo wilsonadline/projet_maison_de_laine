@@ -32,18 +32,6 @@ body{
   
 }
 
-/* .test{
-  border : 1px indigo solid;
-  color: red !important; */
-  
-  /* } */
-/*   
-  .nav-item a,
-  .nav-item i {
-    transition: all 0.1s ease; /*effet lent */
-    /* border : 1px indigo solid; */
-/* } */ 
-
 .fas {
   font-size: 25px;
 }
@@ -233,6 +221,3 @@ h1{
     text-shadow: 0 0 7px #ff0000, 0 0 50px #ff0000
   }
 }
-
-/* background: rgb(105,133,243);
-background: linear-gradient(90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%); */
