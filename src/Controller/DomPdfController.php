@@ -12,7 +12,7 @@ use Dompdf\Options;
 class DomPdfController extends AbstractController
 {
     #[Route('/dom/pdf/{order_id}', name: 'dom_pdf',  methods: ["GET"])]
-    public function domPdf( $order_id,  OrderRepository $orderRepository)
+    public function domPdf( $order_id, OrderRepository $orderRepository)
     {
         $options = new Options();
         $options->set('defaultFont', 'Arial');
@@ -36,7 +36,7 @@ class DomPdfController extends AbstractController
             "Attachment" => true
         ] );
         
-        $this->render('dom_pdf/index.html.twig', [
+        $this->render('succes/succes.html.twig', [
             'facture' => $orderRepository->findOneBy(['id' => $order_id])
         ]);
     }

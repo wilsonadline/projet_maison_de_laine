@@ -5,18 +5,20 @@ namespace App\Controller;
 use App\Entity\Adresses;
 use App\Form\AdressesType;
 use App\Form\PaiementType;
-use App\Repository\ArticlesRepository;
-use App\Repository\AdressesRepository;
-use App\Repository\DelivryRepository;
-use App\Repository\OrderStatusRepository;
 use App\Services\PanierService;
+use App\Repository\OrderRepository;
+use App\Repository\DelivryRepository;
+use App\Repository\AdressesRepository;
+use App\Repository\ArticlesRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Repository\OrderStatusRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class LivraisonController extends AbstractController
 {
@@ -69,6 +71,9 @@ class LivraisonController extends AbstractController
             return $this->render('livraison/endSession.html.twig');
         }
 
+        $session = new Session();
+        $session->set('livraison_id', $id);
+
         return $this->render('livraison/optionlivraison.html.twig',[ 
             'adresse'=>  $adresses->find($id),
             'dataPanier' => $dataPanier, 
@@ -97,12 +102,13 @@ class LivraisonController extends AbstractController
     }
 
       /**
-    * @Route("succes", name="succes", methods={"GET"})
+    * @Route("succes/", name="succes", methods={"GET"})
     */
-    public function succes()
+    public function succes(OrderRepository $orderRepository, Session $session)
     {
-        return $this->render('succes/succes.html.twig');
-
+        return $this->render('succes/succes.html.twig', [
+            'id' => $session->get('livraison_id')
+        ]);
     }
 
     /**

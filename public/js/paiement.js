@@ -7,7 +7,8 @@ window.onload = () => {
     //  objet de la page
     let cardHolderName = document.getElementById("cardholder-name")
     let cardButton = document.getElementById("card-button")
-    let clientSecret = cardButton.dataset.secret; 
+    let clientSecret = cardButton.dataset.secret;
+    console.log(clientSecret); 
     
     // Creer les elements du formulaire de carte bancaire 
     let card = elements.create("card")
@@ -42,7 +43,6 @@ window.onload = () => {
 
                 // var removing = 
                 if(deliveryMode == undefined){
-                    console.log('red'); 
                     alert("Veuillez selectionner un mode de livraison svp")
                     location.reload();
                 }else{
@@ -50,14 +50,15 @@ window.onload = () => {
                         type: "GET",
                         url: "/validateOrder/"+ adresse_id + "/" + deliveryMode,
                         success: function(data){
-                            document.location.href = "/dom/pdf/"+ data;
-                            $.ajax({
-                                type: "GET",
-                                url: "/endSessoin/",
-                                success: function(data){
-                                    window.location.href = "/succes/"
-                                    }
-                                });
+                            // document.location.href = "/dom/pdf/"+ data;
+                            window.location.href = "/succes/"
+                            // $.ajax({
+                            //     type: "GET",
+                            //     url: "/endSessoin/",
+                            //     success: function(data){
+                            //         // window.location.href = "/succes/"
+                            //     }
+                            // });
                         }
                     });
                 }

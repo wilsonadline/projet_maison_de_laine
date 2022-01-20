@@ -11,7 +11,7 @@ body{
   flex-direction: column;
   height: 100vh;
   /* width: 100%; */
-  display: flex;
+  /* display: flex; */
 }
 .container{
   flex-grow: 1;
@@ -159,9 +159,6 @@ footer {
   -webkit-text-fill-color: white;
   transform: scale(1.05);
   transition: all 0.4s;
-
-  /* color: white; */
-
 }
 
 label{
@@ -192,7 +189,7 @@ h1{
 }
 .card-hover:hover{
   transform: scale(1.05);
-  box-shadow:5px 5px 15px 5px #737373;
+  box-shadow:5px 5px 15px 5px #7373736b;
 }
 
 .picto{
@@ -201,8 +198,11 @@ h1{
   -webkit-text-fill-color: transparent;
 
 }
+#projet{
+  color: red;
+}
 
-#projet {
+/* #projet {
   list-style: none;
   color: red;
   animation : flash 1.4s linear infinite;
@@ -220,4 +220,5 @@ h1{
     color: #ff0000 ;
     text-shadow: 0 0 7px #ff0000, 0 0 50px #ff0000
   }
-}
+} */
+
