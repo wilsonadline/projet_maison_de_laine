@@ -19,7 +19,7 @@ class DomPdfController extends AbstractController
         
         $dompdf = new Dompdf($options);
         
-        $html =  $this->renderView('dom_pdf/index.html.twig', [
+        $html = $this->renderView('dom_pdf/index.html.twig', [
             'facture'=> $orderRepository->findOneBy(['id' => $order_id])
         ]);
         

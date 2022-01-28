@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Page supprimée{% endblock %}
+
+
+{% block body %}
+<div class="d-flex  flex-column justify-content-center align-items-center">
+    <h1 class="mt-5">Page supprimée</h1>
+    <p class="mt-3">La page recherchée a été supprimée.</p>  
+    <p class="mt-3"><a href="{{path('app_home')}}">Boutique</a></p>  
+</div>
+{% endblock %}
