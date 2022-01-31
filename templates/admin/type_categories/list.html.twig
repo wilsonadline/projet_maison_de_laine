@@ -6,7 +6,7 @@
     <h1 class="text-center my-5">Liste des types de catégories</h1>
 
     <div class="d-flex justify-content-end my-5">
-        <a href="{{path ('type_categories_ajout')}}" class="btn btn-light">Ajouter un type de catégorie</a>
+        <a href="{{path ('type_categories_ajout')}}" class="btn btn-light" style="width:auto!important">Ajouter un type de catégorie</a>
     </div>
 
     {% for add in app.flashes('typeCategoriesAjout') %}
@@ -52,7 +52,7 @@
         </tbody>
     </table>
     <div class="d-flex justify-content-end my-5">
-        <a href="{{path ('type_categories_ajout')}}" class="btn btn-light">Ajouter un type de catégorie</a>
+        <a href="{{path ('type_categories_ajout')}}" class="btn btn-light" style="width:auto!important">Ajouter un type de catégorie</a>
     </div>
 {% endblock %}
 {% block footer %}
