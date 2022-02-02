@@ -2,11 +2,18 @@
 
 {% block title %}Page supprimée{% endblock %}
 
+{% block css %} <link rel="stylesheet" href="{{asset ('../css/error500.css ')}}" /> {% endblock %} 
 
 {% block body %}
-<div class="d-flex  flex-column justify-content-center align-items-center">
-    <h1 class="mt-5">Page supprimée</h1>
-    <p class="mt-3">La page recherchée a été supprimée.</p>  
-    <p class="mt-3"><a href="{{path('app_home')}}">Boutique</a></p>  
+
+<p class="info fs-5">Page supprimée</p>
+<p class="info fs-5">La page recherchée a été supprimée.</p>
+<p class="info fs-5">Retour à la <a href="{{path('app_home')}}">Boutique</a></p>  
+<div class="d-flex justify-content-center">
+    <h1 class="internal col-xxl-12 col-xl-12 col-md-9 col-6">  
+        <span class="zero">4</span>
+        <span class="zero">1</span>
+        <span class="zero">0</span>
+    </h1>
 </div>
 {% endblock %}
