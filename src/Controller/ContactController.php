@@ -8,8 +8,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
@@ -28,18 +28,7 @@ class ContactController extends AbstractController
             $em->flush();
 
             $this->sendEmail($mailer, $contact);
-            
-            // $message = (new \Swift_Message('Mail de Contact'))
-            // ->setFrom($contact->getEmail())
-            // ->setTo('maisondelaine.dwwm9@gmail.com')
-            // ->setBody(
-            //     $this->renderView(
-            //         'emails/contact.html.twig',
-            //         ['contact'=> $contact]
-            //     ),
-            //     'text/html'
-            // );
-            // $mailer->send($message);
+
             $this->addFlash('contact_sent', 'Votre message a bien été envoyé');
         }
 
@@ -47,26 +36,18 @@ class ContactController extends AbstractController
             'formContact' => $form_contact->createView()
         ]);
     }
-
    
     private function sendEmail(MailerInterface $mailer, Contact $contact)
     {
         $email = (new Email())
-            ->from($contact->getEmail())
+            ->from("contact@wilson-a-portefolio.com")
             ->to('maisondelaine.dwwm9@gmail.com')
-            //->cc('cc@example.com')
-            //->bcc('bcc@example.com')
-            //->replyTo('fabien@example.com')
-            //->priority(Email::PRIORITY_HIGH)
             ->subject($contact->getSujet())
-            // ->text('Sending emails is fun again!')
             ->html($this->renderView(
                         'emails/contact.html.twig',
                         ['contact'=> $contact])
                     );
 
         $mailer->send($email);
-
-        // ...
     }
 }
