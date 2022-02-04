@@ -27,9 +27,10 @@ class ContactController extends AbstractController
             $em->persist($contact);
             $em->flush();
 
+    	    dump("ok");
             $this->sendEmail($mailer, $contact);
-
             $this->addFlash('contact_sent', 'Votre message a bien été envoyé');
+
         }
 
         return $this->render('contact/index.html.twig', [
