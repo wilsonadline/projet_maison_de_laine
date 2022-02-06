@@ -3,36 +3,20 @@
 
 {% block body %}
     {% for produit in article %}
-        <section class="m-5 d-flex justify-content-center align-items-center flex-column">
-            <h1 class="mt-5">{{produit.article}}</h1>
-            <div class="card m-5" style="width: 18rem">
-                <img src="{{vich_uploader_asset(produit, 'imageFile')}}" class="card-img-top" style="height: 429px" alt="Image de l'article | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
-                <div class="card-body d-flex justify-content-center flex-column">
-                    <div class="d-flex justify-content-between">
-                        <h5 class="card-title text-start px-0 py-2 mb-0">{{produit.article}}</h5>
-                        <p class="card-text text-start px-0 py-2 mb-0">{{produit.prix }}€</p>
-                    </div>
-                    <p class="card-text text-start px-0 py-2 mb-0">{{produit.couleur}}</p>
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
-                        <div class="accordion-item">
-                            <p class="accordion-header" id="flush-headingOne">
-                                <p class="accordion-button collapsed px-0 py-2 mb-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    Description
-                                </p>
-                            </p>
-                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">{{produit.description}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class = " d-flex justify-content-center">
+        <section class="m-5 d-flex justify-content-center align-items-center justify-content-evenly">
+            <img src="{{vich_uploader_asset(produit, 'imageFile')}}" class="card-img-top" style="height: 30rem ; width : 30rem" alt="Image de l'article | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
+            <div>
+                <h1 class="text-end me-5 pe-5 ">{{produit.article}}</h1>
+                <div class="card" style="width: 18rem; border : none !important">
+                    <p class="card-text">{{produit.couleur }}</p>
+                    <p class="card-text">{{produit.description }}</p>
+                    <p class="card-text" style="font-weight : 900 !important">{{produit.prix }}€</p>
                     <a style="width : auto !important" href="{{path ("panier_ajout", {id : produit.id})}}" class="btn btn-sm btn-light mb-4"><i class="fas fa-cart-arrow-down mx-3"></i>Ajouter au panier</a>
                 </div>
             </div>
         </section>
     {% endfor %} 
-    <div class="d-flex justify-content-start">
+    <div class="d-flex justify-content-start mb-2">
         <a href="{{path ('app_home')}}" class="btn btn-sm btn-light">Home</a>
     </div>
 {% endblock %}
