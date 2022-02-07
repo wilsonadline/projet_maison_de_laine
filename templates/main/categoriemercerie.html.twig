@@ -19,7 +19,7 @@
                     {% if produit.stock > 0 %}
                     <a href="{{path ('panier_ajout', {id : produit.id})}}" class=" btn btn-sm btn-light my-3" style="width : auto !important"><i class="fas fa-cart-arrow-down mx-3"></i>Ajouter au panier</a>
                     {% else %}
-                    <p class="card-text text-center my-3">Produit victime de son succès</p>
+                    <p class="card-text text-center my-3"><i class="fas fa-frown-open face "></i> Produit victime de son succès</p>
                     {% endif %}
                 </div>
             </div>

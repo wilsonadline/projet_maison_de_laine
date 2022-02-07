@@ -140,6 +140,15 @@ footer {
 
 }
 
+.face{
+  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
+  -webkit-border-image: -webkit-linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
+  border-image-slice: 1;
+}
+
 .btn{
   font-family: Pacifico, lato ;
   font-size: 20px;

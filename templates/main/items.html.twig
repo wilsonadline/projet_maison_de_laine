@@ -11,7 +11,12 @@
                     <p class="card-text">{{produit.couleur }}</p>
                     <p class="card-text">{{produit.description }}</p>
                     <p class="card-text" style="font-weight : 900 !important">{{produit.prix }}€</p>
-                    <a style="width : auto !important" href="{{path ("panier_ajout", {id : produit.id})}}" class="btn btn-sm btn-light mb-4"><i class="fas fa-cart-arrow-down mx-3"></i>Ajouter au panier</a>
+                    {# <a style="width : auto !important" href="{{path ("panier_ajout", {id : produit.id})}}" class="btn btn-sm btn-light mb-4"><i class="fas fa-cart-arrow-down mx-3"></i>Ajouter au panier</a> #}
+                    {% if produit.stock > 0 %}
+                    <a href="{{path ('panier_ajout', {id : produit.id})}}" class=" btn btn-sm btn-light my-3" style="width : auto !important"><i class="fas fa-cart-arrow-down mx-3"></i>Ajouter au panier</a>
+                    {% else %}
+                    <p class="card-text text-center my-3"><i class="fas fa-frown-open face me-4"></i> Produit victime de son succès</p>
+                    {% endif %}
                 </div>
             </div>
         </section>
