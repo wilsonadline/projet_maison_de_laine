@@ -10,8 +10,7 @@ body{
   display: flex;
   flex-direction: column;
   height: 100vh;
-  /* width: 100%; */
-  /* display: flex; */
+  background-color: bisque;
 }
 .container{
   flex-grow: 1;
@@ -205,7 +204,6 @@ h1{
   background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
 }
 #projet{
   color: red;
