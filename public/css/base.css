@@ -3,15 +3,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'lato';
-  
 }
 
 body{
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: bisque;
 }
+
 .container{
   flex-grow: 1;
 }
@@ -28,7 +27,6 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 
 .fas {
@@ -46,11 +44,9 @@ h1{
 }
 
 h5{
-  /* border: 1px solid pink; */
   display: block;
   text-align: center;
   color: rgba(174,64,233,1);
-  
 }
 
 ::placeholder{
@@ -82,7 +78,6 @@ a {
 
 /* Footer */
 footer {
-  /* border: 1px solid rgb(148, 148, 40); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +93,6 @@ footer {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
-  /* border: 2px solid yellow; */
   height: 50px;
   width: 200px;
 }
@@ -107,7 +101,6 @@ footer {
   height: 100%;
   color: white;
   transition: all 0.4s;
-
 }
 
 .fab:hover{
@@ -135,8 +128,6 @@ footer {
   background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-
 }
 
 .face{

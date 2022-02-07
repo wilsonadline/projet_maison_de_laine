@@ -1,9 +1,7 @@
 #plus{
   width : 2rem !important;
   font-family: lato;
-
   font-weight: 1000;
-
 }
 
 #minus{
@@ -16,7 +14,6 @@
   width : 2rem !important;
   font-family: lato;
   font-weight: 1000;
-
 }
 
 #cart_empty{
@@ -30,7 +27,6 @@
 #prix{
   font-weight: bolder;
   font-size: large;
-
 }
 
 #tot{
