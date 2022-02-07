@@ -210,24 +210,3 @@ h1{
 #projet{
   color: red;
 }
-
-/* #projet {
-  list-style: none;
-  color: red;
-  animation : flash 1.4s linear infinite;
-}
-@keyframes flash{
-  0% {
-    color: #ffffff;
-    text-shadow: none;
-  }
-  90%{
-    color: #ff0000;
-    text-shadow: none;
-  }
-  100%{
-    color: #ff0000 ;
-    text-shadow: 0 0 7px #ff0000, 0 0 50px #ff0000
-  }
-} */
-
