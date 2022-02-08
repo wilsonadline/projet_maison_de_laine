@@ -3,7 +3,20 @@
 {% block title %}Home | La Maison de Laine {% endblock %}
 
 {% block body %}
+
   <div class="p-0">
+    {% for valid in app.flashes('validation_mail') %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{valid}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    {% endfor %}
+    {% for account_delete in app.flashes('profilDelete') %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{account_delete}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    {% endfor %}
      {# Categorie Mercerie #}
     <section class="d-flex flex-column align-items-center my-5  px-0 " style="width : 100%">
       <h1 class="title_container ">Mercerie</h1>

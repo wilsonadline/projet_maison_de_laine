@@ -80,6 +80,7 @@ class SecurityController extends AbstractController
             $user->setPassword($encodedPassword);
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('mdp', 'Votre mot de passe a bien été modifié !');
             return $this->redirectToRoute('app_profil');
         }
            
@@ -100,8 +101,8 @@ class SecurityController extends AbstractController
         $session->invalidate();
         $em->remove( $user);
         $em->flush();
-        $this->addFlash('profilDelete', 'Votre profil a bien été supprimé !');
         return $this->redirectToRoute('app_home');
+        $this->addFlash('profilDelete', 'Votre profil a bien été supprimé !');
     }
 
     /**
