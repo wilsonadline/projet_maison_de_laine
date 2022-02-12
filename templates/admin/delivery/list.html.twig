@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livraison list | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-5">Liste des options de livraison</h1>
+
+    <div class="d-flex justify-content-end my-5">
+        <a href="{{path ('delivery_options_add')}}" class="btn btn-light" style="width : auto !important">Ajouter une option</a>
+    </div>
+
+    {% for add in app.flashes('delivery_option_add') %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{ add }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    {% endfor %}
+    {% for edit in app.flashes('delivery_option_update') %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{ edit }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    {% endfor %}
+    {% for delete in app.flashes('delivery_option_delete') %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Félicitations </strong>{{ delete }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Option</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Délai</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for list in delivery_list %}
+                <tr>
+                    <th scope="row">{{ list.id}}</th>
+                    <td><img src="{{ vich_uploader_asset(list , 'imageFile')}}" style="width : 60px"class="card-img-top" alt=" Image de l'option | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"></td>
+                    <td>{{list.options}}</td>
+                    <td>{{list.price}}</td>
+                    <td>{{list.delai}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end my-5">
+        <a href="{{path ('delivery_options_add')}}" class="btn btn-light" style="width : auto !important">Ajouter une option</a>
+    </div>
+{% endblock %}
