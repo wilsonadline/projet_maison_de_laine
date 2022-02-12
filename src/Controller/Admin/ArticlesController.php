@@ -71,7 +71,6 @@ class ArticlesController extends AbstractController
         
         $em->remove($articlesDelete);
         $em->flush();
-        dd("ok");
         
         $this->addFlash('articlesDelete', 'L \'article a bien été supprimé !');
         return $this->redirectToRoute('articles_list');
@@ -85,14 +84,14 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-    #[Route("/articles/activer/{id}", name: "activer")]
-    public function activer(Articles $articles, EntityManagerInterface $em): Response
-    {
-        $articles->setActive(($articles->getActive())?false:true);
+    // #[Route("/articles/activer/{id}", name: "activer")]
+    // public function activer(Articles $articles, EntityManagerInterface $em): Response
+    // {
+    //     $articles->setActive(($articles->getActive())?false:true);
 
-        $em->persist($articles);
-        $em->flush();
+    //     $em->persist($articles);
+    //     $em->flush();
 
-        return new Response("true"); 
-    }
+    //     return new Response("true"); 
+    // }
 }
