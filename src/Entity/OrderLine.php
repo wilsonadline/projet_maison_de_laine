@@ -35,6 +35,7 @@ class OrderLine
 
     /**
     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderLines")
+    * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
     */
     private $orders;
 

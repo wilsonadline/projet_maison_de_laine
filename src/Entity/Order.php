@@ -55,6 +55,7 @@ class Order
 
     /**
     * @ORM\ManyToOne(targetEntity=Delivry::class, inversedBy="orders")
+    * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
     */
     private $delivery;
 
