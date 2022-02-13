@@ -60,7 +60,7 @@ class ArticlesController extends AbstractController
         }
 
         return $this->render('admin/articles/modifier.html.twig', [
-            'articlesModifier' => $articlesModifier_form->createView(),
+            'articlesModifier' => $articlesModifier_form->createView()
         ]);
     }
 
