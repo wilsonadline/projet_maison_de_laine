@@ -67,7 +67,7 @@
                         <tbody>
                             {% for element in dataPanier %}
                                 <tr>
-                                    <td class="ps-0" style="width : 10px"><img src="{{ vich_uploader_asset( element.article , 'imageFile' ) }}" style="width : 60px"class="card-img-top" alt="Image des articles | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">{{element.article.article}}</td>
+                                    <td class="ps-0" style="width : 10px"><img src="{{ vich_uploader_asset( element.article , 'imageFile' ) }}" style="width : 6rem ; height: 6rem ; "class="card-img-top" alt="Image des articles | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">{{element.article.article}}</td>
                                     <td class="py-5">{{element.article.prix}}€</td>
                                     <td class="py-5">{{element.quantite}}</td>
                                     <td class="py-5">{{element.quantite  *  element.article.prix}}€</td>
