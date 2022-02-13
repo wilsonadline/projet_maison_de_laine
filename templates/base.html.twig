@@ -37,9 +37,13 @@
                             {% if is_granted('ROLE_ADMIN')%}
                                 <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
                                     <i class="fas fa-shopping-basket mb-1 picto me-2"></i>
-                                    <a href="{{path ("panier_index")}}">Panier</a>
+                                    <a href="{{path ("delivery_options")}}">Panier</a>
                                 </li>
-                                <div class="nav-item dropdown mx-2">
+                                <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
+                                    <i class="fas fa-shopping-basket mb-1 picto me-2"></i>
+                                    <a href="{{path ("delivery_options")}}">Admin</a>
+                                </li>
+                                {# <div class="nav-item dropdown mx-2">
                                     <i class="fas fa-user mb-1 picto"></i>
                                         <a class="dropdown-toggle btn-sm pt-2" type="button" id="gestionDesStocks" data-bs-toggle="dropdown" aria-expanded="false">
                                             Gestion des stocks
@@ -49,8 +53,8 @@
                                             <li><a class="dropdown-item" href="{{path ('categories_list')}}">Catégories</a></li>
                                             <li><a class="dropdown-item" href="{{path ('type_categories_list')}}">Types de Catégories</a></li>
                                         </ul>
-                                </div>
-                                <div class="nav-item dropdown mx-2"  >
+                                </div> #}
+                                {# <div class="nav-item dropdown mx-2"  >
                                     <i class="fas fa-user mb-1 picto me-2"></i>
                                     <a class="dropdown-toggle btn-sm pt-2"  type="button" id="gestionDesCommandes" data-bs-toggle="dropdown" aria-expanded="false">
                                         Gestion des commandes
@@ -61,7 +65,7 @@
                                         <li><a class="dropdown-item" href="{{path ("gestion_stock_commande_expediee")}}">Commandes expédiées</a></li>
                                         <li><a class="dropdown-item" href="{{path ("gestion_stock_list_des_commandes")}}">List des commandes</a></li>
                                     </ul>
-                                </div>
+                                </div> #}
                             {% elseif is_granted('ROLE_USER') %}
                                 <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
                                     <i class="fas fa-shopping-basket mb-1 picto me-2"></i>

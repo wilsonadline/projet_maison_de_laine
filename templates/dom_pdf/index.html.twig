@@ -32,7 +32,8 @@
                 <td>
                     <h4 style="color: rgba(105,133,243,1)">Livraison :</h4>
                     <p>
-                        <span>Vous serez livré par {{facture.delivery.options}}</span><br> <span class="mx-3"> Le : {{"now"|date_modify("+#{facture.delivery.delai} day")|date("d/m/Y")}}</span><br>
+                    {# {{dump(facture)}} #}
+                        <span>Vous serez livré par {{facture.delivery.options }}</span><br> <span class="mx-3"> Le : {{"now"|date_modify("+#{facture.delivery.delai} day")|date("d/m/Y")}}</span><br>
                         <span  class="mx-3">Frais de livraison : {{facture.delivery.price}}€</span><br>
                     </p>
                 </td>

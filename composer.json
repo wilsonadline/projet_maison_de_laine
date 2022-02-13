@@ -15,7 +15,7 @@
         "dompdf/dompdf": "^1.1",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.1",
-        "stripe/stripe-php": "^7.100",
+        "stripe/stripe-php": "^7.113",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "5.3.*",
         "symfony/console": "5.3.*",
@@ -61,6 +61,7 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^5.3",
         "symfony/stopwatch": "5.3.*",
+        "symfony/var-dumper": "5.3.*",
         "symfony/web-profiler-bundle": "5.3.*"
     },
     "config": {

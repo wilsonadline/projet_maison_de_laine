@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% form_theme formLivraison 'bootstrap_5_layout.html.twig' %}
+{% form_theme adresse_form 'bootstrap_5_layout.html.twig' %}
 {% block css %} <link rel="stylesheet" href="{{asset ('../css/livraison.css ')}}" />{% endblock %} 
 
 {% block title %} Livraison | La Maison de Laine{% endblock %}
@@ -9,18 +9,18 @@
         <section class="col-11 col-md-10 col-xxl-6 col-xl-6 rounded-3 mx-1 d-flex flex-column  livraison_box " >
             <h1 class="my-5 text-center">Adresse de livraison</h1>
             <div class=" d-flex align-items-center  justify-content-center flex-column">
-                {{form_start(formLivraison,  {'attr' : {'style' : 'width : 70%'}})}}
-                    {{form_row(formLivraison.nom,{'attr' : {'style' : 'width : 100%'}})}}
-                    {{form_row(formLivraison.prenom)}}
-                    {{form_row(formLivraison.adresse)}}
-                    {{form_row(formLivraison.cp)}}
-                    {{form_row(formLivraison.ville)}}
-                    {{form_row(formLivraison.tel)}}
-                    {{form_row(formLivraison.email)}}
+                {{form_start(adresse_form,  {'attr' : {'style' : 'width : 70%'}})}}
+                    {{form_row(adresse_form.nom,{'attr' : {'style' : 'width : 100%'}})}}
+                    {{form_row(adresse_form.prenom)}}
+                    {{form_row(adresse_form.adresse)}}
+                    {{form_row(adresse_form.cp)}}
+                    {{form_row(adresse_form.ville)}}
+                    {{form_row(adresse_form.tel)}}
+                    {{form_row(adresse_form.email)}}
                     <div class="d-flex justify-content-end">
                         <button class="btn btn-light btn-sm mb-4">Valider</button>
                     </div> 
-                {{form_end(formLivraison)}}
+                {{form_end(adresse_form)}}
             <div>
         </section>
     </div>
