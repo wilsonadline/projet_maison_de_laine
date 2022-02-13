@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% form_theme update_delivery 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Modifier l'option de livraison | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
+
+{% block body %}
+    <div class="mt-1 d-flex justify-content-center align-items-center flex-column"> 
+        <h1 class="text-center mt-4">Modifier l'option de livraison</h1>
+        <div class="col-7">
+            {{form_start(update_delivery)}}
+                {{form_row(update_delivery.options)}}
+                {{form_row(update_delivery.price)}}
+                {{form_row(update_delivery.delai)}}
+                {{form_row(update_delivery.imageFile)}}
+                <div class="d-flex justify-content-end mb-5">
+                    <button type="submit" class="btn btn-light">Modifier</button>
+                </div>
+            {{form_end(update_delivery)}}
+        </div>
+    </div>
+{% endblock %}
