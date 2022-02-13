@@ -51,18 +51,30 @@ class DeliveryController extends AbstractController
     } 
     
     #[Route('/delivery/modifier/{id}', name: 'delivery_options_update')]
-    public function delivery_options_update(): Response
+    public function delivery_options_update(DelivryRepository $delivryRepository, $id, Request $request, EntityManagerInterface $em): Response
     {
-        return $this->render('admin/delivery/delivery_update.html.twig', [
-            'controller_name' => 'DeliveryController',
+        $update_delivery_form = $this->createForm(DeliveryType::class , $delivryRepository->find($id));
+        $update_delivery_form->handleRequest($request);
+
+        if($update_delivery_form->isSubmitted() && $update_delivery_form->isValid()){
+            $em->persist($delivryRepository->find($id));
+            $em->flush();  
+            
+            $this->addFlash('delivery_option_update', 'L\'option a bien été modifié !');
+            return $this->redirectToRoute('delivery_options_list');
+        }
+        return $this->render('admin/delivery/modifier.html.twig', [
+            'update_delivery' => $update_delivery_form->createView()
         ]);
     } 
     
-    #[Route('/delivery/supprimer', name: 'delivery_options_delete')]
-    public function delivery_options_delete(): Response
+    #[Route('/delivery/supprimer/{id}', name: 'delivery_options_delete')]    
+    public function delivery_options_delete($id, EntityManagerInterface $em, DelivryRepository $delivryRepository): Response
     {
-        return $this->render('admin/delivery/delivery_delete.html.twig', [
-            'controller_name' => 'DeliveryController',
-        ]);
+        $em->remove($delivryRepository->find($id));
+        $em->flush();
+
+        $this->addFlash('delivery_option_delete', 'L\'option a bien été supprimé !');
+        return $this->redirectToRoute('delivery_options_list');
     }
 }
