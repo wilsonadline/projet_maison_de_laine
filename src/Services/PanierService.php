@@ -77,7 +77,7 @@ class PanierService
     }
 
     public function save_order(AdressesRepository $repoAdresse , $adresse_id,
-    OrderStatusRepository $statusRepo, $dataPanier, DelivryRepository $delivryRepository, $deliveryMode)
+    OrderStatusRepository $statusRepo, $dataPanier, DelivryRepository $delivryRepository, $deliveryMode, SessionInterface $session)
     {
         // recup l'id de l'adresse
         $adresse = $repoAdresse->find($adresse_id);
@@ -100,6 +100,8 @@ class PanierService
         $order->setTotal($totalOrder + $mode->getPrice() );
         $this->em->persist($order);
         $this->em->flush();
+
+        $session->set('order_id', $order->getId());
         return $order;
     }
 }
