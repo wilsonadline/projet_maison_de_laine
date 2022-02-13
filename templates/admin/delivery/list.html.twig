@@ -32,9 +32,12 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Logo </th>
                 <th scope="col">Option</th>
                 <th scope="col">Prix</th>
                 <th scope="col">Délai</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
             </tr>
         </thead>
         <tbody>
@@ -45,6 +48,8 @@
                     <td>{{list.options}}</td>
                     <td>{{list.price}}</td>
                     <td>{{list.delai}}</td>
+                    <td><a href="{{path ('delivery_options_update', {id : list.id})}}" class="btn btn-light">Modifier</a></td>
+                    <td><a href="{{path ('delivery_options_delete', {id : list.id})}}" onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')" class="btn btn-light">Supprimer</a></td>
                 </tr>
             {% endfor %}
         </tbody>
