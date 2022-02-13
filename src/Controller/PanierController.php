@@ -3,10 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Articles;
+use App\Entity\Order;
+use App\Entity\OrderLine;
+use App\Repository\AdressesRepository;
 use App\Repository\ArticlesRepository;
 use App\Services\PanierService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Console\Helper\Dumper;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+ <div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body align-items-center justify-content-center d-flex flex-column">
+        <h5 class="card-title">Mode de Livraison</h5>
+        <p class="card-text text-center">Ajouter - Modifier - Supprimer un mode de livraison</p>
+        <a href="{{path("delivery_options")}}" class="btn btn-primary" style="width: auto!important">Mode de Livraison</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body align-items-center justify-content-center d-flex flex-column">
+        <h5 class="card-title">Gestion des Stocks</h5>
+        <p class="card-text text-center">Ajouter - Modifier - Supprimer un mode de livraison</p>
+        <a href="{{path("delivery_options")}}" class="btn btn-primary" style="width: auto!important">Mode de Livraison</a>
+      </div>
+    </div>
+  </div>
+   <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body align-items-center justify-content-center d-flex flex-column">
+        <h5 class="card-title">Gestion des Commandes</h5>
+        <p class="card-text text-center">Ajouter - Modifier - Supprimer un mode de livraison</p>
+        <a href="{{path("delivery_options")}}" class="btn btn-primary" style="width: auto!important">Mode de Livraison</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

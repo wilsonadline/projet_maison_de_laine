@@ -47,7 +47,7 @@ class LivraisonController extends AbstractController
     }
    
     #[Route('/livraison/optionlivraison/{id}', name:'livraison_option')]
-    public function option_livraison($id, SessionInterface $session, AdressesRepository $adresses, ArticlesRepository $articleRepository,
+    public function option_livraison($id,SessionInterface $session, AdressesRepository $adresses, ArticlesRepository $articleRepository,
      Request $request, EntityManagerInterface $em, DelivryRepository $delivryReposit): Response
     {
         $paniers = new PanierService($em);
@@ -140,7 +140,7 @@ class LivraisonController extends AbstractController
         list ($dataPanier)= $panier_service->panier($session, $articleRepository);
         $panier_service->gestionStock($dataPanier);
 
-        $order = $panier_service->save_order($adressesRepository, $adresse_id, $statusRepo, $dataPanier, $delivryRepository, $deliveryMode);
+        $order = $panier_service->save_order($adressesRepository, $adresse_id, $statusRepo, $dataPanier, $delivryRepository, $deliveryMode, $session);
 
         return  new JsonResponse($order->getId());
     }
