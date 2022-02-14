@@ -8,12 +8,14 @@
         {% if error %}
             <div class="alert alert-danger">{{error.messageKey|trans(error.messageData, 'security')}}</div>
         {% endif %}
-
         {% if app.user %}
-            <div class="mb-3">
-                Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{path ('app_logout')}}">Déconnexion</a>
-            </div>
+            {% if app.user.isverified == 1 %}
+                <div class="mb-3">
+                    Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{path ('app_logout')}}">Déconnexion</a>
+                </div>
+            {% endif %}
         {% endif %}
+
         <div class="d-flex mb-5 justify-content-center justify-content-xxl-between justify-content-xl-between">
             <img src="{{ asset ('images/la_maison_de_laine_lets_go_pexels-sevenstorm-juhaszimrus-704767.jpg')}}" alt="Images Connexion | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono" class="shadow p-0 rounded-3 col-xl-5 col-sm-6 col-12 d-none d-md-none d-xl-block d-xxl-block"  style="height : 500px ; width : 40%">
             <div class="d-flex flex-column col-xl-6 col-md-9 col-12">
