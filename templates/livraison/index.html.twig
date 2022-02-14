@@ -9,18 +9,68 @@
         <section class="col-11 col-md-10 col-xxl-6 col-xl-6 rounded-3 mx-1 d-flex flex-column  livraison_box " >
             <h1 class="my-5 text-center">Adresse de livraison</h1>
             <div class=" d-flex align-items-center  justify-content-center flex-column">
-                {{form_start(adresse_form,  {'attr' : {'style' : 'width : 70%'}})}}
-                    {{form_row(adresse_form.nom,{'attr' : {'style' : 'width : 100%'}})}}
-                    {{form_row(adresse_form.prenom)}}
-                    {{form_row(adresse_form.adresse)}}
-                    {{form_row(adresse_form.cp)}}
-                    {{form_row(adresse_form.ville)}}
-                    {{form_row(adresse_form.tel)}}
-                    {{form_row(adresse_form.email)}}
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-light btn-sm mb-4">Valider</button>
-                    </div> 
-                {{form_end(adresse_form)}}
+                {% if app.user %}
+                    {{form_start(adresse_form,  {'attr' : {'style' : 'width : 70%'}})}}
+                        {{form_row(adresse_form.nom,
+                            {'attr' : 
+                                {'style' : 'width : 100%'}, 
+                                'value' : app.user.name 
+                            }
+                        )}}
+                        {{form_row(adresse_form.prenom,
+                            {'attr' : 
+                                {'style' : 'width : 100%'}, 
+                                'value' : app.user.firstname 
+                            }
+                        )}}
+                        {{form_row(adresse_form.adresse,
+                            {'attr' : 
+                                {'style' : 'width : 100%'}, 
+                                'value' : app.user.ad 
+                            }
+                        )}}
+                        {{form_row(adresse_form.cp,
+                            {'attr' : 
+                                {'style' : 'width : 100%'}, 
+                                'value' : app.user.cp
+                            }
+                        )}}
+                        {{form_row(adresse_form.ville,
+                            {'attr' : 
+                                {'style' : 'width : 100%'}, 
+                                'value' : app.user.ville 
+                            }
+                        )}}
+                        {{form_row(adresse_form.tel,
+                            {'attr' : 
+                                {'style' : 'width : 100%'}, 
+                                'value' : app.user.tel 
+                            }
+                        )}}
+                        {{form_row(adresse_form.email,
+                            {'attr' : 
+                                {'style' : 'width : 100%'}, 
+                                'value' : app.user.email 
+                            }
+                        )}}
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-light btn-sm mb-4">Valider</button>
+                        </div> 
+                    {{form_end(adresse_form)}}
+                {% else %}
+                    {{form_start(adresse_form,  {'attr' : {'style' : 'width : 70%'}})}}
+                        {{form_row(adresse_form.nom,{'attr' : {'style' : 'width : 100%'}})}}
+                        {{form_row(adresse_form.prenom)}}
+                        {{form_row(adresse_form.adresse)}}
+                        {{form_row(adresse_form.cp)}}
+                        {{form_row(adresse_form.ville)}}
+                        {{form_row(adresse_form.tel)}}
+                        {{form_row(adresse_form.email)}}
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-light btn-sm mb-4">Valider</button>
+                        </div> 
+                    {{form_end(adresse_form)}}
+                {% endif %}
             <div>
         </section>
     </div>
