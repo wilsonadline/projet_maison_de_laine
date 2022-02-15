@@ -102,7 +102,7 @@ class PanierService
         $this->em->flush();
 
         $session->set('order_id', $order->getId());
-
+        
         return $order;
     }
 }
