@@ -13,20 +13,40 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
       </div>
     {% endfor %}
-    <section class="d-flex mb-5 justify-content-center justify-content-xxl-between justify-content-xl-between">
-      <img src="{{asset ('images/la_maison_de_laine_ordi_Pavel_Danilyuk.jpg')}}" alt="Image de Contact | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono" class="shadow p-0 rounded-3 col-xl-5 col-sm-6  col-12 d-none d-md-none d-xl-block d-xxl-block"/>
-      <div class="d-flex flex-column col-xl-6 col-md-9 col-12">
+    {# <section class="d-flex mb-5 justify-content-center justify-content-xxl-between justify-content-xl-between"> #}
+      {# <img src="{{asset ('images/la_maison_de_laine_ordi_Pavel_Danilyuk.jpg')}}" alt="Image de Contact | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono" class="shadow p-0 rounded-3 col-xl-5 col-sm-6  col-12 d-none d-md-none d-xl-block d-xxl-block"/> #}
+      {# <div class="d-flex flex-column col-xl-6 col-md-9 col-12"> #}
         {{form_start(formContact)}}
-          {{form_row(formContact.nom)}}
-          {{form_row(formContact.prenom)}}
-          {{form_row(formContact.email)}}
-          {{form_row(formContact.sujet)}}
-          {{form_row(formContact.message)}}
+          <div class="input-nom">
+            <i class="fas fa-user"></i>
+            {{form_row(formContact.nom)}}
+            <i class="fas fa-arrow-down"></i>
+          </div>
+          <div class="input-prenomd inactive">
+            <i class="fas fa-user"></i>
+            {{form_row(formContact.prenom)}}
+            <i class="fas fa-arrow-down"></i>
+          </div>
+          <div class="input-emaild inactive">
+            <i class="fas fa-at"></i> 
+            {{form_row(formContact.email)}}
+            <i class="fas fa-arrow-down"></i>
+          </div>
+          <div class="input-sujetd inactive">
+            <i class="fas fa-comment"></i>
+            {{form_row(formContact.sujet)}}
+            <i class="fas fa-arrow-down"></i>
+          </div>
+          <div class="input-messaged inactive">
+            <i class="fas fa-envelope"></i>
+            {{form_row(formContact.message)}}
+            <i class="fas fa-arrow-down"></i>
+          </div>
           <div class="d-flex justify-content-end">
             <button class="btn btn-light" type="submit">Envoyer</button>
           </div>
         {{form_end(formContact)}}
-      </div>
-    </section>
+      {# </div> #}
+    {# </section> #}
   </div>
 {% endblock %}

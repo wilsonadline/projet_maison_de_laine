@@ -39,7 +39,7 @@ window.onload = () => {
                 let adresse_id = document.getElementById("adresse_id").value;
 
                 let deliveryMode = $("input[name=drone]:checked").val();
-                console.log(deliveryMode);
+                // console.log(deliveryMode);
 
                 // var removing = 
                 if(deliveryMode == undefined){

@@ -99,16 +99,17 @@ class LivraisonController extends AbstractController
 
         $order = $panier_service->save_order($adressesRepository, $adresse_id, $statusRepo, $dataPanier, $delivryRepository, $deliveryMode, $session);
 
-        return  new JsonResponse($order->getId());
+        return new JsonResponse($order->getId());
     }
 
     /**
     * @Route("succes/", name="succes", methods={"GET"})
     */
-    public function succes(OrderRepository $orderRepository, Session $session)
+    public function succes(SessionInterface $session)
     {
-        return $this->render('succes/succes.html.twig',
-        );
+        return $this->render('succes/succes.html.twig',[
+            'orderId' => $session->get('order_id')
+        ]);
     }
 
     /**

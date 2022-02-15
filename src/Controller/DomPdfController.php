@@ -18,6 +18,8 @@ class DomPdfController extends AbstractController
         $options->set('defaultFont', 'Arial');
         
         $dompdf = new Dompdf($options);
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
         
         $html = $this->renderView('dom_pdf/index.html.twig', [
             'facture'=> $orderRepository->findOneBy(['id' => $order_id])
@@ -25,19 +27,10 @@ class DomPdfController extends AbstractController
         
         $dompdf->loadHtml($html);
         
-        // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'portrait');
-        
         // Render the HTML as PDF
         $dompdf->render();
         
         // Output the generated PDF to Browser
-        $dompdf->stream("Facture - La Maison de Laine", [
-            "Attachment" => true
-        ] );
-        
-        $this->render('succes/succes.html.twig', [
-            'facture' => $orderRepository->findOneBy(['id' => $order_id])
-        ]);
+        $dompdf->stream("Facture - La Maison de Laine");
     }
 }
