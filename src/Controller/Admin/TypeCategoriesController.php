@@ -16,6 +16,12 @@ use Symfony\Component\Routing\Annotation\Route;
 */
 class TypeCategoriesController extends AbstractController
 {
+    #[Route('/typeCategories', name: 'options')]
+    public function typeCategories(): Response
+    {
+        return $this->render('admin/gestionStock/type_categories/index.html.twig');
+    }
+    
     #[Route("/typeCategories/ajout", name: "ajout")]
     public function typeCategoriesAjout(Request $request, EntityManagerInterface $em): Response
     {
@@ -31,11 +37,11 @@ class TypeCategoriesController extends AbstractController
             $em->persist($typeCategoriesAjout);
             $em->flush();
 
-            $this->addFlash('typeCategoriesAdd', 'Le type de catégorie a bien été ajouté !');
+            $this->addFlash('add', 'Le type de catégorie a bien été ajouté !');
             return $this->redirectToRoute('type_categories_list');
         }
 
-        return $this->render('admin/type_categories/ajout.html.twig', [
+        return $this->render('admin/gestionStock/type_categories/ajout.html.twig', [
             'typeCategoriesAjout' => $typeCategoriesAjout_form->createView()
         ]);
     }
@@ -54,11 +60,11 @@ class TypeCategoriesController extends AbstractController
             $em->persist($typeCategoriesModifier);
             $em->flush();
 
-            $this->addFlash('typeCategoriesEdit', 'Le type de catégorie a bien été modifié !');
+            $this->addFlash('update', 'Le type de catégorie a bien été modifié !');
             return $this->redirectToRoute('type_categories_list');
         }
 
-        return $this->render('admin/type_categories/modifier.html.twig', [
+        return $this->render('admin/gestionStock/type_categories/modifier.html.twig', [
             'typeCategoriesModifier' => $typeCategoriesModifier_form->createView()
         ]);
     }
@@ -71,14 +77,14 @@ class TypeCategoriesController extends AbstractController
         $em->remove($typeCategoriesDelete);
         $em->flush();
         
-        $this->addFlash('typeCategoriesDelete', 'Le type de catégorie a bien été supprimé !');
+        $this->addFlash('delete', 'Le type de catégorie a bien été supprimé !');
         return $this->redirectToRoute('type_categories_list');
     }
 
     #[Route("/typeCategories/list", name: "list")]
     public function typeCategoriesList(TypeCategoriesRepository $typeCategoriesList): Response
     {
-        return $this->render('admin/type_categories/list.html.twig', [
+        return $this->render('admin/gestionStock/type_categories/list.html.twig', [
             'typeCategoriesList' => $typeCategoriesList->findAll()
         ]);
     }
