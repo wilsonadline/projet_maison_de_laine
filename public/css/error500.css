@@ -18,7 +18,7 @@
    100%{ 
       transform:  rotate(-45deg) scaleX(1) scaleY(1);
       box-shadow: 0 1vmin 5vmin rgba(0,0,0,0.5)
-      }
+   }
 }
       
 .internal{
