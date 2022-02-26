@@ -16,6 +16,12 @@ use Symfony\Component\Routing\Annotation\Route;
 */
 class ArticlesController extends AbstractController
 {
+    #[Route('/articles', name: 'options')]
+    public function articles(): Response
+    {
+        return $this->render('admin/gestionStock/articles/index.html.twig');
+    }
+
     #[Route("/articles/ajout", name: "ajout")]
     public function articlesAjout(Request $request, EntityManagerInterface $em): Response
     {
@@ -31,11 +37,11 @@ class ArticlesController extends AbstractController
             $em->persist($articlesAjout);
             $em->flush();
 
-            $this->addFlash('articlesAdd', 'L\'article a bien été ajouté !');
+            $this->addFlash('add', 'L\'article a bien été ajouté !');
             return $this->redirectToRoute('articles_list');
         }
 
-        return $this->render('admin/articles/ajout.html.twig', [
+        return $this->render('admin/gestionStock/articles/ajout.html.twig', [
             'articlesAjout' => $articlesAjout_form->createView()
         ]);
     }
@@ -55,43 +61,35 @@ class ArticlesController extends AbstractController
             $em->persist($articlesModifier);
             $em->flush();
 
-            $this->addFlash('articlesEdit', 'L\'article a bien été modifié !');
+            $this->addFlash('update', 'L\'article a bien été modifié !');
             return $this->redirectToRoute('articles_list');
         }
 
-        return $this->render('admin/articles/modifier.html.twig', [
+        return $this->render('admin/gestionStock/articles/modifier.html.twig', [
             'articlesModifier' => $articlesModifier_form->createView()
         ]);
     }
 
     #[Route("/articles/delete/{id}", name: "delete")]
-    public function articlesDelete($id, EntityManagerInterface $em): Response
+    public function articlesDelete($id, EntityManagerInterface $em, Request $request): Response
     {
-        $articlesDelete = $this->getDoctrine()->getRepository(Articles::class)->find($id);
+        if($this->isCsrfTokenValid('delete'.$id, $request->query->get('csrf')))
+        {
+            $articlesDelete = $this->getDoctrine()->getRepository(Articles::class)->find($id);
         
-        $em->remove($articlesDelete);
-        $em->flush();
-        
-        $this->addFlash('articlesDelete', 'L \'article a bien été supprimé !');
-        return $this->redirectToRoute('articles_list');
+            $em->remove($articlesDelete);
+            $em->flush();
+
+            $this->addFlash('delete', 'L \'article a bien été supprimé !');
+        }
+            return $this->redirectToRoute('articles_list');
     }
    
     #[Route("/articles/list", name: "list")]
     public function articlesList(ArticlesRepository $articlesList): Response
     {
-        return $this->render('admin/articles/list.html.twig', [
+        return $this->render('admin/gestionStock/articles/list.html.twig', [
             'articlesList' => $articlesList->findAll()
         ]);
     }
-
-    // #[Route("/articles/activer/{id}", name: "activer")]
-    // public function activer(Articles $articles, EntityManagerInterface $em): Response
-    // {
-    //     $articles->setActive(($articles->getActive())?false:true);
-
-    //     $em->persist($articles);
-    //     $em->flush();
-
-    //     return new Response("true"); 
-    // }
 }
