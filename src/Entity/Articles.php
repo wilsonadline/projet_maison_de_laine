@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-
 /**
 * @ORM\Entity(repositoryClass="App\Repository\ArticlesRepository")
 * @Vich\Uploadable
@@ -81,17 +80,11 @@ class Articles
     * @ORM\OneToMany(targetEntity=OrderLine::class, mappedBy="articles")
     */
     private $orderLines;
-
-    // /**
-    //  * @ORM\Column(type="boolean")
-    //  */
-    // private $active;
    
     public function __construct()
     {
         $this->orderLines = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -162,10 +155,10 @@ class Articles
         return $this->imageFile;
     }
 
-        public function setImageName(?string $imageName): void
-        {
-            $this->imageName = $imageName;
-        }
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
 
     public function getImageName(): ?string
     {
@@ -207,6 +200,7 @@ class Articles
 
         return $this;
     }
+    
     public function __toString() {
         return $this->article;
     }
@@ -233,7 +227,7 @@ class Articles
 
     public function addOrderLine(OrderLine $orderLine): self
     {
-        if (!$this->orderLines->contains($orderLine)) {
+        if (!$this->orderLines->contains($orderLine)){
             $this->orderLines[] = $orderLine;
             $orderLine->setArticle($this);
         }
@@ -243,7 +237,8 @@ class Articles
 
     public function removeOrderLine(OrderLine $orderLine): self
     {
-        if ($this->orderLines->removeElement($orderLine)) {
+        if ($this->orderLines->removeElement($orderLine))
+        {
             // set the owning side to null (unless already changed)
             if ($orderLine->getArticle() === $this) {
                 $orderLine->setArticle(null);
@@ -252,16 +247,4 @@ class Articles
 
         return $this;
     }
-
-    // public function getActive(): ?bool
-    // {
-    //     return $this->active;
-    // }
-
-    // public function setActive(bool $active): self
-    // {
-    //     $this->active = $active;
-
-    //     return $this;
-    // }
 }

@@ -95,7 +95,7 @@ class TypeCategories
 
     public function addCategory(Categories $category): self
     {
-        if (!$this->categories->contains($category)) {
+        if(!$this->categories->contains($category)){
             $this->categories[] = $category;
             $category->setTypeCategories($this);
         }
@@ -105,9 +105,9 @@ class TypeCategories
 
     public function removeCategory(Categories $category): self
     {
-        if ($this->categories->removeElement($category)) {
+        if($this->categories->removeElement($category)){
             // set the owning side to null (unless already changed)
-            if ($category->getTypeCategories() === $this) {
+            if($category->getTypeCategories() === $this){
                 $category->setTypeCategories(null);
             }
         }
@@ -117,5 +117,7 @@ class TypeCategories
     public function __toString()
     {
         return $this->nom;
+        return $this->categories;
     }
+    
 }

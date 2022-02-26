@@ -10,8 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-
-
 /**
 * @ORM\Entity(repositoryClass=CategoriesRepository::class)
 * @Vich\Uploadable
@@ -50,7 +48,7 @@ class Categories
     */
     private $typeCategories;
 
-     /**
+    /**
     * @Vich\UploadableField(mapping="categorie_img", fileNameProperty="imageName")
     * @var File|null
     */
@@ -61,8 +59,6 @@ class Categories
     * @var string|null
     */
     private $imageName;
-
-    
 
     public function __construct()
     {
@@ -111,8 +107,8 @@ class Categories
     }
 
     /**
-     * @return Collection|Articles[]
-     */
+    * @return Collection|Articles[]
+    */
     public function getArticles(): Collection
     {
         return $this->articles;
@@ -130,9 +126,10 @@ class Categories
 
     public function removeArticle(Articles $article): self
     {
-        if ($this->articles->removeElement($article)) {
+        if ($this->articles->removeElement($article))
+        {
             // set the owning side to null (unless already changed)
-            if ($article->getCategories() === $this) {
+            if($article->getCategories() === $this){
                 $article->setCategories(null);
             }
         }
@@ -168,10 +165,10 @@ class Categories
         return $this->imageFile;
     }
 
-        public function setImageName(?string $imageName): void
-        {
-            $this->imageName = $imageName;
-        }
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
 
     public function getImageName(): ?string
     {
@@ -182,5 +179,4 @@ class Categories
     {
         return $this->nom;
     }
-
 }

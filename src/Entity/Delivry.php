@@ -9,8 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-
-
 /**
 * @ORM\Entity(repositoryClass=DelivryRepository::class)
 * @Vich\Uploadable
@@ -39,7 +37,7 @@ class Delivry
     */
     private $delai;
 
-        /**
+    /**
     * @Vich\UploadableField(mapping="delivery_img", fileNameProperty="imageName")
     * @var File|null
     */

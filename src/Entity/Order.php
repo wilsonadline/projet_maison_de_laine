@@ -25,7 +25,6 @@ class Order
     */
     private $createdAt;
 
-    
     /**
     * @ORM\OneToMany(targetEntity=OrderLine::class, mappedBy="orders")
     */
@@ -91,7 +90,7 @@ class Order
 
     public function addOrderLine(OrderLine $orderLine): self
     {
-        if (!$this->orderLines->contains($orderLine)) {
+        if(!$this->orderLines->contains($orderLine)){
             $this->orderLines[] = $orderLine;
             $orderLine->setOrders($this);
         }
@@ -101,9 +100,9 @@ class Order
 
     public function removeOrderLine(OrderLine $orderLine): self
     {
-        if ($this->orderLines->removeElement($orderLine)) {
+        if($this->orderLines->removeElement($orderLine)){
             // set the owning side to null (unless already changed)
-            if ($orderLine->getOrders() === $this) {
+            if($orderLine->getOrders() === $this){
                 $orderLine->setOrders(null);
             }
         }

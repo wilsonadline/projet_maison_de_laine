@@ -61,7 +61,7 @@ class OrderStatus
 
     public function addOrder(Order $order): self
     {
-        if (!$this->orders->contains($order)) {
+        if(!$this->orders->contains($order)){
             $this->orders[] = $order;
             $order->setOrderStatus($this);
         }
@@ -71,9 +71,9 @@ class OrderStatus
 
     public function removeOrder(Order $order): self
     {
-        if ($this->orders->removeElement($order)) {
+        if($this->orders->removeElement($order)){
             // set the owning side to null (unless already changed)
-            if ($order->getOrderStatus() === $this) {
+            if($order->getOrderStatus() === $this){
                 $order->setOrderStatus(null);
             }
         }
