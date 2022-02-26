@@ -11,17 +11,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+* @Route("/admin", name="delivery_")
+*/
 class DeliveryController extends AbstractController
 {
-    #[Route('/delivery', name: 'delivery_options')]
+    #[Route('/delivery', name: 'options')]
     public function delivery(): Response
     {
-        return $this->render('delivery/index.html.twig', [
-            'controller_name' => 'DeliveryController',
-        ]);
+        return $this->render('admin/delivery/index.html.twig');
     }
 
-    #[Route('/delivery/list', name: 'delivery_options_list')]
+    #[Route('/delivery/list', name: 'options_list')]
     public function delivery_options_list(DelivryRepository $delivryRepository): Response
     {
         return $this->render('admin/delivery/list.html.twig', [
@@ -29,7 +30,7 @@ class DeliveryController extends AbstractController
         ]);
     }
 
-    #[Route('/delivery/ajouter', name: 'delivery_options_add')]
+    #[Route('/delivery/ajouter', name: 'options_add')]
     public function delivery_options_add(Request $request, EntityManagerInterface $em): Response
     {
         $add_delivery = new Delivry();
@@ -41,7 +42,7 @@ class DeliveryController extends AbstractController
             $em->persist($add_delivery);
             $em->flush();
 
-            $this->addFlash('delivery_option_add', 'L\'option a bien été ajouté !');
+            $this->addFlash('add', 'L\'option a bien été ajouté !');
             return $this->redirectToRoute('delivery_options_list');
         }
 
@@ -50,7 +51,7 @@ class DeliveryController extends AbstractController
         ]);
     } 
     
-    #[Route('/delivery/modifier/{id}', name: 'delivery_options_update')]
+    #[Route('/delivery/modifier/{id}', name: 'options_update')]
     public function delivery_options_update(DelivryRepository $delivryRepository, $id, Request $request, EntityManagerInterface $em): Response
     {
         $update_delivery_form = $this->createForm(DeliveryType::class , $delivryRepository->find($id));
@@ -60,7 +61,7 @@ class DeliveryController extends AbstractController
             $em->persist($delivryRepository->find($id));
             $em->flush();  
             
-            $this->addFlash('delivery_option_update', 'L\'option a bien été modifié !');
+            $this->addFlash('update', 'L\'option a bien été modifié !');
             return $this->redirectToRoute('delivery_options_list');
         }
         return $this->render('admin/delivery/modifier.html.twig', [
@@ -68,13 +69,13 @@ class DeliveryController extends AbstractController
         ]);
     } 
     
-    #[Route('/delivery/supprimer/{id}', name: 'delivery_options_delete')]    
+    #[Route('/delivery/supprimer/{id}', name: 'options_delete')]    
     public function delivery_options_delete($id, EntityManagerInterface $em, DelivryRepository $delivryRepository): Response
     {
         $em->remove($delivryRepository->find($id));
         $em->flush();
 
-        $this->addFlash('delivery_option_delete', 'L\'option a bien été supprimé !');
+        $this->addFlash('delete', 'L\'option a bien été supprimé !');
         return $this->redirectToRoute('delivery_options_list');
     }
 }
