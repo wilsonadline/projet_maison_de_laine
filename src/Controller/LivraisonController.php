@@ -3,17 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Adresses;
-use App\Entity\Users;
 use App\Form\AdressesType;
 use App\Form\PaiementType;
 use App\Services\PanierService;
-use App\Repository\OrderRepository;
 use App\Repository\DelivryRepository;
 use App\Repository\AdressesRepository;
 use App\Repository\ArticlesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\OrderStatusRepository;
-use App\Repository\UsersRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,7 +27,6 @@ class LivraisonController extends AbstractController
         $adresse = new Adresses();
 
         $adresse_form = $this->createForm(AdressesType::class, $adresse);
-
         $adresse_form->handleRequest($request);
         
         if($adresse_form->isSubmitted() && $adresse_form->isValid() && !$adresse_form->isEmpty())
@@ -76,10 +72,10 @@ class LivraisonController extends AbstractController
         }
 
         return $this->render('livraison/optionlivraison.html.twig',[ 
-            'adresse'=>  $adresses->find($id),
+            'adresse' => $adresses->find($id),
             'dataPanier' => $dataPanier, 
-            'total'=> $total, 
-            'intent'=>$intent, 
+            'total' => $total, 
+            'intent' => $intent, 
             'form_paiement' => $form_paiement->createView(),
             'delivryModes' => $delivryReposit->findAll()
             ]

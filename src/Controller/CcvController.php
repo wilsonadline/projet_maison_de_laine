@@ -11,8 +11,6 @@ class CcvController extends AbstractController
     #[Route('/ccv', name: 'ccv')]
     public function index(): Response
     {
-        return $this->render('ccv/index.html.twig', [
-            'controller_name' => 'CcvController',
-        ]);
+        return $this->render('ccv/index.html.twig');
     }
 }
