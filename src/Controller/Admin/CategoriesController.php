@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoriesController extends AbstractController
 {
     #[Route('/categories', name: 'options')]
-    public function typeCategories(): Response
+    public function categories(): Response
     {
         return $this->render('admin/gestionStock/categories/index.html.twig');
     }
