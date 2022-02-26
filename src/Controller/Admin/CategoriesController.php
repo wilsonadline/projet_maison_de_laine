@@ -16,6 +16,12 @@ use Symfony\Component\Routing\Annotation\Route;
 */
 class CategoriesController extends AbstractController
 {
+    #[Route('/categories', name: 'options')]
+    public function typeCategories(): Response
+    {
+        return $this->render('admin/gestionStock/categories/index.html.twig');
+    }
+
     #[Route("/categories/ajout", name: "ajout")]
     public function categoriesAjout(Request $request, EntityManagerInterface $em): Response
     {
@@ -31,11 +37,11 @@ class CategoriesController extends AbstractController
             $em->persist($categoriesAjout);
             $em->flush();
             
-            $this->addFlash('categoriesAdd', 'La catégorie a bien été ajouté !');
+            $this->addFlash('add', 'La catégorie a bien été ajouté !');
             return $this->redirectToRoute('categories_list');
         }
 
-        return $this->render('admin/categories/ajout.html.twig', [
+        return $this->render('admin/gestionStock/categories/ajout.html.twig', [
             'categoriesAjout' => $categoriesAjout_form->createView()
         ]);
     }
@@ -55,11 +61,11 @@ class CategoriesController extends AbstractController
             $em->persist($categoriesModifier);
             $em->flush();
 
-            $this->addFlash('categoriesEdit', 'La catégorie a bien été modifié !');
+            $this->addFlash('update', 'La catégorie a bien été modifié !');
             return $this->redirectToRoute('categories_list');
         }
 
-        return $this->render('admin/categories/modifier.html.twig', [
+        return $this->render('admin/gestionStock/categories/modifier.html.twig', [
             'categoriesModifier' => $categoriesModifier_form->createView()
         ]);
     }
@@ -72,14 +78,14 @@ class CategoriesController extends AbstractController
         $em->remove($categoriesDelete);
         $em->flush();
         
-        $this->addFlash('categoriesDelete', 'La catégorie a bien été supprimé !');
+        $this->addFlash('delete', 'La catégorie a bien été supprimé !');
         return $this->redirectToRoute('categories_list');
     }
 
     #[Route("/categories/list", name: "list")]
     public function categoriesList(CategoriesRepository $categoriesList): Response
     {
-        return $this->render('admin/categories/list.html.twig', [
+        return $this->render('admin/gestionStock/categories/list.html.twig', [
             'categoriesList' => $categoriesList->findAll()
         ]);
     }
