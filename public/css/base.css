@@ -19,7 +19,6 @@ body{
   margin-bottom: 1rem;
 }
 
-/* Les Fonctionnalités */
 .nav-item {
   cursor: pointer;
   font-size: 20px;
@@ -76,7 +75,6 @@ a {
   border-image-slice: 1;
 }
 
-/* Footer */
 footer {
   display: flex;
   justify-content: center;
@@ -122,7 +120,6 @@ footer {
   -webkit-text-fill-color: transparent;
   font-weight: bolder;
 }
-  /* End Footer */
 
 .nav-item:hover a{
   background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
@@ -166,14 +163,11 @@ label{
   -webkit-text-fill-color: transparent;
   font-weight: bolder;
 }
-
-/* Logo */
 #logo 
 {
   width: 150px;
   height: 150px;
 }
-/* end Logo */
 
 p{
   font-weight: bolder;
@@ -188,6 +182,8 @@ h1{
 }
 .card-hover:hover{
   transform: scale(1.05);
+  background: -webkit-linear-gradient(50deg,  rgba(166, 64, 255, 0.164) 0%, rgba(54, 161, 255, 0.185) 100%);
+
   box-shadow:5px 5px 15px 5px #7373736b;
 }
 
@@ -198,4 +194,14 @@ h1{
 }
 #projet{
   color: red;
+}
+
+.sectionHov{
+  transition: all 0.5s;
+}
+
+.sectionHov:hover{
+  background: -webkit-linear-gradient(50deg,  rgba(166, 64, 255, 0.164) 0%, rgba(54, 161, 255, 0.185) 100%);
+  transform: scale(1.05);
+  margin-top: 2rem;
 }
