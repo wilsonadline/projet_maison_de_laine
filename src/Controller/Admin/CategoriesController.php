@@ -47,22 +47,28 @@ class CategoriesController extends AbstractController
     }
 
     #[Route("/categories/modifier/{id}", name: "modifier")]
-    public function categoriesModifier($id , Request $request, EntityManagerInterface $em): Response
+    public function categoriesModifier($id, Request $request, EntityManagerInterface $em): Response
     {
-        $categoriesModifier = $this->getDoctrine()->getRepository(Categories::class)->find($id);
-
-        $categoriesModifier_form = $this->createForm(CategoriesType::class, $categoriesModifier);
-        $categoriesModifier_form->handleRequest($request);
-
-        if($categoriesModifier_form->isSubmitted() && $categoriesModifier_form->isValid())
+        if($this->isCsrfTokenValid('update'.$id, $request->query->get('csrf')))
         {
-            $categoriesModifier->setUpdatedAt(new \DateTime());
+            $categoriesModifier = $this->getDoctrine()->getRepository(Categories::class)->find($id);
 
-            $em->persist($categoriesModifier);
-            $em->flush();
+            $categoriesModifier_form = $this->createForm(CategoriesType::class, $categoriesModifier);
+            $categoriesModifier_form->handleRequest($request);
 
-            $this->addFlash('update', 'La catégorie a bien été modifié !');
-            return $this->redirectToRoute('categories_list');
+            if($categoriesModifier_form->isSubmitted() && $categoriesModifier_form->isValid())
+            {
+                $categoriesModifier->setUpdatedAt(new \DateTime());
+
+                $em->persist($categoriesModifier);
+                $em->flush();
+
+                $this->addFlash('update', 'La catégorie a bien été modifié !');
+                return $this->redirectToRoute('categories_list');
+            }
+        }else{
+            $this->addFlash('error', 'Votre lien n\'est pas valide !');
+            return $this->redirectToRoute('admin_admin');
         }
 
         return $this->render('admin/gestionStock/categories/modifier.html.twig', [
@@ -71,15 +77,21 @@ class CategoriesController extends AbstractController
     }
 
     #[Route("/categories/delete/{id}", name: "delete")]
-    public function categoriesDelete($id, EntityManagerInterface $em): Response
+    public function categoriesDelete($id, EntityManagerInterface $em, Request $request): Response
     {
-        $categoriesDelete = $this->getDoctrine()->getRepository(Categories::class)->find($id);
+        if($this->isCsrfTokenValid('delete'.$id, $request->query->get('csrf')))
+        {
+           $categoriesDelete = $this->getDoctrine()->getRepository(Categories::class)->find($id);
 
-        $em->remove($categoriesDelete);
-        $em->flush();
-        
-        $this->addFlash('delete', 'La catégorie a bien été supprimé !');
-        return $this->redirectToRoute('categories_list');
+            $em->remove($categoriesDelete);
+            $em->flush();
+
+            $this->addFlash('delete', 'La catégorie a bien été supprimé !');
+            return $this->redirectToRoute('categories_list');
+        }else{
+            $this->addFlash('error', 'Votre lien n\'est pas valide !');
+            return $this->redirectToRoute('admin_admin');
+        }
     }
 
     #[Route("/categories/list", name: "list")]

@@ -36,24 +36,30 @@ class CommandesController extends AbstractController
     */
     public function changeStatus($id, Request $request, EntityManagerInterface $em, OrderRepository $orderRepository)
     {
-        $status = $orderRepository->find($id);  
+        if($this->isCsrfTokenValid('update'.$id, $request->query->get('csrf')))
+        {
+            $status = $orderRepository->find($id);  
         
-        $status_option = $this->createForm(OrderType::class,$status) ;
-        $status_option->handleRequest($request);
+            $status_option = $this->createForm(OrderType::class,$status) ;
+            $status_option->handleRequest($request);
 
-        if($status_option->isSubmitted() && $status_option->isValid()){
-            $status->setUpdatedAt(new \DateTime());
+            if($status_option->isSubmitted() && $status_option->isValid()){
+                $status->setUpdatedAt(new \DateTime());
 
-            $em->persist($status);
-            $em->flush();
+                $em->persist($status);
+                $em->flush();
             
-            if($status->getOrderStatus()->getStatus() == "nouvelle commande"){
-                return $this->redirectToRoute("commandes__nouvelles");
-            }elseif($status->getOrderStatus()->getStatus() == "en attente"){
-                return $this->redirectToRoute("commandes_en_attente");
-            }else{
-                return $this->redirectToRoute("commandes_expediee");
+                if($status->getOrderStatus()->getStatus() == "nouvelle commande"){
+                    return $this->redirectToRoute("commandes_nouvelles");
+                }elseif($status->getOrderStatus()->getStatus() == "en attente"){
+                    return $this->redirectToRoute("commandes_en_attente");
+                }else{
+                    return $this->redirectToRoute("commandes_expediee");
+                }
             }
+        }else{
+            $this->addFlash('error', 'Votre lien n\'est pas valide !');
+            return $this->redirectToRoute('admin_admin');
         }
         
         return $this->render('admin/commandes/changeStatus.html.twig', [

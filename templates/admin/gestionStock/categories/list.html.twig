@@ -30,8 +30,8 @@
                         <td>{{list.typeCategories}}</td>  
                         <td>{{list.createdAt|date('d/m/Y à H:i:s')}}</td>
                         <td>{{list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
-                        <td><a href="{{path ('categories_modifier', {id : list.id})}}" class="btn btn-light">Modifier</a></td>
-                        <td><a href="{{path ('categories_delete', {id : list.id})}}" onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')" class="btn btn-light">Supprimer</a></td>
+                        <td><a href="{{path ('categories_modifier', {id : list.id})}}?csrf={{csrf_token('update' ~ list.id)}}" class="btn btn-light">Modifier</a></td>
+                        <td><a href="{{path ('categories_delete', {id : list.id})}}?csrf={{csrf_token('delete' ~ list.id)}}" onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')" class="btn btn-light">Supprimer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

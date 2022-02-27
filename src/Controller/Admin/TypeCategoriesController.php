@@ -49,19 +49,25 @@ class TypeCategoriesController extends AbstractController
     #[Route("/typeCategories/modifier/{id}", name: "modifier")]
     public function typeCategoriesModifier($id, Request $request, EntityManagerInterface $em): Response
     {
-        $typeCategoriesModifier = $this->getDoctrine()->getRepository(TypeCategories::class)->find($id);
-        $typeCategoriesModifier_form = $this->createForm(TypeCategoriesType::class, $typeCategoriesModifier);
-        $typeCategoriesModifier_form->handleRequest($request);
+        if($this->isCsrfTokenValid('update'.$id, $request->query->get('csrf')))
+        {  
+            $typeCategoriesModifier = $this->getDoctrine()->getRepository(TypeCategories::class)->find($id);
+            $typeCategoriesModifier_form = $this->createForm(TypeCategoriesType::class, $typeCategoriesModifier);
+            $typeCategoriesModifier_form->handleRequest($request);
 
-        if($typeCategoriesModifier_form->isSubmitted() && $typeCategoriesModifier_form->isValid())
-        {
-            $typeCategoriesModifier->setUpdatedAt(new \DateTime());
+            if($typeCategoriesModifier_form->isSubmitted() && $typeCategoriesModifier_form->isValid())
+            {
+                $typeCategoriesModifier->setUpdatedAt(new \DateTime());
 
-            $em->persist($typeCategoriesModifier);
-            $em->flush();
+                $em->persist($typeCategoriesModifier);
+                $em->flush();
 
-            $this->addFlash('update', 'Le type de catégorie a bien été modifié !');
-            return $this->redirectToRoute('type_categories_list');
+                $this->addFlash('update', 'Le type de catégorie a bien été modifié !');
+                return $this->redirectToRoute('type_categories_list');
+            }
+        }else{
+            $this->addFlash('error', 'Votre lien n\'est pas valide !');
+            return $this->redirectToRoute('admin_admin');
         }
 
         return $this->render('admin/gestionStock/type_categories/modifier.html.twig', [
@@ -70,15 +76,22 @@ class TypeCategoriesController extends AbstractController
     }
 
     #[Route("/typeCategories/delete/{id}", name: "delete")]
-    public function typeCategoriesDelete($id, EntityManagerInterface $em): Response
+    public function typeCategoriesDelete($id, EntityManagerInterface $em, 
+    Request $request): Response
     {
-        $typeCategoriesDelete = $this->getDoctrine()->getRepository(TypeCategories::class)->find($id);
+        if($this->isCsrfTokenValid('delete'.$id, $request->query->get('csrf')))
+        {
+            $typeCategoriesDelete = $this->getDoctrine()->getRepository(TypeCategories::class)->find($id);
 
-        $em->remove($typeCategoriesDelete);
-        $em->flush();
+            $em->remove($typeCategoriesDelete);
+            $em->flush();
         
-        $this->addFlash('delete', 'Le type de catégorie a bien été supprimé !');
-        return $this->redirectToRoute('type_categories_list');
+            $this->addFlash('delete', 'Le type de catégorie a bien été supprimé !');
+            return $this->redirectToRoute('type_categories_list');
+        }else{
+            $this->addFlash('error', 'Votre lien n\'est pas valide !');
+            return $this->redirectToRoute('admin_admin');
+        }
     }
 
     #[Route("/typeCategories/list", name: "list")]

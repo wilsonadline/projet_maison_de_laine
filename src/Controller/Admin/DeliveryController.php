@@ -54,28 +54,41 @@ class DeliveryController extends AbstractController
     #[Route('/delivery/modifier/{id}', name: 'options_update')]
     public function delivery_options_update(DelivryRepository $delivryRepository, $id, Request $request, EntityManagerInterface $em): Response
     {
-        $update_delivery_form = $this->createForm(DeliveryType::class , $delivryRepository->find($id));
-        $update_delivery_form->handleRequest($request);
+        if($this->isCsrfTokenValid('update'.$id, $request->query->get('csrf')))
+        {     
+            $update_delivery_form = $this->createForm(DeliveryType::class , $delivryRepository->find($id));
+            $update_delivery_form->handleRequest($request);
 
-        if($update_delivery_form->isSubmitted() && $update_delivery_form->isValid()){
-            $em->persist($delivryRepository->find($id));
-            $em->flush();  
+            if($update_delivery_form->isSubmitted() && $update_delivery_form->isValid()){
+                $em->persist($delivryRepository->find($id));
+                $em->flush();
             
-            $this->addFlash('update', 'L\'option a bien été modifié !');
-            return $this->redirectToRoute('delivery_options_list');
+                $this->addFlash('update', 'L\'option a bien été modifié !');
+                return $this->redirectToRoute('delivery_options_list');
+            }
+        }else{
+            $this->addFlash('error', 'Votre lien n\'est pas valide !');
+            return $this->redirectToRoute('admin_admin');
         }
+
         return $this->render('admin/delivery/modifier.html.twig', [
             'update_delivery' => $update_delivery_form->createView()
         ]);
     } 
     
     #[Route('/delivery/supprimer/{id}', name: 'options_delete')]    
-    public function delivery_options_delete($id, EntityManagerInterface $em, DelivryRepository $delivryRepository): Response
+    public function delivery_options_delete($id, EntityManagerInterface $em, DelivryRepository $delivryRepository, Request $request): Response
     {
-        $em->remove($delivryRepository->find($id));
-        $em->flush();
+        if($this->isCsrfTokenValid('delete'.$id, $request->query->get('csrf')))
+        {
+            $em->remove($delivryRepository->find($id));
+            $em->flush();
 
-        $this->addFlash('delete', 'L\'option a bien été supprimé !');
-        return $this->redirectToRoute('delivery_options_list');
+            $this->addFlash('delete', 'L\'option a bien été supprimé !');
+            return $this->redirectToRoute('delivery_options_list');
+        }else{
+            $this->addFlash('error', 'Votre lien n\'est pas valide !');
+            return $this->redirectToRoute('admin_admin');
+        }
     }
 }

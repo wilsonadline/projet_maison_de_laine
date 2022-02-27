@@ -49,20 +49,26 @@ class ArticlesController extends AbstractController
     #[Route("/articles/modifier/{id}", name: "modifier")]
     public function articlesModifier($id , Request $request, EntityManagerInterface $em): Response
     {
-        $articlesModifier = $this->getDoctrine()->getRepository(Articles::class)->find($id);
-
-        $articlesModifier_form = $this->createForm(ArticlesType::class, $articlesModifier);
-        $articlesModifier_form->handleRequest($request);
-
-        if($articlesModifier_form->isSubmitted() && $articlesModifier_form->isValid())
+        if($this->isCsrfTokenValid('update'.$id, $request->query->get('csrf')))
         {
-            $articlesModifier->setUpdatedAt(new \DateTime());
+            $articlesModifier = $this->getDoctrine()->getRepository(Articles::class)->find($id);
 
-            $em->persist($articlesModifier);
-            $em->flush();
+            $articlesModifier_form = $this->createForm(ArticlesType::class, $articlesModifier);
+            $articlesModifier_form->handleRequest($request);
 
-            $this->addFlash('update', 'L\'article a bien été modifié !');
-            return $this->redirectToRoute('articles_list');
+            if($articlesModifier_form->isSubmitted() && $articlesModifier_form->isValid())
+            {
+                $articlesModifier->setUpdatedAt(new \DateTime());
+
+                $em->persist($articlesModifier);
+                $em->flush();
+
+                $this->addFlash('update', 'L\'article a bien été modifié !');
+                return $this->redirectToRoute('articles_list');
+            }
+        }else{
+            $this->addFlash('error', 'Votre lien n\'est pas valide !');
+            return $this->redirectToRoute('admin_admin');
         }
 
         return $this->render('admin/gestionStock/articles/modifier.html.twig', [
@@ -81,7 +87,11 @@ class ArticlesController extends AbstractController
             $em->flush();
 
             $this->addFlash('delete', 'L \'article a bien été supprimé !');
+        }else{
+            $this->addFlash('error', 'Votre lien n\'est pas valide !');
+            return $this->redirectToRoute('admin_admin');
         }
+
             return $this->redirectToRoute('articles_list');
     }
    
