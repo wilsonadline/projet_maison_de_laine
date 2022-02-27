@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% form_theme userModifier 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Modifier l'utilisateur | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
+
+{% block body %}
+    <div class="mt-1 d-flex justify-content-center align-items-center flex-column"> 
+        <h1 class="text-center my-5">Modifier les informations de l'utilisateur </h1>
+        <div class="col-7">
+             {{form_start(userModifier)}} 
+                {{form_row(userModifier.name)}}
+                {{form_row(userModifier.firstname)}}
+                {{form_row(userModifier.tel)}}
+                {{form_row(userModifier.ad)}}
+                {{form_row(userModifier.cp)}}
+                {{form_row(userModifier.ville)}}
+                {{form_row(userModifier.email)}} 
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-light mb-4">Modifier</button>
+                </div>
+            {{form_end(userModifier)}}
+        </div>
+    </div>
+{% endblock %}
