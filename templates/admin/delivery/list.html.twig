@@ -9,25 +9,6 @@
         <a href="{{path ('delivery_options_add')}}" class="btn btn-light" style="width : auto !important">Ajouter une option</a>
     </div>
 
-    {% for add in app.flashes('delivery_option_add') %}
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Félicitations </strong>{{ add }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-        </div>
-    {% endfor %}
-    {% for edit in app.flashes('delivery_option_update') %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Félicitations </strong>{{ edit }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-        </div>
-    {% endfor %}
-    {% for delete in app.flashes('delivery_option_delete') %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Félicitations </strong>{{ delete }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-        </div>
-    {% endfor %}
-
     <table class="table">
         <thead>
             <tr>
