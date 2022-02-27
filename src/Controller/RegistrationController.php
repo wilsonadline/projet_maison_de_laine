@@ -40,6 +40,7 @@ class RegistrationController extends AbstractController
             )
             {
                 $user->setCreatedAt(new \DateTime());
+                $user->setRoles(["ROLE_USER"]);
                 $em->persist($user);
                 $em->flush();
             }
