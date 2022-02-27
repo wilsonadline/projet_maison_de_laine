@@ -46,7 +46,7 @@
                                     </li>
                                     <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
                                         <i class="fas fa-shopping-basket mb-1 picto me-2"></i>
-                                        <a href="{{path ("users")}}?csrf={{csrf_token('delete' ~ app.user.id)}}">test</a>
+                                        <a href="{{path ("admin_users")}}?csrf={{csrf_token('delete' ~ app.user.id)}}">test</a>
                                     </li>
                                 {% elseif is_granted('ROLE_USER') %}
                                     <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
@@ -145,7 +145,7 @@
 
     {% for message in app.flashes('error') %}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Félicitations </strong>{{message}}
+        <strong>Oops </strong>{{message}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
         </div>
     {% endfor %}
