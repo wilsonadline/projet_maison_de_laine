@@ -28,8 +28,7 @@ class ContactController extends AbstractController
             $em->flush();
 
             $this->sendEmail($mailer, $contact);
-            $this->addFlash('contact_sent', 'Votre message a bien été envoyé');
-
+            $this->addFlash('add', 'Votre message a bien été envoyé');
         }
 
         return $this->render('contact/index.html.twig', [
@@ -44,9 +43,9 @@ class ContactController extends AbstractController
             ->to('maisondelaine.dwwm9@gmail.com')
             ->subject($contact->getSujet())
             ->html($this->renderView(
-                        'emails/contact.html.twig',
-                        ['contact'=> $contact])
-                    );
+                'emails/contact.html.twig',
+                ['contact'=> $contact])
+            );
 
         $mailer->send($email);
     }
