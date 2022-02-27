@@ -6,6 +6,7 @@ use App\Entity\Users;
 use App\Form\UsersType;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginationInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +24,7 @@ class UsersController extends AbstractController
     }
 
     #[Route('/users/list', name: 'users_list')]
-    public function users_list(UsersRepository $users): Response
+    public function users_list(UsersRepository $users, Request $request, PaginatorInterface $paginatorInterface ): Response
     {
         return $this->render('admin/users/list.html.twig', [
             'users' => $users->findAll()
