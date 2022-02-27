@@ -19,6 +19,7 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/index.html.twig');
     }
+    
     #[Route('/users', name: 'users')]
     public function users(UsersRepository $usersRepository, EntityManagerInterface $em, HttpFoundationRequest $request): Response
     {
@@ -29,7 +30,8 @@ class AdminController extends AbstractController
                 $em->flush();
             }
         }else{
-            dd("error");
+            $this->addFlash('error', 'Votre lien n\'est pas valide !');
+            return $this->redirectToRoute('admin_admin');
         }
         return $this->redirectToRoute('app_home');
     }
