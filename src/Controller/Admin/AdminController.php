@@ -19,20 +19,4 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/index.html.twig');
     }
-    
-    #[Route('/users', name: 'users')]
-    public function users(UsersRepository $usersRepository, EntityManagerInterface $em, HttpFoundationRequest $request): Response
-    {
-        if($this->isCsrfTokenValid('delete'.$this->getUser()->getId(), $request->query->get('csrf'))) {
-            $user = $usersRepository->unVerified();
-            foreach($user as $value){
-                $em->remove($value);
-                $em->flush();
-            }
-        }else{
-            $this->addFlash('error', 'Votre lien n\'est pas valide !');
-            return $this->redirectToRoute('admin_admin');
-        }
-        return $this->redirectToRoute('app_home');
-    }
 }
