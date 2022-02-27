@@ -18,32 +18,39 @@ class ContactType extends AbstractType
             ->add('nom', TextType::class, [
                 'label'=> ' ',
                 'attr' => [
-                    'placeholder' => 'Nom'
+                    'placeholder' => 'Nom',
+                    'minlength' => 3,
+                    'maxlength' => 10
                 ]
             ])
             ->add('prenom', TextType::class, [
                 'label'=> ' ',
                 'attr' => [
-                    'placeholder' => 'Prénom'
+                    'placeholder' => 'Prénom',
+                    'minlength' => 3,
+                    'maxlength' => 10
                 ]
             ])
             ->add('email', EmailType::class, [
                 'label'=> ' ',
                 'attr' => [
-                    'placeholder' => 'Email'
+                    'placeholder' => 'Email',
                 ]
             ])
             ->add('sujet', TextType::class, [
                 'label'=> ' ',
                 'attr' => [
-                    'placeholder' => 'Sujet'
+                    'placeholder' => 'Sujet',
+                    'minlength' => 3,
+                    'maxlength' => 50
                 ]
             ])
             ->add('message', TextareaType::class, [
                 'label'=> ' ',
                 'attr' => [
-                    'placeholder' => 'Message'
-                    // 'class'=> 'mt-0'
+                    'placeholder' => 'Message',
+                    'minlength' => 3,
+                    'maxlength' => 2000
                 ]
             ])
         ;
