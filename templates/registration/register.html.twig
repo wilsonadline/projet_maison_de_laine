@@ -6,9 +6,6 @@
 
 {% block body %}
     <div class="row m-0">
-        {% for flashError in app.flashes('verify_email_error') %}
-            <div class="alert alert-danger" role="alert">{{flashError}}</div>
-        {% endfor %}
         <h1 class="text-center mt-4">Inscription</h1>
         <div class="d-flex mb-5 justify-content-center justify-content-xxl-between justify-content-xl-between">
             <img src="{{asset ('images/la_maison_de_laine_signup.png')}}" class="shadow rounded-3 col-xl-5 col-sm-6 col-12 d-none d-md-none d-xl-block d-xxl-block" id="image" alt="Image Inscription | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
