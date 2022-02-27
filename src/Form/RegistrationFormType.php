@@ -22,7 +22,7 @@ class RegistrationFormType extends AbstractType
                 'attr' => [
                     'maxlength' => 255
                 ]
-            ] )
+            ])
             ->add('firstname', TextType::class, [
                 'label'=> "Prénom"
             ])

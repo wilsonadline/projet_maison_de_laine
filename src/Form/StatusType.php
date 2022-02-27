@@ -17,8 +17,8 @@ class StatusType extends AbstractType
         $builder
             ->add('id', hiddenType::class)
             ->add('status', EntityType::class, [
-                'class'=> OrderStatus::class,
-                'choice_label'=> 'status'
+                'class' => OrderStatus::class,
+                'choice_label' => 'status'
             ])
             ->add('orders', HiddenType::class)
             ->add('changer', SubmitType::class)
