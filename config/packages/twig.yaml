@@ -5,5 +5,3 @@ when@test:
     twig:
         strict_variables: true
         form_themes: ['bootstrap_5_layout.html.twig']
-    paths:
-        '%kernel.project_dir%/vendor/knplabs/knp-paginator-bundle/templates': KnpPaginator
