@@ -183,7 +183,6 @@ h1{
 .card-hover:hover{
   transform: scale(1.05);
   background: -webkit-linear-gradient(50deg,  rgba(166, 64, 255, 0.164) 0%, rgba(54, 161, 255, 0.185) 100%);
-
   box-shadow:5px 5px 15px 5px #7373736b;
 }
 
@@ -202,6 +201,16 @@ h1{
 
 .sectionHov:hover{
   background: -webkit-linear-gradient(50deg,  rgba(166, 64, 255, 0.164) 0%, rgba(54, 161, 255, 0.185) 100%);
+  transform: scale(1.05);
+  margin-top: 2rem;
+}
+
+.warning{
+  transition: all 0.5s;
+}
+
+.warning:hover{
+  background: rgba(255, 0, 0, 0.301);
   transform: scale(1.05);
   margin-top: 2rem;
 }
