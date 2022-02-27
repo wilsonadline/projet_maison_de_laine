@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Administrateur | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
- <div class="row">
-  <div class="col-sm-6">
-    <div class="card">
+ <div class="d-flex flex-wrap justify-content-around">
+  <div class="col-12 col-lg-4 my-4">
+    <div class="card mx-2 card-hover">
       <div class="card-body align-items-center justify-content-center d-flex flex-column">
         <h5 class="card-title">Mode de Livraison</h5>
         <p class="card-text text-center">Ajouter - Modifier - Supprimer un mode de livraison</p>
@@ -13,21 +13,21 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
-    <div class="card">
+  <div class="col-12 col-lg-4 my-4">
+    <div class="card mx-2 card-hover">
       <div class="card-body align-items-center justify-content-center d-flex flex-column">
         <h5 class="card-title">Gestion des Stocks</h5>
         <p class="card-text text-center">Ajouter - Modifier - Supprimer un mode de livraison</p>
-        <a href="{{path("delivery_options")}}" class="btn btn-primary" style="width: auto!important">Mode de Livraison</a>
+        <a href="{{path("gestionStock_options")}}" class="btn btn-primary" style="width: auto!important">Gestion des Stocks</a>
       </div>
     </div>
   </div>
-   <div class="col-sm-6">
-    <div class="card">
+   <div class="col-12 col-lg-4 my-4">
+    <div class="card mx-2 card-hover">
       <div class="card-body align-items-center justify-content-center d-flex flex-column">
         <h5 class="card-title">Gestion des Commandes</h5>
         <p class="card-text text-center">Ajouter - Modifier - Supprimer un mode de livraison</p>
-        <a href="{{path("delivery_options")}}" class="btn btn-primary" style="width: auto!important">Mode de Livraison</a>
+        <a href="{{path("commandes_options")}}" class="btn btn-primary" style="width: auto!important">Gestion des Commandes</a>
       </div>
     </div>
   </div>
