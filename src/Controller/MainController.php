@@ -4,27 +4,21 @@ namespace App\Controller;
 
 use App\Repository\ArticlesRepository;
 use App\Repository\CategoriesRepository;
-use Stripe\BillingPortal\Session;
+use App\Repository\TypeCategoriesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(CategoriesRepository $categories, SessionInterface $session)
+    public function index(TypeCategoriesRepository $typeCategoriesRepository)
     {
-
         if(!empty($this->getUser()) && $this->getUser()->isVerified() == 0){
-            $this->addFlash('!isverified', 'Veuillez valider votre mail afin de vous connecter');
+            $this->addFlash('error', 'Veuillez valider votre mail afin de vous connecter');
         }
         
         return $this->render('main/index.html.twig', [
-            'categorieByMercerie' => $categories->findBy(['typeCategories'=>1 ]),
-            'categorieByTissu' => $categories->findBy(['typeCategories' =>2])
+            'typeCategorie' => $typeCategoriesRepository->findAll()
         ]);
     }
 
