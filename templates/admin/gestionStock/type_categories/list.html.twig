@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des types de catégories | La Maison de Laine{% endblock %}
+
+{% block body %}
+    <div class="table-responsive d-flex justify-content-between flex-column my-5">
+        <table class="table">
+            <h1 class="text-center my-5">Liste des types de catégories</h1>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Création</th>
+                    <th scope="col">Modification</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for list in typeCategoriesList %}
+                    <tr>
+                        <th scope="row">{{list.id}}</th>
+                        <td>{{list.nom}}</td>
+                        <td>{{list.createdAt|date('d/m/Y à H:i:s')}}</td>
+                        <td>{{list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
+                        <td><a href="{{ path ('type_categories_modifier', { id : list.id })}}" class="btn btn-light " >Modifier</a></td>
+                        <td><a href="{{ path ('type_categories_delete', { id : list.id })}}" onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')"class="btn btn-light">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="d-flex justify-content-end">
+        <a href="{{path ('type_categories_ajout')}}" class="btn btn-light mb-4" style="width:auto!important">Ajouter un type de catégorie</a>
+    </div>
+{% endblock %}

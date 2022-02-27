@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% form_theme typeCategoriesAjout 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Ajouter type de catégorie | La Maison de Laine{% endblock %}
+
+{% block body %}
+    <div class="mt-1 d-flex justify-content-center align-items-center flex-column"> 
+        <h1 class="text-center my-5">Ajouter un type de catégorie</h1>
+        <div class="col-7">
+            {{form_start(typeCategoriesAjout) }}
+                {{form_row(typeCategoriesAjout.nom) }}
+                
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-light">Ajouter</button>
+            </div>
+        {{form_end(typeCategoriesAjout) }}
+        </div>
+    </div>
+
+{% endblock %}

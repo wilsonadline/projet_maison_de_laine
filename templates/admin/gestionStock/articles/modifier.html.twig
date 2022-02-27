@@ -5,7 +5,7 @@
 
 {% block body %}
     <div class="mt-1 d-flex justify-content-center align-items-center flex-column"> 
-        <h1 class="text-center mt-4">Modifier l'article</h1>
+        <h1 class="text-center my-5">Modifier l'article</h1>
         <div class="col-7">
             {{form_start(articlesModifier)}}
                 {{form_row(articlesModifier.article)}}
@@ -16,8 +16,8 @@
                 {{form_row(articlesModifier.categories)}}
                 {{form_row(articlesModifier.imageFile)}}
 
-                <div class="d-flex justify-content-end mb-5">
-                    <button type="submit" class="btn btn-light">Modifier</button>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-light mb-4">Modifier</button>
                 </div>
             {{form_end(articlesModifier)}}
         </div>
