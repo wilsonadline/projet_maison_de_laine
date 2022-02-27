@@ -3,68 +3,27 @@
 {% block title %}Home | La Maison de Laine {% endblock %}
 
 {% block body %}
-
-  <div class="p-0">
-    {% for valid in app.flashes('validation_mail') %}
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Félicitations </strong>{{valid}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-        </div>
-    {% endfor %}
-    {% for account_delete in app.flashes('profilDelete') %}
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Félicitations </strong>{{account_delete}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-        </div>
-    {% endfor %}
-    {% for notVerified in app.flashes('!isverified') %}
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Félicitations </strong>{{notVerified}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-        </div>
-    {% endfor %}
-     {% for verified in app.flashes('isverified') %}
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Félicitations </strong>{{verified}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-        </div>
-    {% endfor %}
-     {# Categorie Mercerie #}
-    <section class="d-flex flex-column align-items-center my-5  px-0 " style="width : 100%">
-      <h1 class="title_container ">Mercerie</h1>
-      <p class="text-center col-xxl-10 col-lg-10  d-none d-md-none d-xl-block d-xxl-block">
-       Nous vous proposons une variété de produits.
-      </p>  
-      <section class="row p-0 justify-content-around d-flex" id="section_mercerie">
-        {% for mercerie in categorieByMercerie %}
-        <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-10 d-flex flex-column align-items-center justify-content-around card-hover">
-          <a href="{{path ('app_articles_mercerie', {id: mercerie.id} )}}"  class="d-flex my-4 align-items-center flex-column justify-content-center col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-10  p-0" style="width: 18rem">
-            <img src="{{vich_uploader_asset(mercerie , 'imageFile')}}" class="card-img-top rounded-3" alt="Image Mercerie | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
-            <a href="{{path ('app_articles_mercerie', {id: mercerie.id})}}" class="btn btn-light my-4" style="width: 15rem">{{mercerie.nom}}</a>
-          </a>
-        </div>
-        {% endfor %}
-      </section> 
-    </section> 
-    {# End Categorie Mercerie #}
-
-    {# Categorie Tissu #}
-    <section class="d-flex flex-column align-items-center my-5 px-0" style="width : 100%">
-      <h1 class="title_container">Les Tissus Traditionnelles</h1>
-      <p class="text-center col-xxl-10 col-lg-10 d-none d-md-none d-xl-block d-xxl-block">
-        Nous vous proposons une variété de tissu traditionnel, venant d'Inde, d'Afrique et du Japon.
-      </p>
-      <section class="row p-0 justify-content-around d-flex" id="section_mercerie">
-        {% for  tissu in categorieByTissu %}
-        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-10 d-flex flex-column align-items-center justify-content-around card-hover">
-            <a href="{{path ('app_articles_mercerie', {id: tissu.id})}}" class="d-flex my-4 align-items-center flex-column justify-content-center col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-10  p-0" style="width : 18rem">
-              <img src="{{vich_uploader_asset(tissu, 'imageFile')}}" class="card-img-top rounded-3" alt="Image Tissu | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
-              <a href="{{path ('app_articles_mercerie', {id: tissu.id})}}" class="btn btn-light my-4" style="width : 15rem">{{ tissu.nom}}</a>
+  {% for type in typeCategorie %}
+    {% if type.categories|length > 0 %}  
+      <h1 class="text-center">{{type.nom}}</h1>
+      <section class="mb-5 justify-content-around d-flex flex-wrap p-0 sectionHov" id="section_mercerie">
+        {% for categorie in type.categories %}
+          {% if type.categories|length > 3 %}
+            <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-5 col-8 d-flex flex-column align-items-center justify-content-around card-hover">
+          {% elseif type.categories|length < 4 and  type.categories|length > 2 %}
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-5 col-8 d-flex flex-column align-items-center justify-content-around card-hover">
+          {% else %}
+            {% if type.categories|length < 3 %}
+              <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-5 col-8 d-flex flex-column align-items-center justify-content-around card-hover">
+            {% endif %}
+          {% endif %}
+            <a href="{{path ('app_articles_mercerie', {id: categorie.id})}}" class="d-flex my-4 align-items-center flex-column justify-content-center col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-10  p-0" style="width : 18rem">
+              <img src="{{vich_uploader_asset(categorie, 'imageFile')}}" class="card-img-top rounded-3" alt="Image Tissu | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
+              <a href="{{path ('app_articles_mercerie', {id: categorie.id})}}" class="btn btn-light my-4" style="width : 15rem">{{ categorie.nom}}</a>
             </a>
-        </div>
+          </div>
         {% endfor %}
       </section>
-    </section> 
-    {# End Categorie Tissu #}
-  </div>
+    {% endif %}
+  {% endfor %}
 {% endblock %}
