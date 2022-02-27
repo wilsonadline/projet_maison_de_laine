@@ -19,8 +19,6 @@ class AdressesRepository extends ServiceEntityRepository
         parent::__construct($registry, Adresses::class);
     }
 
-
-
     // /**
     //  * @return Articles[] Returns an array of Articles objects
     //  */
