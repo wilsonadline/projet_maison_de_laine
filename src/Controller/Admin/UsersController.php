@@ -23,7 +23,7 @@ class UsersController extends AbstractController
     }
 
     #[Route('/users/list', name: 'users_list')]
-    public function users_list(UsersRepository $users, Request $request): Response
+    public function users_list(UsersRepository $users): Response
     {
         return $this->render('admin/users/list.html.twig', [
             'users' => $users->findAll()
