@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+* @Route("/admin", name="admin_")
+*/
 class AdminController extends AbstractController
 {
     #[Route('/admin', name: 'admin')]
@@ -16,7 +19,7 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/index.html.twig');
     }
-    #[Route('users', name: 'users')]
+    #[Route('/users', name: 'users')]
     public function users(UsersRepository $usersRepository, EntityManagerInterface $em, HttpFoundationRequest $request): Response
     {
         if($this->isCsrfTokenValid('delete'.$this->getUser()->getId(), $request->query->get('csrf'))) {
@@ -26,7 +29,7 @@ class AdminController extends AbstractController
                 $em->flush();
             }
         }else{
-            dd("ahhhh");
+            dd("error");
         }
         return $this->redirectToRoute('app_home');
     }
