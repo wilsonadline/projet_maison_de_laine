@@ -75,12 +75,13 @@ class SecurityController extends AbstractController
         {
             $encodedPassword = $userPasswordHasherInterface->hashPassword(
                 $user,
-                $passEdit_form->get('plainPassword')->getData());
+                $passEdit_form->get('plainPassword')->getData()
+            );
                 
             $user->setPassword($encodedPassword);
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('mdp', 'Votre mot de passe a bien été modifié !');
+            $this->addFlash('update', 'Votre mot de passe a bien été modifié !');
             return $this->redirectToRoute('app_profil');
         }
            
@@ -102,7 +103,7 @@ class SecurityController extends AbstractController
         $em->remove( $user);
         $em->flush();
         return $this->redirectToRoute('app_home');
-        $this->addFlash('profilDelete', 'Votre profil a bien été supprimé !');
+        $this->addFlash('delete', 'Votre profil a bien été supprimé !');
     }
 
     /**
