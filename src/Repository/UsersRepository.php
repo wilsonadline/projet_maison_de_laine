@@ -22,6 +22,19 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         parent::__construct($registry, Users::class);
     }
 
+    public function unVerified()
+    {
+        $value =  date('Y-m-d H:i:s', strtotime('-3 month'));
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.isVerified = 0')
+            ->andWhere('u.createdAt <= :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+
+        // dd($builder);
+    }
+
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */
