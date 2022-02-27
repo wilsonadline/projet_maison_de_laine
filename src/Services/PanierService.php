@@ -20,7 +20,6 @@ class PanierService
 
     public function panier(SessionInterface $session, ArticlesRepository $articleRepository)
     {
-        
         $panier = $session->get("panier", []);
 
         //  on initialise du panier 
@@ -33,7 +32,7 @@ class PanierService
             $article = $articleRepository->find($id);
             $dataPanier[] = [
                 "article" => $article,
-                "quantite"=> $quantite,
+                "quantite" => $quantite,
             ];
 
             $total += $article->getPrix() * $quantite ;
@@ -44,17 +43,17 @@ class PanierService
 
     public function gestionStock($panier) 
     {
-            foreach($panier as $produitpanier)
-            {
-                $article = $produitpanier["article"];
-                $quantite = $produitpanier["quantite"];
-                
-                $stock =  $article->getStock();
-                $article->setStock($stock - $quantite);
-                $this->em->persist($article);
-            }
+        foreach($panier as $produitpanier)
+        {
+            $article = $produitpanier["article"];
+            $quantite = $produitpanier["quantite"];
+            
+            $stock = $article->getStock();
+            $article->setStock($stock - $quantite);
+            $this->em->persist($article);
+        }
 
-            $this->em->flush();
+        $this->em->flush();
     }
 
     private function save_order_line($order, $dataPanier) 
@@ -96,8 +95,8 @@ class PanierService
         
         $this->em->persist($order);
         
-        $totalOrder =  $this->save_order_line($order, $dataPanier);
-        $order->setTotal($totalOrder + $mode->getPrice() );
+        $totalOrder = $this->save_order_line($order, $dataPanier);
+        $order->setTotal($totalOrder + $mode->getPrice());
         $this->em->persist($order);
         $this->em->flush();
 
