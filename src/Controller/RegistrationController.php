@@ -31,19 +31,19 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setCreatedAt(new \DateTime());
-
-            // encode the  password
-            $user->setPassword(
-            $userPasswordHasherInterface->hashPassword(
-                    $user,
-                    $form->get('password')->getData()
+        if($form->isSubmitted() && $form->isValid())
+        {
+            if($user->setPassword(
+                $userPasswordHasherInterface->hashPassword( 
+                    $user,$form->get('password')->getData())
                 )
-            );
+            )
+            {
+                $user->setCreatedAt(new \DateTime());
+                $em->persist($user);
+                $em->flush();
+            }
 
-            $em->persist($user);
-            $em->flush();
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
@@ -54,7 +54,7 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
 
-            $this->addFlash('validation_mail', "Votre compte a bien été crée avec succès. D'autres instructions ont été envoyées à votre adresse e-mail ");
+            $this->addFlash('info', "Votre compte a bien été crée avec succès. D'autres instructions ont été envoyées à votre adresse e-mail ");
 
             return $this->redirectToRoute('app_home');
         }
@@ -70,10 +70,10 @@ class RegistrationController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         // validate email confirmation link, sets User::isVerified=true and persists
-        try {
+        try{
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
-        } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('verify_email_error', $exception->getReason());
+        }catch(VerifyEmailExceptionInterface $exception){
+            $this->addFlash('error', $exception->getReason());
 
             return $this->redirectToRoute('app_register');
         }
