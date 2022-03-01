@@ -6,6 +6,7 @@ use App\Entity\Articles;
 use App\Form\ArticlesType;
 use App\Repository\ArticlesRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use PhpParser\Node\Expr\Empty_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,20 +26,23 @@ class ArticlesController extends AbstractController
     #[Route("/articles/ajout", name: "ajout")]
     public function articlesAjout(Request $request, EntityManagerInterface $em): Response
     {
-        $articlesAjout = new Articles();
+        $articleAjout = new Articles();
 
-        $articlesAjout_form = $this->createForm(ArticlesType::class, $articlesAjout);
+        $articlesAjout_form = $this->createForm(ArticlesType::class, $articleAjout);
         $articlesAjout_form->handleRequest($request);
 
         if($articlesAjout_form->isSubmitted() && $articlesAjout_form->isValid())
         {
-            $articlesAjout->setCreatedAt(new \DateTime());
+            $articleAjout->setCreatedAt(new \DateTime());
 
-            $em->persist($articlesAjout);
+            $em->persist($articleAjout);
             $em->flush();
 
             $this->addFlash('add', 'L\'article a bien été ajouté !');
             return $this->redirectToRoute('articles_list');
+        }else{
+            $this->addFlash('error', 'Une erreur s\'est produite ! ');
+            return $this->redirectToRoute('articles_ajout');
         }
 
         return $this->render('admin/gestionStock/articles/ajout.html.twig', [
@@ -92,7 +96,7 @@ class ArticlesController extends AbstractController
             return $this->redirectToRoute('admin_admin');
         }
 
-            return $this->redirectToRoute('articles_list');
+        return $this->redirectToRoute('articles_list');
     }
    
     #[Route("/articles/list", name: "list")]

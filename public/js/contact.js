@@ -1,9 +1,15 @@
+const form = document.querySelector("form");
+form.setAttribute('id', "form");
+// console.log(form);
+
+
 function btn(){
     const btn = document.querySelectorAll("button");
     btn.forEach(btn => {
         btn.classList.remove("visibility");
     });
 }
+
 function fa(){
     const fa = document.querySelectorAll(".fa-arrow-down");
     fa.forEach(fa =>{
@@ -19,6 +25,7 @@ function animationForm(){
             const div = document.querySelector(".row")
             const input = arrow.previousElementSibling.querySelector("input");
             const textarea = document.getElementsByTagName("textarea");
+            const textareaValue = textarea.value;
             const parent = arrow.parentElement;
             const nextForm = parent.nextElementSibling;
             
@@ -32,29 +39,42 @@ function animationForm(){
                     console.log(validateEmail(input)    );
                 }else if(input.type === "text"  &&  input.id === "contact_sujet" && validateUser(input) ){
                     nextSlide(parent, nextForm);
+                }else{
+                    parent.style.animation = "shake 0.5s ease"
                 }
-            }else if(textarea){
-                champs.forEach(unChamp => {
-                    unChamp.classList.remove("positionAbsolue");
-                    unChamp.classList.add("positionRelative");
-                    unChamp.classList.add("changeTranslation");
-                    unChamp.classList.remove("innactive");
-                    unChamp.classList.remove("active");
-                });
-                
-                div.classList.add("center");
-                
-                btn();
-                fa();
-            }else{
-                parent.style.animation = "shake 0.5s ease"
             }
+            else
+            {
+                if(textarea && validateUser(input)){
+                    champs.forEach(unChamp => {
+                        unChamp.classList.remove("positionAbsolue");
+                        unChamp.classList.add("positionRelative");
+                        unChamp.classList.add("changeTranslation");
+                        unChamp.classList.remove("innactive");
+                        unChamp.classList.remove("active");
+                    });
+                    
+                    div.classList.add("center");
+                    
+                    btn();
+                    fa();
+                }else{
+                        parent.style.animation = "shake 0.5s ease"
 
+                }
+            }
             parent.addEventListener("animationend", () =>{
                 parent.style.animation = "";
             })
         });
     });
+}
+
+function validateText(text){
+    if(text.value.length < 3){
+    }else{
+        return true;
+    }
 }
 
 function validateUser(user){
