@@ -39,9 +39,6 @@ class ArticlesController extends AbstractController
 
             $this->addFlash('add', 'L\'article a bien été ajouté !');
             return $this->redirectToRoute('articles_list');
-        }else{
-            $this->addFlash('error', 'Une erreur s\'est produite ! ');
-            return $this->redirectToRoute('articles_ajout');
         }
 
         return $this->render('admin/gestionStock/articles/ajout.html.twig', [

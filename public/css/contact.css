@@ -4,12 +4,6 @@
   padding:0;
 }
 
-body{
-  height: 100vh;
-  display: flex;
-  transition: background 0.5s ease;
-}
-
 .input-nom,
 .input-prenom,
 .input-email,

@@ -31,7 +31,7 @@ class UsersController extends AbstractController
     }
 
     #[Route("/user/modifier/{id}", name: "modifier_user")]
-    public function userModifier($id , Request $request, EntityManagerInterface $em): Response
+    public function userModifier($id, Request $request, EntityManagerInterface $em): Response
     {
         if($this->isCsrfTokenValid('update'.$id, $request->query->get('csrf')))
         {

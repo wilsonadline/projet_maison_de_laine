@@ -1,8 +1,3 @@
-const form = document.querySelector("form");
-form.setAttribute('id', "form");
-// console.log(form);
-
-
 function btn(){
     const btn = document.querySelectorAll("button");
     btn.forEach(btn => {
@@ -24,8 +19,7 @@ function animationForm(){
             const champs = document.querySelectorAll(".champs");
             const div = document.querySelector(".row")
             const input = arrow.previousElementSibling.querySelector("input");
-            const textarea = document.getElementsByTagName("textarea");
-            const textareaValue = textarea.value;
+            const textarea = document.querySelector("textarea");
             const parent = arrow.parentElement;
             const nextForm = parent.nextElementSibling;
             
@@ -36,7 +30,6 @@ function animationForm(){
                     nextSlide(parent, nextForm);
                 } else if(input.type === "email" && input.id === "contact_email" && validateEmail(input)){
                     nextSlide(parent, nextForm);
-                    console.log(validateEmail(input)    );
                 }else if(input.type === "text"  &&  input.id === "contact_sujet" && validateUser(input) ){
                     nextSlide(parent, nextForm);
                 }else{
@@ -45,7 +38,7 @@ function animationForm(){
             }
             else
             {
-                if(textarea && validateUser(input)){
+                if(textarea && textarea.value.length > 3 ){
                     champs.forEach(unChamp => {
                         unChamp.classList.remove("positionAbsolue");
                         unChamp.classList.add("positionRelative");
@@ -53,14 +46,13 @@ function animationForm(){
                         unChamp.classList.remove("innactive");
                         unChamp.classList.remove("active");
                     });
-                    
+                
                     div.classList.add("center");
                     
                     btn();
                     fa();
                 }else{
-                        parent.style.animation = "shake 0.5s ease"
-
+                    parent.style.animation = "shake 0.5s ease"
                 }
             }
             parent.addEventListener("animationend", () =>{
@@ -68,13 +60,6 @@ function animationForm(){
             })
         });
     });
-}
-
-function validateText(text){
-    if(text.value.length < 3){
-    }else{
-        return true;
-    }
 }
 
 function validateUser(user){
@@ -98,13 +83,6 @@ function validateMessage(message){
     }
 }
 
-function validatePrenom(prenom){
-    if(prenom.value.length < 3){
-    }else{
-        return true;
-    }
-}
-
 function validateEmail(email) {
     const validation = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(validation.test(email.value)){
@@ -116,18 +94,6 @@ function nextSlide(parent, nextForm) {
     parent.classList.add("innactive");
     parent.classList.remove("active");
     nextForm.classList.add("active");
-}
-
-function error(color) {
-    document.body.style.backgroundColor = color;
-}
-
-function changeDisplayBody(body) {
-    document.body.style.position = body;
-}
-
-function changeDisplayInput(input) {
-    document.body.style.position = input;
 }
 
 animationForm();
