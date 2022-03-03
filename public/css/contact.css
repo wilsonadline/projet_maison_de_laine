@@ -9,11 +9,6 @@ form{
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  border: 10px solid pink;
-}
-
-.test{
-  border: 1px solid forestgreen;
 }
 
 .input-nom,
@@ -51,7 +46,6 @@ form{
   border: none;
   flex : 1 !important; 
   height : 100% !important;
-  border: 1px solid red;
 }
 
 .input-nom i,
