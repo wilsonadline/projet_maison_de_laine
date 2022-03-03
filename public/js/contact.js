@@ -17,7 +17,6 @@ function animationForm(){
     arrows.forEach(arrow =>{
         arrow.addEventListener("click", () =>{
             const champs = document.querySelectorAll(".champs");
-            const div = document.querySelector(".row")
             const input = arrow.previousElementSibling.querySelector("input");
             const textarea = document.querySelector("textarea");
             const parent = arrow.parentElement;
@@ -42,13 +41,11 @@ function animationForm(){
                     champs.forEach(unChamp => {
                         unChamp.classList.remove("positionAbsolue");
                         unChamp.classList.add("positionRelative");
-                        unChamp.classList.add("changeTranslation");
+                        // unChamp.classList.add("changeTranslation");
                         unChamp.classList.remove("innactive");
                         unChamp.classList.remove("active");
                     });
                 
-                    div.classList.add("center");
-                    
                     btn();
                     fa();
                 }else{
