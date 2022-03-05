@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-<html>
     <head>
+        <meta charset="utf-8" />
         <script type="text/javascript" src="{{asset('/tarteaucitron/tarteaucitron.js')}}"></script>
 
         <script type="text/javascript">
@@ -64,7 +63,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
         <meta name="description" content="La Maison de Laine est un commerce de détail de tissus, fils à tricoter, broderies, de textiles et d'articles de mercerie comme aiguilles, fils, rubans, laine, boutons, velcro ">
         <meta name="keywords" content=" La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
-        <meta charset="utf-8" />
         <link rel="icon" href="/images/logo/la_maison_de_laine_logo_mdl_multicolor.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %} La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono {% endblock %}</title>
@@ -81,71 +79,71 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2 ">
-                                <i class="fas fa-home mb-1 picto me-2"></i>
+                                <i class="fas fa-home mb-1 me-2"></i>
                                 <a class="active" aria-current="page" href="{{path ('app_home')}}">Boutique</a>
                             </li>
                             {% if app.user %}
                                 {% if app.user.isverified == 1  %}
                                     {% if is_granted('ROLE_ADMIN')%}
                                         <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
-                                            <i class="fas fa-shopping-basket mb-1 picto me-2"></i>
+                                            <i class="fas fa-shopping-basket mb-1 me-2"></i>
                                             <a href="{{path ("panier_index")}}">Panier</a>
                                         </li>
                                         <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
-                                            <i class="fas fa-shopping-basket mb-1 picto me-2"></i>
+                                            <i class="fas fa-shopping-basket mb-1 me-2"></i>
                                             <a href="{{path ("admin_admin")}}">Admin</a>
                                         </li>
                                     {% elseif is_granted('ROLE_USER') %}
                                         <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
-                                            <i class="fas fa-shopping-basket mb-1 picto me-2"></i>
+                                            <i class="fas fa-shopping-basket mb-1 me-2"></i>
                                             <a href="{{path ("panier_index")}}">Panier</a>
                                         </li>
                                         <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
-                                            <i class="fas fa-user mb-1 picto me-2"></i>
+                                            <i class="fas fa-user mb-1 me-2"></i>
                                             <a href="{{path ('contact')}}">Contact</a>
                                         </li>
                                     {% endif %}
                                     <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2" data-bs-toggle="modal" data-bs-target="#navInscription">
-                                        <i class="fas fa-address-book mb-1 picto me-2"></i>
+                                        <i class="fas fa-address-book mb-1 me-2"></i>
                                         <a href="{{path ('app_profil')}}">{{app.user.name}} {{app.user.firstName}}</a>
                                     </li>
                                     <li class="nav-item mx-1 d-flex flex-lg-column flex-row my-2" data-bs-toggle="modal" data-bs-target="#navInscription">
-                                        <i class="fas fa-power-off mb-1 picto me-2"></i>
+                                        <i class="fas fa-power-off mb-1 me-2"></i>
                                         <a href="{{path ('app_logout')}}">Deconnexion</a>
                                     </li>
                                 {% else %}
                                     <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
-                                        <i class="fas fa-shopping-basket mb-1 picto me-2"></i>
+                                        <i class="fas fa-shopping-basket mb-1 me-2"></i>
                                         <a href="{{path ("panier_index")}}">Panier</a>
                                     </li>
                                     <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
-                                        <i class="fas fa-user mb-1 picto me-2"></i>
+                                        <i class="fas fa-user mb-1 me-2"></i>
                                         <a href="{{path ('contact')}}">Contact</a>
                                     </li>
                                     <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2" data-bs-toggle="modal" data-bs-target="#navInscription">
-                                        <i class="fas fa-address-book mb-1 picto me-2"></i>
+                                        <i class="fas fa-address-book mb-1 me-2"></i>
                                         <a href="{{path ('app_register')}}">S'inscrire</a>
                                     </li>
                                     <li class="nav-item mx-2 my-2 d-flex flex-lg-column flex-row" data-bs-toggle="modal" data-bs-target="#navConnecter">
-                                        <i class="fas fa-power-off mb-1 picto me-2"></i>
+                                        <i class="fas fa-power-off mb-1 me-2"></i>
                                         <a href="{{path ('app_login')}}">Se Connecter</a>
                                     </li>
                                 {% endif %}
                             {% else %}
                                 <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
-                                    <i class="fas fa-shopping-basket mb-1 picto me-2"></i>
+                                    <i class="fas fa-shopping-basket mb-1 me-2"></i>
                                     <a href="{{path ("panier_index")}}">Panier</a>
                                 </li>
                                 <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
-                                    <i class="fas fa-user mb-1 picto me-2"></i>
+                                    <i class="fas fa-user mb-1 me-2"></i>
                                     <a href="{{path ('contact')}}">Contact</a>
                                 </li>
                                 <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2" data-bs-toggle="modal" data-bs-target="#navInscription">
-                                    <i class="fas fa-address-book mb-1 picto me-2"></i>
+                                    <i class="fas fa-address-book mb-1 me-2"></i>
                                     <a href="{{path ('app_register')}}">S'inscrire</a>
                                 </li>
                                 <li class="nav-item mx-2 my-2 d-flex flex-lg-column flex-row" data-bs-toggle="modal" data-bs-target="#navConnecter">
-                                    <i class="fas fa-power-off mb-1 picto me-2"></i>
+                                    <i class="fas fa-power-off mb-1 me-2"></i>
                                     <a href="{{path ('app_login')}}">Se Connecter</a>
                                 </li>
                             {% endif %}
