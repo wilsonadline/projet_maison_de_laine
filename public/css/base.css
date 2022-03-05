@@ -1,4 +1,5 @@
-* {
+/* --------------------------Start principal  -------------------------- */
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -15,24 +16,14 @@ body{
   flex-grow: 1;
 }
 
-.form-group{
-  margin-bottom: 1rem;
-}
-
-.nav-item {
-  cursor: pointer;
-  font-size: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.fas {
+.fas{
   font-size: 25px;
+  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-a {
+a{
   text-decoration: none;
   color: inherit;
 }
@@ -40,6 +31,12 @@ a {
 h1{
   color: rgba(174,64,233,1);
   opacity: 0.7;
+  font-family: pacifico ;
+}
+
+p{
+  font-weight: bolder;
+  font-size: 18px;
 }
 
 h5{
@@ -51,89 +48,10 @@ h5{
 ::placeholder{
   color: #000000;
   font-weight: bolder;
-}  
-
-.fas {
-  font-size: 25px;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-.navbar-nav {
-  margin-right: 30px;
-}
-
-.navbar {
-  border: 1px solid transparent;
-  border-top: transparent;
-  border-left: transparent;
-  border-right : transparent;
-  border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
-  -webkit-border-image: -webkit-linear-gradient( 25deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%, );
-  border-image-slice: 1;
-}
-
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #000000;
-  flex-direction: column;
-}
-
-.footer{
-  position: absolute;
-  bottom: 0;
-}
-#icon {
-  display: flex;
-  justify-content: center;
-  justify-content: space-evenly;
-  height: 50px;
-  width: 200px;
-}
-.fab {
-  padding-top: 10px;
-  height: 100%;
-  color: white;
-  transition: all 0.4s;
-}
-
-.fab:hover{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transform: scale(1.05);
-}
-
-#copyright {
-  font-weight: bold;
-  padding-top: 15px;
-  color: white;
-}
-
-.pipe{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bolder;
-}
-
-.nav-item:hover a{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.face{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
-  -webkit-border-image: -webkit-linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
-  border-image-slice: 1;
+.form-group{
+  margin-bottom: 1rem;
 }
 
 .btn{
@@ -163,46 +81,10 @@ label{
   -webkit-text-fill-color: transparent;
   font-weight: bolder;
 }
-#logo 
-{
-  width: 150px;
-  height: 150px;
-}
 
-p{
-  font-weight: bolder;
-  font-size: 18px;
-}
-h1{
-  font-family: pacifico ;
-}
+/* --------------------------End principal  -------------------------- */
 
-.card-hover{
-  transition: all 0.4s;
-}
-.card-hover:hover{
-  transform: scale(1.05);
-  background: -webkit-linear-gradient(50deg,  rgba(166, 64, 255, 0.164) 0%, rgba(54, 161, 255, 0.185) 100%);
-  box-shadow:5px 5px 15px 5px #7373736b;
-}
-
-.picto{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-#projet{
-  color: red;
-}
-
-.sectionHov{
-  transition: all 0.5s;
-}
-
-.sectionHov:hover{
-  transform: scale(1.05);
-  margin-top: 2rem;
-}
+/* --------------------------End Admin list users non valid delete -------------------------- */
 
 .warning{
   transition: all 0.5s;
@@ -213,3 +95,141 @@ h1{
   transform: scale(1.05);
   margin-top: 2rem;
 }
+/* --------------------------End Admin list users non valid delete -------------------------- */
+
+/* --------------------------Start NavBar  -------------------------- */
+
+.nav-item{
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item:hover a{
+  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar-nav{
+  margin-right: 30px;
+}
+
+.navbar{
+  border: 1px solid transparent;
+  border-top: transparent;
+  border-left: transparent;
+  border-right : transparent;
+  border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
+  -webkit-border-image: -webkit-linear-gradient( 25deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%, );
+  border-image-slice: 1;
+}
+
+/* --------------------------End NavBar  -------------------------- */
+
+
+/* --------------------------Start Logo -------------------------- */
+
+#logo 
+{
+  width: 150px;
+  height: 150px;
+}
+
+/* --------------------------End Logo -------------------------- */
+
+/* --------------------------Start ligne de prevention projet -------------------------- */
+
+#projet{
+  color: red;
+}
+
+/* --------------------------End ligne de prevention projet -------------------------- */
+
+/* --------------------------Start home page section -------------------------- */
+.sectionHov{
+  transition: all 0.5s;
+}
+
+.sectionHov:hover{
+  transform: scale(1.05);
+  margin-top: 2rem;
+}
+
+.card-hover{
+  transition: all 0.4s;
+}
+
+.card-hover:hover{
+  transform: scale(1.05);
+  background: -webkit-linear-gradient(50deg,  rgba(166, 64, 255, 0.164) 0%, rgba(54, 161, 255, 0.185) 100%);
+  box-shadow:5px 5px 15px 5px #7373736b;
+}
+
+/* --------------------------End home page section  -------------------------- */
+
+
+
+
+/* -------------------------- Start sad face for no more stock article -------------------------- */
+
+.face{
+  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
+  -webkit-border-image: -webkit-linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
+  border-image-slice: 1;
+}
+
+/* -------------------------- End sad face for no more stock article -------------------------- */
+
+/* --------------------------Start footer  -------------------------- */
+
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  flex-direction: column;
+}
+
+#icon{
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  height: 50px;
+  width: 200px;
+}
+
+.fab {
+  padding-top: 10px;
+  height: 100%;
+  color: white;
+  transition: all 0.4s;
+}
+
+.fab:hover{
+  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.05);
+}
+
+.copyright {
+  font-weight: bold;
+  padding-top: 15px;
+  color: white;
+}
+
+.pipe{
+  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+}
+
+/* --------------------------End footer  -------------------------- */
