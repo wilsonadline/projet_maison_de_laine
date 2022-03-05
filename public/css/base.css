@@ -1,4 +1,4 @@
-/* --------------------------Start principal  -------------------------- */
+/* --------------------------Start principal -------------------------- */
 *{
   margin: 0;
   padding: 0;
@@ -18,7 +18,7 @@ body{
 
 .fas{
   font-size: 25px;
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -58,7 +58,7 @@ h5{
   font-family: Pacifico, lato ;
   font-size: 20px;
   width: 7rem !important;
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   border: 1px solid transparent;
@@ -68,7 +68,7 @@ h5{
 }
 
 .btn:hover{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%)  !important;
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%)  !important;
   -webkit-background-clip : text ;
   -webkit-text-fill-color: white;
   transform: scale(1.05);
@@ -76,7 +76,7 @@ h5{
 }
 
 label{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bolder;
@@ -97,7 +97,7 @@ label{
 }
 /* --------------------------End Admin list users non valid delete -------------------------- */
 
-/* --------------------------Start NavBar  -------------------------- */
+/* --------------------------Start NavBar -------------------------- */
 
 .nav-item{
   cursor: pointer;
@@ -109,7 +109,7 @@ label{
 }
 
 .nav-item:hover a{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -128,7 +128,7 @@ label{
   border-image-slice: 1;
 }
 
-/* --------------------------End NavBar  -------------------------- */
+/* --------------------------End NavBar -------------------------- */
 
 
 /* --------------------------Start Logo -------------------------- */
@@ -165,7 +165,7 @@ label{
 
 .card-hover:hover{
   transform: scale(1.05);
-  background: -webkit-linear-gradient(50deg,  rgba(166, 64, 255, 0.164) 0%, rgba(54, 161, 255, 0.185) 100%);
+  background: -webkit-linear-gradient(50deg, rgba(166, 64, 255, 0.164) 0%, rgba(54, 161, 255, 0.185) 100%);
   box-shadow:5px 5px 15px 5px #7373736b;
 }
 
@@ -177,7 +177,7 @@ label{
 /* -------------------------- Start sad face for no more stock article -------------------------- */
 
 .face{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
@@ -187,7 +187,7 @@ label{
 
 /* -------------------------- End sad face for no more stock article -------------------------- */
 
-/* --------------------------Start footer  -------------------------- */
+/* --------------------------Start footer -------------------------- */
 
 footer{
   display: flex;
@@ -205,7 +205,7 @@ footer{
   width: 200px;
 }
 
-.fab {
+.fab{
   padding-top: 10px;
   height: 100%;
   color: white;
@@ -213,20 +213,28 @@ footer{
 }
 
 .fab:hover{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transform: scale(1.05);
 }
 
-.copyright {
+.copyright{
   font-weight: bold;
   padding-top: 15px;
   color: white;
+  transition: all 0.4s;
+}
+
+.copyright:hover{
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.05);
 }
 
 .pipe{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bolder;
