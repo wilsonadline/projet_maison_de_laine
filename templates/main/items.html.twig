@@ -3,24 +3,24 @@
 
 {% block body %}
     {% for produit in article %}
-        <section class="m-5 d-flex justify-content-center align-items-center justify-content-evenly">
-            <img src="{{vich_uploader_asset(produit, 'imageFile')}}" class="card-img-top" style="height: 40rem ; width : 30rem" alt="Image de l'article | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
-            <div>
+        <section class="m-5 d-xl-flex justify-content-xl-center align-items-xl-center justify-content-xl-between">
+            <img src="{{vich_uploader_asset(produit, 'imageFile')}}" class="col-xl-6 col-11"   alt="Image de l'article | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
+            <div class=" col-xl-5 col-10 mt-5">
                 <h1 class="text-start mb-3">{{produit.article}}</h1>
                 <div class="card" style="width: 18rem; border : none !important">
                     <p class="card-text">{{produit.couleur }}</p>
                     <p class="card-text">{{produit.description }}</p>
                     <p class="card-text" style="font-weight : 900 !important">{{produit.prix }}€</p>
-                    {% if produit.stock > 0 %}
-                    <a href="{{path ('panier_ajout', {id : produit.id})}}" class=" btn btn-sm btn-light my-3" style="width : auto !important"><i class="fas fa-cart-arrow-down mx-3"></i>Ajouter au panier</a>
-                    {% else %}
-                    <p class="card-text text-center my-3"><i class="fas fa-frown-open face me-4"></i> Produit victime de son succès</p>
-                    {% endif %}
                 </div>
+                {% if produit.stock > 0 %}
+                    <a href="{{path ('panier_ajout', {id : produit.id})}}" class=" btn btn-sm btn-light my-3" style="width : auto !important"><i class="fas fa-cart-arrow-down mx-3"></i>Ajouter au panier</a>
+                {% else %}
+                    <p class="card-text text-center my-3"><i class="fas fa-frown-open face me-4"></i> Produit victime de son succès</p>
+                {% endif %}
             </div>
         </section>
     {% endfor %} 
-    <div class="d-flex justify-content-start mb-2">
+    <div class="d-flex justify-content-start mb-2 mx-2">
         <a href="{{path ('app_home')}}" class="btn btn-sm btn-light">Home</a>
     </div>
 {% endblock %}
