@@ -16,6 +16,259 @@ body{
   flex-grow: 1;
 }
 
+h1{
+  color: rgba(174,64,233,1);
+  opacity: 0.7;
+  font-family: pacifico ;
+}
+
+h5{
+  display: block;
+  text-align: center;
+  color: rgba(174,64,233,1);
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+p{
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.form-group{
+  margin-bottom: 1rem;
+}
+
+label{
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+}
+
+::placeholder{
+  color: #000000;
+  font-weight: bolder;
+}
+
+.fas{
+  font-size: 25px;
+}
+
+.btn{
+  font-family: Pacifico, lato ;
+  font-size: 20px;
+  width: 7rem !important;
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 1px solid transparent;
+  border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
+  -webkit-border-image: -webkit-linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
+  border-image-slice: 1;
+}
+
+.btn:hover{
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%) !important;
+  -webkit-background-clip : text ;
+  -webkit-text-fill-color: white;
+  transform: scale(1.05);
+  transition: all 0.4s;
+}
+
+/* --------------------------End principal -------------------------- */
+
+
+/* --------------------------Start Logo -------------------------- */
+#logo 
+{
+  width: 150px;
+  height: 150px;
+}
+/* --------------------------End Logo -------------------------- */
+
+/* --------------------------Start NavBar -------------------------- */
+.nav-item{
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-nav{
+  margin-right: 30px;
+}
+
+.navbar{
+  border: 1px solid transparent;
+  border-top: transparent;
+  border-left: transparent;
+  border-right : transparent;
+  border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
+  -webkit-border-image: -webkit-linear-gradient( 25deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%, );
+  border-image-slice: 1;
+}
+
+.nav-item:hover a{
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.picto{
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* --------------------------End NavBar -------------------------- */
+
+
+/* --------------------------Start Admin -------------------------- */
+.warning{
+  transition: all 0.5s;
+}
+
+.warning:hover{
+  background: rgba(255, 0, 0, 0.301);
+  transform: scale(1.05);
+  margin-top: 2rem;
+}
+/* --------------------------End Admin -------------------------- */
+
+
+/* --------------------------Start if no more Items in stock icon -------------------------- */
+
+.face{
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
+  -webkit-border-image: -webkit-linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
+  border-image-slice: 1;
+}
+/* --------------------------End if no more Items in stock icon -------------------------- */
+
+
+/* --------------------------Start projet de fin d'étude -------------------------- */
+#projet{
+  color: red;
+}
+/* --------------------------End projet de fin d'étude -------------------------- */
+
+
+/* --------------------------Start Home -------------------------- */
+.sectionHov{
+  transition: all 0.5s;
+}
+
+.sectionHov:hover{
+  transform: scale(1.05);
+  margin-top: 5rem !important;
+  margin-bottom: 5rem !important;
+}
+
+.card-hover{
+  transition: all 0.4s;
+}
+
+.card-hover:hover{
+  transform: scale(1.05);
+  background: -webkit-linear-gradient(50deg, rgba(166, 64, 255, 0.164) 0%, rgba(54, 161, 255, 0.185) 100%);
+  box-shadow:5px 5px 15px 5px #7373736b;
+}
+/* --------------------------End Home -------------------------- */
+
+
+/* --------------------------Start Footer -------------------------- */
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  flex-direction: column;
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+}
+
+#icon{
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  height: 50px;
+  width: 200px;
+}
+
+.fab{
+  padding-top: 10px;
+  height: 100%;
+  color: white;
+  transition: all 0.4s;
+}
+
+.fab:hover{
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.05);
+}
+
+.copyright{
+  font-weight: bold;
+  padding-top: 15px;
+  color: white;
+}
+
+.copyright:hover{
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.05);
+}
+
+.pipe{
+  background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+}
+/* --------------------------End Footer -------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------Start principal -------------------------- */
+/* *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'lato';
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container{
+  flex-grow: 1;
+}
+
 .fas{
   font-size: 25px;
   background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
@@ -65,28 +318,28 @@ h5{
   border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
   -webkit-border-image: -webkit-linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
   border-image-slice: 1;
-}
+} */
 
-.btn:hover{
+/* .btn:hover{
   background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%)  !important;
   -webkit-background-clip : text ;
   -webkit-text-fill-color: white;
   transform: scale(1.05);
   transition: all 0.4s;
-}
-
+} */
+/* 
 label{
   background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bolder;
-}
+} */
 
 /* --------------------------End principal  -------------------------- */
 
 /* --------------------------End Admin list users non valid delete -------------------------- */
 
-.warning{
+/* .warning{
   transition: all 0.5s;
 }
 
@@ -94,31 +347,31 @@ label{
   background: rgba(255, 0, 0, 0.301);
   transform: scale(1.05);
   margin-top: 2rem;
-}
+} */
 /* --------------------------End Admin list users non valid delete -------------------------- */
 
 /* --------------------------Start NavBar -------------------------- */
 
-.nav-item{
+/* .nav-item{
   cursor: pointer;
   font-size: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.nav-item:hover a{
+/* .nav-item:hover a{
   background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+} */
 
-.navbar-nav{
+/* .navbar-nav{
   margin-right: 30px;
-}
+} */
 
-.navbar{
+/* .navbar{
   border: 1px solid transparent;
   border-top: transparent;
   border-left: transparent;
@@ -126,31 +379,31 @@ label{
   border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
   -webkit-border-image: -webkit-linear-gradient( 25deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%, );
   border-image-slice: 1;
-}
+} */
 
 /* --------------------------End NavBar -------------------------- */
 
 
 /* --------------------------Start Logo -------------------------- */
 
-#logo 
+/* #logo 
 {
   width: 150px;
   height: 150px;
-}
+} */
 
 /* --------------------------End Logo -------------------------- */
 
 /* --------------------------Start ligne de prevention projet -------------------------- */
 
-#projet{
+/* #projet{
   color: red;
-}
+} */
 
 /* --------------------------End ligne de prevention projet -------------------------- */
 
 /* --------------------------Start home page section -------------------------- */
-.sectionHov{
+/* .sectionHov{
   transition: all 0.5s;
 }
 
@@ -167,7 +420,7 @@ label{
   transform: scale(1.05);
   background: -webkit-linear-gradient(50deg, rgba(166, 64, 255, 0.164) 0%, rgba(54, 161, 255, 0.185) 100%);
   box-shadow:5px 5px 15px 5px #7373736b;
-}
+} */
 
 /* --------------------------End home page section  -------------------------- */
 
@@ -176,20 +429,20 @@ label{
 
 /* -------------------------- Start sad face for no more stock article -------------------------- */
 
-.face{
+/* .face{
   background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   border-image: linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
   -webkit-border-image: -webkit-linear-gradient( 90deg, rgba(105,133,243,1) 0%, rgba(174,64,233,1) 100%);
   border-image-slice: 1;
-}
+} */
 
 /* -------------------------- End sad face for no more stock article -------------------------- */
 
 /* --------------------------Start footer -------------------------- */
 
-footer{
+/* footer{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -238,6 +491,6 @@ footer{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bolder;
-}
+} */
 
 /* --------------------------End footer  -------------------------- */
