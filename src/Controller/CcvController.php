@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CcvController extends AbstractController
 {
+    // Création du chemin vers la page CCV
     #[Route('/ccv', name: 'ccv')]
     public function index(): Response
     {
