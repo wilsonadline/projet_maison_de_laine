@@ -5,8 +5,8 @@
 {% block body %}
   {% for type in typeCategorie %}
     {% if type.categories|length > 0 %}  
-      <section class="mb-5 justify-content-around d-flex flex-wrap p-0 sectionHov">
       <h1 class="text-center">{{type.nom}}</h1>
+      <section class="mb-5 justify-content-around d-flex flex-wrap p-0 sectionHov">
         {% for categorie in type.categories %}
           {% if type.categories|length > 3 %}
             <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-5 col-8 d-flex flex-column align-items-center justify-content-around card-hover">
