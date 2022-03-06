@@ -1,18 +1,17 @@
 {% extends 'base.html.twig' %}
-{% block css %} <link rel="stylesheet" href="{{asset ('../css/panier.css ')}}" />{% endblock %} 
-
+{% block css %} <link rel="stylesheet" href="{{asset ('../css/panier.css ')}}"/>{% endblock %} 
 
 {% block title %}Panier | La Maison de Laine{% endblock %}
 
 {% block body %}
     <div class="d-flex justify-content-between flex-column my-5">
         <table class="table">
-            <h1 class="my-5 text-center">Mon Panier</h1>
             <thead>
+            <h1 class="my-5 text-center">Mon Panier</h1>
                 <tr class="justify-content-center">
                     <th scope="col" class="text-start">Article</th>
                     <th scope="col" class="text-center">Prix</th>
-                    <th scope="col" class=" text-center">Quantité</th>
+                    <th scope="col" class="text-center">Quantité</th>
                     <th scope="col" class="text-center">Total</th>
                     <th scope="col" class="text-center"></th>
                 </tr>
@@ -49,7 +48,7 @@
                         <td colspan="3"></td>
                         <td colspan="text-end"></td>
                         <td> 
-                            <a href="{{path ('adresse')}}" id="cart_valid" class="btn btn-light btn-sm button">Valider votre panier</a>
+                            <a href="{{path ('adresse')}}"id="cart_valid" class="btn btn-light btn-sm button">Valider votre panier</a>
                         </td>
                     </tr>
                 </tfoot>
@@ -57,16 +56,16 @@
         </table>
 
         <div class="row col-12 d-flex justify-content-center my-5">
-            <article class="d-flex justify-content-center col-xxl-4 col-12 col-lg-4 col-md-4  align-items-center my-5">
+            <article class="d-flex justify-content-center col-xxl-4 col-12 col-lg-4 col-md-4 align-items-center my-5">
             <i class="fas fa-truck fa-2x ml-5 picto"></i>
                 <span>LIVRAISON GRATUITE<br>DES 72H EN BOUTIQUE</span>
             </article>
             <article class="d-flex justify-content-center col-xxl-4 col-12 col-lg-4 col-md-4 my-5 align-items-center">
-                <i class="picto fas fa-user-lock fa-2x"></i>
+                <i class="fas fa-user-lock fa-2x"></i>
                 <span>PAIEMENT SÉCURISÉ<br>PAR CB OU PAYPAL</span>
             </article>
             <article class="justify-content-center my-5 col-xxl-4 col-12 col-lg-4 col-md-4 d-flex align-items-center">
-                <i class=" picto fas fa-sync-alt fa-2x"></i>
+                <i class="fas fa-sync-alt fa-2x"></i>
                 <span>RETOUR GRATUIT<br>PENDANT 60 JOURS</span>
             </article>
         </div>
