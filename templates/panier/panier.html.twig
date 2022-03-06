@@ -24,22 +24,22 @@
                         <td class="py-5 text-center">{{element.quantite}}</td>
                         <td class="py-5 text-center">{{element.quantite * element.article.prix}}€</td>
                         <td class="py-5">
-                            <a class="btn btn-light btn-sm" id="plus" href="{{path ('panier_ajout', {id : element.article.id})}}">+</a>
-                            <a class="btn btn-light btn-sm align-items-center" id="minus" href="{{path ('panier_retirer', {id : element.article.id})}}">-</a>
-                            <a class="btn btn-light btn-sm" id="del" href="{{path ('panier_supprimer', {id : element.article.id})}}">x</a>
+                            <a class="btn btn-light btn-sm option" href="{{path ('panier_ajout', {id : element.article.id})}}">+</a>
+                            <a class="btn btn-light btn-sm align-items-center option" href="{{path ('panier_retirer', {id : element.article.id})}}">-</a>
+                            <a class="btn btn-light btn-sm option"  href="{{path ('panier_supprimer', {id : element.article.id})}}">x</a>
                         </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="6" class="text-center" id="cart_empty"><h3>Votre panier est vide</h3></td>
+                        <td colspan="6" class="text-center larger"><h3>Votre panier est vide</h3></td>
                     </tr>
                 {% endfor %}
             </tbody>
             {% if total > 0 %}
                 <tfoot>
                     <tr>
-                        <td colspan="3" id="tot">Total</td>
-                        <td class="text-center" name="prix" id="prix">{{total}}€</td>
+                        <td colspan="3" class="bolder">Total</td>
+                        <td class="text-center bolder" name="prix">{{total}}€</td>
                         <td> 
                             <a class="btn btn-light btn-sm" href="{{path ('panier_vider')}}">Vider</a>
                         </td>
@@ -48,7 +48,7 @@
                         <td colspan="3"></td>
                         <td colspan="text-end"></td>
                         <td> 
-                            <a href="{{path ('adresse')}}"id="cart_valid" class="btn btn-light btn-sm button">Valider votre panier</a>
+                            <a href="{{path ('adresse')}}" class="btn btn-light btn-sm larger">Valider votre panier</a>
                         </td>
                     </tr>
                 </tfoot>

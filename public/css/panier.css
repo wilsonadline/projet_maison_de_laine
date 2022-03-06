@@ -1,39 +1,22 @@
-#plus{
+/* --------------------------Start btn ajouter article -------------------------- */
+.option{
   width : 2rem !important;
   font-family: lato;
   font-weight: 1000;
 }
+/* --------------------------End btn ajouter article -------------------------- */
 
-#minus{
-  width : 2rem !important;
-  font-family: lato;
-  font-weight: 1000;
-}
 
-#del{
-  width : 2rem !important;
-  font-family: lato;
-  font-weight: 1000;
-}
-
-#cart_empty{
+/* --------------------------Start btn vider le panier -------------------------- */
+.larger{
   width : auto !important;
 }
+/* --------------------------End btn vider le panier -------------------------- */
 
-#cart_valid{
-  width : auto !important;
-}
 
-#prix{
-  font-weight: bolder;
-  font-size: large;
+/* --------------------------Start Total price -------------------------- */
+.bolder{
+  font-weight: bolder !important;
+  font-size: large !important;
 }
-
-#tot{
-  font-weight: bolder;
-  font-size: large;
-}
-
-.transparent{
-  border: none;
-}
+/* --------------------------End Total price -------------------------- */
