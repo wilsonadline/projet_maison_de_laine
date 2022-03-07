@@ -115,7 +115,7 @@ class ArticlesController extends AbstractController
             // puis le supprime de la BDD
             $em->flush();
 
-            // Message flash si l'article à bien été supprimé de la BDD
+            // Message flash si l'article a bien été supprimé de la BDD
             $this->addFlash('delete', 'L \'article a bien été supprimé !');
             return $this->redirectToRoute('articles_list');
 

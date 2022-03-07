@@ -115,7 +115,7 @@ class CategoriesController extends AbstractController
             // puis le supprime de la BDD
             $em->flush();
 
-            // Message flash si la catégorie à bien été supprimé de la BDD
+            // Message flash si la catégorie a bien été supprimé de la BDD
             $this->addFlash('delete', 'La catégorie a bien été supprimé !');
             return $this->redirectToRoute('categories_list');
         }else{

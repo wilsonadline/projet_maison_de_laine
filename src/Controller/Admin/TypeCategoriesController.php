@@ -116,7 +116,7 @@ class TypeCategoriesController extends AbstractController
             // puis le supprime de la BDD
             $em->flush();
         
-            // Message flash si le type de catégorie à bien été supprimé de la BDD
+            // Message flash si le type de catégorie a bien été supprimé de la BDD
             $this->addFlash('delete', 'Le type de catégorie a bien été supprimé !');
             return $this->redirectToRoute('type_categories_list');
         }else{

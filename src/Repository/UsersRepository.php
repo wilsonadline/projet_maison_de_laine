@@ -22,9 +22,13 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         parent::__construct($registry, Users::class);
     }
 
+    // fonction permettant de recuperer tous les users dont l'email n'est pas vérifier
     public function unVerified()
     {
+        // variable value vaut 2 heures moins que date( qui est le moment actuel)
         $value =  date('Y-m-d H:i:s', strtotime('-2 hours'));
+        //  requete pour recup tous les users dont l'email n'est pas vérifier
+        // et dont l'heure de la création est inférieure ou égale à la variable value
         return $this->createQueryBuilder('u')
             ->andWhere('u.isVerified = 0')
             ->andWhere('u.createdAt <= :val')
