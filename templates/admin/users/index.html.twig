@@ -16,7 +16,7 @@
     <div class="card mx-2 warning" >
       <div class="card-body align-items-center justify-content-center d-flex flex-column">
         <h5 class="card-title mb-4">SUPRIMER LES UTILISITEURS NON VALIDE</h5>
-        <a href="{{path ("admin_delete_user_all")}}?csrf={{csrf_token('delete' ~ app.user.id)}}" class="btn btn-primary" style="width: auto!important"><i class="fas fa-exclamation-triangle"></i></a>
+        <a href="{{path ("admin_delete_users_all")}}?csrf={{csrf_token('delete' ~ app.user.id)}}" class="btn btn-primary" style="width: auto!important"><i class="fas fa-exclamation-triangle"></i></a>
       </div>
     </div>
   </div> 
