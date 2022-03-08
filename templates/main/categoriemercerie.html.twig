@@ -5,8 +5,8 @@
     <h1 class="text-center mt-5">{{categorie.nom}}</h1> 
     <section class="m-5 d-flex flex-wrap justify-content-center justify-content-evenly">
         {% for produit in articles %}
-            <div class="card m-5" style="width: 18rem">
-                <img src="{{vich_uploader_asset(produit, 'imageFile')}}" class="card-img-top" style="height: 25rem; width : 17.9rem" alt=" Images de l'article | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
+            <div class="card" style="width: 18rem">
+                <img src="{{vich_uploader_asset(produit, 'imageFile')}}" class="card-img-top article_img" alt=" Images de l'article | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
                 <div class="card-body d-flex justify-content-center flex-column">
                     <h5 class="card-title text-start px-0 py-2 mb-0">{{produit.article}}</h5>
                     <div class="d-flex justify-content-between">
