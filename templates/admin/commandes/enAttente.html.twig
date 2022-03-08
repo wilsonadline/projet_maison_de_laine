@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for en_attente in cmdEnAttente|sort|reverse %}
+            {% for en_attente in commandes_en_Attente|sort|reverse %}
                 <tr>
                     <th scope="row">{{en_attente.id}}</th>
                     <td>{{en_attente.orderStatus.status}}</td>
@@ -31,7 +31,7 @@
                             <span>{{en_attente.adresse.adresse}}</span><span class="mx-3">{{en_attente.adresse.ville}}</span><span class="mx-3">{{en_attente.adresse.cp}}</span>
                         </p>
                         <p class="mb-0">
-                            <span>{{en_attente.adresse.tel}}</span> <span class="mx-3">{{en_attente.adresse.email}}</span>
+                            <span>{{en_attente.adresse.tel}}</span><span class="mx-3">{{en_attente.adresse.email}}</span>
                         </p>
                     </td>
                     <td>
