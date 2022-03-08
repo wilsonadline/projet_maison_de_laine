@@ -74,7 +74,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for en_attente in en_attente|sort|reverse %}
+            {% for en_attente in commandes_en_attentes|sort|reverse %}
                 <tr>
                     <th scope="row">{{ en_attente.id}}</th>
                     <td>{{ en_attente.orderStatus.status}}</td>
@@ -130,7 +130,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for expediee in commande_expediee|sort|reverse %}
+            {% for expediee in commandes_expediees|sort|reverse %}
                 <tr>
                     <th scope="row">{{expediee.id}}</th>
                     <td>{{expediee.orderStatus.status}}</td>
