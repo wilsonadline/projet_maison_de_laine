@@ -41,8 +41,7 @@ function animationForm(){
                     champs.forEach(unChamp => {
                         unChamp.classList.remove("positionAbsolue");
                         unChamp.classList.add("positionRelative");
-                        // unChamp.classList.add("changeTranslation");
-                        unChamp.classList.remove("innactive");
+-                        unChamp.classList.remove("innactive");
                         unChamp.classList.remove("active");
                     });
                 
