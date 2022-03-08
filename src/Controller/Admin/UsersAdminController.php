@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
 * @Route("/admin", name="admin_")
 */
-class UsersController extends AbstractController
+class UsersAdminController extends AbstractController
 {
     // Création du chemin vers la page index des users - admin
     #[Route('/users/options', name: 'users_options')]

@@ -30,7 +30,7 @@ class PanierController extends AbstractController
     public function panier_ajout( SessionInterface $session, Articles $article)
     {
         // on recupere le panier actuel
-        $panier = $session->get("panier",  []);
+        $panier = $session->get("panier", []);
         $id = $article->getId();
         
         if(!empty($panier[$id]))

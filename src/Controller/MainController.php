@@ -25,6 +25,7 @@ class MainController extends AbstractController
     #[Route('/categorie/articles_mercerie/{id}', name: 'app_articles_mercerie')]
     public function articles_mercerie($id, ArticlesRepository $articles, CategoriesRepository $categoriesRepository )
     {
+        // recup les articles correspondant à la catégorie sélectionné par le user
         return $this->render('main/categoriemercerie.html.twig', [
             'articles'=> $articles->findBy(['categories'=>$id]),
             'categorie' => $categoriesRepository->findOneBy(['id'=>$id])
