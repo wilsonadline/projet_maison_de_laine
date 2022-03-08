@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for expediee in commande_expediee|sort|reverse %}
+            {% for expediee in commandes_expediees|sort|reverse %}
                 <tr>
                     <th scope="row">{{expediee.id}}</th>
                     <td>{{expediee.orderStatus.status}}</td>
