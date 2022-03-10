@@ -61,7 +61,7 @@ window.onload = () => {
                             //         url: "/endSession/"
                             //     }
                             // });
-                            document.location.href = "/dom/pdf/"+ data;
+                            // document.location.href = "/dom/pdf/"+ data;
                             $.ajax({
                                 type: "GET",
                                 url: "/endSessoin/",
