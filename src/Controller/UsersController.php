@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\ChangePasswordFormType;
+use App\Form\EditProfileType;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,11 +12,15 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-
+/**
+* @Route("/users", name="app_")
+*/
 class UsersController extends AbstractController
 {
+
+    // 
     /**
-    * @Route("/users", name="app_profil")
+    * @Route("/", name="profil")
     */
     public function profil()
     {
@@ -22,7 +28,7 @@ class UsersController extends AbstractController
     }
 
     /**
-    * @Route("/users/profil/modifier/{id}", name="app_profil_change")
+    * @Route("/profil/modifier/{id}", name="profil_change")
     */
     public function editProfil($id, Request $request, EntityManagerInterface $em)
     {
@@ -52,7 +58,7 @@ class UsersController extends AbstractController
     }
 
     /**
-    * @Route("/users/pass/modifier/{id}", name="app_pass_change")
+    * @Route("/pass/modifier/{id}", name="pass_change")
     */
     public function editPass($id, Request $request, UserPasswordHasherInterface $userPasswordHasherInterface)
     {
@@ -87,7 +93,7 @@ class UsersController extends AbstractController
     }
 
     /**
-    * @Route("/users/delete/{id}", name="app_pass_delete")
+    * @Route("/delete/{id}", name="pass_delete")
     */
     public function deletePass(EntityManagerInterface $em, UsersRepository $users, $id, Request $request)
     {
