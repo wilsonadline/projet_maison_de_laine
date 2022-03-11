@@ -14,4 +14,11 @@ class CcvController extends AbstractController
     {
         return $this->render('ccv/index.html.twig');
     }
+
+    // chemin vers les mentions légales
+    #[Route('/mention-legales', name: 'mentions_legales')]
+    public function mentions_legales()
+    {
+        return $this->render('mentions_legales/mentions-legales-site-internet.html.twig');
+    }
 }

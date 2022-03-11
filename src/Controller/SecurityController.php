@@ -9,6 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+    // fonction permettant de se connecter
     /**
     * @Route("/login", name="app_login")
     */
@@ -22,7 +23,7 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-
+    // fonction permettant de se déconnecter
     /**
     * @Route("/logout", name="app_logout")
     */
