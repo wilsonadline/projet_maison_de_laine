@@ -1,6 +1,6 @@
 /* --------------------------Start btn ajouter article -------------------------- */
 .option{
-  width : 2rem !important;
+  width: 2rem !important;
   font-family: lato;
   font-weight: 1000;
 }
@@ -9,7 +9,7 @@
 
 /* --------------------------Start btn vider le panier -------------------------- */
 .larger{
-  width : auto !important;
+  width: auto !important;
 }
 /* --------------------------End btn vider le panier -------------------------- */
 

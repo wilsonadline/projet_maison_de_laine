@@ -12,6 +12,7 @@
     font-weight: 900 !important;
     font-size: larger !important;
 }
+
 a:hover{
     background : -webkit-linear-gradient(90deg, rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
     -webkit-background-clip: text;

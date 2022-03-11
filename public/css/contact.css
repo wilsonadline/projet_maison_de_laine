@@ -1,3 +1,4 @@
+/* --------------------------Start Form Contact -------------------------- */
 form{
   display: flex;
   justify-content: center;
@@ -5,13 +6,14 @@ form{
   align-items: center;
 }
 
+/* -------------------------- start first div -------------------------- */
 .input-nom,
 .input-prenom,
 .input-email,
 .input-sujet,
 .input-message{
-  background : white;
-  height : 5rem;
+  background: white;
+  height: 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,6 +22,9 @@ form{
   border-radius: 10px;
   box-shadow: 5px 5px 15px 5px #7373736b;
 }
+/* -------------------------- end first div -------------------------- */
+
+/* -------------------------- start div form_row -------------------------- */
 
 .input-nom div,
 .input-prenom div,
@@ -29,34 +34,6 @@ form{
   flex:1 ;
   height : 100% !important;
   outline: none !important;
-}
-
-.input-nom input,
-.input-prenom input,
-.input-email input,
-.input-sujet input,
-.input-message textarea{
-  margin-top: -1rem !important;
-  border: none;
-  flex : 1 !important; 
-  height : 100% !important;
-}
-
-.input-nom i,
-.input-prenom i,
-.input-email i,
-.input-sujet i,
-.input-message i{
-  padding : 1rem;
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: flex;
-  flex-direction: column;
-}
-
-.fa-arrow-down{
-  cursor: pointer;
 }
 
 div.innactive{
@@ -72,40 +49,83 @@ div.active{
 .champs{
 }
 
-.positionAbsolue {
+.positionAbsolue{
   position: absolute;
 }
 
-.positionRelative {
+.positionRelative{
   position: relative;
   width: 95%;
 }
 
-.visibility{
-  visibility: hidden;
-}
-
-::placeholder{
-  background : -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bolder;
-}
-
 small{
-  font-size : 10px !important;
+  font-size: 10px !important;
   margin-left: -15%;
   margin-top: 5px;
 }
 
-@keyframes shake {
-  0% {
+/* -------------------------- end div form_row -------------------------- */
+
+/* -------------------------- start input -------------------------- */
+.input-nom input,
+.input-prenom input,
+.input-email input,
+.input-sujet input,
+.input-message textarea{
+  margin-top: -1rem !important;
+  border: none;
+  flex: 1 !important;
+  height: 100% !important;
+}
+
+::placeholder{
+  background: -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+}
+/* -------------------------- end input -------------------------- */
+
+
+/* -------------------------- start icon -------------------------- */
+.input-nom i,
+.input-prenom i,
+.input-email i,
+.input-sujet i,
+.input-message i{
+  padding: 1rem;
+  background: -webkit-linear-gradient(90deg,  rgba(174,64,233,1) 0%, rgba(105,133,243,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-arrow-down{
+  cursor: pointer;
+}
+/* -------------------------- end icon -------------------------- */
+
+
+/* -------------------------- start btn -------------------------- */
+.visibility{
+  visibility: hidden;
+}
+/* -------------------------- end btn -------------------------- */
+
+
+/* --------------------------start animation -------------------------- */
+@keyframes shake{
+  0%{
     transform: rotate(0deg);
   }
-  50% {
+  50%{
     transform: rotate(5deg);
   }
-  100% {
+  100%{
     transform: rotate(0deg);
   }
 }
+/* --------------------------End animation -------------------------- */
+
+/* --------------------------End Form Contact -------------------------- */
