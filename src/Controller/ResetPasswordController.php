@@ -18,6 +18,7 @@ use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
+
 // Fonction pour réinitialiser le MDP
 #[Route('/reset-password')]
 class ResetPasswordController extends AbstractController
@@ -26,21 +27,22 @@ class ResetPasswordController extends AbstractController
 
     private $resetPasswordHelper;
 
+    
     public function __construct(ResetPasswordHelperInterface $resetPasswordHelper)
     {
         $this->resetPasswordHelper = $resetPasswordHelper;
     }
 
-    /**
-    * Display & process form to request a password reset.
-    */
+    // fonction permettant de générer une demande de réinitialisation de MDP
     #[Route('', name: 'app_forgot_password_request')]
     public function request(Request $request, MailerInterface $mailer): Response
     {
+        // création et gestion du form pour réinitialiser le MDP 
         $form = $this->createForm(ResetPasswordRequestFormType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()) {
+            // recup l'email pour envoyer la demande de réinitialisation
             return $this->processSendingPasswordResetEmail(
                 $form->get('email')->getData(),
                 $mailer
@@ -52,14 +54,14 @@ class ResetPasswordController extends AbstractController
         ]);
     }
 
-    /**
-    * Confirmation page after a user has requested a password reset.
-    */
+    // page de confirmation apres que la demande de réinitialisation du MDP
     #[Route('/check-email', name: 'app_check_email')]
     public function checkEmail(): Response
     {
         // Generate a fake token if the user does not exist or someone hit this page directly.
         // This prevents exposing whether or not a user was found with the given email address or not
+
+        // génére un faux token si le user n'existe pas ou si un user est juste aller directement sur cette page
         if(null === ($resetToken = $this->getTokenObjectFromSession())) {
             $resetToken = $this->resetPasswordHelper->generateFakeResetToken();
         }
@@ -69,9 +71,7 @@ class ResetPasswordController extends AbstractController
         ]);
     }
 
-    /**
-    * Validates and process the reset URL that the user clicked in their email.
-    */
+    // fonction permettant de valider et traiter l'url de réinitialisation sur lequel le user a cliqué dans son email 
     #[Route('/reset/{token}', name: 'app_reset_password')]
     public function reset(Request $request, UserPasswordHasherInterface $userPasswordHasherInterface, string $token = null): Response
     {
@@ -107,7 +107,7 @@ class ResetPasswordController extends AbstractController
             // A password reset token should be used only once, remove it.
             $this->resetPasswordHelper->removeResetRequest($token);
 
-            // Encode(hash) the plain password, and set it.
+            // j'affecte le MDP de l'utilisateur après l'avoir hashé
             $encodedPassword = $userPasswordHasherInterface->hashPassword(
                 $user,
                 $form->get('plainPassword')->getData()
@@ -136,7 +136,7 @@ class ResetPasswordController extends AbstractController
         // Do not reveal whether a user account was found or not.
         if(!$user){
             return $this->redirectToRoute('app_check_email');
-        } 
+        }
         
         try{
             $resetToken = $this->resetPasswordHelper->generateResetToken($user);

@@ -24,7 +24,7 @@ class LivraisonController extends AbstractController
     #[Route('/adresse', name: 'adresse')]
     public function adresse_facturation(Request $request, EntityManagerInterface $em): Response
     {
-        // j'instancie l'objet adresse
+        // j'instancie un nouvel objet adresse
         $adresse = new Adresses();
 
         // Doctrine crée un form
@@ -38,50 +38,57 @@ class LivraisonController extends AbstractController
             // intialiser l'heure de création
             $adresse->setCreatedAt(new \DateTime());
             
-            // récupérer les informations saisies
+            // indiquer a EM que cette entity devra etre enregistrer 
             $em->persist($adresse);
-            // envoyer les informations à la BDD
+            // enregristrement de l'entity dans la BDD
             $em->flush();
             
             // enfin la page dirigée vers celle indiqué ci-dessous
             return $this->redirectToRoute("livraison_option", ['id'=> $adresse->getId()]);
         }
-        
+
         // création de la view du form affiché sur la page indiqué au render
         return $this->render('livraison/index.html.twig', [
             'adresse_form'=> $adresse_form->createView(),
         ]);
     }
-   
+
+    // fonction pour valider le paiement
     #[Route('/livraison/paiement/{id}', name:'livraison_option')]
     public function option_livraison($id,SessionInterface $session, AdressesRepository $adresses, ArticlesRepository $articleRepository,
      Request $request, EntityManagerInterface $em, DelivryRepository $delivryReposit): Response
     {
-
-        // j'instancie l'objet Panier services avec en parametre l'Entity Manager
+        // j'instancie l'objet PanierService avec en parametre l'Entity Manager
         $paniers = new PanierService($em);
-        // creation 
+        // creation d'un array contenant les articles, leur quantités et le montant total
         list ($dataPanier, $total) = $paniers->panier($session, $articleRepository);
 
+        // creation et gestion du formulaire paiement 
         $form_paiement = $this->createForm(PaiementType::class);
         $form_paiement->handleRequest($request);
         
+        // si total exist et qu'il n'est pas vide
         if(isset($total) && !empty($total))
         {
-            // permets de charger toute la bibliothèque de stripe
+            // charger toute la bibliothèque de stripe
             require_once('../vendor/autoload.php');
             
-            // on instancie Stripe
+            // instancier Stripe
             \Stripe\Stripe::setApiKey('sk_test_51JlA15DnhjURuLLqEC9bDSLfcauQ5d4jltdhBlHnHj4y8kY1pqhyZc9dbFooWUSbUiffqJCnLZzK7hQjPaGjK5jS00V2NFZSc7');
-            
+
+            // creer une intention de paiement
+            // qui contient le total en cents*100 + la devise de la monnaie
             $intent = \Stripe\PaymentIntent::create([
                 'amount' => $total*100,
                 'currency' => 'eur'
             ]);
         }else{
-            return $this->render('livraison/endSession.html.twig');
+            // si le panier est vide la page sera redirigé
+            // vers une page indiquant que le panier est expiré
+            return $this->redirectToRoute('expCart');
         }
 
+        // envoie des éléments à la page indiqué au render
         return $this->render('livraison/optionlivraison.html.twig',[ 
             'adresse' => $adresses->find($id),
             'dataPanier' => $dataPanier, 
@@ -93,6 +100,7 @@ class LivraisonController extends AbstractController
         );
     }
 
+    // fonction permettant d'appliquer l'enregistrement de la commande
     /**
     * @Route("/validateOrder/{adresse_id}/{deliveryMode}", name="validateOrder", methods={"GET"})
     */
@@ -100,15 +108,25 @@ class LivraisonController extends AbstractController
         OrderStatusRepository $statusRepo, SessionInterface $session, ArticlesRepository $articleRepository, EntityManagerInterface $em
       )
     {
+        // intancier l'objet PanierService qui a en parametre Entity Manager
         $panier_service = new PanierService($em);
+        // Je ne suis pas sure
+        // J'accede à la fonction panier et ses parametres
         list ($dataPanier)= $panier_service->panier($session, $articleRepository);
         $panier_service->gestionStock($dataPanier);
 
-        $order = $panier_service->save_order($adressesRepository, $adresse_id, $statusRepo, $dataPanier, $delivryRepository, $deliveryMode, $session);
+        // de mon objet panier_service, j'appelle ma fonction save_order et ses parametres
+        $panier_service->save_order($adressesRepository, $adresse_id, $statusRepo, $dataPanier, $delivryRepository, $deliveryMode, $session);
 
-        return new JsonResponse($order->getId());
+        // Json renvoie le status success de l'opération
+        $response = new JsonResponse();
+        $response->setStatusCode(JsonResponse::HTTP_OK);
+
+        return $response;
     }
 
+
+    // fonction succes où l'utilisateur aura la possibilité de télécharger sa facture
     /**
     * @Route("succes/", name="succes", methods={"GET"})
     */
@@ -119,11 +137,26 @@ class LivraisonController extends AbstractController
         ]);
     }
 
+    // fonction fin de session afin d'effacer le panier à la fin du paiement.
     /**
-    * @Route("endSessoin", name="endSession", methods={"GET"})
+    * @Route("removePanier", name="removePanier", methods={"GET"})
     */
-    public function endSession(SessionInterface $session)
+    public function removePanier(SessionInterface $session)
     {
-      return new JsonResponse( $session->remove("panier"));
+        $session->remove("panier");
+        // Json renvoie le status success de l'opération
+        $response = new JsonResponse();
+        $response->setStatusCode(JsonResponse::HTTP_OK);
+
+        return $response;
+    }
+
+    // fonction permettant d'afficher la page de l'expiration du panier
+    /**
+    * @Route("expCart", name="expCart")
+    */
+    public function expCart()
+    {
+        return $this->render('expCart/expCart.html.twig');
     }
 }

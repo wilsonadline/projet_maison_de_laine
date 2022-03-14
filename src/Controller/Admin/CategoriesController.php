@@ -28,9 +28,9 @@ class CategoriesController extends AbstractController
     #[Route("/categories/ajout", name: "ajout")]
     public function categoriesAjout(Request $request, EntityManagerInterface $em): Response
     {
-        // Création nouvelle catégorie
+        // j'instancie un nouvel objet catégorie
         $categoriesAjout = new Categories();
-      
+
         // Doctrine crée un form
         $categoriesAjout_form = $this->createForm(CategoriesType::class, $categoriesAjout);
         // demande de traitement de la saisie du form
@@ -42,9 +42,9 @@ class CategoriesController extends AbstractController
             // alors initialiser une heure de création
             $categoriesAjout->setCreatedAt(new \DateTime());
             
-            // L'entity Manager retient les infos saisies
+            // indiquer a EM que cette entity devra etre enregistrer
             $em->persist($categoriesAjout);
-            // puis les envoie à la BDD
+            // enregristrement de l'entity dans la BDD
             $em->flush();
             
             // envoi d'un message flash à l'enregistrement des infos dans la BDD
@@ -79,9 +79,9 @@ class CategoriesController extends AbstractController
                 // initialisation de l'heure de la modification
                 $categoriesModifier->setUpdatedAt(new \DateTime());
 
-                // L'entity Manager retient les infos saisies
+                // indiquer a EM que cette entity devra etre enregistrer
                 $em->persist($categoriesModifier);
-                // puis les envoie à la BDD
+                // enregristrement de l'entity dans la BDD
                 $em->flush();
 
                 // si toutes ces étapes sont validées, affichage d'un message flash de l'update

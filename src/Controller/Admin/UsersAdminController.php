@@ -51,9 +51,9 @@ class UsersAdminController extends AbstractController
 
             if($userModifier_form->isSubmitted() && $userModifier_form->isValid())
             {
-                // L'entity Manager retient les infos saisies
+                // indiquer a EM que cette entity devra etre enregistrer
                 $em->persist($userModifier);
-                // puis les envoie à la BDD
+                // enregristrement de l'entity dans la BDD
                 $em->flush();
 
                 // si toutes ces étapes sont validées, affichage d'un message flash de l'update
@@ -97,7 +97,7 @@ class UsersAdminController extends AbstractController
             return $this->redirectToRoute('admin_users_list');
         }
     }
-    
+
     // Fonction permettant de supprimer un user
     #[Route('/user/delete/{id}', name: 'delete_user')]
     public function usersDelete($id, EntityManagerInterface $em, Request $request, UsersRepository $usersRepository): Response

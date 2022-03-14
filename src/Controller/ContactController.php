@@ -18,7 +18,7 @@ class ContactController extends AbstractController
     #[Route('/contact', name: 'contact')]
     public function contact(Request $request, MailerInterface $mailer, EntityManagerInterface $em): Response
     {
-        // creation d'un nouvel objet contact
+        // j'instancie un nouvel objet contact
         $contact = new Contact();
         // initialiser le sujet de l'objet contact à un string vide
         $contact->setSujet('');
@@ -26,13 +26,13 @@ class ContactController extends AbstractController
         $form_contact = $this->createForm(ContactType::class, $contact);
         // demande de traitement de la saisie du form
         $form_contact->handleRequest($request);
-        
+
         // si le form est soumis et qu'il est valide
         if($form_contact->isSubmitted() && $form_contact->isValid())
         {
-            // récupérer les informations saisies
+            // indiquer a EM que cette entity devra etre enregistrer 
             $em->persist($contact);
-            // envoyer les informations à la BDD
+            // enregristrement de l'entity dans la BDD
             $em->flush();
 
             // Pour l'envoie de l'email, j'appelle ma fonction sendEmail et ses dependences
@@ -41,7 +41,7 @@ class ContactController extends AbstractController
             $this->addFlash('add', 'Votre message a bien été envoyé');
             return $this->redirectToRoute('contact');
         }
-        
+
         // création de la view du form affiché sur la page indiqué au render
         return $this->render('contact/index.html.twig', [
             'formContact' => $form_contact->createView()
@@ -51,7 +51,7 @@ class ContactController extends AbstractController
     // fontion pour l'envoi de l'email
     private function sendEmail(MailerInterface $mailer, Contact $contact)
     {
-        // création d'un nouvel objet email
+        // j'instancie un nouvel objet email
         $email = (new Email())
             // la fonction from permets de définir l'expéditeur, en l'occurence l'email contact du site web
             ->from("contact@wilson-a-portefolio.com")

@@ -28,7 +28,7 @@ class TypeCategoriesController extends AbstractController
     #[Route("/typeCategories/ajout", name: "ajout")]
     public function typeCategoriesAjout(Request $request, EntityManagerInterface $em): Response
     {
-        // Création nouveau type de catégorie
+        // j'instancie un nouvel objet type de catégorie
         $typeCategoriesAjout = new TypeCategories();
 
         // Doctrine crée un form
@@ -42,9 +42,9 @@ class TypeCategoriesController extends AbstractController
             // alors initialiser une heure de création
             $typeCategoriesAjout->setCreatedAt(new \DateTime());
 
-            // L'entity Manager retient les infos saisies
+            // indiquer a EM que cette entity devra etre enregistrer
             $em->persist($typeCategoriesAjout);
-            // puis les envoie à la BDD
+            // enregristrement de l'entity dans la BDD
             $em->flush();
 
             // envoi d'un message flash à l'enregistrement des infos dans la BDD
@@ -79,9 +79,9 @@ class TypeCategoriesController extends AbstractController
                 // initialisation de l'heure de la modification
                 $typeCategoriesModifier->setUpdatedAt(new \DateTime());
 
-                // L'entity Manager retient les infos saisies
+                // indiquer a EM que cette entity devra etre enregistrer
                 $em->persist($typeCategoriesModifier);
-                // puis les envoie à la BDD
+                // enregristrement de l'entity dans la BDD
                 $em->flush();
 
                 // si toutes ces étapes sont validées, affichage d'un message flash de l'update

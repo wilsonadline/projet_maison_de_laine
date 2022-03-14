@@ -19,7 +19,7 @@ class MainController extends AbstractController
         if(!empty($this->getUser()) && $this->getUser()->isVerified() == 0){
             $this->addFlash('error', 'Veuillez valider votre mail afin de vous connecter');
         }
-        
+
         return $this->render('main/index.html.twig', [
             'typeCategorie' => $typeCategoriesRepository->findAll()
         ]);

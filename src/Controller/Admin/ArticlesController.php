@@ -28,7 +28,7 @@ class ArticlesController extends AbstractController
     #[Route("/articles/ajout", name: "ajout")]
     public function articlesAjout(Request $request, EntityManagerInterface $em): Response
     {
-        // Création nouveau article
+        // j'instancie un nouvel objet article
         $articleAjout = new Articles();
 
         // j'appelle doctrine pour créer un form 
@@ -42,9 +42,9 @@ class ArticlesController extends AbstractController
             // alors initialiser une heure de création
             $articleAjout->setCreatedAt(new \DateTime());
 
-            // récupérer les informations saisies
+            // indiquer a EM que cette entity devra etre enregistrer 
             $em->persist($articleAjout);
-            // envoyer les informations à la BDD
+            // enregristrement de l'entity dans la BDD
             $em->flush();
 
             // envoi d'un message flash à l'enregistrement des infos dans la BDD
@@ -79,9 +79,9 @@ class ArticlesController extends AbstractController
                 // initialisation de l'heure de la modification
                 $articlesModifier->setUpdatedAt(new \DateTime());
 
-                // L'entity Manager retient les infos saisies
+                // indiquer a EM que cette entity devra etre enregistrer
                 $em->persist($articlesModifier);
-                // puis les envoie à la BDD
+                // enregristrement de l'entity dans la BDD
                 $em->flush();
 
                 // si toutes ces étapes sont validées, affichage d'un message flash de l'update
@@ -125,7 +125,7 @@ class ArticlesController extends AbstractController
             return $this->redirectToRoute('admin_admin');
         }
     }
-   
+
     // Fonction permettant d'afficher la liste des articles
     #[Route("/articles/list", name: "list")]
     public function articlesList(ArticlesRepository $articlesRepository): Response

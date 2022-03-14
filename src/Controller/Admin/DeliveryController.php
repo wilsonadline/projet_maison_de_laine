@@ -37,7 +37,7 @@ class DeliveryController extends AbstractController
     #[Route('/delivery/ajout', name: 'options_add')]
     public function delivery_options_add(Request $request, EntityManagerInterface $em): Response
     {
-        // Création nouveau delivery
+        // j'instancie un nouvel objet delivery
         $add_delivery = new Delivry();
 
         // Doctrine crée un form
@@ -63,27 +63,27 @@ class DeliveryController extends AbstractController
         return $this->render('admin/delivery/ajout.html.twig', [
             'add_delivery' => $add_delivery_form->createView()
         ]);
-    } 
-    
+    }
+
     // Fonction permettant de modifier le moyen de livraison
     #[Route('/delivery/modifier/{id}', name: 'options_update')]
     public function delivery_options_update(DelivryRepository $delivryRepository, $id, Request $request, EntityManagerInterface $em): Response
     {
         // Si le Csrf token est valide
         if($this->isCsrfTokenValid('update'.$id, $request->query->get('csrf')))
-        {     
+        {
             // Doctrine crée le form
-            $update_delivery_form = $this->createForm(DeliveryType::class , $delivryRepository->find($id));
+            $update_delivery_form = $this->createForm(DeliveryType::class, $delivryRepository->find($id));
             // traitement de la saisie du form
             $update_delivery_form->handleRequest($request);
 
             if($update_delivery_form->isSubmitted() && $update_delivery_form->isValid()){
                 
-                // L'entity Manager retient les infos saisies
+                // indiquer a EM que cette entity devra etre enregistrer
                 $em->persist($delivryRepository->find($id));
-                // puis les envoie à la BDD
+                // enregristrement de l'entity dans la BDD
                 $em->flush();
-            
+
                 // si toutes ces étapes sont validées, affichage d'un message flash de l'update
                 $this->addFlash('update', 'L\'option a bien été modifié !');
                 return $this->redirectToRoute('delivery_options_list');
@@ -98,10 +98,10 @@ class DeliveryController extends AbstractController
         return $this->render('admin/delivery/modifier.html.twig', [
             'update_delivery' => $update_delivery_form->createView()
         ]);
-    } 
-    
+    }
+
     // Fonction permettant de supprimer le moyen de livraison
-    #[Route('/delivery/supprimer/{id}', name: 'options_delete')]    
+    #[Route('/delivery/supprimer/{id}', name: 'options_delete')]
     public function delivery_options_delete($id, EntityManagerInterface $em, DelivryRepository $delivryRepository, Request $request): Response
     {
         // Si le Csrf token est valide

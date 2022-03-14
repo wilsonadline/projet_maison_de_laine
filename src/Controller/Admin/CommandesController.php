@@ -22,11 +22,11 @@ class CommandesController extends AbstractController
     {
         return $this->render('admin/commandes/index.html.twig');
     }
-    
+
     // Fonction permettant d'afficher la liste des commandes
     #[Route('/commandes/list', name: 'list')]
     public function list_commandes(OrderRepository $orderRepository): Response
-    {      
+    {
         return $this->render('admin/commandes/list.html.twig', [
             'nouvelles_commande' => $orderRepository->findBy(['orderStatus'=> 1]),
             'commandes_en_attentes' => $orderRepository->findBy(['orderStatus'=> 2]),
@@ -44,8 +44,8 @@ class CommandesController extends AbstractController
         if($this->isCsrfTokenValid('update'.$id, $request->query->get('csrf')))
         {
             // recupération de l'id 
-            $status = $orderRepository->find($id);  
-        
+            $status = $orderRepository->find($id);
+
             // Doctrine crée un form selon la commande à modifier
             $status_option = $this->createForm(OrderType::class,$status) ;
             // traitement de la saisie du form
@@ -56,12 +56,11 @@ class CommandesController extends AbstractController
                 // initialisation de l'heure de la modification
                 $status->setUpdatedAt(new \DateTime());
 
-                // L'entity Manager retient les infos saisies
+                // indiquer a EM que cette entity devra etre enregistrer
                 $em->persist($status);
-                // puis les envoie à la BDD
+                // enregristrement de l'entity dans la BDD
                 $em->flush();
-            
-                
+
                 if($status->getOrderStatus()->getStatus() == "nouvelle commande")
                 {
                     // si le status a été modifié pour une nouvelle commande, 
@@ -85,7 +84,7 @@ class CommandesController extends AbstractController
             $this->addFlash('error', 'Votre lien n\'est pas valide !');
             return $this->redirectToRoute('admin_admin');
         }
-        
+
         // création de la view du form affiché sur la page indiqué au render
         return $this->render('admin/commandes/changeStatus.html.twig', [
             'status' => $status_option->createView()
@@ -97,7 +96,7 @@ class CommandesController extends AbstractController
     * @Route("/commandes/nouvelle", name="nouvelles")
     */
     public function nouvelles_commandes(OrderRepository $orderRepository): Response
-    {      
+    {
         // recup toutes les nouvelles commandes
         return $this->render('admin/commandes/nouvelle.html.twig', [
             'nouvelles_commande' => $orderRepository->findBy(['orderStatus'=> 1])
