@@ -3,7 +3,7 @@
 {% block title %} Livraison | La Maison de Laine {% endblock %}
 
 {% block body %}
- <div class="d-flex flex-column justify-content-center align-items-center">
+  <div class="d-flex flex-column justify-content-center align-items-center">
     <h1 class="mt-5 text-center mx-3">Votre commande a bien été prise en compte <br> Nous vous remercions pour votre achat!</h1>
     <a href="{{path('dom_pdf', {order_id : orderId})}}" class="btn btn-sm btn-light my-5" style="width : auto !important ; border : none">Télécharger votre facture</a>
     <a href="{{path ('app_home')}}" class="btn btn-sm btn-light my-5">Home</a>

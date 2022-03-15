@@ -31,26 +31,33 @@
                             <td>{{list.cp}}</td>
                             <td>{{list.ville}}</td>
                             <td>{{list.email}}</td>
-                            {% set foo = date(list.createdAt) %}
-                            {% if list.isverified == 0 and foo > date('-2hours')  %}
+
+                            {% set now = date(list.createdAt) %}
+
+                            {% if list.isverified == 0 and now > date('-2hours') %}
                                 <td>en attente</td>
-                            {% elseif list.isverified == 0 and foo < date('-2hours') %}
+                            {% elseif list.isverified == 0 and now < date('-2hours') %}
                                 <td>A supprimer</td>
                             {% else %}
                                 <td>Vérifié</td>
                             {% endif %}
 
-                            {% if list.isverified == 0 and foo > date('-2hours')  %}
-                                <td><a href="{{path ('admin_modifier_user', {id : list.id})}}?csrf={{csrf_token('update' ~ list.id)}}" class="btn btn-light btn-sm">Modifier</a></td>
-                            {% elseif list.isverified == 0 and foo < date('-2hours') %}
-                                <td><a href="{{path ('admin_delete_user', {id : list.id})}}?csrf={{csrf_token('delete' ~ list.id)}}" onclick ="return confirm('Etes-vous sûr de vouloir supprimer ce utilisateur ?')" class="btn-sm btn btn-light">Supprimer</a></td>
+                            {% if list.isverified == 0 and now > date('-2hours') %}
+                                <td>
+                                    <a href="{{path ('admin_modifier_user', {id : list.id})}}?csrf={{csrf_token('update' ~ list.id)}}" class="btn btn-light btn-sm">Modifier</a>
+                                </td>
+                            {% elseif list.isverified == 0 and now < date('-2hours') %}
+                                <td>
+                                    <a href="{{path ('admin_delete_user', {id : list.id})}}?csrf={{csrf_token('delete' ~ list.id)}}" onclick ="return confirm('Etes-vous sûr de vouloir supprimer ce utilisateur ?')" class="btn-sm btn btn-light">Supprimer</a>
+                                </td>
                             {% else %}
-                                <td><a href="{{path ('admin_modifier_user', {id : list.id})}}?csrf={{csrf_token('update' ~ list.id)}}" class="btn btn-light btn-sm">Modifier</a></td>
+                                <td>
+                                    <a href="{{path ('admin_modifier_user', {id : list.id})}}?csrf={{csrf_token('update' ~ list.id)}}" class="btn btn-light btn-sm">Modifier</a>
+                                </td>
                             {% endif %}
                             <td>{{list.createdAt|date('d/m/Y à H:i:s')}}</td>
                         {% endif %}
                     </tr>
-
                 {% endfor %}
             </tbody>
         </table>

@@ -27,17 +27,20 @@
                         <th scope="row">{{list.id}}</th>
                         <td><img src="{{vich_uploader_asset(list , 'imageFile')}}" style="width : 60px"class="card-img-top" alt="Image de la Categorie | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"></td>
                         <td>{{list.nom}}</td>
-                        <td>{{list.typeCategories}}</td>  
+                        <td>{{list.typeCategories}}</td>
                         <td>{{list.createdAt|date('d/m/Y à H:i:s')}}</td>
-                        <td>{{list.updatedAt|date('d/m/Y à H:i:s')}}</td> 
-                        <td><a href="{{path ('categories_modifier', {id : list.id})}}?csrf={{csrf_token('update' ~ list.id)}}" class="btn btn-light">Modifier</a></td>
-                        <td><a href="{{path ('categories_delete', {id : list.id})}}?csrf={{csrf_token('delete' ~ list.id)}}" onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')" class="btn btn-light">Supprimer</a></td>
+                        <td>{{list.updatedAt|date('d/m/Y à H:i:s')}}</td>
+                        <td>
+                            <a href="{{path ('categories_modifier', {id : list.id})}}?csrf={{csrf_token('update' ~ list.id)}}" class="btn btn-light">Modifier</a>
+                        </td>
+                        <td>
+                            <a href="{{path ('categories_delete', {id : list.id})}}?csrf={{csrf_token('delete' ~ list.id)}}" onclick ="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?')" class="btn btn-light">Supprimer</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
-    
     <div class="d-flex justify-content-end">
         <a href="{{path ('categories_ajout')}}" class="btn btn-light mb-4" style="width : auto !important">Ajouter une catégorie</a>
     </div>

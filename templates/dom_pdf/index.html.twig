@@ -1,26 +1,29 @@
 {% block body %}
-    <h1 style="color: rgba(174,64,233,1) ">La Maison de Laine</h1>
+    <h1 style="color: rgba(174,64,233,1)">La Maison de Laine</h1>
     <h3>Votre Facture pour votre commande n°{{facture.id}}</h3>
     <table class="table">
-        <tbody >
+        <tbody>
             <tr>
                 <td>
                     <h4 style="color: rgba(105,133,243,1)">Adresse de Livraison :</h4>
                     <p>
-                        <span>Nom : {{facture.adresse.nom}}</span><br> <span  class="mx-3"> Prénom : {{facture.adresse.prenom}}</span><br>
+                        <span>Nom : {{facture.adresse.nom}}</span><br> 
+                        <span class="mx-3"> Prénom : {{facture.adresse.prenom}}</span><br>
                         <span>Adresse : {{facture.adresse.adresse}}</span><br>
-                        <span class="mx-3">{{facture.adresse.cp}}</span> &nbsp;<span class="mx-3">{{facture.adresse.ville}}</span><br>
-                        <span>Tel : {{facture.adresse.tel}}</span><br><span  class="mx-3">Email : {{facture.adresse.email}}</span>
+                        <span class="mx-3">{{facture.adresse.cp}}</span> &nbsp;
+                        <span class="mx-3">{{facture.adresse.ville}}</span><br>
+                        <span>Tel : {{facture.adresse.tel}}</span><br>
+                        <span class="mx-3">Email : {{facture.adresse.email}}</span>
                     </p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <h4 style="color: rgba(105,133,243,1)" >Vos articles : </h4>
+                    <h4 style="color: rgba(105,133,243,1)">Vos articles : </h4>
                     {% for factureOrderline in facture.orderLines %}
                         <ul>
                             <li>
-                                Article : {{factureOrderline.article}}<br> 
+                                Article : {{factureOrderline.article}}<br>
                                 Prix : {{factureOrderline.prix}}€<br>
                                 Quantite : {{factureOrderline.quantite}}
                             </li>
@@ -32,12 +35,13 @@
                 <td>
                     <h4 style="color: rgba(105,133,243,1)">Livraison :</h4>
                     <p>
-                        <span>Vous serez livré par {{facture.delivery.options }}</span><br> <span class="mx-3"> Le : {{"now"|date_modify("+#{facture.delivery.delai} day")|date("d/m/Y")}}</span><br>
-                        <span  class="mx-3">Frais de livraison : {{facture.delivery.price}}€</span><br>
+                        <span>Vous serez livré par {{facture.delivery.options}}</span><br>
+                        <span class="mx-3"> Le : {{"now"|date_modify("+#{facture.delivery.delai} day")|date("d/m/Y")}}</span><br>
+                        <span class="mx-3">Frais de livraison : {{facture.delivery.price}}€</span><br>
                     </p>
                 </td>
             </tr>
-            <td >
+            <td>
                 <h3 style="color: rgba(105,133,243,1)"> Total :
                     <span class="mx-3">{{facture.total}}€</span>
                 </h3>

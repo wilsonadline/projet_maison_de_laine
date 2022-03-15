@@ -3,27 +3,31 @@
 {% block title %}Admin - Tupe des catégories | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-<div class="my-5 d-flex flex-wrap justify-content-around">
-  <div class="col-12 col-lg-6 my-4">
-    <div class="card mx-2 card-hover">
-      <div class="card-body align-items-center justify-content-center d-flex flex-column">
-        <h5 class="card-title">Ajouter</h5>
-        <p class="card-text text-center">Ajouter un type de catégorie</p>
-        <a href="{{path("type_categories_ajout")}}" class="btn btn-primary" style="width: auto!important"><i class="fas fa-plus"></i></a>
+  <div class="my-5 d-flex flex-wrap justify-content-around">
+    <div class="col-12 col-lg-6 my-4">
+      <div class="card mx-2 card-hover">
+        <div class="card-body align-items-center justify-content-center d-flex flex-column">
+          <h5 class="card-title">Ajouter</h5>
+          <p class="card-text text-center">Ajouter un type de catégorie</p>
+          <a href="{{path("type_categories_ajout")}}" class="btn btn-primary" style="width: auto!important">
+            <i class="fas fa-plus"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 my-4">
+      <div class="card mx-2 card-hover">
+        <div class="card-body align-items-center justify-content-center d-flex flex-column">
+          <h5 class="card-title">Liste</h5>
+          <p class="card-text text-center">Liste des type de catégories</p>
+          <a href="{{path("type_categories_list")}}" class="btn btn-primary" style="width: auto!important">
+            <i class="fas fa-clipboard-list"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-12 col-lg-6 my-4">
-    <div class="card mx-2 card-hover">
-      <div class="card-body align-items-center justify-content-center d-flex flex-column">
-        <h5 class="card-title">Liste</h5>
-        <p class="card-text text-center">Liste des type de catégories</p>
-        <a href="{{path("type_categories_list")}}" class="btn btn-primary" style="width: auto!important"><i class="fas fa-clipboard-list"></i></a>
-      </div>
-    </div>
+  <div class="d-flex justify-content-center">
+      <a href="{{path ('admin_admin')}}" class="btn btn-sm btn-light my-5">Admin</a>
   </div>
-</div>
-<div class="d-flex justify-content-center">
-    <a href="{{path ('admin_admin')}}" class="btn btn-sm btn-light my-5">Admin</a>
-</div>
 {% endblock %}

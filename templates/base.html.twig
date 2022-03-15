@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="utf-8"/>
         <script src="{{asset('/tarteaucitron/tarteaucitron.js')}}"></script>
 
         <script>
@@ -55,7 +55,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{asset ('../css/base.css ')}}" />
+        <link rel="stylesheet" href="{{asset ('css/base.css ')}}" />
         {% block css %} {% endblock %}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,13 +72,15 @@
         {% block nav %}
             <div class="container-fluid p-0">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
-                    <a href="{{ path ('app_home') }}" class="ms-4"><img src="{{asset ('images/logo/la_maison_de_laine_logo_mdl_multicolor.png')}}" id="logo" alt="Logo de La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"/></a>
+                    <a href="{{ path ('app_home') }}" class="ms-4">
+                        <img src="{{asset ('images/logo/la_maison_de_laine_logo_mdl_multicolor.png')}}" id="logo" alt="Logo de La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono"/>
+                    </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2 ">
+                            <li class="nav-item mx-2 d-flex flex-lg-column flex-row my-2">
                                 <i class="fas fa-home mb-1 picto me-2"></i>
                                 <a class="active" aria-current="page" href="{{path ("app_home")}}">Boutique</a>
                             </li>
@@ -212,7 +214,7 @@
                     <article class="mb-3 d-flex">
                         <a class="text-center m-2 copyright" href="#">Copyright © 2021</a><span class="pipe mt-4">|</span> 
                         <a class="text-center m-2 copyright" href="#">La Maison de Laine</a><span class="pipe mt-4">|</span> 
-                        <a class="text-center m-2 copyright" href="{{path ('mentions_legales')}}">Mentions Légales</a> <span class="pipe mt-4">|</span>
+                        <a class="text-center m-2 copyright" href="{{path ('mentions_legales')}}">Mentions Légales</a><span class="pipe mt-4">|</span>
                         <a class="text-center m-2 copyright" href="{{path ('ccv')}}">CCV</a>
                     </article>
                 </footer>

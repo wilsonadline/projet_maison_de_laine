@@ -2,7 +2,6 @@
 
 {% block title %}Commandes en attentes | La Maison de Laine{% endblock %}
 
-
 {% block body %}
    <table class="table my-5">
         <h1 class="text-center mt-5">En Attentes</h1>
@@ -38,7 +37,7 @@
                         {% for orderen_attenteOrderline in en_attente.orderLines %}
                             <ul>
                                 <li>
-                                    Article : {{orderen_attenteOrderline.article}}<br> 
+                                    Article : {{orderen_attenteOrderline.article}}<br>
                                     Prix : {{orderen_attenteOrderline.prix}}€<br>
                                     Quantite : {{orderen_attenteOrderline.quantite}}
                                 </li>
@@ -54,9 +53,9 @@
                     <td scope="2">{{en_attente.updatedAt|date('d/m/Y à H:i:s')}}</td>
                     <td>
                         <a class="btn btn-light" href="{{path ("commandes_change_status", {id : en_attente.id})}}?csrf={{csrf_token('update' ~ en_attente.id)}}">Changer</a>
-                    </td>   
+                    </td>
                 </tr>
-            {% endfor  %}
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}

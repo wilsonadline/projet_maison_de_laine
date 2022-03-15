@@ -20,8 +20,8 @@
                     <p class="m-3">{{app.user.email}}</p>
                 </div>
                 <div class="mt-2 d-flex flex-column justify-content-end">
-                    <a href="{{path ('app_profil_change', {id : app.user.id})}}?csrf={{csrf_token('update' ~ app.user.id)}})}}" class="my-3 btn btn-light btn-sm"  style="width: auto !important">Modifier le profil</a>
-                    <a href="{{path ("app_pass_change", {id : app.user.id})}}?csrf={{csrf_token('update' ~ app.user.id)}}"class="my-3 btn btn-light  btn-sm" style="width: auto !important">Modifier le mot de passe</a>
+                    <a href="{{path ('app_profil_change', {id : app.user.id})}}?csrf={{csrf_token('update' ~ app.user.id)}})}}" class="my-3 btn btn-light btn-sm" style="width: auto !important">Modifier le profil</a>
+                    <a href="{{path ("app_pass_change", {id : app.user.id})}}?csrf={{csrf_token('update' ~ app.user.id)}}"class="my-3 btn btn-light btn-sm" style="width: auto !important">Modifier le mot de passe</a>
                     <a href="{{path ("app_pass_delete", {id : app.user.id})}}?csrf={{csrf_token('delete' ~ app.user.id)}}"class="my-3 btn btn-light btn-sm" style="width: auto !important" onclick="return confirm('Etes-vous sûr de vouloir supprimer votre compte ?')">Supprimer votre compte</a>
                 </div>
             </div>

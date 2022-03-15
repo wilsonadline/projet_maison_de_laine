@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
-{% block css %} <link rel="stylesheet" href="{{asset ('../css/panier.css ')}}"/>{% endblock %} 
+
+{% block css %}<link rel="stylesheet" href="{{asset ('css/panier.css')}}"/>{% endblock %} 
 
 {% block title %}Panier | La Maison de Laine{% endblock %}
 
@@ -26,7 +27,7 @@
                         <td class="py-5">
                             <a class="btn btn-light btn-sm option" href="{{path ('panier_ajout', {id : element.article.id})}}">+</a>
                             <a class="btn btn-light btn-sm align-items-center option" href="{{path ('panier_retirer', {id : element.article.id})}}">-</a>
-                            <a class="btn btn-light btn-sm option"  href="{{path ('panier_supprimer', {id : element.article.id})}}">x</a>
+                            <a class="btn btn-light btn-sm option" href="{{path ('panier_supprimer', {id : element.article.id})}}">x</a>
                         </td>
                     </tr>
                 {% else %}
@@ -57,7 +58,7 @@
 
         <div class="row col-12 d-flex justify-content-center my-5">
             <article class="d-flex justify-content-center col-xxl-4 col-12 col-lg-4 col-md-4 align-items-center my-5">
-            <i class="fas fa-truck fa-2x ml-5 picto"></i>
+                <i class="fas fa-truck fa-2x ml-5 picto"></i>
                 <span>LIVRAISON GRATUITE<br>DES 72H EN BOUTIQUE</span>
             </article>
             <article class="d-flex justify-content-center col-xxl-4 col-12 col-lg-4 col-md-4 my-5 align-items-center">

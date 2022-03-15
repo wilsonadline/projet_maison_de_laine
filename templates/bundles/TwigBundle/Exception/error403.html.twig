@@ -1,18 +1,20 @@
 {% extends "base.html.twig" %}
 
 {% block title %}Accès interdit{% endblock %}
-{% block css %} <link rel="stylesheet" href="{{asset ('../css/error500.css ')}}" /> {% endblock %} 
 
+{% block css %}<link rel="stylesheet" href="{{asset ('css/error500.css')}}"/>{% endblock %}
 
 {% block body %}
-<p class="info fs-5">Accès interdit</p>
-<p class="info fs-5">Vous n'avez pas la permission pour accèder à cette page</p>
-<p class="info fs-5">Retour à la <a href="{{path('app_home')}}">Boutique</a></p>  
-<div class="d-flex justify-content-center">
-    <h1 class="internal col-xxl-12 col-xl-12 col-md-9 col-6">  
-        <span>4</span>
-        <span class="zero">0</span>
-        <span>3</span>
-    </h1>
-</div>
+    <p class="info fs-5">Accès interdit</p>
+    <p class="info fs-5">Vous n'avez pas la permission pour accèder à cette page</p>
+    <p class="info fs-5">Retour à la 
+        <a href="{{path('app_home')}}">Boutique</a>
+    </p>
+    <div class="d-flex justify-content-center">
+        <h1 class="internal col-xxl-12 col-xl-12 col-md-9 col-6">
+            <span>4</span>
+            <span class="zero">0</span>
+            <span>3</span>
+        </h1>
+    </div>
 {% endblock %}

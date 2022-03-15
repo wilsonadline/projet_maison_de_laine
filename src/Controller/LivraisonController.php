@@ -110,9 +110,10 @@ class LivraisonController extends AbstractController
     {
         // intancier l'objet PanierService qui a en parametre Entity Manager
         $panier_service = new PanierService($em);
-        // Je ne suis pas sure
+
         // J'accede à la fonction panier et ses parametres
         list ($dataPanier)= $panier_service->panier($session, $articleRepository);
+        // j'appelle la fonction gestionStock avec en parametre les elements qui seront achetés
         $panier_service->gestionStock($dataPanier);
 
         // de mon objet panier_service, j'appelle ma fonction save_order et ses parametres

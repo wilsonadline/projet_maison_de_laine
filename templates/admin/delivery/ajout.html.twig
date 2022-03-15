@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
+
 {% form_theme add_delivery 'bootstrap_5_layout.html.twig' %}
 
 {% block title %}Livraison mode | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono{% endblock %}
 
 {% block body %}
-    <div class="mt-1 d-flex justify-content-center align-items-center flex-column"> 
+    <div class="mt-1 d-flex justify-content-center align-items-center flex-column">
         <h1 class="text-center my-4">Ajouter une option</h1>
         <div class="col-7">
             {{form_start(add_delivery)}}
@@ -12,7 +13,6 @@
                 {{form_row(add_delivery.price)}}
                 {{form_row(add_delivery.delai)}}
                 {{form_row(add_delivery.imageFile)}}
-
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-light mb-4">Ajouter</button>
                 </div>

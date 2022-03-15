@@ -26,8 +26,9 @@
                         <p>
                             <span>{{new.adresse.nom }}</span><span class="mx-3">{{new.adresse.prenom}}</span>
                         </p>
-                        <p >
-                            <span>{{new.adresse.adresse}}</span><span class="mx-3">{{new.adresse.ville}}</span><span class="mx-3">{{new.adresse.cp}}</span>
+                        <p>
+                            <span>{{new.adresse.adresse}}</span><span class="mx-3">{{new.adresse.ville}}</span>
+                            <span class="mx-3">{{new.adresse.cp}}</span>
                         </p>
                         <p class="mb-0">
                             <span>{{new.adresse.tel}}</span> <span class="mx-3">{{new.adresse.email}}</span>
@@ -37,14 +38,14 @@
                         {% for newOrderline in new.orderLines %}
                             <ul>
                                 <li>
-                                    Article : {{newOrderline.article}}<br> 
+                                    Article : {{newOrderline.article}}<br>
                                     Prix : {{newOrderline.prix}}€<br>
                                     Quantite : {{newOrderline.quantite}}
                                 </li>
                             </ul>
                         {% endfor %}
                     </td>
-                    <td >
+                    <td>
                         <p>
                             <span class="mx-3">{{new.total}}€</span>
                         </p>
@@ -80,28 +81,32 @@
                     <td>{{ en_attente.orderStatus.status}}</td>
                     <td>
                         <p>
-                            <span>{{en_attente.adresse.nom}}</span><span class="mx-3">{{en_attente.adresse.prenom}}</span>
+                            <span>{{en_attente.adresse.nom}}</span>
+                            <span class="mx-3">{{en_attente.adresse.prenom}}</span>
                         </p>
-                        <p >
-                            <span>{{en_attente.adresse.adresse}}</span><span class="mx-3">{{en_attente.adresse.ville}}</span><span  class="mx-3">{{en_attente.adresse.cp}}</span>
+                        <p>
+                            <span>{{en_attente.adresse.adresse}}</span>
+                            <span class="mx-3">{{en_attente.adresse.ville}}</span>
+                            <span class="mx-3">{{en_attente.adresse.cp}}</span>
                         </p>
                         <p class="mb-0">
-                            <span>{{en_attente.adresse.tel}}</span><span  class="mx-3">{{en_attente.adresse.email}}</span>
+                            <span>{{en_attente.adresse.tel}}</span>
+                            <span class="mx-3">{{en_attente.adresse.email}}</span>
                         </p>
                     </td>
                     <td>
                         {% for orderen_attenteOrderline in en_attente.orderLines %}
                             <ul>
                                 <li>
-                                    Article : {{orderen_attenteOrderline.article}}<br> 
+                                    Article : {{orderen_attenteOrderline.article}}<br>
                                     Prix : {{orderen_attenteOrderline.prix}}€<br>
                                     Quantite : {{orderen_attenteOrderline.quantite}}
                                 </li>
                             </ul>
                         {% endfor %}
                     </td>
-                    <td >
-                        <p >
+                    <td>
+                        <p>
                             <span class="mx-3">{{en_attente.total}}€</span>
                         </p>
                     </td>
@@ -109,9 +114,9 @@
                     <td scope="2">{{en_attente.updatedAt|date('d/m/Y à H:i:s')}}</td>
                     <td>
                         <a class="btn btn-light" href="{{path ("commandes_change_status", {id : en_attente.id})}}?csrf={{csrf_token('update' ~ en_attente.id)}}">Changer</a>
-                    </td>                    
+                    </td>
                 </tr>
-            {% endfor  %}           
+            {% endfor %}
         </tbody>
     </table>
     
@@ -136,10 +141,12 @@
                     <td>{{expediee.orderStatus.status}}</td>
                     <td>
                         <p>
-                            <span>{{expediee.adresse.nom}}</span><span class="mx-3">{{expediee.adresse.prenom}}</span>
+                            <span>{{expediee.adresse.nom}}</span>
+                            <span class="mx-3">{{expediee.adresse.prenom}}</span>
                         </p>
-                        <p >
-                            <span>{{expediee.adresse.adresse}}</span><span class="mx-3">{{expediee.adresse.ville}}</span><span class="mx-3">{{expediee.adresse.cp}}</span>
+                        <p>
+                            <span>{{expediee.adresse.adresse}}</span><span class="mx-3">{{expediee.adresse.ville}}</span>
+                            <span class="mx-3">{{expediee.adresse.cp}}</span>
                         </p>
                         <p class="mb-0">
                             <span>{{expediee.adresse.tel}}</span><span class="mx-3">{{expediee.adresse.email}}</span>
@@ -149,7 +156,7 @@
                         {% for orderexpedieeOrderline in expediee.orderLines %}
                             <ul>
                                 <li>
-                                    Article : {{orderexpedieeOrderline.article}}<br> 
+                                    Article : {{orderexpedieeOrderline.article}}<br>
                                     Prix : {{orderexpedieeOrderline.prix}}€<br>
                                     Quantite : {{orderexpedieeOrderline.quantite}}
                                 </li>
@@ -165,9 +172,9 @@
                     <td scope="2">{{ expediee.updatedAt|date('d/m/Y à H:i:s')}}</td>
                     <td>
                         <a class="btn btn-light" href="{{path ("commandes_change_status", {id : expediee.id})}}?csrf={{csrf_token('update' ~ expediee.id)}}">Changer</a>
-                    </td>                    
+                    </td>
                 </tr>
-            {% endfor  %}          
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}

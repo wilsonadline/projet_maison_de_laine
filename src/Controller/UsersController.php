@@ -122,7 +122,6 @@ class UsersController extends AbstractController
             
             // Invalidate permet de fermer la session utilisateur
             $session->invalidate();
-            // dd($session->invalidate());
 
             // Remove permet d'indiquer la suppression de l'utilisateur 
             $em->remove($user);

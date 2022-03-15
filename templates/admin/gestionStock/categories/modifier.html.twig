@@ -4,14 +4,13 @@
 {% block title %}Modifier la catégorie | La Maison de Laine{% endblock %}
 
 {% block body %}
-    <div class="mt-1 d-flex justify-content-center align-items-center flex-column"> 
+    <div class="mt-1 d-flex justify-content-center align-items-center flex-column">
         <h1 class="text-center my-5">Modifier la catégorie</h1>
         <div class="col-7">
             {{form_start(categoriesModifier)}}
                 {{form_row(categoriesModifier.nom)}}
                 {{form_row(categoriesModifier.typeCategories)}}
                 {{form_row(categoriesModifier.imageFile)}}
-
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-light mb-4">Modifier</button>
                 </div>

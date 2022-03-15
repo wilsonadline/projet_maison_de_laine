@@ -4,13 +4,13 @@
 
 {% block body %}
   {% for type in typeCategorie %}
-    {% if type.categories|length > 0 %}  
+    {% if type.categories|length > 0 %}
       <h1 class="text-center">{{type.nom}}</h1>
       <section class="mb-5 justify-content-around d-flex flex-wrap p-0 sectionHov">
         {% for categorie in type.categories %}
           {% if type.categories|length > 3 %}
             <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-5 d-flex flex-column align-items-center justify-content-around card-hover">
-          {% elseif type.categories|length < 4 and  type.categories|length > 2 %}
+          {% elseif type.categories|length < 4 and type.categories|length > 2 %}
             <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-5 col-8 d-flex flex-column align-items-center justify-content-around card-hover">
           {% else %}
             {% if type.categories|length < 3 %}
@@ -20,7 +20,7 @@
             <a href="{{path ('app_articles_mercerie', {id: categorie.id})}}" class="d-flex my-4 align-items-center flex-column justify-content-center col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-10  p-0" style="width : 18rem">
               <img src="{{vich_uploader_asset(categorie, 'imageFile')}}" class="card-img-top rounded-3" alt="Image Tissu | La Maison de Laine | Rubanerie | Tricot | Laine | Mercerie | Saree | Wax | Kimono">
             </a>
-              <a href="{{path ('app_articles_mercerie', {id: categorie.id})}}" class="btn btn-light my-4" style="width : 15rem">{{ categorie.nom}}</a>
+            <a href="{{path ('app_articles_mercerie', {id: categorie.id})}}" class="btn btn-light my-4" style="width : 15rem">{{ categorie.nom}}</a>
           </div>
         {% endfor %}
       </section>
